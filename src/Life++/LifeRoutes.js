@@ -9,6 +9,10 @@ import Challenges from '../LifePages/Challenges';
 import Pricing from '../LifePages/Pricing';
 import Coaches from '../LifePages/Coaches';
 import Settings from '../LifePages/Settings';
+import PhysicalContentPage from '../LifePages/PhysicalContentPage';
+import MentalContentPage from '../LifePages/MentalContentPage';
+
+
 
 function LifeRoutes() {
   return (
@@ -23,6 +27,8 @@ function LifeRoutes() {
         <Route path="/index/pricing" element={<Pricing/>}/>
         <Route path="/index/coaches" element={<Coaches/>}/>
         <Route path="/index/settings" element={<Settings/>}/>
+        <Route path="/index/physical" element={<PhysicalContentPage/>}/>
+        <Route path="/index/mental" element={<MentalContentPage/>}/>
       </Routes>
     </BrowserRouter>
   );

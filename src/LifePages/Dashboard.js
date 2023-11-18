@@ -4,12 +4,14 @@ import Sidenavbar from '../Life++/sidenavbar';
 import HashLoader from 'react-spinners/HashLoader';
 import Header from '../Life++/Header';
 import { MdDashboard } from 'react-icons/md';
+import { Link } from 'react-router-dom';
 import { FaClipboardCheck, FaCalendarAlt } from 'react-icons/fa';
 import 'react-slideshow-image/dist/styles.css';
 import { Slide } from 'react-slideshow-image';
 import slide1 from '../LifeImages/slide1.png';
 import slide2 from '../LifeImages/sliide2.png';
 import slide3 from '../LifeImages/slide3.png';
+
 
 function Dash() {
   const [loading, setLoading] = useState(false);
@@ -142,12 +144,14 @@ function Dash() {
           <div className='choose'>
             <h1>Choose Content</h1>
           </div>
-          <div className='phy-con'>
+          <Link to="/index/physical"
+           className='phy-con'>
             <div className='phy'> <p>Physical Content</p></div>
-          </div>
-          <div className='ment-con'>
+          </Link>
+          <Link to="/index/mental"
+           className='ment-con'>
             <div className='men'><p>Mental Content</p></div>
-          </div>
+            </Link>
           <div className='recen-cha'>
             <h1>Recent Challenges</h1>
             <div className='recen-con'>
