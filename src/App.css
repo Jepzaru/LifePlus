@@ -1,0 +1,230 @@
+
+.App {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 20px;
+  background-color: #00306b;
+  font-family: 'Poppins', sans-serif;
+}
+
+.grid {
+  font-family: 'Poppins', sans-serif;
+  flex: 1;
+  margin-right: 20px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  padding: 10px;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.grid button {
+  font-family: 'Poppins', sans-serif;
+  margin-right: 10px;
+  padding: 10px 20px;
+  font-size: 20px;
+  background-color: #007bff;
+  color: #fff;
+  box-shadow:  12px 12px 24px #9d9d9d;            
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  margin-left: 10px;
+
+}
+.green-button {
+  background-color: green;
+  color: white;
+}
+
+
+.grid button:hover {
+  background-color: #0056b3;
+  margin-bottom: auto;
+}
+
+.grid p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.grid ul {
+  font-family: 'Poppins', sans-serif;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.grid li {
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 5px;
+}
+
+.regular-queues {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.regular-queues > div {
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px; 
+  margin-top: 10px; 
+}
+
+.regular-queues p {
+  font-size: 16px; 
+  font-weight: bold;
+}
+
+.regular-queues ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.regular-queues li {
+  margin-bottom: 5px;
+}
+
+.loader {
+  display: inline-block;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  animation: spin 2s linear infinite;
+  margin-left: 5px;
+}
+
+progress {
+  width: 100%;
+  height: 10px; 
+  border: none;
+  border-radius: 5px;
+  background-color: #f0f0f0; 
+  position: relative;
+}
+
+
+.clear-button {
+  margin-bottom: 10px;
+}
+
+
+.task-queue-container {
+  height: 300px; 
+  overflow-y: scroll;
+}
+
+
+.task-list {
+  padding: 10px;
+  height: 50%;
+  margin-bottom: 20px;
+  border-radius: 30px;
+  background: #e0e0e0;
+  box-shadow: inset 16px 16px 22px #cacaca,
+            inset -16px -16px 22px #f6f6f6;
+  margin-right: 30px;
+}
+
+.task-list p {
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin-top: 5px;
+  
+}
+
+.task-queue-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+.task-queue-container li {
+  margin-bottom: 5px;
+}
+
+.progress-bar {
+  border-radius: 30px;
+  width: 100%;
+  height: 20px;
+  background-color: #ccc;
+  position: relative;
+}
+
+.progress-bar-fill {
+  border-radius: 30px;
+  height: 100%;
+  background-color: #4CAF50;
+  position: relative;
+}
+.progress-bar-text {
+  position: absolute;
+  top: 20px;
+  right:5px;
+  padding: 15px;
+  color: #ffffff; 
+  border-radius: 25px;
+  font-family: 'Poppins', sans-serif ;
+  background-color: #4CAF50;
+}
+.rounded-border {
+  border-radius: 30px;
+  background: #e0e0e0;
+  box-shadow:  12px 12px 24px #9d9d9d,
+             -12px -12px 24px #ffffff;
+  padding: 10px;
+  margin: 10px;
+  margin-bottom: 25px;
+}
+.progress-bar-fill-smooth {
+  transition: width 1s linear; 
+}
+.complete-queue-container{
+  border-color: black;
+  height: 300px; 
+  overflow-y: scroll;
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
+  gap: 10px; 
+}
+.task-sudlanan {
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  width: 7%;
+  box-shadow:  12px 12px 24px #9d9d9d;   
+  background-color: #ffffff;
+}
+.lista{
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  width: 7%;
+  box-shadow:  12px 12px 24px #9d9d9d;   
+  background-color: #ffffff;
+}
+.task-humana {
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  width: 7%;
+  color:#f3f3f3;
+  box-shadow:  12px 12px 24px #9d9d9d; 
+  background-color: #08bc4a;
+}
+.clear{
+  margin-top: 15px;
+}
+

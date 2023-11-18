@@ -1,0 +1,100 @@
+.container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1em;
+}
+
+.container-vertical {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.textfield {
+    height: 2em;
+    width: 32em;
+    border-radius: 0.5em;
+}
+.bg-container {
+    background-color: #3C1518;
+    border-radius: 10px;
+    padding: 20px; 
+    color: #D58936;
+  }
+  
+  .game-code-container {
+    background-color:#69140E; 
+    border-radius: 70px;
+    padding: 20px; 
+    color: #D58936;
+  }
+  .get-new-code {
+    text-align: center; 
+    margin-top: 20px; 
+  }
+  
+  .get-new-code a {
+    display: inline-block;
+    text-align: center;
+    background-color: #69140E;
+    color: #D58936;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  
+.code-label {
+    font-weight: bold
+}
+
+.game-button {
+    margin-top: 1em !important;
+}
+
+body {
+    background-color:#D58936;
+}
+.game-number {
+    text-align: center;
+    vertical-align: center;
+    font-weight: bolder;
+    margin: 0.2em;
+    padding: 1em;
+    border-radius: 100px;
+    border: solid 1px #D58936;
+    height: 1.5em;
+    width: 1.5em;
+}
+
+h1 {
+    text-align: center;
+    vertical-align: center;
+}
+
+.clicked {
+    background-color: #69140E;
+}
+
+.btn-container {
+    justify-content: space-between !important;
+}
+/*.App {
+    background-image: url('/public/reactBingo.jpg');
+    background-size: 100% 100%; 
+    background-repeat: no-repeat;
+    background-position: center;
+}*/
+.container,
+.container-vertical,
+.textfield,
+.bg-container,
+.game-code-container,
+.code-label,
+.game-button,
+.game-number,
+h1,
+.clicked,
+.btn-container {
+    font-family: 'Poppins', sans-serif;
+}

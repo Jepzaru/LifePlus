@@ -1,0 +1,232 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #2385C4;
+  }
+  
+  .forum-connect-container {
+    padding: 20px;
+    color: white;
+  }
+  
+  .breadcrumbed ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+  }
+  
+  .breadcrumbed li {
+    margin-right: 90px;
+  }
+  
+  .breadcrumbed a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .breadcrumbed a:hover {
+    color: yellow; 
+  }
+  
+  .breadcrumbed {
+    margin-left: 700px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+  }
+  
+  .titled {
+    margin-right: 65%;
+    font-family: 'Poppins', sans-serif;
+    margin-top: -100px;
+    color: white;
+    margin-left: 50px;
+    margin-bottom: 15px;
+  }
+   
+  .white-container {
+    background: url('../ForumImages/bgpage1.png') no-repeat center center fixed;
+    background-size: cover;
+    border-radius: 15px;
+    margin: 10px; 
+    height: 580px;
+    margin-top: 50px;
+    animation: floating 3s ease-in-out infinite;
+    box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.4);
+  }
+  .posted{
+    margin-right: -120px;
+    margin-top: -36px;
+    margin-left: 200px;
+  }
+  .logout{
+    margin-right: 60px;
+    margin-top: -30px;
+    margin-left: 200px;
+  }
+  .logout-button {
+    display: inline-block;
+    padding: 15px 50px;
+    background-color: #0056b3;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.2);
+  
+  }
+  
+  .logout-button:hover {
+    color: white !important;
+    background-color: red !important;
+  }
+  .posted-button {
+    display: inline;
+    background-color: #0056b3;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 20px;
+    cursor: pointer;
+    width: 250px;
+    transition: background-color 0.3s;
+    margin-right: -30px; 
+    box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .posted-button:hover {
+    color: white;
+    background-color: green;
+  }
+  .user-info{
+    font-family: 'Poppins', sans-serif;
+    margin-left: 600px;
+    margin-bottom: -40.5px;
+    background-color: white;
+    color: #0056b3;
+    width: 12%;
+    height: 40px;
+    height: auto;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.4);
+  }
+  .username-info{
+    font-family: 'Poppins', sans-serif;
+    margin-left: 400px;
+    margin-bottom: -45px;
+    background-color: white;
+    color: #0056b3;
+    width: 12%;
+    height: auto;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.4);
+
+  }
+  .horizontal-posts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .horizontal-posts .MuiPaper-root {
+    flex: 1;
+    width: calc(50% - 20px); /* Adjust the width as needed */
+    margin: 50px;
+    display: none;
+    height: 400px;
+    background-color: #343434;
+  }
+  
+  .horizontal-posts .MuiPaper-root:nth-child(-n+2) {
+    display: block; /* Display the first 4 posts */
+  }
+  .pagination-buttons .MuiButton-root {
+    width: 25%;
+    border-radius: 25px;
+    margin-left: 250px;
+    margin-top: 20px;
+    box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.8);
+    animation: floating 3s ease-in-out infinite;
+     /* Adjust the radius as needed for rounded edges */
+  }
+  
+  /* Style for the Previous Page button */
+  .pagination-buttons .MuiButton-contained:nth-child(1) {
+    background-color: white; /* Facebook's primary blue color */
+    color: #1877F2;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.8);
+  }
+  
+  .pagination-buttons .MuiButton-contained:nth-child(1):hover {
+    background-color: yellow;
+    color: #1877F2; /* Darker blue on hover */
+  }
+  
+  /* Style for the Next Page button */
+  .pagination-buttons .MuiButton-contained:nth-child(2) {
+    background-color: white; /* Facebook's primary blue color */
+    color: #1877F2;
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .pagination-buttons .MuiButton-contained:nth-child(2):hover {
+    background-color: yellow ;
+    color: #1877F2; /* Darker blue on hover */
+  }
+  .comment{
+    margin-top: 30px;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  @keyframes floating {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  .rainbow-animation {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1;
+    transition: background 0.1s, left 0.1s, top 0.1s;
+  }
+  .horizontal-posts .MuiButton-root:hover {
+    color: white;
+  }
+  
+  .horizontal-posts .MuiButton-root:hover .MuiSvgIcon-root {
+    color: white;
+  }
+  .profile-pic-container {
+    width: 60px;
+    height: 60px;
+    margin-right: 10px;
+    border-radius: 50%;
+    background-image: url('../ForumImages/pfp1.png');
+    background-size: cover; /* Adjust as needed */
+  }
+  .last-update-time{
+    margin-top: -50px;
+    margin-left: 10px;
+  }
+ 
+  

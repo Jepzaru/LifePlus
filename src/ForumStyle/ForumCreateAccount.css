@@ -1,0 +1,104 @@
+
+
+.container {
+    background-color: #2385C4;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .inner-container {
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px; 
+    height: 80%;
+    width: 75%;
+    box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.4);
+  }
+
+  .image-container {
+    background-image: url('../ForumImages/createbg.png'); 
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 500px; 
+    height: 500px; 
+    margin-left: 650px;
+    margin-top: 50px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    animation: floatAnimation 2s infinite ease-in-out;
+  }
+  @keyframes floatAnimation {
+    0% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(0, -10px);
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}
+  .create {
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px; 
+    height: 77%;
+    width: 45%;
+    box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.2);
+    margin-top: -500px;
+    margin-left: 50px;
+    align-items: center;
+  }
+  .signUp{
+    font-family: 'Poppins', sans-serif;
+    margin-left: 30px;
+  }
+  .usernamefield, .passwordfield{
+    width: 90%;
+    align-items: center;
+  }
+  button{
+    background-color: #0056b3; 
+    color: #fff; 
+    font-size: 18px; 
+    padding: 5px;
+    border: none;
+    border-radius: 10px; 
+    cursor: pointer;
+    transition: background-color 0.3s ease; 
+    margin-right: 89%;
+    height: 60px;
+    width: 85%;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+  }
+  button:hover {
+    background-color: yellow; 
+    color: black;
+}
+.text{
+   margin-left: 120px;
+   margin-bottom: -10px;
+}
+.signUpButton{
+    margin-top: 15px;
+    margin-left: -30px;
+}
+.In{
+  margin-left: -30px;
+  margin-bottom: 15px;
+}
+  
+
+  
+  
+  
+  
+  
+  

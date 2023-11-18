@@ -1,0 +1,46 @@
+.appind{
+    width: 100vw;
+    height: 100vh;
+}
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.cour{
+    margin-left: 220px;
+    margin-top: 70px;
+    font-size: 25px;
+    font-family: 'Poppins', sans-serif;
+}
+.cou-con{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 820px;
+    width: 900px;
+    border-radius: 20px;
+    margin-left: 220px;
+    background-color: #E7E7E7;
+    overflow-y: scroll;
+    margin-top: 20px;
+}
+.up-act{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+    width: 340px;
+    border-radius: 20px;
+    margin-left: 1150px;
+    margin-top: -820px;
+    background-color: #E7E7E7;
+    
+}
+.up-act p{
+    font-family: 'Poppins', sans-serif;
+    margin-left: -50px;
+    margin-top: -390px;
+    font-size: 24px;
+    font-weight: bold;
+}

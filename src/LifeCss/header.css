@@ -1,0 +1,75 @@
+
+.header {
+    background-color: black;
+    color: white;
+    padding: 5px;
+    width: 100%;
+    position: fixed;
+    z-index: 2;
+    margin-top: -40px;
+  }
+  
+.headlife h1{
+    font-family: 'Poppins', sans-serif;
+    margin-top: -130px;
+    margin-left: 70px;
+  }
+  
+  .logo {
+    width: 150px;
+    height: 150px;
+    background-image: url('../LifeImages/lifelogo.png');
+    background-repeat: no-repeat;
+    background-size: contain; /* Adjust as needed */
+    display: block;
+    margin-left: -40px;
+    margin-top: 10px;
+  } 
+  .search{
+    margin-left: 500px;
+    margin-top: -65px;
+    margin-bottom: 50px;
+    position: relative;
+    z-index: 1;
+    
+    
+  }
+  .search input {
+    border-radius: 50px;
+    width: 400px; 
+    height: 30px; 
+    padding: 5px;
+    font-family: 'Poppins', sans-serif; 
+    border: none;
+    
+  }
+  
+  
+
+  .search-bar input::placeholder {
+    color: #ccc;
+  }
+  .prem-but{
+    margin-left: 1000px;
+    padding: 8px 40px;
+    font-family: 'Poppins', sans-serif; 
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    background-color: #FF64B4;
+    border: none;
+    font-size: 18px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    position: relative;
+    z-index: 1;
+  }
+  .prem-but:hover{
+    background-color: #705FBE;
+  }
+  .prembutton{
+    margin-top: -83px;
+    margin-bottom: 30px;
+  }
+  

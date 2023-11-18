@@ -1,0 +1,66 @@
+.signupimg {
+    background-image: url('../LifeImages/logimg.png');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .signupcon{
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px; 
+    height: 80%;
+    width: 70%;
+    box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.4);
+  }
+  .signupcon{
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  .signupcon p{
+    font-size: 32px;
+    font-family: 'Poppins', sans-serif;
+    margin-left: 30px;
+  }
+  .hipi{
+    background-image: url("../LifeImages/hipi.png");
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 600px; 
+    height:600px; 
+    margin-left: 687px;
+    margin-top: -150px;
+  }
+  .fieldsign{
+    margin-top: -450px;
+  }
+  .crete-button {
+    margin-left: 30px;
+    padding: 20px 251px;
+    background-color: #FF64B4;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    text-decoration: none;
+    font-size: 22px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s;
+  }
+  
+  .crete-button:hover {
+    background-color: #705FBE;
+  }

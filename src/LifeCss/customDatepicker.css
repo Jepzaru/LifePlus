@@ -1,0 +1,27 @@
+
+
+
+.custom-datepicker {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+ 
+  .custom-datepicker input {
+    width: 100%;
+    padding: 12px;
+    font-family: 'Poppins, sans-serif';
+  }
+  
+  
+  .custom-datepicker .react-datepicker-wrapper .react-datepicker__input-container::after {
+    
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+  

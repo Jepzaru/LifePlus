@@ -1,0 +1,15 @@
+.appind{
+    width: 100vw;
+    height: 100vh;
+}
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.chal{
+    margin-left: 220px;
+    font-size: 24px;
+    margin-top: 70px;
+    font-family: 'Poppins', sans-serif;
+}

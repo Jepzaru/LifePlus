@@ -1,0 +1,42 @@
+.background-image-container {
+  background-image: url('../ForumImages/babibg3.png');
+  background-size: cover;
+  background-position: center;
+  height: 100vh; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff; 
+}
+
+.innersudlanan{
+  height: 500px;
+  width: 700px;
+  background-position: center;
+  border-radius: 20px;
+  box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.5);
+  background-image: url('../ForumImages/sudlanan.png');
+}
+.brand{
+  text-align: center;
+  color: black;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  font-size: 40px;
+  margin-top: 20px;
+}
+.half-width {
+  width: 90%; 
+  margin-left: 30px;
+}
+.acc{
+  color: black;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.p{
+  width: 90%; 
+  margin-left: 30px;
+  margin-top: 30px;
+}

@@ -1,0 +1,349 @@
+.main{
+  justify-content: center;
+  display: flex;
+  margin-top: 300px
+}
+.landing {
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.landing {
+  background-image: url('../LifeImages/lifebg1.png'); 
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  margin-top: -180px;
+  }
+  
+  .lifelogo{
+    background-image: url('../LifeImages/lifelogo.png'); 
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 150px; 
+    height: 150px; 
+    margin-bottom: -15px;
+    margin-top: -10px;
+  }
+  
+  
+  .watchimage {
+    background-image: url("../LifeImages/watchimage.png");
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 850px; 
+    height: 850px; 
+    margin-left: 650px;
+    margin-top: -600px;
+    filter: drop-shadow(16px 7px 0px #FF64B4);
+}
+
+
+  .breadcrumbs {
+    position: fixed; /* Fixed positioning */
+    top: 0; /* Position it at the top */
+    width: 100%; /* Take the full width of the viewport */
+    z-index: 999; /* Adjust z-index as needed */
+    background-color: black;
+    display: flex;
+    align-items: center;
+    padding: 1px;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+  }
+  
+  .breadcrumbs ul {
+    margin-left: 400px;
+    list-style: none;
+    padding: 0;
+  }
+  
+  .breadcrumbs li {
+    display: inline;
+    margin-left: 100px;
+    cursor: pointer;
+    transition: color 0.3s; 
+  }
+  
+  .breadcrumbs li:hover {
+    color: #FF64B4; 
+  }
+  
+  .breadcrumbs a {
+    text-decoration: none;
+  }
+  
+  .hd{
+    font-family: 'Poppins', sans-serif;
+    font-size: 36px;
+    margin-left: 30px;
+    color: black;
+  }
+  .des{
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    margin-top: -30px;
+    margin-left: 30px;
+  }
+  .getbutton{
+    margin-top: 90px;
+    font-family: 'Poppins', sans-serif;
+    filter: drop-shadow(-5px 10px 0px #705FBE);
+  }
+  .getbutton:hover{
+    filter: drop-shadow(-5px 10px 0px #FF64B4);
+  }
+  .getstart-button {
+    margin-left: 20px;
+    padding: 20px 80px;
+    background-color: #FF64B4;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 26px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+  
+  .getstart-button:hover {
+    background-color: #705FBE;
+    
+  }
+  .make-button{
+    padding: 10px 50px;
+    color: black;
+    background-color: white;
+    border: none;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  .make-button:hover {
+    background-color: #705FBE;
+    color: white;
+    }
+  .lifetitle {
+    color: white;
+    margin-left: -30px; 
+  }
+  .Serv h2{
+    font-family: 'Poppins', sans-serif;
+    margin-left: 30px;
+    font-size: 32px;
+   
+  }
+  .Serv p{
+    font-family: 'Poppins', sans-serif;
+    margin-left: 80px;
+    margin-bottom: 50px;
+    
+  }
+  .Servi{
+    font-family: 'Poppins', sans-serif;
+    margin-left: 80px;
+    margin-bottom: 50px;
+  }
+  .servcon{
+    padding: 20px 80px;
+    height: 500px;
+    background-image: linear-gradient(to right, #FF64B4, #705FBE);
+  }
+  
+  .lifeimg{
+    background-image: url("../LifeImages/mat.png");
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 580px; 
+    height: 580px; 
+    margin-top: -30px;filter: drop-shadow(-15px 20px 0px #705FBE);
+  }
+  .unlock{
+    font-family: 'Poppins', sans-serif;
+    font-size: 29px;
+    margin-left: 650px;
+    margin-top: -550px;
+    color: #fff;
+  }
+  .potential{
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    margin-left: 650px;
+  }
+  .abtus h2{
+    font-family: 'Poppins', sans-serif;
+    margin-left: 30px;
+    font-size: 32px;
+  }
+  .abtus p{
+    font-family: 'Poppins', sans-serif;
+    margin-left: 80px;
+  }
+  .namo{
+    margin-left: 80px;
+    font-family: 'Poppins', sans-serif;
+  }
+  .teamcon{
+    padding: 20px 80px;
+    height: 800px;
+    margin-top: 80px;
+    background-image: linear-gradient(to right, #FF64B4, #705FBE);
+  }
+  .team{
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    font-size: 32px;
+  }
+  .gallery{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+  .imgbox{
+    width: 200px;
+    height: 500px;
+    margin: 10px;
+    border-radius: 50px;
+    background: url(../LifeImages/jep.jpg);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    transition: width 0.5s;
+  }
+  .imgbox:nth-child(2){
+    background: url(../LifeImages/kem.jpg);
+    background-size: cover;
+    background-position: center;
+  }
+  .imgbox:nth-child(3){
+    background: url(../LifeImages/dan.jpg);
+    background-size: cover;
+    background-position: center;
+  }
+  .imgbox:nth-child(4){
+    background: url(../LifeImages/kwerbs.jpg);
+    background-size: cover;
+    background-position: center;
+  }
+  .imgbox h3{
+    color: white;
+    position: absolute;
+    bottom: 0;
+    left: 30px;
+    opacity: 0;
+  }
+  .imgbox:hover{
+    width: 400px;
+    cursor: pointer;
+
+  }
+  .imgbox {
+  position: relative;
+  overflow: hidden;
+}
+
+.imgbox:hover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.imgbox h3 {
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  opacity: 0;
+  z-index: 2;
+}
+
+.imgbox:hover h3 {
+  opacity: 1;
+}
+.peng{
+  background-image: url("../LifeImages/pengu.png");
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 450px; 
+    height: 450px; 
+    margin-top: -300px;
+    margin-left: -100px;
+}
+.foot{
+  padding: 20px 80px;
+    height: 350px;
+    background-color: black;
+}
+.foot h2{
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  margin-left: 30px;
+}
+.foot p{
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  margin-left: 80px;
+}
+.allrights{
+  color: whte;
+  font-size: 18px;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+}
+.astro{
+  background-image: url("../LifeImages/astro1.png");
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 500px; 
+    height: 500px; 
+    margin-left: 900px;
+    margin-top: -500px;
+}
+.animated {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.slide-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.slide-out {
+  opacity: 0;
+  transform: translateY(50px);
+}
+  
+  
+  
+  
+  

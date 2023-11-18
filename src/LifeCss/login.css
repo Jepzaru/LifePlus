@@ -1,0 +1,115 @@
+.main{
+    justify-content: center;
+    display: flex;
+    margin-top: 300px;
+  }
+  .logcon{
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+.logimg {
+    background-image: url('../LifeImages/logimg.png');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .logcon{
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px; 
+    height: 80%;
+    width: 50%;
+    box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.4);
+  }
+  .logcon p{
+    margin-left: 30px;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 35px;
+    font-size: 32px;
+  }
+  .forgot{
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    margin-left: 358px;
+    margin-top: -10px;
+
+  }
+  .forgot a {
+    text-decoration: none; 
+    color: inherit; 
+    cursor: pointer;
+    transition: color 0.3s; 
+  }
+  
+  .forgot a:hover {
+    color: #705FBE; 
+  }
+  .rope{
+    background-image: url("../LifeImages/rope.png");
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 600px; 
+    height: 600px; 
+    margin-left: 270px;
+    margin-top: -450px;
+  }
+  .log{
+    margin-top: 40px;
+    font-family: 'Poppins', sans-serif;
+  }
+  .login-enter{
+    margin-left: 20px;
+    padding: 15px 200px;
+    background-color: #FF64B4;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    text-decoration: none;
+    font-size: 22px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  .login-enter:hover {
+    background-color: #705FBE;
+  }
+  .acs p{
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    margin-left: 150px;
+    margin-top: 30px;
+  }
+  .create-enter{
+    margin-left: 20px;
+    padding: 15px 150px;
+    background-color: black;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    text-decoration: none;
+    font-size: 22px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s;
+  }
+  .create-enter:hover {
+    background-color: #705FBE;
+    color: white;
+  }
+  .si{
+    width: 470px;
+  }

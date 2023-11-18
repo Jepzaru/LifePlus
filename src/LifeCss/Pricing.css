@@ -1,0 +1,53 @@
+.appind{
+    width: 100vw;
+    height: 100vh;
+}
+body{
+    margin: 0;
+    padding: 0;
+}
+.pri{
+    margin-left: 220px;
+    font-size: 24px;
+    font-family: 'Poppins', sans-serif;
+}
+.free-con{
+    display: flex;
+    height: 700px;
+    width: 400px;
+    border-radius: 20px;
+    margin-left: 230px;
+    background-color: black;
+    
+}
+.head{
+   color: white;
+   margin-left: 20px;
+   margin-top: 30px;
+   font-size: 18px; 
+   background-color: black;
+   font-family: 'Poppins', sans-serif;
+}
+.cost{
+    margin-top: 200px;
+    margin-left: -115px;
+    
+}
+
+.three-month{
+    height: 700px;
+    width: 400px;
+    border-radius: 20px;
+    margin-left: 660px;
+    margin-top: -700px;
+    background: linear-gradient(#38B6FA, #3FB24F);
+
+}
+.month{
+    height: 700px;
+    width: 400px;
+    border-radius: 20px;
+    margin-left: 1090px;
+    margin-top: -700px;
+    background: linear-gradient(#FF64B4, #705FBE);
+}

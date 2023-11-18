@@ -1,0 +1,161 @@
+.index {
+    text-align: center;
+    background-image: url('../ForumImages/bgforum.png'); 
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white; 
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    
+    
+  }
+  
+  header {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+  }
+  
+  main {
+    padding: 20px;
+  }
+  .title{
+    color: white;
+    font-size: 30px;
+    text-align: left;
+    margin-top: 80px;
+    margin-left: 30px;
+    font-family: 'Poppins', sans-serif;
+  }
+  .descrip{
+    text-align: left;
+    margin-left: 30px;
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
+  }
+  button {
+    background-color: #0056b3; 
+    color: #fff; 
+    font-size: 18px; 
+    padding: 10px;
+    border: none;
+    border-radius: 10px; 
+    cursor: pointer;
+    transition: background-color 0.3s ease; 
+    margin-right: 89%;
+    margin-top: 2%;
+    margin-left: 30px;
+    height: 60px;
+    width: 150px;
+    font-family: 'Poppins', sans-serif;
+}
+
+button:hover {
+    background-color: yellow; 
+    color: black;
+}
+
+.getstarted {
+    margin-top: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+}
+.label{
+    margin-right: 65%;
+    font-family: 'Poppins', sans-serif;
+    margin-top: -70px;
+}
+.breadcrumbs ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+}
+
+.breadcrumbs li {
+  margin-right: 90px;
+}
+
+.breadcrumbs a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.breadcrumbs a:hover {
+  color: yellow; 
+}
+.breadcrumbs{
+  margin-left: 700px;
+  margin-top: 40px;
+}
+.signups{
+  margin-top: -25px;
+  font-family: 'Poppins', sans-serif;
+}
+.join-now-button {
+  display: inline-block;
+  padding: 15px 50px;
+  background-color: #0056b3;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.join-now-button:hover {
+  color: black;
+  background-color: yellow;
+}
+.join-now-button{
+  margin-top: 15px;
+  margin-left: -83%;
+}
+.sign-up-button {
+  display: inline-block;
+  padding: 15px 50px;
+  background-color: #0056b3;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.sign-up-button:hover {
+  color: black;
+  background-color: yellow ;
+}
+
+.sign-up-button {
+  margin-top: -20px;
+}
+.title {
+  transform: translateY(50px); /* Move the title down initially */
+  opacity: 0; /* Make it invisible */
+  transition: transform 1s ease, opacity 1s ease; /* Add a smooth transition */
+}
+.descrip {
+  transform: translateY(50px); /* Move the description down initially */
+  opacity: 0; /* Make it invisible */
+  transition: transform 1s ease, opacity 1s ease; /* Add a smooth transition */
+}
+.breadcrumbs {
+  transform: translateY(-20px);
+  opacity: 0;
+  transition: transform 1s ease, opacity 1s ease;
+}
+
+.join-now-button
+ {
+  transform: translateY(-20px);
+  opacity: 0;
+  transition: transform 1s ease, opacity 1s ease;
+}
