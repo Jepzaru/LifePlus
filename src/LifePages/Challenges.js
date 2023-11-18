@@ -16,7 +16,7 @@ function Challenges(){
         <h1><IoExtensionPuzzle style={{ marginRight:'15px', marginBottom:'-5px', color:'#FF64B4'}} />Challenges</h1>
         </div> 
         <div className='chal'>
-        <h1><IoExtensionPuzzle style={{ marginRight:'15px', marginBottom:'-5px', color:'#FF64B4'}} />Challenges</h1>
+        <h1><IoExtensionPuzzle style={{ marginRight:'15px', marginBottom:'-5px', color:'#FF64B4'}} />Challenge</h1>
         </div>       
       
         </div>
