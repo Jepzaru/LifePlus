@@ -42,7 +42,6 @@ function Setting() {
           <div className="setting-button"><FaLink style={{ marginRight:'10px', marginBottom: '-2px'}}/>Link Social Account</div>
           <div className="setting-button"><FaUnlock style={{ marginRight:'10px', marginBottom: '-2px'}}/>Change Password</div>
         </div>
-        <div>hello</div>
       </div>
     </div>
   );
