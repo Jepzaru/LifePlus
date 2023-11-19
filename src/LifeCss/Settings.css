@@ -23,6 +23,7 @@ body {
   border-radius: 8px;
   background: #f0f0f0;
   padding: 10px;
+  margin-left: 20px;
   width: 95%;
 }
 
@@ -52,5 +53,5 @@ body {
   color: white;
 }
 .dark-mode-container{
-  color: #121212;
+  background-color: #121212;
 }
