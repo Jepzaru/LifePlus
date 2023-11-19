@@ -1,48 +1,56 @@
-/* Settings.css */
-
 .appind {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    transition: background-color 0.3s ease; /* Smooth transition for background color change */
-  }
-  
-  body {
-    margin: 0;
-    padding: 0;
-  }
-  
-  .set {
-    margin-left: 220px;
-    font-size: 24px;
-    font-family: 'Poppins', sans-serif;
-  }
-  
-  .settings-container {
-    display: flex;
-    flex-direction: column;
-    margin-top: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    padding: 10px;
-  }
-  
-  .setting-button {
-    background-color: #f0f0f0;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .setting-button:hover {
-    background-color: #e0e0e0;
-  }
-  
-  .dark-mode {
-    background-color: #121212; 
-    color: #fff;
-  }
-  
-  
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  transition: background-color 0.3s ease; 
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.set {
+  margin-left: 220px;
+  font-size: 24px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.settings-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  border-radius: 8px;
+  background: #f0f0f0;
+  padding: 10px;
+  width: 95%;
+}
+
+.setting-button {
+  background-color: #f0f0f0;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 18px;
+}
+
+.setting-button:hover {
+  background-color: #e0e0e0;
+}
+
+.dark-mode {
+  background-color: #121212; 
+  color: black; 
+}
+.setitle{
+  margin-top: 50px;
+  color: black;
+}
+.dark-mode-title {
+  color: white;
+}
+.dark-mode-container{
+  color: #121212;
+}
