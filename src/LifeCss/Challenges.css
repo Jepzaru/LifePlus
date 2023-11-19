@@ -25,7 +25,9 @@ body{
     background: linear-gradient(#FF64B4, #705FBE);
 }
 .phy-cha h2{
+    margin-top: -400px;
     color: white;
+    margin-left: -320px;
 
 }
 .ment-cha{
@@ -39,6 +41,8 @@ body{
     margin-top: -500px;
     background: linear-gradient(#38B6FA, #3FB24F);
 }
-.ment-cha{
+.ment-cha h2{
+    margin-top: -400px;
     color: white;
+    margin-left: -320px;
 }
