@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../LifeCss/MentalContentPage.css';
+import HashLoader from 'react-spinners/HashLoader';
 import mindfulnessImage from '../LifeImages/mindfulness.jpg';
 import stressManagementImage from '../LifeImages/stress_management.jpg';
 import creativeWritingImage from '../LifeImages/creative_writing.png';
@@ -13,8 +14,12 @@ import journalingImage from '../LifeImages/journaling.jpg';
 import laughterYogaImage from '../LifeImages/laughter_yoga.jpg';
 import deepBreathingImage from '../LifeImages/deep_breathing.jpg';
 import natureSoundMeditationImage from '../LifeImages/nature_sound_meditation.jpg';
+import { IoArrowBackCircleSharp } from "react-icons/io5";
+import { GiBrain } from "react-icons/gi";
+
 
 const MentalContentPage = () => {
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -104,13 +109,27 @@ const MentalContentPage = () => {
   activity.title.toLowerCase().includes(searchTerm.toLowerCase())
 );
 
+useEffect(() => {
+  setLoading(true);
+  setTimeout(() => {
+    setLoading(false);
+  }, 1000);
+}, []);
+
+
   return (
     <div className="mental-content-page">
+      {loading ? (
+      <div className="hash">
+          <HashLoader size={100} color={'#3FB24F'} loading={loading} />
+        </div>
+      ) : (
+        <>
       <header className="header-men">
-        <button className="back-button" onClick={onBackButtonClick}>
-          Back
+        <button className="menback-button" onClick={onBackButtonClick}>
+        <IoArrowBackCircleSharp style={{fontSize: '3rem'}} />
         </button>
-        <h1>Mental Content</h1>
+        <h1> <GiBrain style={{fontSize: '5rem', marginBottom: '-20px', marginRight: '10px'}}/>Mental Content</h1>
       </header>
       <section className="mental-content-container">
         <input
@@ -119,7 +138,6 @@ const MentalContentPage = () => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <button>Search</button>
       </section>
       <section className="activities-con">
         {mentalActivities.map((activity, index) => (
@@ -140,6 +158,8 @@ const MentalContentPage = () => {
           </div>
         ))}
       </section>
+      </>
+      )}
     </div>
   );
 };

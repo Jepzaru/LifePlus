@@ -18,6 +18,10 @@
     color: #fff; 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
   }
+  .header-men h1{
+    margin-top: -50px;
+    margin-left: -20px;
+  }
   
   .mental-container {
     width: 300px;
@@ -48,14 +52,16 @@
   .details {
     padding: 15px;
   }
-  .back-button {
+  .menback-button {
     background: none;
     border: none;
     color: #fff;
     margin-left: -1400px;
     font-size: 16px;
     cursor: pointer;
-    margin-right: 20px; 
+    margin-right: 20px;
+   
+    
   }
   
   .back-button:hover {

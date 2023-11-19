@@ -29,14 +29,14 @@ const LoginPage = () => {
           label="Username"
           variant="standard"
           fullWidth
-          style={{ marginBottom: '20px', width: '60%', marginLeft: '30px' }} InputProps={{ style: { fontFamily: 'Poppins,sans-serif' } }}
+          style={{ marginBottom: '20px', width: '63%', marginLeft: '30px' }} InputProps={{ style: { fontFamily: 'Poppins,sans-serif' } }}
         />
         <TextField
           label="Password"
           type="password"
           variant="standard"
           fullWidth
-          style={{ marginBottom: '1rem', width: '60%', marginLeft: '30px' }} InputProps={{ style: { fontFamily: 'Poppins,sans-serif' } }}
+          style={{ marginBottom: '1rem', width: '63%', marginLeft: '30px' }} InputProps={{ style: { fontFamily: 'Poppins,sans-serif' } }}
         />
         </div>
         <div className='forgot'>

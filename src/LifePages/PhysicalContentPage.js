@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../LifeCss/PhysicalContentPage.css';
+import HashLoader from 'react-spinners/HashLoader';
 import yogaImage from '../LifeImages/yoga.jpg';
 import runningImage from '../LifeImages/running.jpg';
 import zumbaImage from '../LifeImages/zumba.jpeg';
@@ -12,10 +13,13 @@ import strengthTrainingImage from '../LifeImages/strength_training.jpg';
 import stretchingImage from '../LifeImages/stretching.jpg';
 import kickboxingImage from '../LifeImages/kickboxing.jpg';
 import tabataImage from '../LifeImages/tabata.jpg';
+import { IoArrowBackCircleSharp } from "react-icons/io5";
+import { CgGym } from "react-icons/cg";
 import danceCardioImage from '../LifeImages/dance_cardio.jpg';
 
 
 const PhysicalContentPage = () => {
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -104,13 +108,28 @@ const PhysicalContentPage = () => {
     activity.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }, []);
+
   return (
     <div className="physical-content-container">
+      {loading ? (
+        <div className="hash">
+          <HashLoader size={100} color={'#FF64B4'} loading={loading} />
+        </div>
+      ) : (
+        <>
       <header className="page-header">
         <button className="back-button" onClick={onBackButtonClick}>
-          Back
+        <IoArrowBackCircleSharp style={{fontSize: '3rem'}} />
         </button>
-        <h1>Physical Content</h1>
+        <h1><CgGym style={{fontSize: '5rem', marginBottom: '-20px', marginRight: '10px'}} />
+        Physical Content
+        </h1>
       </header>
       <section className="physical-search-bar">
         <input
@@ -119,7 +138,6 @@ const PhysicalContentPage = () => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <button>Search</button>
       </section>
       <section className="activities-container">
         {filteredActivities.map((activity, index) => (
@@ -140,6 +158,8 @@ const PhysicalContentPage = () => {
           </div>
         ))}
       </section>
+      </>
+      )}
     </div>
   );
 };
