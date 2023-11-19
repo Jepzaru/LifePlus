@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 
-=======
->>>>>>> 14670ca873252311dc6ca961f5363709891a9c51
 import React, { useEffect, useState } from 'react';
 import '../LifeCss/Settings.css';
 import Sidenavbar from '../Life++/sidenavbar';
