@@ -29,6 +29,7 @@ body{
     background: linear-gradient(#FF64B4, #705FBE);
     border-radius: 20px;
     cursor: pointer;
+    text-decoration: none;
 }
 .phy{
     background-image: url("../LifeImages/phy.png");
@@ -59,11 +60,21 @@ body{
     background: linear-gradient(#38B6FA, #3FB24F);
     border-radius: 20px;
     cursor: pointer;
+    text-decoration: none;
 }
 .recen-cha{
     margin-left: 220px;
     font-size: 24px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    margin-top: 2;
     font-family: 'Poppins', sans-serif;
+}
+.recen-cha h1{
+   
+    margin-bottom: 30px;
+   
+  
 }
 .phy-con:hover {
     filter: brightness(60%); 
@@ -126,6 +137,7 @@ body{
     margin-left: 30px;
     background-color: #E7E7E7;
     overflow-y: scroll;
+    
 }
 .calendar{
     display: flex;
@@ -135,7 +147,7 @@ body{
     width: 320px;
     border-radius: 20px;
     margin-left: 930px;
-    margin-top: -1375px;
+    margin-top: -1345px;
     background-color: #E7E7E7;
     z-index: 3;
     
@@ -171,11 +183,15 @@ body{
     border-top-right-radius: 20px;
 }
 .each-slide {
-    height: 100px; /* Adjust the height as needed */
+    height: 100px; 
   }
   .choose h1{ 
     margin-left: 220px;
     font-family: 'Poppins', sans-serif;
     font-size: 45px;
-    margin-top: -10px;
+    margin-top: -20px;
+    margin-bottom: 20px;
+  }
+  .imageslide{
+    margin-top: 80px;
   }

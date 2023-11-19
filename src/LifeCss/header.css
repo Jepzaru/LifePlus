@@ -6,7 +6,7 @@
     width: 100%;
     position: fixed;
     z-index: 2;
-    margin-top: -40px;
+    margin-top: -30px;
   }
   
 .headlife h1{
@@ -27,8 +27,8 @@
   } 
   .search{
     margin-left: 500px;
-    margin-top: -65px;
-    margin-bottom: 50px;
+    margin-top: -40px;
+    margin-bottom: 30px;
     position: relative;
     z-index: 1;
     
@@ -69,7 +69,7 @@
     background-color: #705FBE;
   }
   .prembutton{
-    margin-top: -83px;
-    margin-bottom: 30px;
+    margin-top: -60px;
+    margin-bottom: 10px;
   }
   
