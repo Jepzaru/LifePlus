@@ -18,7 +18,12 @@ function Challenges(){
         <div className='chal'>
         <h1><IoExtensionPuzzle style={{ marginRight:'15px', marginBottom:'-5px', color:'#FF64B4'}} />Challenge</h1>
         </div>       
-      
+            <div className='phy-cha'>
+                <h2>Physical Challenge</h2>
+            </div>
+            <div className='ment-cha'>
+            <h2>Mental Challenge</h2>
+            </div>
         </div>
             
     );
