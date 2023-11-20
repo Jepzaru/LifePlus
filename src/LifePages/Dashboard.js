@@ -51,13 +51,13 @@ function Dash() {
         zIndex: 1,
         cursor: 'pointer',
         marginLeft: '-200px',
-        background: 'transparent', // Set a transparent background
-        border: 'none', // Remove button border
-        outline: 'none', // Remove button outline
-        color: 'black', // Set the default color
+        background: 'transparent', 
+        border: 'none', 
+        outline: 'none', 
+        color: 'black', 
       }}
-      onMouseOver={(e) => (e.target.style.color = '#ff0000')} // Change color on hover
-      onMouseOut={(e) => (e.target.style.color = '#fff')} // Restore color on mouse out
+      onMouseOver={(e) => (e.target.style.color = '#ff0000')} 
+      onMouseOut={(e) => (e.target.style.color = '#fff')} 
     >
       &lt;
     </button>
