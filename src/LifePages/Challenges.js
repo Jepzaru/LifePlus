@@ -4,7 +4,6 @@ import '../LifeCss/Challenges.css';
 import Sidenavbar from '../Life++/sidenavbar';
 import Header from '../Life++/Header';
 import { IoExtensionPuzzle } from 'react-icons/io5';
-
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
@@ -26,61 +25,85 @@ function Challenges() {
         <h1><IoExtensionPuzzle style={{ marginRight: '15px', marginBottom: '-5px', color: '#FF64B4' }} />Challenges</h1>
       </div>
       <div className='chal'>
-        <h1><IoExtensionPuzzle style={{ marginRight: '15px', marginBottom: '-5px', color: '#FF64B4' }} />Challenge</h1>
+        <h1><IoExtensionPuzzle style={{ marginRight: '15px', marginBottom: '-5px', color: '#FF64B4' }} />Challenges</h1>
       </div>
       <div className='phy-cha'>
-        <h2>Physical Challenge</h2>
+        <h2>Physical Challenges</h2>
         <Slider {...sliderSettings}>
             {/* Card 1 */}
             <div>
                 <div className="card-content">
                 <h3>Card 1 Content</h3>
+                <div className='viewcha'>
+              <button className='phy-viewcha-button'>View Challenge</button>
+            </div>
                 </div>
             </div>
             {/* Card 2 */}
             <div>
                 <div className="card-content">
                 <h3>Card 2 Content</h3>
+                <div className='viewcha'>
+              <button className='phy-viewcha-button'>View Challenge</button>
+            </div>
                 </div>
             </div>
             {/* Card 3 */}
             <div>
                 <div className="card-content">
                 <h3>Card 3 Content</h3>
+                <div className='viewcha'>
+              <button className='phy-viewcha-button'>View Challenge</button>
+            </div>
                 </div>
             </div>
             <div>
                 <div className="card-content">
                 <h3>Card 4 Content</h3>
+                <div className='viewcha'>
+              <button className='phy-viewcha-button'>View Challenge</button>
+            </div>
                 </div>
             </div>
             </Slider>
             
       </div>
       <div className='ment-cha'>
-        <h2>Mental Challenge</h2>
+        <h2>Mental Challenges</h2>
         <Slider {...sliderSettings}>
         {/* Card 1 */}
         <div>
             <div className="card-content">
             <h3>Card 1 Content</h3>
+            <div className='viewcha'>
+              <button className='men-viewcha-button'>View Challenge</button>
+            </div>
             </div>
         </div>
         {/* Card 2 */}
         <div>
             <div className="card-content">
             <h3>Card 2 Content</h3>
+            <div className='viewcha'>
+              <button className='men-viewcha-button'>View Challenge</button>
+            </div>
             </div>
         </div>
         {/* Card 3 */}
         <div>
             <div className="card-content">
             <h3>Card 3 Content</h3>
+            <div className='viewcha'>
+              <button className='men-viewcha-button'>View Challenge</button>
+            </div>
             </div>
         </div>
         <div>
                 <div className="card-content">
                 <h3>Card 4 Content</h3>
+                <div className='viewcha'>
+              <button className='men-viewcha-button'>View Challenge</button>
+            </div>
                 </div>
             </div>
         </Slider>
