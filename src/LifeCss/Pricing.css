@@ -13,12 +13,41 @@ body{
 }
 .free-con{
     display: flex;
+    flex-direction: column;
     height: 700px;
     width: 400px;
     border-radius: 20px;
     margin-left: 230px;
-    background-color: black;
-    
+    margin-top: 10px;
+    background-color: black; 
+    justify-content:space-between;
+    align-items:flex-start;
+    color:white
+}
+.free-con1{
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 20px;
+}
+.free-con2{
+    background-color:#ddd3db;
+    height: 40%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+}
+.plan {
+    color: white;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+.price{
+    color: white;
+    margin-left: 20px;
 }
 .head{
    color: white;
@@ -33,21 +62,43 @@ body{
     margin-left: -115px;
     
 }
-
+.pric{
+    margin-left: 220px;
+    font-size: 24px;
+    margin-top: 70px;
+    font-family: 'Poppins', sans-serif;
+}
 .three-month{
+    display: flex;
     height: 700px;
     width: 400px;
     border-radius: 20px;
     margin-left: 660px;
-    margin-top: -700px;
+    margin-top: -500px;
+    justify-content: center;
+    align-items: center;
+    color:white;
     background: linear-gradient(#38B6FA, #3FB24F);
-
+}
+.three-month h1 {
+    margin-top: -395px;
+    color: white;
+    margin-left: -150px;
 }
 .month{
+    display: flex;
     height: 700px;
     width: 400px;
     border-radius: 20px;
     margin-left: 1090px;
-    margin-top: -700px;
+    margin-top: -500px;
+    justify-content: center;
+    align-items: center;
+    color:white;
     background: linear-gradient(#FF64B4, #705FBE);
+}
+.month h1 {
+    margin-top: -395px;
+    color: white;
+    margin-left: -150px;
 }
