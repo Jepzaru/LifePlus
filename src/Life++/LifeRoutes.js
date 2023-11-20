@@ -11,6 +11,7 @@ import Coaches from '../LifePages/Coaches';
 import Settings from '../LifePages/Settings';
 import PhysicalContentPage from '../LifePages/PhysicalContentPage';
 import MentalContentPage from '../LifePages/MentalContentPage';
+import CDash from "../LifeCoaches/CoachDash";
 
 
 
@@ -29,6 +30,7 @@ function LifeRoutes() {
         <Route path="/index/settings" element={<Settings/>}/>
         <Route path="/index/physical" element={<PhysicalContentPage/>}/>
         <Route path="/index/mental" element={<MentalContentPage/>}/>
+        <Route path="/coach-index/dashboard" element={<CDash/>}/>
       </Routes>
     </BrowserRouter>
   );

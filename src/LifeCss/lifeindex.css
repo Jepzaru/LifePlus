@@ -55,3 +55,48 @@ body{
     background-color: black;
     color: white;
 }
+.coachsidebar{
+    height: 800px;
+    width: 200px;
+    background: linear-gradient(#FF64B4, #705FBE);
+    position: fixed;
+    margin-top: 105px;
+    z-index: 10;
+}
+.coachsidebarlist .row{
+    width: 100%;
+    height: 60px;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+}
+.coachsidebarlist{
+    height: auto;
+    padding: 0;
+    width: 100%;
+    margin-top: -0.25px;
+}
+.c-row #c-icon{
+    flex: 30%;
+    display: grid;
+    place-items: center;
+
+}
+.c-row #c-title{
+    flex: 70%;
+    
+}
+.coachsidebarlist .c-row:hover{
+    cursor: pointer;
+    background-color: white;
+    color: black;
+}
+.coachsidebarlist .c-row.active {
+    background-color: black;
+    color: white;
+}
