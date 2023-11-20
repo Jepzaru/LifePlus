@@ -14,7 +14,7 @@ body{
 .free-con{
     display: flex;
     flex-direction: column;
-    height: 700px;
+    height: 900px;
     width: 400px;
     border-radius: 20px;
     margin-left: 230px;
@@ -33,12 +33,13 @@ body{
 }
 .free-con2{
     background-color:#ddd3db;
-    height: 40%;
+    height: 400px;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: black;
+    color:black; 
+    margin-bottom: 20px;
 }
 .plan {
     color: white;
@@ -48,6 +49,48 @@ body{
 .price{
     color: white;
     margin-left: 20px;
+}
+.button1{
+    margin-top: 250px;
+    margin-left: 100px;
+    padding: 10px 20px;
+    background-color: black;
+    color:white;
+    border-radius: 20px;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+.button2{
+    margin-top: 250px;
+    margin-left: 50px;
+    padding: 10px 20px;
+    background-color: black;
+    color:white;
+    border-radius: 20px;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+.button2:hover{
+    background-color: #3FB24F;
+}
+.button3{
+    margin-top: 250px;
+    margin-left: 50px;
+    padding: 10px 20px;
+    background-color: black;
+    color:white;
+    border-radius: 20px;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+.button3:hover{
+    background-color: #705FBE;
 }
 .head{
    color: white;
@@ -70,35 +113,68 @@ body{
 }
 .three-month{
     display: flex;
-    height: 700px;
+    flex-direction: column;
+    height: 900px;
     width: 400px;
     border-radius: 20px;
     margin-left: 660px;
-    margin-top: -500px;
-    justify-content: center;
-    align-items: center;
+    margin-top: -580px;
+    margin-bottom: 20px;
+    justify-content:space-between;
+    align-items:flex-start;
     color:white;
     background: linear-gradient(#38B6FA, #3FB24F);
 }
-.three-month h1 {
-    margin-top: -395px;
-    color: white;
-    margin-left: -150px;
+.three-month1{
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 20px;
+}
+.three-month2{
+    background-color:#ddd3db;
+    height: 400px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:black; 
+    margin-bottom: 20px;
 }
 .month{
     display: flex;
-    height: 700px;
+    flex-direction: column;
+    height: 900px;
     width: 400px;
     border-radius: 20px;
     margin-left: 1090px;
-    margin-top: -500px;
-    justify-content: center;
-    align-items: center;
+    margin-top: -610px;
+    margin-bottom: 20px;
+    justify-content: space-between;
+    align-items: flex-start;
     color:white;
     background: linear-gradient(#FF64B4, #705FBE);
 }
-.month h1 {
-    margin-top: -395px;
-    color: white;
-    margin-left: -150px;
+.month1{
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 20px;
+}
+.month2{
+    background-color:#ddd3db;
+    height: 400px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    margin-bottom: 20px;
+}
+.container-wrapper {
+  display: flex;
+  justify-content: space-around; /* Adjust as needed */
+  align-items: flex-start;
 }
