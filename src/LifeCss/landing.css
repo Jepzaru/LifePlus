@@ -50,6 +50,18 @@
     margin-left: 650px;
     margin-top: -600px;
     filter: drop-shadow(16px 7px 0px #FF64B4);
+    animation: floatAnimation 1.5s infinite ease-in-out;
+}
+@keyframes floatAnimation {
+  0% {
+      transform: translate(0, 0);
+  }
+  50% {
+      transform: translate(0, -10px);
+  }
+  100% {
+      transform: translate(0, 0);
+  }
 }
 
 
@@ -180,6 +192,7 @@
     width: 580px; 
     height: 580px; 
     margin-top: -30px;filter: drop-shadow(-15px 20px 0px #705FBE);
+    animation: floatAnimation 1.5s infinite ease-in-out;
   }
   .unlock{
     font-family: 'Poppins', sans-serif;
@@ -332,6 +345,7 @@
     height: 500px; 
     margin-left: 900px;
     margin-top: -500px;
+    animation: floatAnimation 1.5s infinite ease-in-out;
 }
 .animated {
   opacity: 0;
