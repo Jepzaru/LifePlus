@@ -12,12 +12,14 @@ import Settings from '../LifePages/Settings';
 import PhysicalContentPage from '../LifePages/PhysicalContentPage';
 import MentalContentPage from '../LifePages/MentalContentPage';
 import CDash from "../LifeCoaches/CoachDash";
+import { AuthProvider } from './AuthContext';
 
 
 
 function LifeRoutes() {
   return (
     <BrowserRouter>
+    <AuthProvider>
       <Routes>
         <Route path="/" element={<Landingpage/>} />
         <Route path="/login-page" element={<LoginPage/>} />
@@ -32,6 +34,7 @@ function LifeRoutes() {
         <Route path="/index/mental" element={<MentalContentPage/>}/>
         <Route path="/coach-index/dashboard" element={<CDash/>}/>
       </Routes>
+      </AuthProvider>
     </BrowserRouter>
   );
 }

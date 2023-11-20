@@ -4,7 +4,8 @@ import '../LifeCss/login.css';
 import HashLoader from 'react-spinners/HashLoader';
 import TextField from '@mui/material/TextField';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios'; // Import Axios
+import axios from 'axios'; 
+import { useAuth } from '../Life++/AuthContext';
 
 const LoginPage = () => {
     const [loading, setLoading] = useState(false);
@@ -13,6 +14,7 @@ const LoginPage = () => {
     const [users, setUsers] = useState([]);
     const [error, setError] = useState('');
     const navigate = useNavigate();
+    const { login } = useAuth();
 
     useEffect(() => {
         setLoading(true);
@@ -29,21 +31,22 @@ const LoginPage = () => {
     }, []);
 
     const handleLogin = () => {
-        setLoading(true);
-
-        const foundUser = users.find(
-            (user) => user.username === username && user.password === password
-        );
-
-        if (foundUser) {
-            console.log(foundUser);
-            navigate('/index/dashboard'); // Replace '/landingpage' with your desired route
-        } else {
-            setError('Invalid username or password');
-            setLoading(false);
-        }
+      setLoading(true);
+  
+      const foundUser = users.find(
+        (user) => user.username === username && user.password === password
+      );
+  
+      if (foundUser) {
+        console.log(foundUser);
+        login(foundUser); 
+        navigate('/index/dashboard');
+      } else {
+        setError('Invalid username or password');
+        setLoading(false);
+      }
     };
-
+  
     return (
         <div className="logimg">
             {loading ? (
