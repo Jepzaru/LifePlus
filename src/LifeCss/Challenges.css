@@ -105,9 +105,11 @@ body {
   transition: background-color 0.3s ease;
 }
 
-.men-viewcha-button:hover,
-.phy-viewcha-button:hover {
+.men-viewcha-button:hover{
   background-color: #3FB24F;
+}
+.phy-viewcha-button:hover {
+  background-color: #705FBE;
 }
 
 .card-content img {
