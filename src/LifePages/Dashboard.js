@@ -155,7 +155,7 @@ function Dash() {
           <div className='recen-cha'>
             <h1>Recent Challenges</h1>
             <div className='recen-con'>
-              {/* Add your content for Recent Challenges here */}
+              
             </div>
             <div className='calendar'>
               <p><FaCalendarAlt style={{ marginLeft: '30px', marginRight: '5px', marginBottom: '-2px' }} /> Calendar</p>

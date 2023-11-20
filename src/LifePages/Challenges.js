@@ -10,9 +10,12 @@ import armsImage from '../LifeImages/arms.png';
 import absImage from '../LifeImages/abs.png';
 import cardioImage from '../LifeImages/cardio.png';
 import strengthImage from '../LifeImages/strength.png';
+import memoryImage from '../LifeImages/memory.png';
+import mathImage from '../LifeImages/math.png';
+import logicImage from '../LifeImages/logic.png';
+import concentrationImage from '../LifeImages/concentration.png';
 
 function Challenges() {
-  // Configure the settings for the slider
   const sliderSettings = {
     dots: true,
     infinite: true,
@@ -34,7 +37,6 @@ function Challenges() {
       <div className='phy-cha'>
     <h2>Physical Challenges</h2>
     <Slider {...sliderSettings}>
-        {/* Card 1 */}
         <div>
             <div className="card-content">
                 <h3>Arms Challenge</h3>
@@ -44,31 +46,28 @@ function Challenges() {
                 </div>
             </div>
         </div>
-        {/* Card 2 */}
         <div>
             <div className="card-content">
                 <h3>Abs Challenge</h3>
-                <img src={absImage} alt="Abs Challenge" /> {/* Image for Leg Challenge */}
+                <img src={absImage} alt="Abs Challenge" /> 
                 <div className='viewcha'>
                     <button className='phy-viewcha-button'>View Challenge</button>
                 </div>
             </div>
         </div>
-        {/* Card 3 */}
         <div>
             <div className="card-content">
                 <h3>Cardio Challenge</h3>
-                <img src={cardioImage} alt="Cardio Challenge" /> {/* Image for Cardio Challenge */}
+                <img src={cardioImage} alt="Cardio Challenge" /> 
                 <div className='viewcha'>
                     <button className='phy-viewcha-button'>View Challenge</button>
                 </div>
             </div>
         </div>
-        {/* Card 4 */}
         <div>
             <div className="card-content">
                 <h3>Strength Challenge</h3>
-                <img src={strengthImage} alt="Strength Challenge" /> {/* Image for Strength Challenge */}
+                <img src={strengthImage} alt="Strength Challenge" /> 
                 <div className='viewcha'>
                     <button className='phy-viewcha-button'>View Challenge</button>
                 </div>
@@ -79,41 +78,42 @@ function Challenges() {
       <div className='ment-cha'>
         <h2>Mental Challenges</h2>
         <Slider {...sliderSettings}>
-        {/* Card 1 */}
-        <div>
+          <div>
             <div className="card-content">
-            <h3>Card 1 Content</h3>
-            <div className='viewcha'>
-              <button className='men-viewcha-button'>View Challenge</button>
+              <h3>Memory Challenge</h3>
+              <img src={memoryImage} alt="Memory Challenge" />
+              <div className='viewcha'>
+                <button className='men-viewcha-button'>View Challenge</button>
+              </div>
             </div>
-            </div>
-        </div>
-        {/* Card 2 */}
-        <div>
+          </div>
+          <div>
             <div className="card-content">
-            <h3>Card 2 Content</h3>
-            <div className='viewcha'>
-              <button className='men-viewcha-button'>View Challenge</button>
+              <h3>Math Challenge</h3>
+              <img src={mathImage} alt="Math Challenge" />
+              <div className='viewcha'>
+                <button className='men-viewcha-button'>View Challenge</button>
+              </div>
             </div>
-            </div>
-        </div>
-        {/* Card 3 */}
-        <div>
+          </div>
+          <div>
             <div className="card-content">
-            <h3>Card 3 Content</h3>
-            <div className='viewcha'>
-              <button className='men-viewcha-button'>View Challenge</button>
+              <h3>Logic Challenge</h3>
+              <img src={logicImage} alt="Logic Challenge" />
+              <div className='viewcha'>
+                <button className='men-viewcha-button'>View Challenge</button>
+              </div>
             </div>
+          </div>
+          <div>
+            <div className="card-content">
+              <h3>Concentration Challenge</h3>
+              <img src={concentrationImage} alt="Concentration Challenge" />
+              <div className='viewcha'>
+                <button className='men-viewcha-button'>View Challenge</button>
+              </div>
             </div>
-        </div>
-        <div>
-                <div className="card-content">
-                <h3>Card 4 Content</h3>
-                <div className='viewcha'>
-              <button className='men-viewcha-button'>View Challenge</button>
-            </div>
-                </div>
-            </div>
+          </div>
         </Slider>
       </div>
     </div>
