@@ -8,21 +8,23 @@ import { FaUserEdit } from "react-icons/fa";
 import { MdDarkMode } from "react-icons/md";
 import { FaLink } from "react-icons/fa6";
 import { FaUnlock } from "react-icons/fa";
+import LogoutIcon from '@mui/icons-material/Logout';
 
 
 function Setting() {
-  // Check if dark mode preference is stored in localStorage
   const savedDarkMode = localStorage.getItem('darkMode') === 'true';
 
   const [darkMode, setDarkMode] = useState(savedDarkMode);
 
   useEffect(() => {
-    // Update the localStorage value when dark mode changes
     localStorage.setItem('darkMode', darkMode);
   }, [darkMode]);
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
+  };
+  const handleSignOut = () => {
+    window.location.href = '/';
   };
 
   return (
@@ -37,13 +39,13 @@ function Setting() {
       <div className={`settings-container ${darkMode ? 'dark-mode-container' : ''}`}>
           <div className="setting-button"><FaUserEdit style={{ marginRight:'10px', marginBottom: '-2px'}}/>Customize Profile</div>
           <div className="setting-button" onClick={toggleDarkMode}><MdDarkMode style={{ marginRight:'10px', marginBottom: '-2px'}} />
-            {darkMode ? 'Light Mode' : 'Dark Mode'}
-          </div>
+            {darkMode ? 'Light Mode' : 'Dark Mode'}</div>
           <div className="setting-button"><FaLink style={{ marginRight:'10px', marginBottom: '-2px'}}/>Link Social Account</div>
           <div className="setting-button"><FaUnlock style={{ marginRight:'10px', marginBottom: '-2px'}}/>Change Password</div>
+        <div className="setting-button" onClick={handleSignOut}><LogoutIcon style={{ marginRight: '10px', marginBottom: '-2px' }} />Sign Out</div>
         </div>
       </div>
-    </div>
+      </div>
   );
 }
 
