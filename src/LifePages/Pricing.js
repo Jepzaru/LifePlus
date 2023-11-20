@@ -8,7 +8,7 @@ function Price(){
 
     return(
         
-        <div className="appind">
+        <div className="appindex">
             <Header />
             <Sidenavbar />
              <div className='pri'>
