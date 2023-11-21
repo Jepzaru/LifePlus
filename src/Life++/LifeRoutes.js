@@ -13,6 +13,10 @@ import PhysicalContentPage from '../LifePages/PhysicalContentPage';
 import MentalContentPage from '../LifePages/MentalContentPage';
 import CDash from "../LifeCoaches/CoachDash";
 import UserProfile from "../LifePages/UserProfileSettings"
+import Strength from '../LifePhysicalChallenges/Strength';
+import Arms from '../LifePhysicalChallenges/Arms';
+import Abs from '../LifePhysicalChallenges/Abs';
+import Cardio from '../LifePhysicalChallenges/Cardio';
 import { AuthProvider } from './AuthContext';
 
 
@@ -35,6 +39,10 @@ function LifeRoutes() {
         <Route path="/index/mental" element={<MentalContentPage/>}/>
         <Route path="/coach-index/dashboard" element={<CDash/>}/>
         <Route path="/index/settings-profile" element={<UserProfile/>}/>
+        <Route path="/index/challenges/strength" element={<Strength/>}/>
+        <Route path="/index/challenges/arms" element={<Arms/>}/>
+        <Route path="/index/challenges/abs" element={<Abs/>}/>
+        <Route path="/index/challenges/cardio" element={<Cardio/>}/>
       </Routes>
     </BrowserRouter>
     </AuthProvider>

@@ -91,6 +91,9 @@ body {
 .slick-dots li button::before {
   color: white !important;
 }
+.viewcha{
+  margin-top: 20px;
+}
 
 .men-viewcha-button,
 .phy-viewcha-button {
@@ -103,6 +106,7 @@ body {
   cursor: pointer;
   border: none;
   transition: background-color 0.3s ease;
+  text-decoration: none;
 }
 
 .men-viewcha-button:hover{

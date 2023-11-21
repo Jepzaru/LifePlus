@@ -3,6 +3,7 @@ import Slider from 'react-slick';
 import '../LifeCss/Challenges.css';
 import Sidenavbar from '../Life++/sidenavbar';
 import Header from '../Life++/Header';
+import { Link } from 'react-router-dom';
 import { IoExtensionPuzzle } from 'react-icons/io5';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -42,7 +43,7 @@ function Challenges() {
                 <h3>Arms Challenge</h3>
                 <img src={armsImage} alt="Arms Challenge" />
                 <div className='viewcha'>
-                    <button className='phy-viewcha-button'>View Challenge</button>
+                    <Link to = '/index/challenges/arms' className='phy-viewcha-button'>View Challenge</Link>
                 </div>
             </div>
         </div>
@@ -51,7 +52,7 @@ function Challenges() {
                 <h3>Abs Challenge</h3>
                 <img src={absImage} alt="Abs Challenge" /> 
                 <div className='viewcha'>
-                    <button className='phy-viewcha-button'>View Challenge</button>
+                    <Link to = '/index/challenges/abs' className='phy-viewcha-button'>View Challenge</Link>
                 </div>
             </div>
         </div>
@@ -60,7 +61,7 @@ function Challenges() {
                 <h3>Cardio Challenge</h3>
                 <img src={cardioImage} alt="Cardio Challenge" /> 
                 <div className='viewcha'>
-                    <button className='phy-viewcha-button'>View Challenge</button>
+                    <Link to = '/index/challenges/cardio' className='phy-viewcha-button'>View Challenge</Link>
                 </div>
             </div>
         </div>
@@ -69,7 +70,7 @@ function Challenges() {
                 <h3>Strength Challenge</h3>
                 <img src={strengthImage} alt="Strength Challenge" /> 
                 <div className='viewcha'>
-                    <button className='phy-viewcha-button'>View Challenge</button>
+                    <Link to = "/index/challenges/strength" className='phy-viewcha-button'>View Challenge</Link>
                 </div>
                 </div>
             </div>
@@ -83,7 +84,7 @@ function Challenges() {
               <h3>Memory Challenge</h3>
               <img src={memoryImage} alt="Memory Challenge" />
               <div className='viewcha'>
-                <button className='men-viewcha-button'>View Challenge</button>
+                <Link className='men-viewcha-button'>View Challenge</Link>
               </div>
             </div>
           </div>
@@ -92,7 +93,7 @@ function Challenges() {
               <h3>Math Challenge</h3>
               <img src={mathImage} alt="Math Challenge" />
               <div className='viewcha'>
-                <button className='men-viewcha-button'>View Challenge</button>
+                <Link className='men-viewcha-button'>View Challenge</Link>
               </div>
             </div>
           </div>
@@ -101,7 +102,7 @@ function Challenges() {
               <h3>Logic Challenge</h3>
               <img src={logicImage} alt="Logic Challenge" />
               <div className='viewcha'>
-                <button className='men-viewcha-button'>View Challenge</button>
+                <Link className='men-viewcha-button'>View Challenge</Link>
               </div>
             </div>
           </div>
@@ -110,7 +111,7 @@ function Challenges() {
               <h3>Concentration Challenge</h3>
               <img src={concentrationImage} alt="Concentration Challenge" />
               <div className='viewcha'>
-                <button className='men-viewcha-button'>View Challenge</button>
+                <Link className='men-viewcha-button'>View Challenge</Link>
               </div>
             </div>
           </div>
