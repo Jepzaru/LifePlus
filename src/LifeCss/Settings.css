@@ -28,17 +28,20 @@ body {
 }
 
 .setting-button {
-  background-color: #f0f0f0;
+  background-color: #e3e1e1;
   padding: 10px;
   margin-bottom: 10px;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s;
   font-size: 18px;
+  color: black;
+  text-decoration: none;
 }
 
 .setting-button:hover {
-  background-color: #e0e0e0;
+  background-color: #FF64B4;
+  color: white;
 }
 
 .dark-mode {
@@ -54,4 +57,11 @@ body {
 }
 .dark-mode-container{
   background-color: #121212;
+}
+.user-pro{
+  height: 500px;
+  width: 1290px;
+  background-color: #e3e1e1;
+  border-radius: 20px;
+  margin-top: 20px;
 }

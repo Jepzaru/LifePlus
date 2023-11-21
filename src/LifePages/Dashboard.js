@@ -51,13 +51,13 @@ function Dash() {
         zIndex: 1,
         cursor: 'pointer',
         marginLeft: '-200px',
-        background: 'transparent', // Set a transparent background
-        border: 'none', // Remove button border
-        outline: 'none', // Remove button outline
-        color: 'black', // Set the default color
+        background: 'transparent', 
+        border: 'none', 
+        outline: 'none', 
+        color: 'black', 
       }}
-      onMouseOver={(e) => (e.target.style.color = '#ff0000')} // Change color on hover
-      onMouseOut={(e) => (e.target.style.color = '#fff')} // Restore color on mouse out
+      onMouseOver={(e) => (e.target.style.color = '#ff0000')} 
+      onMouseOut={(e) => (e.target.style.color = '#fff')} 
     >
       &lt;
     </button>
@@ -155,7 +155,7 @@ function Dash() {
           <div className='recen-cha'>
             <h1>Recent Challenges</h1>
             <div className='recen-con'>
-              {/* Add your content for Recent Challenges here */}
+              
             </div>
             <div className='calendar'>
               <p><FaCalendarAlt style={{ marginLeft: '30px', marginRight: '5px', marginBottom: '-2px' }} /> Calendar</p>
