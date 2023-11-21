@@ -1,29 +1,14 @@
-.appindex{
-    width: 100vw;
-    height: 100vh;
-}
-body{
-    margin: 0;
-    padding: 0;
-}
 
-.sidebar{
+
+.coachsidebar{
     height: 800px;
     width: 200px;
     background: linear-gradient(#FF64B4, #705FBE);
     position: fixed;
     margin-top: 105px;
-    z-index: 999;
-    
+    z-index: 10;
 }
-.sidebarlist{
-    height: auto;
-    padding: 0;
-    width: 100%;
-    margin-top: -0.25px;
-}
-
-.sidebarlist .row{
+.coachsidebarlist .c-row{
     width: 100%;
     height: 60px;
     list-style-type: none;
@@ -35,26 +20,28 @@ body{
     font-family: 'Poppins', sans-serif;
     transition: background-color 0.3s, color 0.3s;
 }
-
-.row #icon{
+.coachsidebarlist{
+    height: auto;
+    padding: 0;
+    width: 100%;
+    margin-top: -0.25px;
+}
+.c-row #c-icon{
     flex: 30%;
     display: grid;
     place-items: center;
 
 }
-
-.row #title{
+.c-row #c-title{
     flex: 70%;
     
 }
-.sidebarlist .row:hover{
+.coachsidebarlist .c-row:hover{
     cursor: pointer;
     background-color: white;
     color: black;
 }
-.sidebarlist .row.active {
+.coachsidebarlist .c-row.active {
     background-color: black;
     color: white;
 }
-
-

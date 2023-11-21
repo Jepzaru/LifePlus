@@ -21,10 +21,6 @@ const Header = () => {
       <div className="prembutton">
         {user ? (
           <>
-            <Link to="/index/pricing" className="prem-but">
-              <FaCrown style={{ color: 'yellow', marginRight: '10px', marginLeft: '-10px', marginBottom: '-2px' }} />
-              Go Premium
-            </Link>
             <span style={{ marginLeft: '50px' }}>{user.username}</span>
           </>
         ) : (

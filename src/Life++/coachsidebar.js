@@ -8,21 +8,21 @@ function CoachSidenavbar() {
     const location = useLocation();
 
     return (
-        <div className='coachsidebar'>
-            <ul className='coachsidebarlist'>
+        <div className='sidebar'>
+            <ul className='sidebarlist'>
                 {CoachSidebarData.map((val, key) => {
                     const isActive = location.pathname === val.link;
 
                     return (
                         <li
                             key={key}
-                            className={`c-row ${isActive ? "active" : ""}`}
+                            className={`row ${isActive ? "active" : ""}`}
                             onClick={() => {
                                 navigate(val.link);
                             }}
                         >
-                            <div id='c-icon'>{val.icon}</div>
-                            <div id='c-title'>{val.title}</div>
+                            <div id='icon'>{val.icon}</div>
+                            <div id='title'>{val.title}</div>
                         </li>
                     );
                 })}
