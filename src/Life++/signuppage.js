@@ -16,11 +16,11 @@ const SignUpPage = () => {
     const [loading, setLoading] = useState(false);
     const [accountType, setAccountType] = useState('');
     const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
-        emailAddress: '',
-        birthDate: '',
-        contactNumber: '',
+        fname: '',
+        lname: '',
+        emailaddress: '',
+        birthdate: '',
+        pnum: '',
         gender: '',
         username: '',
         password: '',
@@ -53,7 +53,6 @@ const SignUpPage = () => {
         axios.post('http://localhost:8080/user/insert', postData, {
     headers: {
         'Content-Type': 'application/json',
-       
     },
 })
             .then((response) => {
@@ -78,7 +77,7 @@ const SignUpPage = () => {
                     <div className='fieldsign'>
                         <TextField
                             label="First name"
-                            name="firstName"
+                            name="fname"
                             variant="standard"
                             fullWidth
                             onChange={handleInputChange}
@@ -86,7 +85,7 @@ const SignUpPage = () => {
                         />
                         <TextField
                             label="Last name"
-                            name="lastName"
+                            name="lname"
                             variant="standard"
                             fullWidth
                             onChange={handleInputChange}
@@ -95,14 +94,15 @@ const SignUpPage = () => {
                         <TextField
                             label="Email Address"
                             variant="standard"
-                            name="emailAddress"
+                            name="email"
                             fullWidth
                             onChange={handleInputChange}
                             style={{ marginBottom: '20px', width: '45%', marginLeft: '30px' }} InputProps={{ style: {  fontFamily: 'Poppins,sans-serif' } }}
                         />
                         <DatePicker
-                        selected={formData.birthDate}
-                        onChange={(date) => setFormData({ ...formData, birthDate: date })}
+                        selected={formData.birthdate}
+                        name="birthdate"
+                        onChange={(date) => setFormData({ ...formData, birthdate: date })}
                         dateFormat="MM/dd/yyyy"
                         placeholderText="Select a date"
                         className="date-picker custom-datepicker" 
@@ -111,7 +111,7 @@ const SignUpPage = () => {
                             label="Contact Number"
                             variant="standard"
                             fullWidth
-                            name="contactNumber"
+                            name="pnum"
                             onChange={handleInputChange}
                             style={{ marginBottom: '20px', width: '45%', marginLeft: '30px' }} InputProps={{ style: {  fontFamily: 'Poppins,sans-serif' } }}
                         />
