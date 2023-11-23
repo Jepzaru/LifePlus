@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 import '../LifeCss/Settings.css';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Sidenavbar from '../Life++/sidenavbar';
 import Header from '../Life++/Header';
 import { IoMdSettings } from "react-icons/io";
@@ -14,6 +14,8 @@ import { PiSignOutBold } from "react-icons/pi";
 
 
 function Setting() {
+  const location = useLocation();
+
   const savedDarkMode = localStorage.getItem('darkMode') === 'true';
 
   const [darkMode, setDarkMode] = useState(savedDarkMode);
@@ -33,7 +35,7 @@ function Setting() {
   return (
     <div className={`appind ${darkMode ? 'dark-mode' : ''}`}>
       <Header />
-      <Sidenavbar />
+      <Sidenavbar location={location} />
       <div className='set'>
         <h1>Settings</h1>
         <div className={`setitle ${darkMode ? 'dark-mode-title' : ''}`}>

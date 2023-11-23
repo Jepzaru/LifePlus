@@ -1,17 +1,16 @@
 import React from 'react';
-import "../LifeCss/lifeindex.css";
-import { SidebarData } from './sidebardata';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { SidebarData } from './sidebardata';
 
 function Sidenavbar() {
     const navigate = useNavigate();
-    const location = useLocation();
+    const { pathname } = useLocation();
 
     return (
         <div className='sidebar'>
             <ul className='sidebarlist'>
                 {SidebarData.map((val, key) => {
-                    const isActive = location.pathname === val.link;
+                    const isActive = pathname.startsWith(val.link);
 
                     return (
                         <li

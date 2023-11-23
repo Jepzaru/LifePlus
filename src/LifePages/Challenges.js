@@ -3,7 +3,7 @@ import Slider from 'react-slick';
 import '../LifeCss/Challenges.css';
 import Sidenavbar from '../Life++/sidenavbar';
 import Header from '../Life++/Header';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { IoExtensionPuzzle } from 'react-icons/io5';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -17,6 +17,8 @@ import logicImage from '../LifeImages/logic.png';
 import concentrationImage from '../LifeImages/concentration.png';
 
 function Challenges() {
+  const location = useLocation();
+  
   const sliderSettings = {
     dots: true,
     infinite: true,
@@ -28,7 +30,7 @@ function Challenges() {
   return (
     <div className="appind">
       <Header />
-      <Sidenavbar />
+      <Sidenavbar location={location} />
       <div className='cha'>
         <h1><IoExtensionPuzzle style={{ marginRight: '15px', marginBottom: '-5px', color: '#FF64B4' }} />Challenges</h1>
       </div>
@@ -84,7 +86,7 @@ function Challenges() {
               <h3>Memory Challenge</h3>
               <img src={memoryImage} alt="Memory Challenge" />
               <div className='viewcha'>
-                <Link className='men-viewcha-button'>View Challenge</Link>
+                <Link to = '/index/challenges/memory'className='men-viewcha-button'>View Challenge</Link>
               </div>
             </div>
           </div>
@@ -93,7 +95,7 @@ function Challenges() {
               <h3>Math Challenge</h3>
               <img src={mathImage} alt="Math Challenge" />
               <div className='viewcha'>
-                <Link className='men-viewcha-button'>View Challenge</Link>
+                <Link to = '/index/challenges/math' className='men-viewcha-button'>View Challenge</Link>
               </div>
             </div>
           </div>
@@ -102,7 +104,7 @@ function Challenges() {
               <h3>Logic Challenge</h3>
               <img src={logicImage} alt="Logic Challenge" />
               <div className='viewcha'>
-                <Link className='men-viewcha-button'>View Challenge</Link>
+                <Link to = '/index/challenges/logic' className='men-viewcha-button'>View Challenge</Link>
               </div>
             </div>
           </div>
@@ -111,7 +113,7 @@ function Challenges() {
               <h3>Concentration Challenge</h3>
               <img src={concentrationImage} alt="Concentration Challenge" />
               <div className='viewcha'>
-                <Link className='men-viewcha-button'>View Challenge</Link>
+                <Link to = '/index/challenges/concentration' className='men-viewcha-button'>View Challenge</Link>
               </div>
             </div>
           </div>
