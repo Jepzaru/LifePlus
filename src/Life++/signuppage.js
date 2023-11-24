@@ -7,12 +7,26 @@ import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import '../LifeCss/customDatepicker.css';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { styled } from '@mui/system';
+import IconButton from '@mui/material/IconButton';
+import InputAdornment from '@mui/material/InputAdornment';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 
 
-const SignUpPage = () => {
+const StyledDatePicker = styled(DatePicker)({
+    width: '155px',
+    marginLeft: '30px',
+  });
+  
+
+export default function SignUpPage() {
+   
     const [loading, setLoading] = useState(false);
     const [accountType, setAccountType] = useState('');
     const [formData, setFormData] = useState({
@@ -24,8 +38,11 @@ const SignUpPage = () => {
         gender: '',
         username: '',
         password: '',
+        showPassword: false,
     });
 
+    const [snackbarOpen, setSnackbarOpen] = useState(false);
+    const [successSnackbarOpen, setSuccessSnackbarOpen] = useState(false);
     
     useEffect(() => {
         setLoading(true)
@@ -42,7 +59,57 @@ const SignUpPage = () => {
         setFormData({ ...formData, [name]: value });
     };
 
+    const isPasswordValid = () => {
+        const { password, confirmPassword } = formData;
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        return (
+          password === confirmPassword &&
+          password.match(passwordRegex) !== null
+        );
+      };
+
+    const handleSnackbarClose = (event, reason) => {
+        if (reason === 'clickaway') {
+          return;
+        }
+    
+        setSnackbarOpen(false);
+      };
+
+      const handleSuccessSnackbarClose = (event, reason) => {
+        if (reason === 'clickaway') {
+          return;
+        }
+    
+        setSuccessSnackbarOpen(false);
+      };
+    
+
+      const handleClickShowPassword = () => {
+        setFormData({ ...formData, showPassword: !formData.showPassword });
+      };
+    
+      const handleMouseDownPassword = (event) => {
+        event.preventDefault();
+      };
+
     const handleCreateAccount = () => {
+
+    const requiredFields = ['fname', 'lname', 'email', 'birthdate', 'pnum', 'gender', 'username', 'password', 'confirmPassword'];
+    const isAnyFieldEmpty = requiredFields.some(field => !formData[field]);
+
+    if (isAnyFieldEmpty) {
+      // Show error Snackbar for empty fields
+      setSnackbarOpen(true);
+      return;
+    }
+
+        if (!isPasswordValid()) {
+            // Password does not meet criteria, handle accordingly
+            console.error('Password does not meet the criteria');
+            setSnackbarOpen(true);
+            return;
+          }
         // Prepare the data to be sent in the POST request
         const postData = {
             ...formData,
@@ -58,6 +125,7 @@ const SignUpPage = () => {
             .then((response) => {
                 // Handle the response, e.g., show a success message
                 console.log('Account created successfully:', response.data);
+                setSuccessSnackbarOpen(true);
             })
             .catch((error) => {
                 // Handle errors, e.g., show an error message
@@ -78,7 +146,7 @@ const SignUpPage = () => {
                         <TextField
                             label="First name"
                             name="fname"
-                            variant="standard"
+                            variant="outlined"
                             fullWidth
                             onChange={handleInputChange}
                             style={{ marginBottom: '20px', width: '30%', marginLeft: '30px' }}  InputProps={{ style: {  fontFamily: 'Poppins,sans-serif' } }}
@@ -86,30 +154,31 @@ const SignUpPage = () => {
                         <TextField
                             label="Last name"
                             name="lname"
-                            variant="standard"
+                            variant="outlined"
                             fullWidth
                             onChange={handleInputChange}
                             style={{ marginBottom: '20px', width: '30%', marginLeft: '30px' }} InputProps={{ style: { fontFamily: 'Poppins,sans-serif' } }}
                         />
                         <TextField
                             label="Email Address"
-                            variant="standard"
+                            variant="outlined"
                             name="email"
                             fullWidth
                             onChange={handleInputChange}
                             style={{ marginBottom: '20px', width: '45%', marginLeft: '30px' }} InputProps={{ style: {  fontFamily: 'Poppins,sans-serif' } }}
                         />
-                        <DatePicker
+                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <StyledDatePicker
                         selected={formData.birthdate}
                         name="birthdate"
                         onChange={(date) => setFormData({ ...formData, birthdate: date })}
                         dateFormat="MM/dd/yyyy"
-                        placeholderText="Select a date"
-                        className="date-picker custom-datepicker" 
+                    
                         />
+                        </LocalizationProvider>
                         <TextField
                             label="Contact Number"
-                            variant="standard"
+                            variant="outlined"
                             fullWidth
                             name="pnum"
                             onChange={handleInputChange}
@@ -117,7 +186,7 @@ const SignUpPage = () => {
                         />
                         <TextField
                             label="Gender"
-                            variant="standard"
+                            variant="outlined"
                             fullWidth
                             name="gender"
                             onChange={handleInputChange}
@@ -133,37 +202,108 @@ const SignUpPage = () => {
                         style={{ marginBottom: '20px', width: '30%', marginLeft: '30px' }} InputProps={{ style: {  fontFamily: 'Poppins,sans-serif' } }}
                     />
                      <TextField
-                            label="Password"
-                            type='password'
-                            variant="outlined"
-                            fullWidth
-                            name="password"
-                            onChange={handleInputChange}
-                            style={{ marginBottom: '20px', width: '30%', marginLeft: '30px' }} InputProps={{ style: {fontFamily: 'Poppins,sans-serif' } }}
-                        />
+                        label="Password"
+                        type={formData.showPassword ? 'text' : 'password'}
+                        variant="outlined"
+                        fullWidth
+                        name="password"
+                        onChange={handleInputChange}
+                        style={{ marginBottom: '20px', width: '30%', marginLeft: '30px' }}
+                        InputProps={{
+                        style: { fontFamily: 'Poppins,sans-serif' },
+                        endAdornment: (
+                            <InputAdornment position="end">
+                            <IconButton
+                                onClick={handleClickShowPassword}
+                                onMouseDown={handleMouseDownPassword}
+                                edge="end"
+                            >
+                                {formData.showPassword ? <Visibility /> : <VisibilityOff />}
+                            </IconButton>
+                            </InputAdornment>
+                        ),
+                        }}
+                    />
                          <TextField
-                            label="Confirm Password"
-                            type='password'
-                            name="confirmPassword"
-                            variant="outlined"
-                            fullWidth
-                            onChange={handleInputChange}
-                            style={{ marginBottom: '20px', width: '45%', marginLeft: '30px' }} InputProps={{ style: {fontFamily: 'Poppins,sans-serif' } }}
-                        />
+                        label="Confirm Password"
+                        type={formData.showPassword ? 'text' : 'password'}
+                        variant="outlined"
+                        fullWidth
+                        name="confirmPassword"
+                        onChange={handleInputChange}
+                        style={{ marginBottom: '20px', width: '45%', marginLeft: '30px' }}
+                        InputProps={{
+                        style: { fontFamily: 'Poppins,sans-serif' },
+                        endAdornment: (
+                            <InputAdornment position="end">
+                            <IconButton
+                                onClick={handleClickShowPassword}
+                                onMouseDown={handleMouseDownPassword}
+                                edge="end"
+                            >
+                                {formData.showPassword ? <Visibility /> : <VisibilityOff />}
+                            </IconButton>
+                            </InputAdornment>
+                        ),
+                        }}
+                    />
                          <FormControl style={{ marginBottom: '20px', width: '15%', marginLeft: '30px' }} >
-                        <InputLabel htmlFor="account-type">Account Type</InputLabel>
+                        <InputLabel id="account-type">Account</InputLabel>
                         <Select
                             labelId="account-type-label"
                             id="account-type"
                             value={accountType}
                             onChange={handleAccountTypeChange}
                             displayEmpty
+                            label= "Account"
                             inputProps={{ name: 'accountType', id: 'account-type' }}
                         >
                             <MenuItem value="Coach">Coach</MenuItem>
                             <MenuItem value="User">User</MenuItem>
                         </Select>
                     </FormControl>
+                    <Snackbar
+                        open={snackbarOpen}
+                        autoHideDuration={6000}
+                        onClose={handleSnackbarClose}
+                    >
+                        <MuiAlert
+                        elevation={6}
+                        variant="filled"
+                        onClose={handleSnackbarClose}
+                        severity="error"
+                        >
+                        Password does not meet the criteria.
+                        </MuiAlert>
+                    </Snackbar>
+                    <Snackbar
+                        open={successSnackbarOpen}
+                        autoHideDuration={6000}
+                        onClose={handleSuccessSnackbarClose}
+                    >
+                        <MuiAlert
+                        elevation={6}
+                        variant="filled"
+                        onClose={handleSuccessSnackbarClose}
+                        severity="success"
+                        >
+                        Account created successfully!
+                        </MuiAlert>
+                    </Snackbar>
+                    <Snackbar
+                        open={snackbarOpen}
+                        autoHideDuration={6000}
+                        onClose={handleSnackbarClose}
+                    >
+                        <MuiAlert
+                        elevation={6}
+                        variant="filled"
+                        onClose={handleSnackbarClose}
+                        severity="error"
+                        >
+                        All fields must be filled.
+                        </MuiAlert>
+                    </Snackbar>
                     <button className="create-button" onClick={handleCreateAccount}>
                             Create Account
                         </button>
@@ -174,4 +314,3 @@ const SignUpPage = () => {
     );
 };
 
-export default SignUpPage;

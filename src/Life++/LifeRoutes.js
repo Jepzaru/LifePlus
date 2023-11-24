@@ -22,11 +22,14 @@ import Logic from '../LifeMentalChallenges/Logic';
 import Math from '../LifeMentalChallenges/Math';
 import Memory from '../LifeMentalChallenges/Memory';
 import { AuthProvider } from './AuthContext';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 
 
 
-function LifeRoutes() {
+function LifeRoutes({ children }) {
   return (
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
     <AuthProvider>
     <BrowserRouter>
       <Routes>
@@ -54,6 +57,7 @@ function LifeRoutes() {
       </Routes>
     </BrowserRouter>
     </AuthProvider>
+    </LocalizationProvider>
   );
 }
 
