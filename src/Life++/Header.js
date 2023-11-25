@@ -19,16 +19,11 @@ const Header = () => {
         <FaSearch style={{ fontSize: '30px', marginLeft: '10px', marginBottom: '-10px' }} />
       </div>
       <div className="prembutton">
-        {user ? (
-          <>
-            <span style={{ marginLeft: '50px' }}>{user.username}</span>
-          </>
-        ) : (
           <Link to="/index/pricing" className="prem-but">
             <FaCrown style={{ color: 'yellow', marginRight: '10px', marginLeft: '-10px', marginBottom: '-2px' }} />
             Go Premium
           </Link>
-        )}
+        {user && <span style={{ marginLeft: '30px', color: 'white' }}>{user.username}</span>}
       </div>
     </div>
   );

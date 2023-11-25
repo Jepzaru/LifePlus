@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import '../LifeCss/Dashboard.css';
-import Calendar from 'react-calendar';
 import Sidenavbar from '../Life++/sidenavbar';
 import HashLoader from 'react-spinners/HashLoader';
 import Header from '../Life++/Header';
@@ -15,7 +14,6 @@ import slide3 from '../LifeImages/slide3.png';
 
 
 function Dash() {
-  const [activeDate, setActiveDate] = useState(new Date());
 
   const [loading, setLoading] = useState(false);
 
@@ -89,8 +87,8 @@ function Dash() {
         outline: 'none', 
         color: 'black', 
       }}
-      onMouseOver={(e) => (e.target.style.color = '#ff0000')} // Change color on hover
-      onMouseOut={(e) => (e.target.style.color = '#fff')} // Restore color on mouse out
+      onMouseOver={(e) => (e.target.style.color = '#ff0000')} 
+      onMouseOut={(e) => (e.target.style.color = '#fff')} 
     >
       &gt;
     </button>
@@ -103,12 +101,6 @@ function Dash() {
     }, 1000);
   }, []);
 
-  const highlightCurrentDay = ({ date, view }) => {
-    if (view === 'month' && date.getDate() === activeDate.getDate() && date.getMonth() === activeDate.getMonth() && date.getFullYear() === activeDate.getFullYear()) {
-      return 'highlight-day';
-    }
-    return null;
-  };
 
   return (
     <div className="appind">
@@ -168,17 +160,8 @@ function Dash() {
               
             </div>
             <div className='calendar'>
-              <div className='calendar-p'>
               <p><FaCalendarAlt style={{ marginLeft: '30px', marginRight: '5px', marginBottom: '-2px' }} /> Calendar</p>
-              </div>
-              <div style={{ marginTop: '50px', backgroundColor: '#fff', borderRadius: '10px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)', padding: '20px', width: '300px', maxWidth: '100%',marginLeft: '220px', marginRight: '-350px' }}>
-                <Calendar
-                  onChange={setActiveDate}
-                  value={activeDate}
-                  tileClassName={highlightCurrentDay}
-                  formatShortWeekday={(locale, date) => new Intl.DateTimeFormat(locale, { weekday: 'short' }).format(date)[0]}
-                />
-              </div>
+              
             </div>
             <div className='rec-com'>
               <div className='recbg'>
