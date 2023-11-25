@@ -1,5 +1,5 @@
 import React from 'react';
-import '../LifeCss/Challenges.css';
+import '../LifeCss/Logic.css';
 import Sidenavbar from '../Life++/sidenavbar';
 import Header from '../Life++/Header';
 import { useLocation } from 'react-router-dom';

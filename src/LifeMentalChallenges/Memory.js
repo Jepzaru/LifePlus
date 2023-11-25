@@ -1,13 +1,90 @@
-import React from 'react';
-import '../LifeCss/Challenges.css';
+import React, { useState, useEffect } from 'react';
+import '../LifeCss/Memory.css';
 import Sidenavbar from '../Life++/sidenavbar';
 import Header from '../Life++/Header';
 import { useLocation } from 'react-router-dom';
 import { IoExtensionPuzzle } from 'react-icons/io5';
 
-
 function Memory() {
   const location = useLocation();
+  const gridSize = 4; // Adjust the grid size as needed
+  const totalPairs = gridSize * gridSize / 2;
+  const initialTime = 60; // Initial time in seconds
+
+  const generateCards = () => {
+    const numbers = Array.from({ length: totalPairs }, (_, index) => index + 1);
+    const cards = [...numbers, ...numbers].map((value, index) => ({
+      id: index + 1,
+      value,
+      flipped: false,
+      matched: false,
+    }));
+
+    // Shuffle the cards
+    for (let i = cards.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [cards[i], cards[j]] = [cards[j], cards[i]];
+    }
+
+    return cards;
+  };
+
+  const [cards, setCards] = useState(generateCards());
+  const [flippedCards, setFlippedCards] = useState([]);
+  const [matchedPairs, setMatchedPairs] = useState([]);
+  const [time, setTime] = useState(initialTime);
+  const [gameCompleted, setGameCompleted] = useState(false);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setTime((prevTime) => prevTime - 1);
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
+  useEffect(() => {
+    if (time === 0) {
+      // Handle game over logic here
+      alert('Game Over! Your time is up!');
+      resetGame();
+    }
+  }, [time]);
+
+  useEffect(() => {
+    if (flippedCards.length === 2) {
+      // Check if the two flipped cards have the same value
+      if (flippedCards[0].value === flippedCards[1].value) {
+        setMatchedPairs([...matchedPairs, flippedCards[0].id, flippedCards[1].id]);
+      }
+
+      // Reset the flipped cards after checking
+      setTimeout(() => {
+        setFlippedCards([]);
+      }, 1000);
+    }
+  }, [flippedCards, matchedPairs]);
+
+  const handleCardClick = (card) => {
+    if (flippedCards.length < 2 && !flippedCards.includes(card) && !matchedPairs.includes(card.id)) {
+      setFlippedCards([...flippedCards, card]);
+    }
+  };
+
+  const resetGame = () => {
+    setCards(generateCards());
+    setFlippedCards([]);
+    setMatchedPairs([]);
+    setTime(initialTime);
+    setGameCompleted(false);
+  };
+
+  useEffect(() => {
+    if (matchedPairs.length === totalPairs * 2) {
+      setGameCompleted(true);
+    }
+  }, [matchedPairs, totalPairs]);
+
   return (
     <div className="appind">
       <Header />
@@ -18,8 +95,30 @@ function Memory() {
       <div className='chal'>
         <h1><IoExtensionPuzzle style={{ marginRight: '15px', marginBottom: '-5px', color: '#FF64B4' }} />Challenges / Memory</h1>
       </div>
-     
-   
+      <div className="memory-game">
+        {cards.map((card) => (
+          <div
+            key={card.id}
+            className={`card ${flippedCards.includes(card) || matchedPairs.includes(card.id) ? 'flipped' : ''}`}
+            onClick={() => handleCardClick(card)}
+          >
+            {flippedCards.includes(card) || matchedPairs.includes(card.id) ? card.value : '?'}
+          </div>
+        ))}
+      </div>
+      <div className="timer">
+        <p>Time: {time} seconds</p>
+      </div>
+      {gameCompleted && (
+        <div className="congratulations">
+          <p>Congratulations! You've completed the game!</p>
+        </div>
+      )}
+      {!gameCompleted && (
+        <div className="reset-button">
+          <button onClick={resetGame}>Play Again</button>
+        </div>
+      )}
     </div>
   );
 }
