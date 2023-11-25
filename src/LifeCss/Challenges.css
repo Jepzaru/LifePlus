@@ -121,3 +121,273 @@ body {
   max-height: 60%; /* Adjust the height to make the image smaller */
   margin-top: 10px; /* Adjust the margin between the title and image */
 }
+.arms-con{
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+  width: 1230px;
+  background-color: #E7E7E7;
+  margin-left: 250px;
+  border-radius: 20px;
+  margin-top: 30px;
+  overflow-y: scroll;
+}
+.arms-chal{
+  height: 400px;
+  width: 1110px;
+  margin-left: 50px;
+  margin-bottom: 30px;
+  border-radius: 20px;
+  margin-top: 30px;
+  background-color: white;
+}
+.circle-bar{
+  margin: 0;
+  padding: 0;
+  margin-left: 40px;
+  height: 250px;
+  width: 250px;
+  margin-top: -270px;
+  margin-bottom: 30px;
+  font-weight: 600;
+  
+}
+.circle-bar1{
+  margin: 0;
+  padding: 0;
+  margin-left: 40px;
+  height: 250px;
+  width: 250px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-top: -270px;
+  font-weight: 600;
+  
+}
+.circle-bar2{
+  margin: 0;
+  padding: 0;
+  margin-left: 40px;
+  height: 250px;
+  width: 250px;
+  margin-bottom: 30px;
+  font-weight: 600;
+  margin-top: -270px;
+  
+}
+.circle-bar3{
+  margin: 0;
+  padding: 0;
+  margin-left: 40px;
+  height: 250px;
+  width: 250px;
+  margin-bottom: 30px;
+  font-weight: 600;
+  margin-top: -270px;
+  
+}
+.circle-bar4{
+  margin: 0;
+  padding: 0;
+  margin-left: 40px;
+  height: 250px;
+  width: 250px;
+  margin-bottom: 30px;
+  font-weight: 600;
+  margin-top: -270px;
+  
+}
+.circle-bar5{
+  margin: 0;
+  padding: 0;
+  margin-left: 40px;
+  height: 250px;
+  width: 250px;
+  margin-bottom: 30px;
+  font-weight: 600;
+  margin-top: -270px;
+  
+}
+.circle-bar6{
+  margin: 0;
+  padding: 0;
+  margin-left: 40px;
+  height: 250px;
+  width: 250px;
+  margin-bottom: 30px;
+  font-weight: 600;
+  margin-top: -270px;
+  
+}
+.circle-bar7{
+  margin: 0;
+  padding: 0;
+  margin-left: 40px;
+  height: 250px;
+  width: 250px;
+  margin-bottom: 30px;
+  font-weight: 600;
+  margin-top: -270px;
+  
+}
+.circle-bar8{
+  margin: 0;
+  padding: 0;
+  margin-left: 40px;
+  height: 250px;
+  width: 250px;
+  margin-bottom: 30px;
+  font-weight: 600;
+  margin-top: -270px;
+  
+}
+.arm{
+  margin-left: 350px;
+  margin-bottom: -80px;
+  
+  font-size: 24px;
+}
+.arm1 h1{
+  margin-left: 350px;
+  margin-bottom: -80px;
+  font-size: 39px;
+}
+.arm-ins p{
+  margin-left: 350px;
+  margin-top: 100px;
+}
+.arms-button1{
+  padding: 20px 100px;
+  margin-left: 350px;
+  margin-top: 40px;
+  border: none;
+  background-color: #FF64B4;
+  border-radius: 50px;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  font-size: 22px;
+  transition: background-color 0.3s;
+  cursor: pointer;
+
+}
+.arms-button1:hover{
+  background-color: #705FBE;
+}
+.arm-image1{
+  background-image: url("../LifeImages/bicepcurl.jpg");
+  background-size: cover; 
+  background-repeat: no-repeat;
+  width: 330px; 
+  height: 300px; 
+  margin-left: 770px;
+  margin-top: -270px;
+  border-radius: 20px;
+
+}
+.arm-image2{
+  background-image: url("../LifeImages/hammercurl.jpg");
+  background-size: cover; 
+  background-repeat: no-repeat;
+  width: 330px; 
+  height: 300px; 
+  margin-left: 770px;
+  margin-top: -270px;
+  border-radius: 20px;
+
+}
+.arm-image3{
+  background-image: url("../LifeImages/tricepdips.jpg");
+  background-size: cover; 
+  background-repeat: no-repeat;
+  width: 330px; 
+  height: 300px; 
+  margin-left: 770px;
+  margin-top: -270px;
+  border-radius: 20px;
+
+}
+.arm-image4{
+  background-image: url("../LifeImages/pushupss.jpg");
+  background-size: cover; 
+  background-repeat: no-repeat;
+  width: 330px; 
+  height: 300px; 
+  margin-left: 770px;
+  margin-top: -270px;
+  border-radius: 20px;
+
+}
+.arm-image5{
+  background-image: url("../LifeImages/skullcrusher.jpg");
+  background-size: cover; 
+  background-repeat: no-repeat;
+  width: 330px; 
+  height: 300px; 
+  margin-left: 770px;
+  margin-top: -270px;
+  border-radius: 20px;
+
+}
+.arm-image6{
+  background-image: url("../LifeImages/preacher.jpg");
+  background-size: cover; 
+  background-repeat: no-repeat;
+  width: 330px; 
+  height: 300px; 
+  margin-left: 770px;
+  margin-top: -270px;
+  border-radius: 20px;
+
+}
+.arm-image7{
+  background-image: url("../LifeImages/concencurls.jpg");
+  background-size: cover; 
+  background-repeat: no-repeat;
+  width: 330px; 
+  height: 300px; 
+  margin-left: 770px;
+  margin-top: -270px;
+  border-radius: 20px;
+
+}
+.arm-image8{
+  background-image: url("../LifeImages/kickbacks.jpg");
+  background-size: cover; 
+  background-repeat: no-repeat;
+  width: 330px; 
+  height: 300px; 
+  margin-left: 770px;
+  margin-top: -270px;
+  border-radius: 20px;
+
+}
+.arm-image9{
+  background-image: url("../LifeImages/reversecurl.jpg");
+  background-size: cover; 
+  background-repeat: no-repeat;
+  width: 330px; 
+  height: 300px; 
+  margin-left: 770px;
+  margin-top: -270px;
+  border-radius: 20px;
+
+}
+.resetarm{
+  margin-left: 1000px;
+  margin-top: -60px;
+}
+.reset-arm{
+  padding: 15px 30px;
+  background-color: #3FB24F;
+  border-radius: 50px;
+  font-family: 'Poppins', sans-serif;
+  border: none;
+  cursor: pointer;
+  font-size: 22px;
+  color: white;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+.reset-arm:hover{
+  background-color: green;
+}
