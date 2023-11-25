@@ -5,7 +5,7 @@ import HashLoader from 'react-spinners/HashLoader';
 import Header from '../Life++/Header';
 import { MdDashboard } from 'react-icons/md';
 import { Link } from 'react-router-dom';
-import { FaClipboardCheck, FaCalendarAlt } from 'react-icons/fa';
+import { FaClipboardCheck} from 'react-icons/fa';
 import 'react-slideshow-image/dist/styles.css';
 import { Slide } from 'react-slideshow-image';
 import slide1 from '../LifeImages/slide1.png';
@@ -166,7 +166,7 @@ function Dash() {
             </div>
             <div className='calendar'>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <DateCalendar />
+          <DateCalendar style={{color: 'white'}} />
             </LocalizationProvider>
             </div>
             <div className='rec-com'>
