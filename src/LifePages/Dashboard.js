@@ -11,6 +11,11 @@ import { Slide } from 'react-slideshow-image';
 import slide1 from '../LifeImages/slide1.png';
 import slide2 from '../LifeImages/sliide2.png';
 import slide3 from '../LifeImages/slide3.png';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
+
+
 
 
 function Dash() {
@@ -160,8 +165,9 @@ function Dash() {
               
             </div>
             <div className='calendar'>
-              <p><FaCalendarAlt style={{ marginLeft: '30px', marginRight: '5px', marginBottom: '-2px' }} /> Calendar</p>
-              
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <DateCalendar />
+            </LocalizationProvider>
             </div>
             <div className='rec-com'>
               <div className='recbg'>
