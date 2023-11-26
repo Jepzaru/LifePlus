@@ -1,14 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../LifeCss/Coaches.css';
+import HashLoader from 'react-spinners/HashLoader';
 import Sidenavbar from "../Life++/sidenavbar";
 import Header from "../Life++/Header";
 import SportsIcon from '@mui/icons-material/Sports';
 
 function Coaches(){
+    const [loading, setLoading] = useState(false);
 
+    useEffect(() => {
+        setLoading(true);
+        setTimeout(() => {
+          setLoading(false);
+        }, 1000);
+      }, []);
     return(
         
         <div className="appindex">
+            {loading ? (
+        <div className="hash">
+          <HashLoader size={100} color={'#FF64B4'} loading={loading} />
+        </div>
+      ) : (
+        <>
             <Header />
             <Sidenavbar />
              <div className='coa'>
@@ -19,7 +33,8 @@ function Coaches(){
         </div> 
         <div className='coa-container'>
             </div>
-          
+            </>
+      )}
         </div>
             
     );

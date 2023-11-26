@@ -9,11 +9,13 @@ import { FaUserEdit } from "react-icons/fa";
 import { MdDarkMode } from "react-icons/md";
 import { FaLink } from "react-icons/fa6";
 import { FaUnlock } from "react-icons/fa";
+import HashLoader from 'react-spinners/HashLoader';
 import { PiSignOutBold } from "react-icons/pi";
 
 
 
 function Setting() {
+  const [loading, setLoading] = useState(false);
   const location = useLocation();
 
   const savedDarkMode = localStorage.getItem('darkMode') === 'true';
@@ -31,9 +33,21 @@ function Setting() {
     window.location.href = '/';
   };
   
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }, []);
 
   return (
     <div className={`appind ${darkMode ? 'dark-mode' : ''}`}>
+      {loading ? (
+        <div className="hash">
+          <HashLoader size={100} color={'#FF64B4'} loading={loading} />
+        </div>
+      ) : (
+        <>
       <Header />
       <Sidenavbar location={location} />
       <div className='set'>
@@ -50,6 +64,8 @@ function Setting() {
         <div className="setting-button" onClick={handleSignOut}><PiSignOutBold style={{ marginRight: '10px', marginBottom: '-2px' }} />Sign Out</div>
         </div>
       </div>
+      </>
+      )}
       </div>
   );
 }
