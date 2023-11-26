@@ -41,14 +41,14 @@ const LoginPage = () => {
 
     const handleLogin = () => {
       setLoading(true);
-  
       const foundUser = users.find(
         (user) => user.username === username && user.password === password
       );
   
       if (foundUser) {
         console.log(foundUser);
-        login(foundUser); 
+        login(foundUser);
+        localStorage.setItem('loggedInUser', JSON.stringify(foundUser));
         navigate('/index/dashboard');
       } else {
         setError('Invalid username or password');

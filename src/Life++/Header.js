@@ -6,8 +6,8 @@ import { useAuth } from './AuthContext';
 import '../LifeCss/header.css';
 
 const Header = () => {
-  const { user } = useAuth();
-
+  const { users } = useAuth();
+  const storedUser = JSON.parse(localStorage.getItem('loggedInUser'));
   return (
     <div className='header'>
       <div className="logo"></div>
@@ -23,7 +23,7 @@ const Header = () => {
             <FaCrown style={{ color: 'yellow', marginRight: '10px', marginLeft: '-10px', marginBottom: '-2px' }} />
             Go Premium
           </Link>
-        {user && <span style={{ marginLeft: '30px', color: 'white' }}>{user.username}</span>}
+          {storedUser && <span style={{ marginLeft: '30px', color: 'white' }}>{storedUser.username}</span>}
       </div>
     </div>
   );

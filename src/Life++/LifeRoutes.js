@@ -12,6 +12,7 @@ import Settings from '../LifePages/Settings';
 import PhysicalContentPage from '../LifePages/PhysicalContentPage';
 import MentalContentPage from '../LifePages/MentalContentPage';
 import CDash from "../LifeCoaches/CoachDash";
+import CCOurse from "../LifeCoaches/CoachCourse";
 import UserProfile from "../LifePages/UserProfileSettings"
 import Strength from '../LifePhysicalChallenges/Strength';
 import Arms from '../LifePhysicalChallenges/Arms';
@@ -45,6 +46,7 @@ function LifeRoutes({ children }) {
         <Route path="/index/physical" element={<PhysicalContentPage/>}/>
         <Route path="/index/mental" element={<MentalContentPage/>}/>
         <Route path="/coach-index/dashboard" element={<CDash/>}/>
+        <Route path="/coach-index/courses" element={<CCOurse/>}/>
         <Route path="/index/settings-profile" element={<UserProfile/>}/>
         <Route path="/index/challenges/strength" element={<Strength/>}/>
         <Route path="/index/challenges/arms" element={<Arms/>}/>

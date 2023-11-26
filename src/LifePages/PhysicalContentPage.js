@@ -124,7 +124,7 @@ const PhysicalContentPage = () => {
       ) : (
         <>
       <header className="page-header">
-        <button className="back-button" onClick={onBackButtonClick}>
+        <button className="phyback" onClick={onBackButtonClick}>
         <IoArrowBackCircleSharp style={{fontSize: '3rem'}} />
         </button>
         <h1><CgGym style={{fontSize: '5rem', marginBottom: '-20px', marginRight: '10px'}} />

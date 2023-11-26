@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa';
-import SportsIcon from '@mui/icons-material/Sports';
+import { FaCrown } from 'react-icons/fa';
 import { useAuth } from './AuthContext';
 import '../LifeCss/header.css';
 
-const Header = () => {
+const CoachHeader = () => {
   const { user } = useAuth();
 
   return (
@@ -19,19 +19,14 @@ const Header = () => {
         <FaSearch style={{ fontSize: '30px', marginLeft: '10px', marginBottom: '-10px' }} />
       </div>
       <div className="prembutton">
-        {user ? (
-          <>
-            <span style={{ marginLeft: '50px' }}>{user.username}</span>
-          </>
-        ) : (
-          <Link to="/index/pricing" className="prem-but">
-            <SportsIcon style={{ color: 'yellow', marginRight: '10px', marginLeft: '-10px', marginBottom: '-2px' }} />
+          <Link to="/index/pricing" className="coach-but">
+            <FaCrown style={{ color: 'yellow', marginRight: '10px', marginLeft: '-10px', marginBottom: '-2px' }} />
             Coach
           </Link>
-        )}
+        {user && <span style={{ marginLeft: '30px', color: 'white' }}>{user.username}</span>}
       </div>
     </div>
   );
 };
 
-export default Header;
+export default CoachHeader;

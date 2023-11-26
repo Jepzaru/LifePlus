@@ -15,9 +15,7 @@ const GuessTheSongGame = () => {
   const [attempts, setAttempts] = useState(0);
 
   useEffect(() => {
-    generateSongList();
-  }, []);
-
+  
   const generateSongList = () => {
     const songs = [
       { title: 'Shape of You', emojis: '🔺🍺🚪' },
@@ -46,6 +44,8 @@ const GuessTheSongGame = () => {
     setSongList(songs);
     generateRandomSong(songs);
   };
+  generateSongList();
+}, []);
 
   const generateRandomSong = (songs) => {
     const randomIndex = Math.floor(Math.random() * songs.length);
@@ -89,7 +89,7 @@ const GuessTheSongGame = () => {
         <p>Guess the song:</p>
         <p className="emoji-sequence">{currentSong.emojis}</p>
         <input type="text" value={userGuess} onChange={handleInputChange} />
-        <button onClick={handleGuess}>Submit Guess</button>
+        <button className='guess-button' onClick={handleGuess}>Submit Guess</button>
         <p>{feedback}</p>
       </div>
     </div>
