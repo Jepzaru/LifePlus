@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import '../LifeCss/Challenges.css';
 import Sidenavbar from '../Life++/sidenavbar';
 import Header from '../Life++/Header';
+import HashLoader from 'react-spinners/HashLoader';
 import { Link, useLocation } from 'react-router-dom';
 import { IoExtensionPuzzle } from 'react-icons/io5';
 import 'slick-carousel/slick/slick.css';
@@ -17,6 +18,7 @@ import logicImage from '../LifeImages/logic.png';
 import concentrationImage from '../LifeImages/concentration.png';
 
 function Challenges() {
+  const [loading, setLoading] = useState(false);
   const location = useLocation();
   
   const sliderSettings = {
@@ -26,9 +28,22 @@ function Challenges() {
     slidesToShow: 1,
     slidesToScroll: 1,
   };
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }, []);
+
 
   return (
     <div className="appind">
+       {loading ? (
+        <div className="hash">
+          <HashLoader size={100} color={'#FF64B4'} loading={loading} />
+        </div>
+      ) : (
+        <>
       <Header />
       <Sidenavbar location={location} />
       <div className='cha'>
@@ -119,6 +134,8 @@ function Challenges() {
           </div>
         </Slider>
       </div>
+      </>
+      )}
     </div>
   );
 }

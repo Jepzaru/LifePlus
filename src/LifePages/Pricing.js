@@ -1,14 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../LifeCss/Pricing.css';
 import Sidenavbar from "../Life++/sidenavbar";
 import Header from "../Life++/Header";
+import HashLoader from 'react-spinners/HashLoader';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 
 function Price(){
+    const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+        setLoading(true);
+        setTimeout(() => {
+          setLoading(false);
+        }, 1000);
+      }, []);
+
 
     return(
         
         <div className="appindex">
+            {loading ? (
+        <div className="hash">
+          <HashLoader size={100} color={'#FF64B4'} loading={loading} />
+        </div>
+      ) : (
+        <>
             <Header />
             <Sidenavbar />
             
@@ -87,7 +103,8 @@ function Price(){
                 <button className='button3'>Avail Now!</button>                
             </div>    
         </div>
-        
+        </>
+      )}
         </div>
             
     );
