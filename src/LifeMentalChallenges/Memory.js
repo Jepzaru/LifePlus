@@ -37,11 +37,14 @@ function Memory() {
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      setTime((prevTime) => prevTime - 1);
+      // Check if the game is completed before decrementing the time
+      if (!gameCompleted) {
+        setTime((prevTime) => prevTime - 1);
+      }
     }, 1000);
 
     return () => clearInterval(intervalId);
-  }, []);
+  }, [gameCompleted]);
 
   useEffect(() => {
     if (time === 0) {
@@ -80,10 +83,10 @@ function Memory() {
   };
 
   useEffect(() => {
-    if (matchedPairs.length === totalPairs * 2) {
+    if (matchedPairs.length === totalPairs * 2 && flippedCards.length === cards.length) {
       setGameCompleted(true);
     }
-  }, [matchedPairs, totalPairs]);
+  }, [matchedPairs, totalPairs, flippedCards, cards]);
 
   return (
     <div className="appind">

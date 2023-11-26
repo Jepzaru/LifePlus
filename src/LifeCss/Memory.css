@@ -8,7 +8,7 @@
   .card {
     width: 80px;
     height: 80px;
-    border: 2px solid #333;
+    border: 2px solid purple;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,7 +16,7 @@
     font-weight: bold;
     cursor: pointer;
     user-select: none;
-    background-color: #f0f0f0;
+    background-color: plum;
     color: #333;
     margin-left: 650px;
   }
@@ -55,4 +55,11 @@
   
   .button6:hover {
     background-color: #45a049;
+  }
+  .congratulations {
+    margin-top: 20px;
+    margin-left: 350px;
+    font-size: 24px;
+    color: #4caf50; 
+    font-weight: bold;
   }

@@ -18,28 +18,13 @@ const GuessTheSongGame = () => {
   
   const generateSongList = () => {
     const songs = [
-      { title: 'Shape of You', emojis: '🔺🍺🚪' },
-  { title: 'Happy', emojis: '😊👋🚶' },
-  { title: 'Billie Jean', emojis: '👩‍🎤🧍‍♂️🔦' },
-  { title: 'Bohemian Rhapsody', emojis: '👨‍🎤👑🎶' },
-  { title: 'Despacito', emojis: '🌞🏝️🎶' },
-  { title: 'Bad Romance', emojis: '🚫💔💑' },
+      { title: 'Shape of You', emojis: '🔺of 🫵🏻' },
+  { title: 'Happy', emojis: '😊' },
+  { title: 'Bad Romance', emojis: '😈💑' },
   { title: 'Waka Waka', emojis: '🌍⚽🎶' },
   { title: 'Havana', emojis: '🌴🏙️🎶' },
-  { title: 'Someone Like You', emojis: '👤💔🎶' },
+  { title: 'Someone Like You', emojis: '👤👍🏻🫵🏻' },
   { title: 'Let It Go', emojis: '❄️👸🎶' },
-  { title: 'Can’t Stop the Feeling!', emojis: '🕺🎶🌈' },
-  { title: 'Firework', emojis: '🎆🎇🎶' },
-  { title: 'Counting Stars', emojis: '🔢⭐🎶' },
-  { title: 'Shake It Off', emojis: '🤳🔄🎶' },
-  { title: 'Rolling in the Deep', emojis: '🔄🌊🎶' },
-  { title: 'Radioactive', emojis: '📻☢️🎶' },
-  { title: 'Uptown Funk', emojis: '🌆🕺🎶' },
-  { title: 'All of Me', emojis: '👫💖🎶' },
-  { title: 'Hello', emojis: '👋📞🎶' },
-  { title: 'Closer', emojis: '👫🚗🎶' },
-  { title: 'Sicko Mode', emojis: '🤢🔄🎶' },
-  { title: 'Old Town Road', emojis: '🏠🛤️🎶' },
     ];
     setSongList(songs);
     generateRandomSong(songs);
