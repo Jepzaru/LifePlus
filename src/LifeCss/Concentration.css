@@ -4,7 +4,17 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-}
+  background-color: plum;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  max-width: 1000px;
+  text-align: center;
+  margin-left: 400px;
+  margin-top: 30px;
+   }
+
 
 .emoji-sequence {
   font-size: 2em;
