@@ -27,7 +27,7 @@ input {
   font-size: 1em;
 }
 
-button {
+.guess-button {
   padding: 10px 20px;
   font-size: 1em;
   cursor: pointer;
@@ -38,7 +38,7 @@ button {
   margin-bottom: 10px;
 }
 
-button:hover {
+.guess-button:hover {
   background-color: #45a049;
 }
 

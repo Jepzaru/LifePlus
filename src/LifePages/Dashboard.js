@@ -160,7 +160,7 @@ function Dash() {
             <div className='men'><p>Mental Content</p></div>
             </Link>
           <div className='recen-cha'>
-            <h1>Recent Challenges</h1>
+            <h1>Recent Courses Enrolled</h1>
             <div className='recen-con'>
               
             </div>

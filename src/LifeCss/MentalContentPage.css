@@ -60,14 +60,8 @@
     font-size: 16px;
     cursor: pointer;
     margin-right: 20px;
-   
-    
   }
   
-  .back-button:hover {
-    text-decoration: underline;
-    color: #ffffff;
-  }
   
   .mental-content-container {
     margin: 20px;
