@@ -116,10 +116,10 @@ function Challenges() {
           </div>
           <div>
             <div className="card-content">
-              <h3>Logic Challenge</h3>
-              <img src={logicImage} alt="Logic Challenge" />
+              <h3>Breathing Challenge</h3>
+              <img src={logicImage} alt="Breathing Challenge" />
               <div className='viewcha'>
-                <Link to = '/index/challenges/logic' className='men-viewcha-button'>View Challenge</Link>
+                <Link to = '/index/challenges/breathing' className='men-viewcha-button'>View Challenge</Link>
               </div>
             </div>
           </div>
