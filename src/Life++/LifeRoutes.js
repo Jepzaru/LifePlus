@@ -18,7 +18,7 @@ import Arms from '../LifePhysicalChallenges/Arms';
 import Abs from '../LifePhysicalChallenges/Abs';
 import Cardio from '../LifePhysicalChallenges/Cardio';
 import Concentration from '../LifeMentalChallenges/Concentration';
-import Logic from '../LifeMentalChallenges/Logic';
+import Breathing from '../LifeMentalChallenges/Breathing';
 import Math from '../LifeMentalChallenges/Math';
 import Memory from '../LifeMentalChallenges/Memory';
 import { AuthProvider } from './AuthContext';
@@ -51,7 +51,7 @@ function LifeRoutes({ children }) {
         <Route path="/index/challenges/abs" element={<Abs/>}/>
         <Route path="/index/challenges/cardio" element={<Cardio/>}/>
         <Route path="/index/challenges/concentration" element={<Concentration/>}/>
-        <Route path="/index/challenges/logic" element={<Logic/>}/>
+        <Route path="/index/challenges/breathing" element={<Breathing/>}/>
         <Route path="/index/challenges/math" element={<Math/>}/>
         <Route path="/index/challenges/memory" element={<Memory/>}/>
       </Routes>
