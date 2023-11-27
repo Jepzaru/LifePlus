@@ -137,7 +137,7 @@ function Cardio() {
      <div className='arms-con'>
       <div className='arms-chal'>
         <div className='arm'>
-          <h1>Bicep Curls</h1>
+          <h1>Interval Sprint</h1>
         </div>
         <div className='arm-ins'>
           <p>
@@ -148,7 +148,7 @@ function Cardio() {
             {challenge1.text}
           </button>
         </div>
-        <div className='arm-image1'>
+        <div className='cardio-image1'>
 
         </div>
         <div className={`circle-bar`}>
@@ -171,7 +171,7 @@ function Cardio() {
       
       <div className='arms-chal'>
       <div className='arm'>
-          <h1>Hammer Curls</h1>
+          <h1>Stair Climb</h1>
         </div>
         <div className='arm-ins'>
           <p>
@@ -183,7 +183,7 @@ function Cardio() {
             {challenge2.text}
           </button>
         </div>
-        <div className='arm-image2'>
+        <div className='cardio-image2'>
 
         </div>
         <div className={`circle-bar1`}>
@@ -206,7 +206,7 @@ function Cardio() {
      
       <div className='arms-chal' >
       <div className='arm'>
-          <h1>Tricep Dips</h1>
+          <h1>Jump Rope</h1>
         </div>
         <div className='arm-ins'>
           <p>
@@ -217,7 +217,7 @@ function Cardio() {
             {challenge3.text}
           </button>
         </div>
-        <div className='arm-image3'>
+        <div className='cardio-image3'>
 
         </div>
         <div className={`circle-bar2`}>
@@ -240,7 +240,7 @@ function Cardio() {
        
       <div className='arms-chal'>
       <div className='arm'>
-          <h1>Push Ups</h1>
+          <h1>Cycling Sprint</h1>
         </div>
         <div className='arm-ins'>
           <p>
@@ -252,7 +252,7 @@ function Cardio() {
             {challenge4.text}
           </button>
         </div>
-        <div className='arm-image4'>
+        <div className='cardio-image4'>
 
         </div>
         <div className={`circle-bar4`}>
@@ -275,7 +275,7 @@ function Cardio() {
       
       <div className='arms-chal'>
       <div className='arm'>
-          <h1>Skull Crushers</h1>
+          <h1>Rowing Interval</h1>
         </div>
         <div className='arm-ins'>
           <p>
@@ -286,7 +286,7 @@ function Cardio() {
             {challenge5.text}
           </button>
         </div>
-        <div className='arm-image5'>
+        <div className='cardio-image5'>
 
         </div>
       <div className='circle-bar4'>
@@ -309,7 +309,7 @@ function Cardio() {
         
         <div className='arms-chal'>
         <div className='arm'>
-          <h1>Preacher Curls</h1>
+          <h1>Kick Boxing</h1>
         </div>
         <div className='arm-ins'>
           <p>
@@ -320,7 +320,7 @@ function Cardio() {
             {challenge6.text}
           </button>
         </div>
-        <div className='arm-image6'>
+        <div className='cardio-image6'>
 
         </div>
         <div className='circle-bar5'>
@@ -343,7 +343,7 @@ function Cardio() {
         
         <div className='arms-chal' >
         <div className='arm1'>
-          <h1>Concentration Curls</h1>
+          <h1>Circuit Training</h1>
         </div>
         <div className='arm-ins'>
           <p>
@@ -355,7 +355,7 @@ function Cardio() {
             {challenge7.text}
           </button>
         </div>
-        <div className='arm-image7'>
+        <div className='cardio-image7'>
 
         </div>
         <div className='circle-bar6'>
@@ -378,7 +378,7 @@ function Cardio() {
         
         <div className='arms-chal'>
         <div className='arm'>
-          <h1>Tricep Kickbacks</h1>
+          <h1>Aerobic Dance</h1>
         </div>
         <div className='arm-ins'>
           <p>
@@ -389,7 +389,7 @@ function Cardio() {
             {challenge8.text}
           </button>
         </div>
-        <div className='arm-image8'>
+        <div className='cardio-image8'>
 
         </div>
         <div className='circle-bar7'>
@@ -411,7 +411,7 @@ function Cardio() {
         
         <div className='arms-chal'>
         <div className='arm'>
-          <h1>Reverse Curls</h1>
+          <h1>HIIT</h1>
         </div>
         <div className='arm-ins'>
           <p>
@@ -423,7 +423,7 @@ function Cardio() {
             {challenge9.text}
           </button>
         </div>
-        <div className='arm-image9'>
+        <div className='cardio-image9'>
 
         </div>
         <div className='circle-bar8'>

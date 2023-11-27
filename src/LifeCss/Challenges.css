@@ -391,3 +391,201 @@ body {
 .reset-arm:hover{
   background-color: green;
 }
+.abs-image1{
+  background-image: url("../LifeImages/plank.jpg");
+  background-size: cover; 
+  background-repeat: no-repeat;
+  width: 330px; 
+  height: 300px; 
+  margin-left: 770px;
+  margin-top: -270px;
+  border-radius: 20px;
+
+}
+.abs-image2{
+  background-image: url("../LifeImages/hangingLeg.jpg");
+  background-size: cover; 
+  background-repeat: no-repeat;
+  width: 330px; 
+  height: 300px; 
+  margin-left: 770px;
+  margin-top: -270px;
+  border-radius: 20px;
+
+}
+.abs-image3{
+  background-image: url("../LifeImages/russian.jpg");
+  background-size: cover; 
+  background-repeat: no-repeat;
+  width: 330px; 
+  height: 300px; 
+  margin-left: 770px;
+  margin-top: -270px;
+  border-radius: 20px;
+
+}
+.abs-image4{
+  background-image: url("../LifeImages/dragonFlag.jpg");
+  background-size: cover; 
+  background-repeat: no-repeat;
+  width: 330px; 
+  height: 300px; 
+  margin-left: 770px;
+  margin-top: -270px;
+  border-radius: 20px;
+
+}
+.abs-image5{
+  background-image: url("../LifeImages/mountainClimb.jpg");
+  background-size: cover; 
+  background-repeat: no-repeat;
+  width: 330px; 
+  height: 300px; 
+  margin-left: 770px;
+  margin-top: -270px;
+  border-radius: 20px;
+
+}
+.abs-image6{
+  background-image: url("../LifeImages/vUps.jpg");
+  background-size: cover; 
+  background-repeat: no-repeat;
+  width: 330px; 
+  height: 300px; 
+  margin-left: 770px;
+  margin-top: -270px;
+  border-radius: 20px;
+
+}
+.abs-image7{
+  background-image: url("../LifeImages/PlankElbow.jpg");
+  background-size: cover; 
+  background-repeat: no-repeat;
+  width: 330px; 
+  height: 300px; 
+  margin-left: 770px;
+  margin-top: -270px;
+  border-radius: 20px;
+
+}
+.abs-image8{
+  background-image: url("../LifeImages/RCrunch.jpg");
+  background-size: cover; 
+  background-repeat: no-repeat;
+  width: 330px; 
+  height: 300px; 
+  margin-left: 770px;
+  margin-top: -270px;
+  border-radius: 20px;
+
+}
+.abs-image9{
+  background-image: url("../LifeImages/deadBug.jpg");
+  background-size: cover; 
+  background-repeat: no-repeat;
+  width: 330px; 
+  height: 300px; 
+  margin-left: 770px;
+  margin-top: -270px;
+  border-radius: 20px;
+
+}
+.cardio-image1{
+  background-image: url("../LifeImages/IntervalSprints.jpg");
+  background-size: cover; 
+  background-repeat: no-repeat;
+  width: 330px; 
+  height: 300px; 
+  margin-left: 770px;
+  margin-top: -270px;
+  border-radius: 20px;
+
+}
+.cardio-image2{
+  background-image: url("../LifeImages/StairClimbing.jpg");
+  background-size: cover; 
+  background-repeat: no-repeat;
+  width: 330px; 
+  height: 300px; 
+  margin-left: 770px;
+  margin-top: -270px;
+  border-radius: 20px;
+
+}
+.cardio-image3{
+  background-image: url("../LifeImages/jumprope.jpg");
+  background-size: cover; 
+  background-repeat: no-repeat;
+  width: 330px; 
+  height: 300px; 
+  margin-left: 770px;
+  margin-top: -270px;
+  border-radius: 20px;
+
+}
+.cardio-image4{
+  background-image: url("../LifeImages/cyclingsprint.jpg");
+  background-size: cover; 
+  background-repeat: no-repeat;
+  width: 330px; 
+  height: 300px; 
+  margin-left: 770px;
+  margin-top: -270px;
+  border-radius: 20px;
+
+}
+.cardio-image5{
+  background-image: url("../LifeImages/rowing.jpg");
+  background-size: cover; 
+  background-repeat: no-repeat;
+  width: 330px; 
+  height: 300px; 
+  margin-left: 770px;
+  margin-top: -270px;
+  border-radius: 20px;
+
+}
+.cardio-image6{
+  background-image: url("../LifeImages/kickbox.jpg");
+  background-size: cover; 
+  background-repeat: no-repeat;
+  width: 330px; 
+  height: 300px; 
+  margin-left: 770px;
+  margin-top: -270px;
+  border-radius: 20px;
+
+}
+.cardio-image7{
+  background-image: url("../LifeImages/circuit.jpg");
+  background-size: cover; 
+  background-repeat: no-repeat;
+  width: 330px; 
+  height: 300px; 
+  margin-left: 770px;
+  margin-top: -270px;
+  border-radius: 20px;
+
+}
+.cardio-image8{
+  background-image: url("../LifeImages/aerobicdance.jpg");
+  background-size: cover; 
+  background-repeat: no-repeat;
+  width: 330px; 
+  height: 300px; 
+  margin-left: 770px;
+  margin-top: -270px;
+  border-radius: 20px;
+
+}
+.cardio-image9{
+  background-image: url("../LifeImages/HIITa.jpg");
+  background-size: cover; 
+  background-repeat: no-repeat;
+  width: 330px; 
+  height: 300px; 
+  margin-left: 770px;
+  margin-top: -270px;
+  border-radius: 20px;
+
+}

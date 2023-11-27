@@ -138,7 +138,7 @@ function Abs() {
      <div className='arms-con'>
       <div className='arms-chal'>
         <div className='arm'>
-          <h1>Bicep Curls</h1>
+          <h1>Plank</h1>
         </div>
         <div className='arm-ins'>
           <p>
@@ -149,7 +149,7 @@ function Abs() {
             {challenge1.text}
           </button>
         </div>
-        <div className='arm-image1'>
+        <div className='abs-image1'>
 
         </div>
         <div className={`circle-bar`}>
@@ -172,7 +172,7 @@ function Abs() {
       
       <div className='arms-chal'>
       <div className='arm'>
-          <h1>Hammer Curls</h1>
+          <h1>Leg Raises</h1>
         </div>
         <div className='arm-ins'>
           <p>
@@ -184,7 +184,7 @@ function Abs() {
             {challenge2.text}
           </button>
         </div>
-        <div className='arm-image2'>
+        <div className='abs-image2'>
 
         </div>
         <div className={`circle-bar1`}>
@@ -207,7 +207,7 @@ function Abs() {
      
       <div className='arms-chal' >
       <div className='arm'>
-          <h1>Tricep Dips</h1>
+          <h1>Russian Twists</h1>
         </div>
         <div className='arm-ins'>
           <p>
@@ -218,7 +218,7 @@ function Abs() {
             {challenge3.text}
           </button>
         </div>
-        <div className='arm-image3'>
+        <div className='abs-image3'>
 
         </div>
         <div className={`circle-bar2`}>
@@ -241,7 +241,7 @@ function Abs() {
        
       <div className='arms-chal'>
       <div className='arm'>
-          <h1>Push Ups</h1>
+          <h1>Dragon Flags</h1>
         </div>
         <div className='arm-ins'>
           <p>
@@ -253,7 +253,7 @@ function Abs() {
             {challenge4.text}
           </button>
         </div>
-        <div className='arm-image4'>
+        <div className='abs-image4'>
 
         </div>
         <div className={`circle-bar4`}>
@@ -276,7 +276,7 @@ function Abs() {
       
       <div className='arms-chal'>
       <div className='arm'>
-          <h1>Skull Crushers</h1>
+          <h1>Mountain Climb</h1>
         </div>
         <div className='arm-ins'>
           <p>
@@ -287,7 +287,7 @@ function Abs() {
             {challenge5.text}
           </button>
         </div>
-        <div className='arm-image5'>
+        <div className='abs-image5'>
 
         </div>
       <div className='circle-bar4'>
@@ -310,7 +310,7 @@ function Abs() {
         
         <div className='arms-chal'>
         <div className='arm'>
-          <h1>Preacher Curls</h1>
+          <h1>V-Ups</h1>
         </div>
         <div className='arm-ins'>
           <p>
@@ -321,7 +321,7 @@ function Abs() {
             {challenge6.text}
           </button>
         </div>
-        <div className='arm-image6'>
+        <div className='abs-image6'>
 
         </div>
         <div className='circle-bar5'>
@@ -344,7 +344,7 @@ function Abs() {
         
         <div className='arms-chal' >
         <div className='arm1'>
-          <h1>Concentration Curls</h1>
+          <h1>Plank Knee Elbow</h1>
         </div>
         <div className='arm-ins'>
           <p>
@@ -356,7 +356,7 @@ function Abs() {
             {challenge7.text}
           </button>
         </div>
-        <div className='arm-image7'>
+        <div className='abs-image7'>
 
         </div>
         <div className='circle-bar6'>
@@ -379,7 +379,7 @@ function Abs() {
         
         <div className='arms-chal'>
         <div className='arm'>
-          <h1>Tricep Kickbacks</h1>
+          <h1>Reverse Crunch</h1>
         </div>
         <div className='arm-ins'>
           <p>
@@ -390,7 +390,7 @@ function Abs() {
             {challenge8.text}
           </button>
         </div>
-        <div className='arm-image8'>
+        <div className='abs-image8'>
 
         </div>
         <div className='circle-bar7'>
@@ -412,7 +412,7 @@ function Abs() {
         
         <div className='arms-chal'>
         <div className='arm'>
-          <h1>Reverse Curls</h1>
+          <h1>Dead Bug</h1>
         </div>
         <div className='arm-ins'>
           <p>
@@ -424,7 +424,7 @@ function Abs() {
             {challenge9.text}
           </button>
         </div>
-        <div className='arm-image9'>
+        <div className='abs-image9'>
 
         </div>
         <div className='circle-bar8'>
