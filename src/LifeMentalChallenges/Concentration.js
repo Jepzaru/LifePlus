@@ -13,6 +13,12 @@ const GuessTheSongGame = () => {
   const [userGuess, setUserGuess] = useState('');
   const [feedback, setFeedback] = useState('');
   const [attempts, setAttempts] = useState(0);
+  const savedDarkMode = localStorage.getItem('darkMode') === 'true';
+  const [darkMode] = useState(savedDarkMode);
+
+  useEffect(() => {
+    localStorage.setItem('darkMode', darkMode);
+  }, [darkMode]);
 
   useEffect(() => {
   
@@ -61,13 +67,13 @@ const GuessTheSongGame = () => {
   };
 
   return (
-    <div className="appind">
+    <div className={`appind ${darkMode ? 'dark-mode' : ''}`}>
       <Header />
       <Sidenavbar location={location} />
       <div className='cha'>
         <h1><IoExtensionPuzzle style={{ marginRight: '15px', marginBottom: '-5px', color: '#FF64B4' }} />Challenges</h1>
       </div>
-      <div className='chal'>
+      <div className={`chal ${darkMode ? 'dark-mode-title' : ''}`}>
         <h1><IoExtensionPuzzle style={{ marginRight: '15px', marginBottom: '-5px', color: '#FF64B4' }} />Challenges / Guess the Song</h1>
       </div>
       <div className="guess-the-song-game">

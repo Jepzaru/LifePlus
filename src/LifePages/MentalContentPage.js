@@ -22,6 +22,12 @@ const MentalContentPage = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
+  const savedDarkMode = localStorage.getItem('darkMode') === 'true';
+  const [darkMode] = useState(savedDarkMode);
+
+  useEffect(() => {
+    localStorage.setItem('darkMode', darkMode);
+  }, [darkMode]);
 
   const onBackButtonClick = () => {
     navigate('/index/dashboard');
@@ -118,7 +124,7 @@ useEffect(() => {
 
 
   return (
-    <div className="mental-content-page">
+    <div className={`mental-content-page ${darkMode ? 'dark-mode' : ''}`}>
       {loading ? (
       <div className="hash">
           <HashLoader size={100} color={'#3FB24F'} loading={loading} />

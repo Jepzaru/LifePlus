@@ -10,6 +10,12 @@ function Memory() {
   const gridSize = 4; // Adjust the grid size as needed
   const totalPairs = gridSize * gridSize / 2;
   const initialTime = 60; // Initial time in seconds
+  const savedDarkMode = localStorage.getItem('darkMode') === 'true';
+  const [darkMode] = useState(savedDarkMode);
+
+  useEffect(() => {
+    localStorage.setItem('darkMode', darkMode);
+  }, [darkMode]);
 
   const generateCards = () => {
     const numbers = Array.from({ length: totalPairs }, (_, index) => index + 1);
@@ -89,13 +95,13 @@ function Memory() {
   }, [matchedPairs, totalPairs, flippedCards, cards]);
 
   return (
-    <div className="appind">
+    <div className={`appind ${darkMode ? 'dark-mode' : ''}`}>
       <Header />
       <Sidenavbar location={location} />
       <div className='cha'>
         <h1><IoExtensionPuzzle style={{ marginRight: '15px', marginBottom: '-5px', color: '#FF64B4' }} />Challenges</h1>
       </div>
-      <div className='chal'>
+      <div className={`chal ${darkMode ? 'dark-mode-title' : ''}`}>
         <h1><IoExtensionPuzzle style={{ marginRight: '15px', marginBottom: '-5px', color: '#FF64B4' }} />Challenges / Memory</h1>
       </div>
       <div className="memory-game">
@@ -109,7 +115,7 @@ function Memory() {
           </div>
         ))}
       </div>
-      <div className="timer">
+       <div className={`timer ${darkMode ? 'dark-mode-title' : ''}`}>
         <p>Time: {time} seconds</p>
       </div>
       {gameCompleted && (
