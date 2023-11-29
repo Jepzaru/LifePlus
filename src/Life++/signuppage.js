@@ -38,6 +38,7 @@ export default function SignUpPage() {
         gender: '',
         username: '',
         password: '',
+        type: '',
         showPassword: false,
     });
 
@@ -106,7 +107,7 @@ export default function SignUpPage() {
 
         if (!isPasswordValid()) {
             // Password does not meet criteria, handle accordingly
-            console.error('Password does not meet the criteria');
+            console.error('Password does not meet the criterias !!');
             setSnackbarOpen(true);
             return;
           }
