@@ -110,7 +110,7 @@ export default function SignUpPage() {
 
         if (!isPasswordValid()) {
             // Password does not meet criteria, handle accordingly
-            console.error('Password must have an uppercase and a special character');
+            console.error('Password must have an uppercase and a special characters!');
             setSnackbarOpen(true);
             return;
           }
