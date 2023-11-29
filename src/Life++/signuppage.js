@@ -38,7 +38,6 @@ export default function SignUpPage() {
         gender: '',
         username: '',
         password: '',
-        type: '',
         showPassword: false,
     });
 
