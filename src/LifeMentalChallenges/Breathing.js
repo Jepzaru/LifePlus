@@ -4,6 +4,7 @@ import Sidenavbar from '../Life++/sidenavbar';
 import Header from '../Life++/Header';
 import { useLocation } from 'react-router-dom';
 import { IoExtensionPuzzle } from 'react-icons/io5';
+import breathGif from '../LifeImages/breath.gif';
 
 function BreathingExercise() {
   const location = useLocation();
@@ -69,7 +70,7 @@ function BreathingExercise() {
       <div className='chal'>
         <h1><IoExtensionPuzzle style={{ marginRight: '15px', marginBottom: '-5px', color: '#FF64B4' }} />Challenges / Breathing Exercise</h1>
       </div>
-      <div className='breathing-exercise'>
+      <div className='breathing-container'>
         <h2>{breathingPhase === 'inhale' ? 'Inhale' : breathingPhase === 'hold' ? 'Hold' : 'Exhale'}</h2>
         <p>Time left: {timer} seconds</p>
 
@@ -87,6 +88,10 @@ function BreathingExercise() {
           <div className="timer-text">
             {timer}
           </div>
+          <img
+          className="breath-gif"
+          src={breathGif}
+          />
         </div>
 
         {completed && <p>Great job! Breathing exercise completed.</p>}

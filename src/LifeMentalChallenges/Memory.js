@@ -118,8 +118,8 @@ function Memory() {
         </div>
       )}
       {!gameCompleted && (
-        <div className="reset-button">
-          <button onClick={resetGame}>Play Again</button>
+        <div className="reset">
+          <button className='playagain' onClick={resetGame}>Play Again</button>
         </div>
       )}
     </div>
