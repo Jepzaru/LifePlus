@@ -49,7 +49,9 @@ const LoginPage = () => {
         console.log(foundUser);
         login(foundUser);
         localStorage.setItem('loggedInUser', JSON.stringify(foundUser));
-        navigate('/index/dashboard');
+        const dashboardPath = foundUser.type === 1 ? '/coach-index/dashboard' : '/index/dashboard';
+        navigate(dashboardPath);
+
       } else {
         setError('Invalid username or password');
         setSnackbarOpen(true);
