@@ -227,10 +227,10 @@
     margin-top: 80px;
     background-image: linear-gradient(to right, #FF64B4, #705FBE);
   }
-  .team{
+  .team h2{
     font-family: 'Poppins', sans-serif;
     color: white;
-    font-size: 32px;
+    font-size: 42px;
   }
   .gallery{
     display: flex;

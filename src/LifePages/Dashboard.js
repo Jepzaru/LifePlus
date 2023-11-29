@@ -21,6 +21,8 @@ import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 function Dash() {
 
   const [loading, setLoading] = useState(false);
+  const savedDarkMode = localStorage.getItem('darkMode') === 'true';
+  const [darkMode] = useState(savedDarkMode);
 
   const slideImages = [
     { url: slide1 },
@@ -106,9 +108,14 @@ function Dash() {
     }, 1000);
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem('darkMode', darkMode);
+  }, [darkMode]);
+
+
 
   return (
-    <div className="appind">
+    <div className={`appindash ${darkMode ? 'dark-mode' : ''}`}>
       {loading ? (
         <div className="hash">
           <HashLoader size={100} color={'#FF64B4'} loading={loading} />
@@ -148,7 +155,7 @@ function Dash() {
             </Slide>
             </div>
           </div>
-          <div className='choose'>
+          <div className={`choose ${darkMode ? 'dark-mode-title' : ''}`}>
             <h1>Choose Content</h1>
           </div>
           <Link to="/index/physical"
@@ -159,7 +166,7 @@ function Dash() {
            className='ment-con'>
             <div className='men'><p>Mental Content</p></div>
             </Link>
-          <div className='recen-cha'>
+            <div className={`recen-cha ${darkMode ? 'dark-mode-title' : ''}`}>
             <h1>Recent Courses Enrolled</h1>
             <div className='recen-con'>
               

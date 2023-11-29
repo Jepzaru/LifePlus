@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa';
-import { FaCrown } from 'react-icons/fa';
+import { GiBilledCap } from "react-icons/gi";
 import { useAuth } from './AuthContext';
 import '../LifeCss/header.css';
 
@@ -20,7 +20,7 @@ const CoachHeader = () => {
       </div>
       <div className="prembutton">
           <Link to="/index/pricing" className="coach-but">
-            <FaCrown style={{ color: 'yellow', marginRight: '10px', marginLeft: '-10px', marginBottom: '-2px' }} />
+            <GiBilledCap style={{ color: 'yellow', marginRight: '10px', marginLeft: '-10px', marginBottom: '-2px' }} />
             Coach
           </Link>
         {user && <span style={{ marginLeft: '30px', color: 'white' }}>{user.username}</span>}

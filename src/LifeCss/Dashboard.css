@@ -1,11 +1,13 @@
-.appind{
+.appindash{
     width: 100vw;
-    height: 100vh;
+    height: 210vh;
+    
 }
 body{
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    
 }
 .dash{
     margin-left: 220px;
@@ -166,15 +168,15 @@ body{
     justify-content: center;
     align-items: center;
     height: 585px;
-    width: 320px;
+    width: 330px;
     border-radius: 20px;
     margin-top: 40px;
-    margin-left: 940px;
+    margin-left: 930px;
     background-color: #E7E7E7;
     
 }
 .recbg p{
-    margin-top: -290px;
+    margin-top: -295px;
     font-weight: bold;
     background-color: #3FB24F;
     color: white;
@@ -197,4 +199,10 @@ body{
   .imageslide{
     margin-top: 80px;
   }
- 
+  .dark-mode {
+    background-color: #121212; 
+    color: black; 
+  }
+  .dark-mode-title {
+    color: white;
+  }

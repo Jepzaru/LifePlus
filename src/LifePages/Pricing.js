@@ -6,6 +6,8 @@ import HashLoader from 'react-spinners/HashLoader';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 
 function Price(){
+    const savedDarkMode = localStorage.getItem('darkMode') === 'true';
+  const [darkMode] = useState(savedDarkMode);
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
@@ -15,10 +17,12 @@ function Price(){
         }, 1000);
       }, []);
 
-
+      useEffect(() => {
+        localStorage.setItem('darkMode', darkMode);
+      }, [darkMode]);
     return(
         
-        <div className="appindex">
+        <div className={`appinprice ${darkMode ? 'dark-mode' : ''}`}>
             {loading ? (
         <div className="hash">
           <HashLoader size={100} color={'#FF64B4'} loading={loading} />
@@ -31,7 +35,7 @@ function Price(){
         <div className='pri'>
         <h1><LocalOfferIcon style={{fontSize: '60px', color: '#FF64B4', marginBottom: '-10px', marginRight: '10px'}} />Premium Plans</h1>
         </div>
-        <div className='pric'>
+        <div className={`pric ${darkMode ? 'dark-mode-title' : ''}`}>
         <h1><LocalOfferIcon style={{ fontSize: '60px', color: '#FF64B4', marginBottom: '-10px', marginRight: '10px'}} />Premium Plans</h1>
         </div> 
         <div className='free-con'>

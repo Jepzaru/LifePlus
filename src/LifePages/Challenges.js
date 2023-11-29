@@ -18,9 +18,15 @@ import logicImage from '../LifeImages/logic.png';
 import concentrationImage from '../LifeImages/concentration.png';
 
 function Challenges() {
+  const savedDarkMode = localStorage.getItem('darkMode') === 'true';
+  const [darkMode] = useState(savedDarkMode);
   const [loading, setLoading] = useState(false);
   const location = useLocation();
   
+  useEffect(() => {
+    localStorage.setItem('darkMode', darkMode);
+  }, [darkMode]);
+
   const sliderSettings = {
     dots: true,
     infinite: true,
@@ -37,7 +43,7 @@ function Challenges() {
 
 
   return (
-    <div className="appind">
+    <div className={`appindcha ${darkMode ? 'dark-mode' : ''}`}>
        {loading ? (
         <div className="hash">
           <HashLoader size={100} color={'#FF64B4'} loading={loading} />
@@ -49,7 +55,7 @@ function Challenges() {
       <div className='cha'>
         <h1><IoExtensionPuzzle style={{ marginRight: '15px', marginBottom: '-5px', color: '#FF64B4' }} />Challenges</h1>
       </div>
-      <div className='chal'>
+      <div className={`chal ${darkMode ? 'dark-mode-title' : ''}`}>
         <h1><IoExtensionPuzzle style={{ marginRight: '15px', marginBottom: '-5px', color: '#FF64B4' }} />Challenges</h1>
       </div>
       <div className='phy-cha'>

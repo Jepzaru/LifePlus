@@ -113,7 +113,7 @@ export default function SignUpPage() {
         // Prepare the data to be sent in the POST request
         const postData = {
             ...formData,
-            accountType: accountType,
+            accountType: accountType === 'Coach' ? 1 : 0,
         };
 
         // Send a POST request using Axios

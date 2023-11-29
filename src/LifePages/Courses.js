@@ -7,6 +7,8 @@ import { RiGraduationCapFill } from "react-icons/ri";
 
 
 function Courses(){
+  const savedDarkMode = localStorage.getItem('darkMode') === 'true';
+  const [darkMode] = useState(savedDarkMode);
     const [loading, setLoading] = useState(false);
     
     useEffect(() => {
@@ -15,9 +17,14 @@ function Courses(){
           setLoading(false);
         }, 1000);
       }, []);
+
+      useEffect(() => {
+        localStorage.setItem('darkMode', darkMode);
+      }, [darkMode]);
+    
     return(
         
-        <div className="appind">
+      <div className={`appindcourse ${darkMode ? 'dark-mode' : ''}`}>
             {loading ? (
         <div className="hash">
           <HashLoader size={100} color={'#FF64B4'} loading={loading} />
@@ -29,7 +36,7 @@ function Courses(){
              <div className='cou'>
         <h1><RiGraduationCapFill style={{marginRight:'15px', marginBottom:'-5px', color:'#FF64B4'}}/>Courses</h1>
         </div>  
-        <div className='cour'>
+        <div className={`cour ${darkMode ? 'dark-mode-title' : ''}`}>
         <h1><RiGraduationCapFill style={{marginRight:'15px', marginBottom:'-5px', color:'#FF64B4'}}/>Courses</h1>
         </div>  
         <div className='cou-con'>

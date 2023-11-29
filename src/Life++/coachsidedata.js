@@ -19,11 +19,6 @@ export const CoachSidebarData = [
         link: "/coach-index/courses",
     },
     {
-        title: "Challenges",
-        icon: <ExtensionIcon />,
-        link: "/coach-index/challenges",
-    },
-    {
         title: "Points Shop",
         icon: <LocalOfferIcon />,
         link: "/coach-index/pointsshop",
