@@ -38,6 +38,7 @@ export default function SignUpPage() {
         gender: '',
         username: '',
         password: '',
+        type: '',
         showPassword: false,
     });
 
@@ -52,7 +53,10 @@ export default function SignUpPage() {
     }, [])
 
     const handleAccountTypeChange = (event) => {
-        setAccountType(event.target.value);
+            const selectedType = event.target.value;
+            setAccountType(selectedType);
+            const typeValue = selectedType === 'Coach' ? '1' : '0'; // Set type based on selection
+            setFormData({ ...formData, type: typeValue });
     };
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -113,7 +117,6 @@ export default function SignUpPage() {
         // Prepare the data to be sent in the POST request
         const postData = {
             ...formData,
-            accountType: accountType === 'Coach' ? 1 : 0,
         };
 
         // Send a POST request using Axios
