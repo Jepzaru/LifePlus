@@ -1,16 +1,30 @@
-.breathing-exercise {
-    margin: 20px;
-    text-align: center;
-    margin-top: 100px;
-  }
+.breathing-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(#38B6FA, #3FB24F);
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  max-width: 1800px;
+  text-align: center;
+  margin-left: 230px;
+    margin-top: 30px;
+}
   
-  h2 {
-    color: #FF64B4;
+  .breathing-container h2{
+    margin-left: 250px;
+    margin-top: 30px;
+    font-size: 30px;
+    color: #ffffff;
   }
-  
-  p {
+  .breathing-container p {
     font-size: 18px;
     margin-top: 5px;
+    margin-left: 250px;
+    color: #fff;
   }
   
   .circle-container {
@@ -29,7 +43,7 @@
   
   .circle-progress {
     fill: none;
-    stroke: rgb(247, 100, 255);
+    stroke: rgb(14, 0, 93);
     stroke-width: 4;
     stroke-dasharray: 100;
     stroke-dashoffset: 0;
@@ -42,7 +56,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 24px;
-    color: rgb(247, 100, 255);
+    color: rgb(14, 0, 93);
   }
   
   .congrats-message {
@@ -51,7 +65,5 @@
     margin-top: 20px;
     margin-left: 650px;
   }
-  .dark-mode-title p{
-    color: white;
-  }
+ 
   
