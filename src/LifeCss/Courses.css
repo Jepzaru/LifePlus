@@ -108,13 +108,32 @@ body{
     pointer-events: none;
   }
   .create-course-close{
-    margin-left: 820px;
-    margin-top: -20px;
+    margin-left: 830px;
     background-color: red;
     font-family: 'Poppins', sans-serif;
     border-radius: 50px;
-    padding: 10px 30px;
+    padding: 10px 40px;
     transition: background-color 0.3s;
     cursor: pointer;
+    
+  }
+  .create-course-close :hover{
+    background-color: maroon;
+  }
+  .closecourse{
+    margin-top: -40px;
+  }
+  .create-course-con {
+    display: flex;
+    flex-direction: column;
+    background-color: #E7E7E7;
+    margin-top: 30px;
+    border-radius: 20px;
+    height: 485px;
+    width: 960px;
   }
   
+  .create-course-con h3 {
+    margin-top: 20px;
+    margin-left: 400px;
+  }

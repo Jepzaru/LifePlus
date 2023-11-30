@@ -22,9 +22,13 @@ const CreateCourseBox = ({ onClose }) => {
 
   return (
     <div id="create-course-box" className={`create-course-box ${isOutro ? 'outro' : ''}`}>
-      <h2>Create New Course</h2>
-      
+      <h1>Create New Course</h1>
+      <div className='closecourse'>
       <button className='create-course-close' onClick={handleOutro}>Cancel</button>
+      </div>
+      <div className='create-course-con'>
+          <h3>Course Title</h3>
+      </div>
     </div>
   );
 };
