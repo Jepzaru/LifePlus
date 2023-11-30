@@ -107,3 +107,14 @@ body{
     opacity: 0.5;
     pointer-events: none;
   }
+  .create-course-close{
+    margin-left: 820px;
+    margin-top: -20px;
+    background-color: red;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 50px;
+    padding: 10px 30px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+  }
+  

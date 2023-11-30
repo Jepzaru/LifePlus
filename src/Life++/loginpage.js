@@ -27,8 +27,7 @@ const LoginPage = () => {
 
     useEffect(() => {
         setLoading(true);
-        // Fetch all users from your API using Axios
-        axios.get('http://localhost:8080/user/get') // Replace with your API endpoint
+        axios.get('http://localhost:8080/user/get') 
             .then((response) => {
                 setUsers(response.data);
                 setLoading(false);

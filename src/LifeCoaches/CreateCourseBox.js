@@ -16,16 +16,15 @@ const CreateCourseBox = ({ onClose }) => {
   const handleOutro = () => {
     setIsOutro(true);
     setTimeout(() => {
-      onClose(); // Close the box after the outro effect
-    }, 300); // Adjust the duration to match the transition duration in CSS
+      onClose(); 
+    }, 300); 
   };
 
   return (
     <div id="create-course-box" className={`create-course-box ${isOutro ? 'outro' : ''}`}>
-      {/* Your content for the create course box */}
       <h2>Create New Course</h2>
-      {/* Add more content as needed */}
-      <button onClick={handleOutro}>Close</button>
+      
+      <button className='create-course-close' onClick={handleOutro}>Cancel</button>
     </div>
   );
 };
