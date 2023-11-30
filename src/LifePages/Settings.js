@@ -62,7 +62,7 @@ function Setting() {
               <div className="setting-button" onClick={toggleDarkMode}><MdDarkMode style={{ marginRight: '10px', marginBottom: '-2px' }} />
                 {darkMode ? 'Light Mode' : 'Dark Mode'}</div>
               <div className="setting-button"><FaLink style={{ marginRight: '10px', marginBottom: '-2px' }} />Link Social Account</div>
-              <div className="setting-button"><FaUnlock style={{ marginRight: '10px', marginBottom: '-2px' }} />Change Password</div>
+              <Link to="/index/change-pass" className="setting-button" ><FaUnlock style={{ marginRight: '10px', marginBottom: '-2px' }} />Change Password</Link>
               <div className="setting-button" onClick={handleSignOut}><PiSignOutBold style={{ marginRight: '10px', marginBottom: '-2px' }} />Sign Out</div>
             </div>
           </div>

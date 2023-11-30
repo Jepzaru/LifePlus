@@ -66,4 +66,12 @@
     margin-left: 650px;
   }
  
-  
+.breath-gif{
+  width: 400px; /* Adjust the width as needed */
+  height: 400px; /* Adjust the height as needed */
+  position: absolute;
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
+  margin-top: 5px;
+  margin-left: -350px;
+}  
