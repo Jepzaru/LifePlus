@@ -57,7 +57,7 @@ const MathGame = () => {
             onChange={(e) => setAnswer(e.target.value)}
             ref={inputRef}
           />
-          <button onClick={checkAnswer}>Check</button>
+          <button className='check-math-button' onClick={checkAnswer}>Check</button>
         </div>
       </div>
     </div>

@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: plum;
+  background: linear-gradient(#38B6FA, #3FB24F);
   margin: 20px;
   padding: 20px;
   border: 1px solid #ccc;
@@ -31,7 +31,7 @@ input {
   padding: 10px 20px;
   font-size: 1em;
   cursor: pointer;
-  background-color: #4caf50;
+  background-color: #38eb3e;
   color: white;
   border: none;
   border-radius: 5px;
