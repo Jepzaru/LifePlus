@@ -1,4 +1,4 @@
-.main {
+.forget {
     justify-content: center;
     display: flex;
     margin-top: 300px;
@@ -10,14 +10,7 @@
     animation: fadeIn 1s forwards;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
+
 
 .forimg {
     background-image: url('../LifeImages/logimg.png');
@@ -37,7 +30,7 @@
     height: 60%;
     width: 40%;
     box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.4);
-    margin: auto; /* Center the content horizontally */
+    margin: auto; 
 }
 
 .forcon p {
