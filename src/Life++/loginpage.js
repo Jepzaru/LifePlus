@@ -29,6 +29,7 @@ const LoginPage = () => {
         setLoading(true);
         axios.get('http://localhost:8080/user/get') 
             .then((response) => {
+                console.log(response.data)
                 setUsers(response.data);
                 setLoading(false);
             })
