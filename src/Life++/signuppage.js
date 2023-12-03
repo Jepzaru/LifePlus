@@ -22,11 +22,11 @@ import MuiAlert from '@mui/material/Alert';
 const StyledDatePicker = styled(DatePicker)({
     width: '155px',
     marginLeft: '30px',
-  });
-  
+});
+
 
 export default function SignUpPage() {
-   
+
     const [loading, setLoading] = useState(false);
     const [accountType, setAccountType] = useState('');
     const [formData, setFormData] = useState({
@@ -44,19 +44,19 @@ export default function SignUpPage() {
 
     const [snackbarOpen, setSnackbarOpen] = useState(false);
     const [successSnackbarOpen, setSuccessSnackbarOpen] = useState(false);
-    
+
     useEffect(() => {
         setLoading(true)
-        setTimeout(() =>{
+        setTimeout(() => {
             setLoading(false)
         }, 2000)
     }, [])
 
     const handleAccountTypeChange = (event) => {
-            const selectedType = event.target.value;
-            setAccountType(selectedType);
-            const typeValue = selectedType === 'Coach' ? '1' : '0'; // Set type based on selection
-            setFormData({ ...formData, type: typeValue });
+        const selectedType = event.target.value;
+        setAccountType(selectedType);
+        const typeValue = selectedType === 'Coach' ? '1' : '0'; // Set type based on selection
+        setFormData({ ...formData, type: typeValue });
     };
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -67,64 +67,86 @@ export default function SignUpPage() {
         const { password, confirmPassword } = formData;
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
         return (
-          password === confirmPassword &&
-          password.match(passwordRegex) !== null
+            password === confirmPassword &&
+            password.match(passwordRegex) !== null
         );
-      };
+    };
 
     const handleSnackbarClose = (event, reason) => {
         if (reason === 'clickaway') {
-          return;
+            return;
         }
-    
+
         setSnackbarOpen(false);
-      };
+    };
 
-      const handleSuccessSnackbarClose = (event, reason) => {
+    const handleSuccessSnackbarClose = (event, reason) => {
         if (reason === 'clickaway') {
-          return;
+            return;
         }
-    
-        setSuccessSnackbarOpen(false);
-      };
-    
 
-      const handleClickShowPassword = () => {
+        setSuccessSnackbarOpen(false);
+    };
+
+
+    const handleClickShowPassword = () => {
         setFormData({ ...formData, showPassword: !formData.showPassword });
-      };
-    
-      const handleMouseDownPassword = (event) => {
+    };
+
+    const handleMouseDownPassword = (event) => {
         event.preventDefault();
-      };
+    };
 
     const handleCreateAccount = () => {
 
-    const requiredFields = ['fname', 'lname', 'email', 'birthdate', 'pnum', 'gender', 'username', 'password', 'confirmPassword'];
-    const isAnyFieldEmpty = requiredFields.some(field => !formData[field]);
+        const requiredFields = ['fname', 'lname', 'email', 'birthdate', 'pnum', 'gender', 'username', 'password', 'confirmPassword'];
+        const isAnyFieldEmpty = requiredFields.some(field => !formData[field]);
 
-    if (isAnyFieldEmpty) {
-      // Show error Snackbar for empty fields
-      setSnackbarOpen(true);
-      return;
-    }
+        if (isAnyFieldEmpty) {
+            // Show error Snackbar for empty fields
+            setSnackbarOpen(true);
+            return;
+        }
 
         if (!isPasswordValid()) {
             // Password does not meet criteria, handle accordingly
             console.error('Password must have an uppercase and a special characters !!');
             setSnackbarOpen(true);
             return;
-          }
+        }
         // Prepare the data to be sent in the POST request
         const postData = {
             ...formData,
         };
+        if (accountType === 'Coach') {
+            // If the selected account type is 'Coach', create a new coach record
+            const coachData = {
+                name: formData.username, // Assuming the username should be used as the coach's name
+                email: formData.email,
+                username: formData.username,
+                // Add other properties as needed for the CoachEntity
+            };
 
+            axios.post('http://localhost:8080/coach/insert', coachData, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+                .then((response) => {
+                    console.log('Coach record created successfully:', response.data);
+                    // Proceed to create user account or perform other actions if needed
+                })
+                .catch((error) => {
+                    console.error('Error creating coach record:', error);
+                    // Handle errors while creating the coach record
+                });
+        }
         // Send a POST request using Axios
         axios.post('http://localhost:8080/user/insert', postData, {
-    headers: {
-        'Content-Type': 'application/json',
-    },
-})
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
             .then((response) => {
                 // Handle the response, e.g., show a success message
                 console.log('Account created successfully:', response.data);
@@ -152,7 +174,7 @@ export default function SignUpPage() {
                             variant="outlined"
                             fullWidth
                             onChange={handleInputChange}
-                            style={{ marginBottom: '20px', width: '30%', marginLeft: '30px' }}  InputProps={{ style: {  fontFamily: 'Poppins,sans-serif' } }}
+                            style={{ marginBottom: '20px', width: '30%', marginLeft: '30px' }} InputProps={{ style: { fontFamily: 'Poppins,sans-serif' } }}
                         />
                         <TextField
                             label="Last name"
@@ -168,16 +190,16 @@ export default function SignUpPage() {
                             name="email"
                             fullWidth
                             onChange={handleInputChange}
-                            style={{ marginBottom: '20px', width: '45%', marginLeft: '30px' }} InputProps={{ style: {  fontFamily: 'Poppins,sans-serif' } }}
+                            style={{ marginBottom: '20px', width: '45%', marginLeft: '30px' }} InputProps={{ style: { fontFamily: 'Poppins,sans-serif' } }}
                         />
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
-                        <StyledDatePicker
-                        selected={formData.birthdate}
-                        name="birthdate"
-                        onChange={(date) => setFormData({ ...formData, birthdate: date })}
-                        dateFormat="MM/dd/yyyy"
-                    
-                        />
+                            <StyledDatePicker
+                                selected={formData.birthdate}
+                                name="birthdate"
+                                onChange={(date) => setFormData({ ...formData, birthdate: date })}
+                                dateFormat="MM/dd/yyyy"
+
+                            />
                         </LocalizationProvider>
                         <TextField
                             label="Contact Number"
@@ -185,7 +207,7 @@ export default function SignUpPage() {
                             fullWidth
                             name="pnum"
                             onChange={handleInputChange}
-                            style={{ marginBottom: '20px', width: '45%', marginLeft: '30px' }} InputProps={{ style: {  fontFamily: 'Poppins,sans-serif' } }}
+                            style={{ marginBottom: '20px', width: '45%', marginLeft: '30px' }} InputProps={{ style: { fontFamily: 'Poppins,sans-serif' } }}
                         />
                         <TextField
                             label="Gender"
@@ -202,9 +224,9 @@ export default function SignUpPage() {
                         fullWidth
                         name="username"
                         onChange={handleInputChange}
-                        style={{ marginBottom: '20px', width: '30%', marginLeft: '30px' }} InputProps={{ style: {  fontFamily: 'Poppins,sans-serif' } }}
+                        style={{ marginBottom: '20px', width: '30%', marginLeft: '30px' }} InputProps={{ style: { fontFamily: 'Poppins,sans-serif' } }}
                     />
-                     <TextField
+                    <TextField
                         label="Password"
                         type={formData.showPassword ? 'text' : 'password'}
                         variant="outlined"
@@ -213,21 +235,21 @@ export default function SignUpPage() {
                         onChange={handleInputChange}
                         style={{ marginBottom: '20px', width: '30%', marginLeft: '30px' }}
                         InputProps={{
-                        style: { fontFamily: 'Poppins,sans-serif' },
-                        endAdornment: (
-                            <InputAdornment position="end">
-                            <IconButton
-                                onClick={handleClickShowPassword}
-                                onMouseDown={handleMouseDownPassword}
-                                edge="end"
-                            >
-                                {formData.showPassword ? <Visibility /> : <VisibilityOff />}
-                            </IconButton>
-                            </InputAdornment>
-                        ),
+                            style: { fontFamily: 'Poppins,sans-serif' },
+                            endAdornment: (
+                                <InputAdornment position="end">
+                                    <IconButton
+                                        onClick={handleClickShowPassword}
+                                        onMouseDown={handleMouseDownPassword}
+                                        edge="end"
+                                    >
+                                        {formData.showPassword ? <Visibility /> : <VisibilityOff />}
+                                    </IconButton>
+                                </InputAdornment>
+                            ),
                         }}
                     />
-                         <TextField
+                    <TextField
                         label="Confirm Password"
                         type={formData.showPassword ? 'text' : 'password'}
                         variant="outlined"
@@ -236,21 +258,21 @@ export default function SignUpPage() {
                         onChange={handleInputChange}
                         style={{ marginBottom: '20px', width: '45%', marginLeft: '30px' }}
                         InputProps={{
-                        style: { fontFamily: 'Poppins,sans-serif' },
-                        endAdornment: (
-                            <InputAdornment position="end">
-                            <IconButton
-                                onClick={handleClickShowPassword}
-                                onMouseDown={handleMouseDownPassword}
-                                edge="end"
-                            >
-                                {formData.showPassword ? <Visibility /> : <VisibilityOff />}
-                            </IconButton>
-                            </InputAdornment>
-                        ),
+                            style: { fontFamily: 'Poppins,sans-serif' },
+                            endAdornment: (
+                                <InputAdornment position="end">
+                                    <IconButton
+                                        onClick={handleClickShowPassword}
+                                        onMouseDown={handleMouseDownPassword}
+                                        edge="end"
+                                    >
+                                        {formData.showPassword ? <Visibility /> : <VisibilityOff />}
+                                    </IconButton>
+                                </InputAdornment>
+                            ),
                         }}
                     />
-                         <FormControl style={{ marginBottom: '20px', width: '15%', marginLeft: '30px' }} >
+                    <FormControl style={{ marginBottom: '20px', width: '15%', marginLeft: '30px' }} >
                         <InputLabel id="account-type">Account</InputLabel>
                         <Select
                             labelId="account-type-label"
@@ -258,7 +280,7 @@ export default function SignUpPage() {
                             value={accountType}
                             onChange={handleAccountTypeChange}
                             displayEmpty
-                            label= "Account"
+                            label="Account"
                             inputProps={{ name: 'accountType', id: 'account-type' }}
                         >
                             <MenuItem value="Coach">Coach</MenuItem>
@@ -271,12 +293,12 @@ export default function SignUpPage() {
                         onClose={handleSnackbarClose}
                     >
                         <MuiAlert
-                        elevation={6}
-                        variant="filled"
-                        onClose={handleSnackbarClose}
-                        severity="error"
+                            elevation={6}
+                            variant="filled"
+                            onClose={handleSnackbarClose}
+                            severity="error"
                         >
-                        Password does not meet the criteria.
+                            Password does not meet the criteria.
                         </MuiAlert>
                     </Snackbar>
                     <Snackbar
@@ -285,12 +307,12 @@ export default function SignUpPage() {
                         onClose={handleSuccessSnackbarClose}
                     >
                         <MuiAlert
-                        elevation={6}
-                        variant="filled"
-                        onClose={handleSuccessSnackbarClose}
-                        severity="success"
+                            elevation={6}
+                            variant="filled"
+                            onClose={handleSuccessSnackbarClose}
+                            severity="success"
                         >
-                        Account created successfully!
+                            Account created successfully!
                         </MuiAlert>
                     </Snackbar>
                     <Snackbar
@@ -299,19 +321,19 @@ export default function SignUpPage() {
                         onClose={handleSnackbarClose}
                     >
                         <MuiAlert
-                        elevation={6}
-                        variant="filled"
-                        onClose={handleSnackbarClose}
-                        severity="error"
+                            elevation={6}
+                            variant="filled"
+                            onClose={handleSnackbarClose}
+                            severity="error"
                         >
-                        All fields must be filled.
+                            All fields must be filled.
                         </MuiAlert>
                     </Snackbar>
                     <button className="create-button" onClick={handleCreateAccount}>
-                            Create Account
-                        </button>
+                        Create Account
+                    </button>
                 </div>
-               
+
             )}
         </div>
     );
