@@ -27,9 +27,9 @@ const LoginPage = () => {
 
     useEffect(() => {
         setLoading(true);
-        // Fetch all users from your API using Axios
-        axios.get('http://localhost:8080/user/get') // Replace with your API endpoint
+        axios.get('http://localhost:8080/user/get') 
             .then((response) => {
+                console.log(response.data)
                 setUsers(response.data);
                 console.log(response.data);
                 setLoading(false);
@@ -50,7 +50,9 @@ const LoginPage = () => {
         console.log(foundUser);
         login(foundUser);
         localStorage.setItem('loggedInUser', JSON.stringify(foundUser));
-        navigate('/index/dashboard');
+        const dashboardPath = foundUser.type === 1 ? '/coach-index/dashboard' : '/index/dashboard';
+        navigate(dashboardPath);
+
       } else {
         setError('Invalid username or password');
         setSnackbarOpen(true);

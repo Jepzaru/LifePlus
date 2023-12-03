@@ -1,0 +1,92 @@
+.forget {
+    justify-content: center;
+    display: flex;
+    margin-top: 300px;
+    margin: auto; /* Center the content horizontally */
+}
+
+.logcon {
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+
+
+.forimg {
+    background-image: url('../LifeImages/logimg.png');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.forcon {
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px;
+    height: 60%;
+    width: 40%;
+    box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.4);
+    margin: auto; 
+}
+
+.forcon p {
+    margin-left: 30px;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 35px;
+    margin-top: 20px;
+    font-size: 32px;
+}
+
+.forget-password {
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    margin-left: 358px;
+    margin-top: -10px;
+}
+
+.forget-password a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.forget-password a:hover {
+    color: #705FBE;
+}
+
+.conf {
+    margin-top: 40px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.confirmb {
+    margin-left: 55px;
+    padding: 15px 180px;
+    background-color: #FF64B4;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    text-decoration: none;
+    font-size: 22px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.confirmb:hover {
+    background-color: #705FBE; 
+  }
+
+.acs p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    margin-left: 150px;
+    margin-top: 30px;
+}
+
+
+
+

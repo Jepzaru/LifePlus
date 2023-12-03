@@ -4,6 +4,7 @@ import Sidenavbar from '../Life++/sidenavbar';
 import Header from '../Life++/Header';
 import { useLocation } from 'react-router-dom';
 import { IoExtensionPuzzle } from 'react-icons/io5';
+import breathGif from '../LifeImages/breath.gif';
 
 function BreathingExercise() {
   const location = useLocation();
@@ -12,7 +13,13 @@ function BreathingExercise() {
   const [inhaleCount, setInhaleCount] = useState(0);
   const [exhaleCount, setExhaleCount] = useState(0);
   const [completed, setCompleted] = useState(false);
-  const maxBreathCount = 3; // Set the maximum number of inhales/exhales
+  const maxBreathCount = 3; 
+  const savedDarkMode = localStorage.getItem('darkMode') === 'true';
+  const [darkMode] = useState(savedDarkMode);
+
+  useEffect(() => {
+    localStorage.setItem('darkMode', darkMode);
+  }, [darkMode]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -60,16 +67,16 @@ function BreathingExercise() {
   };
 
   return (
-    <div className="appind">
+    <div className={`appind ${darkMode ? 'dark-mode' : ''}`}>
       <Header />
       <Sidenavbar location={location} />
       <div className='cha'>
         <h1><IoExtensionPuzzle style={{ marginRight: '15px', marginBottom: '-5px', color: '#FF64B4' }} />Challenges</h1>
       </div>
-      <div className='chal'>
+      <div className={`chal ${darkMode ? 'dark-mode-title' : ''}`}>
         <h1><IoExtensionPuzzle style={{ marginRight: '15px', marginBottom: '-5px', color: '#FF64B4' }} />Challenges / Breathing Exercise</h1>
       </div>
-      <div className='breathing-exercise'>
+      <div className={`breathing-container ${darkMode ? 'dark-mode-title' : ''}`}>
         <h2>{breathingPhase === 'inhale' ? 'Inhale' : breathingPhase === 'hold' ? 'Hold' : 'Exhale'}</h2>
         <p>Time left: {timer} seconds</p>
 
@@ -87,6 +94,10 @@ function BreathingExercise() {
           <div className="timer-text">
             {timer}
           </div>
+          <img
+          className="breath-gif"
+          src={breathGif}
+          />
         </div>
 
         {completed && <p>Great job! Breathing exercise completed.</p>}

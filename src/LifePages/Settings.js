@@ -1,7 +1,6 @@
-
 import React, { useEffect, useState } from 'react';
 import '../LifeCss/Settings.css';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom'; 
 import Sidenavbar from '../Life++/sidenavbar';
 import Header from '../Life++/Header';
 import { IoMdSettings } from "react-icons/io";
@@ -12,11 +11,10 @@ import { FaUnlock } from "react-icons/fa";
 import HashLoader from 'react-spinners/HashLoader';
 import { PiSignOutBold } from "react-icons/pi";
 
-
-
 function Setting() {
   const [loading, setLoading] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();  
 
   const savedDarkMode = localStorage.getItem('darkMode') === 'true';
 
@@ -29,10 +27,14 @@ function Setting() {
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
   };
+
   const handleSignOut = () => {
-    window.location.href = '/';
+    // Use navigate to replace the current entry in the history stack
+    navigate('/', { replace: true });
+    window.history.replaceState(null, '', '/');
+
   };
-  
+
   useEffect(() => {
     setLoading(true);
     setTimeout(() => {
@@ -48,25 +50,25 @@ function Setting() {
         </div>
       ) : (
         <>
-      <Header />
-      <Sidenavbar location={location} />
-      <div className='set'>
-        <h1>Settings</h1>
-        <div className={`setitle ${darkMode ? 'dark-mode-title' : ''}`}>
-        <h1><IoMdSettings style={{ marginRight: '15px', marginBottom: '-5px', color: '#FF64B4' }}/>Settings</h1>
-      </div>
-      <div className={`settings-container ${darkMode ? 'dark-mode-container' : ''}`}>
-      <Link to="/index/settings-profile" className="setting-button" ><FaUserEdit style={{ marginRight:'10px', marginBottom: '-2px'}}/>Customize Profile</Link>
-          <div className="setting-button" onClick={toggleDarkMode}><MdDarkMode style={{ marginRight:'10px', marginBottom: '-2px'}} />
-            {darkMode ? 'Light Mode' : 'Dark Mode'}</div>
-          <div className="setting-button"><FaLink style={{ marginRight:'10px', marginBottom: '-2px'}}/>Link Social Account</div>
-          <div className="setting-button"><FaUnlock style={{ marginRight:'10px', marginBottom: '-2px'}}/>Change Password</div>
-        <div className="setting-button" onClick={handleSignOut}><PiSignOutBold style={{ marginRight: '10px', marginBottom: '-2px' }} />Sign Out</div>
-        </div>
-      </div>
-      </>
+          <Header />
+          <Sidenavbar location={location} />
+          <div className='set'>
+            <h1>Settings</h1>
+            <div className={`setitle ${darkMode ? 'dark-mode-title' : ''}`}>
+              <h1><IoMdSettings style={{ marginRight: '15px', marginBottom: '-5px', color: '#FF64B4' }} />Settings</h1>
+            </div>
+            <div className={`settings-container ${darkMode ? 'dark-mode-container' : ''}`}>
+              <Link to="/index/settings-profile" className="setting-button" ><FaUserEdit style={{ marginRight: '10px', marginBottom: '-2px' }} />Customize Profile</Link>
+              <div className="setting-button" onClick={toggleDarkMode}><MdDarkMode style={{ marginRight: '10px', marginBottom: '-2px' }} />
+                {darkMode ? 'Light Mode' : 'Dark Mode'}</div>
+              <div className="setting-button"><FaLink style={{ marginRight: '10px', marginBottom: '-2px' }} />Link Social Account</div>
+              <Link to="/index/change-pass" className="setting-button" ><FaUnlock style={{ marginRight: '10px', marginBottom: '-2px' }} />Change Password</Link>
+              <div className="setting-button" onClick={handleSignOut}><PiSignOutBold style={{ marginRight: '10px', marginBottom: '-2px' }} />Sign Out</div>
+            </div>
+          </div>
+        </>
       )}
-      </div>
+    </div>
   );
 }
 

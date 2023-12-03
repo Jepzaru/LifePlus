@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../LifeCss/Challenges.css';
 import Sidenavbar from '../Life++/sidenavbar';
 import Header from '../Life++/Header';
@@ -10,6 +10,12 @@ import { IoExtensionPuzzle } from 'react-icons/io5';
 
 function Abs() {
   const location = useLocation();
+  const savedDarkMode = localStorage.getItem('darkMode') === 'true';
+  const [darkMode] = useState(savedDarkMode);
+
+  useEffect(() => {
+    localStorage.setItem('darkMode', darkMode);
+  }, [darkMode]);
 
   const initialChallenges = [
     { progress: 0, text: 'Start Challenge', duration: 30 },
@@ -123,13 +129,13 @@ function Abs() {
   };
  
   return (
-    <div className="appind">
+    <div className={`appindcha ${darkMode ? 'dark-mode' : ''}`}>
       <Header />
       <Sidenavbar location={location} />
       <div className='cha'>
         <h1><IoExtensionPuzzle style={{ marginRight: '15px', marginBottom: '-5px', color: '#FF64B4' }} />Challenges</h1>
       </div>
-      <div className='chal'>
+      <div className={`chal ${darkMode ? 'dark-mode-title' : ''}`}>
         <h1><IoExtensionPuzzle style={{ marginRight: '15px', marginBottom: '-5px', color: '#FF64B4' }} />Challenges / Abs</h1>
       </div>
       <div className='resetarm'>
@@ -247,7 +253,7 @@ function Abs() {
           <p>
           Works the triceps, chest, and shoulders.<br/>
           Keep your body in a straight line and lower<br/>  your chest
-           to the ground by bending your elbows.
+           to the ground by bending <br/>your elbows.
           </p>
           <button className='arms-button1' onClick={() => startChallenge(3, 3)}>
             {challenge4.text}
@@ -383,8 +389,8 @@ function Abs() {
         </div>
         <div className='arm-ins'>
           <p>
-          Hold a dumbbell in one hand and hinge at the hips.<br/>
-          Extend your arm straight behind you, <br/>squeezing the triceps.
+          Hold a dumbbell in one hand and hinge<br/> at the hips.
+          Extend your arm straight <br/> behind you,squeezing the triceps.
           </p>
           <button className='arms-button1' onClick={() => startChallenge(7, 7)}>
             {challenge8.text}
@@ -418,7 +424,7 @@ function Abs() {
           <p>
           Hold a barbell with an overhand grip.<br/>
           Curl the weights toward your shoulders, <br/>
-          focusing on the muscles on the back of your arms.
+          focusing on the muscles on the back.
           </p>
           <button className='arms-button1' onClick={() => startChallenge(8, 8)}>
             {challenge9.text}

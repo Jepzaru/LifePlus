@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Landingpage from './landingpage';
 import LoginPage from './loginpage';
 import SignUp from './signuppage';
+import Forgot from './Forgotpass';
+import Change from '../LifePages/ChangePass';
 import Dash from '../LifePages/Dashboard';
 import Course from '../LifePages/Courses';
 import Challenges from '../LifePages/Challenges';
@@ -56,6 +58,8 @@ function LifeRoutes({ children }) {
         <Route path="/index/challenges/breathing" element={<Breathing/>}/>
         <Route path="/index/challenges/math" element={<Math/>}/>
         <Route path="/index/challenges/memory" element={<Memory/>}/>
+        <Route path="/forgot-password" element={<Forgot/>}/>
+        <Route path="/index/change-pass" element={<Change/>}/>
       </Routes>
     </BrowserRouter>
     </AuthProvider>

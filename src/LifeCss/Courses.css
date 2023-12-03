@@ -33,7 +33,7 @@ body{
     width: 340px;
     border-radius: 20px;
     margin-left: 1150px;
-    margin-top: -820px;
+    margin-top: -850px;
     background-color: #E7E7E7;
     
 }
@@ -44,6 +44,24 @@ body{
     font-size: 24px;
     font-weight: bold;
 }
+.create-course{
+    margin-left: 630px;
+    padding: 15px 30px;
+    font-family: 'Poppins', sans-serif;
+    background-color: green;
+    cursor: pointer;
+    border-radius: 50px;
+    font-size: 18px;
+    color: white;
+    border: none;
+    transition: background-color 0.3s;
+}
+.create-course:hover{
+    background-color: darkgreen;
+}
+.createcoursediv{
+    margin-top: -65px;
+}
 .dark-mode {
     background-color: #121212; 
     color: black; 
@@ -51,3 +69,153 @@ body{
   .dark-mode-title {
     color: white;
   }
+  .create-course-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 1000px;
+    height: 600px;
+    transform: translate(-50%, -50%) scale(0.8); /* Adjusted for centering and initial scale */
+    padding: 20px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+  .create-course-box.visible {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1); /* Adjusted for centering and full scale */
+  }
+  
+  .create-course-box.outro {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8); /* Reverse the scale to initial size */
+  }
+  
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+  
+  .dimmed {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  .create-course-close{
+    margin-left: 830px;
+    background-color: red;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 50px;
+    padding: 10px 40px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    border: none;
+    color: white;
+    
+  }
+  .create-course-close:hover {
+    background-color: darkred;
+}
+  .closecourse{
+    margin-top: -40px;
+  }
+  .create-course-con {
+    display: flex;
+    flex-direction: column;
+    background-color: #E7E7E7;
+    margin-top: 30px;
+    border-radius: 20px;
+    height: 485px;
+    width: 960px;
+  }
+  
+  .create-course-con h3 {
+    margin-top: -20px;
+    margin-left: 400px;
+  }
+  .create-course-con input{
+    margin-top: 10px;
+    margin-left: 400px;
+    width: 530px;
+    height: 40px;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 15px;
+    
+  }
+  .course-des h3{
+    margin-top: -260px;
+  }
+  .course-des textarea {
+    width: 55%;
+    height: 160px; 
+    margin-top: 5px;
+    margin-left: 400px;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 15px;
+}
+  .course-capa-max h3{
+    margin-top: -50px;
+  
+  }
+  .max-capa{
+    margin-top: -50px;
+    margin-left: 700px;
+    width: 100px;
+    height: 40px;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 15px;
+  }
+  .create-save{
+    margin-top: 5px;
+    margin-left: 700px;
+    padding: 15px 50px;
+    background-color: green;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    transition: background-color 0.3s;
+  }
+  .create-save:hover{
+    background-color: darkgreen;
+  }
+ .image-options img{
+  height: 50px;
+  width: 50px;
+  z-index: 1;
+ }
+ .selected {
+  border: 2px solid blue;
+  /* Add styles for selected images */
+  transform: scale(1.2); /* Adjust the scale factor as needed */
+  transition: transform 0.3s ease; /* Add a smooth transition effect */
+  z-index: 2;
+}
+.create-course-con img {
+  max-width: 100%; /* Ensure the image does not exceed its container width */
+  max-height: 250px; /* Set a maximum height for the image */
+}
+.image-selector h3{
+  margin-left: 10px;
+  margin-top: 20px;
+}
+.course-name-tit h3{
+  margin-top: -350px;
+
+}
+.image-selector{
+  z-index: 3;
+}

@@ -22,6 +22,12 @@ const PhysicalContentPage = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
+  const savedDarkMode = localStorage.getItem('darkMode') === 'true';
+  const [darkMode] = useState(savedDarkMode);
+
+  useEffect(() => {
+    localStorage.setItem('darkMode', darkMode);
+  }, [darkMode]);
 
   const onBackButtonClick = () => {
     navigate('/index/dashboard');
@@ -116,7 +122,7 @@ const PhysicalContentPage = () => {
   }, []);
 
   return (
-    <div className="physical-content-container">
+    <div className={`physical-content-container ${darkMode ? 'dark-mode' : ''}`}>
       {loading ? (
         <div className="hash">
           <HashLoader size={100} color={'#FF64B4'} loading={loading} />
