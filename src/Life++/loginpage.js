@@ -31,6 +31,7 @@ const LoginPage = () => {
         axios.get('http://localhost:8080/user/get') // Replace with your API endpoint
             .then((response) => {
                 setUsers(response.data);
+                console.log(response.data);
                 setLoading(false);
             })
             .catch((error) => {
