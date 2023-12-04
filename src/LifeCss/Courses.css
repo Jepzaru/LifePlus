@@ -152,7 +152,7 @@ body{
     
   }
   .course-des h3{
-    margin-top: -260px;
+    margin-top: -275px;
   }
   .course-des textarea {
     width: 55%;
@@ -164,7 +164,7 @@ body{
     border-radius: 15px;
 }
   .course-capa-max h3{
-    margin-top: -50px;
+    margin-top: -70px;
   
   }
   .max-capa{
@@ -195,27 +195,22 @@ body{
  .image-options img{
   height: 50px;
   width: 50px;
-  z-index: 1;
  }
  .selected {
   border: 2px solid blue;
-  /* Add styles for selected images */
-  transform: scale(1.2); /* Adjust the scale factor as needed */
+  transform: scale(1.2); 
   transition: transform 0.3s ease; /* Add a smooth transition effect */
-  z-index: 2;
+ 
 }
 .create-course-con img {
-  max-width: 100%; /* Ensure the image does not exceed its container width */
-  max-height: 250px; /* Set a maximum height for the image */
+  max-width: 100%; 
+  max-height: 250px; 
 }
 .image-selector h3{
   margin-left: 10px;
   margin-top: 20px;
 }
 .course-name-tit h3{
-  margin-top: -350px;
+  margin-top: -370px;
 
-}
-.image-selector{
-  z-index: 3;
 }
