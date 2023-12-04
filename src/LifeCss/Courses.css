@@ -131,9 +131,9 @@ body{
     display: flex;
     flex-direction: column;
     background-color: #E7E7E7;
-    margin-top: 30px;
+    margin-top: 20px;
     border-radius: 20px;
-    height: 485px;
+    height: 490px;
     width: 960px;
   }
   
@@ -177,7 +177,7 @@ body{
     border-radius: 15px;
   }
   .create-save{
-    margin-top: 5px;
+    margin-top: 20px;
     margin-left: 700px;
     padding: 15px 50px;
     background-color: green;
@@ -211,6 +211,6 @@ body{
   margin-top: 20px;
 }
 .course-name-tit h3{
-  margin-top: -370px;
+  margin-top: -358px;
 
 }
