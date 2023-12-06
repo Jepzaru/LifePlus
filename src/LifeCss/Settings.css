@@ -58,10 +58,7 @@ body {
 .dark-mode-container{
   background-color: #121212;
 }
-.user-pro{
-  height: 500px;
-  width: 1290px;
-  background-color: #e3e1e1;
-  border-radius: 20px;
-  margin-top: 20px;
+.appinduserprof{
+  height: 170vh;
+  width: 100vw;
 }

@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import '../LifeCss/Settings.css';
+import '../LifeCss/UserProfile.css';
 import Sidenavbar from '../Life++/sidenavbar';
 import Header from '../Life++/Header';
 import { IoMdSettings } from "react-icons/io";
@@ -16,7 +16,7 @@ function UserProfileSettings() {
 
 
   return (
-    <div className={`appind ${darkMode ? 'dark-mode' : ''}`}>
+    <div className={`appinduserprof ${darkMode ? 'dark-mode' : ''}`}>
       <Header />
       <Sidenavbar />
       <div className='set'>
