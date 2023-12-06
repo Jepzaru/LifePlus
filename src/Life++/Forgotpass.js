@@ -54,6 +54,9 @@ const ForgetPasswordPage = () => {
             setLoading(false);
         }
     };
+    const handleBack = () => {
+        navigate('/login-page');
+    };
 
     const handleSnackbarClose = () => {
         setSnackbarOpen(false);
@@ -104,6 +107,9 @@ const ForgetPasswordPage = () => {
                             <button onClick={handleForgetPassword} className='confirmb'>
                                 Confirm
                             </button>
+                            <p className="back-link" onClick={handleBack}>
+                                Cancel
+                            </p>
                         </div>
                         <Snackbar
                             open={snackbarOpen}
