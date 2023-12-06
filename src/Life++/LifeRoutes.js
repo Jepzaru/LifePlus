@@ -27,6 +27,8 @@ import Memory from '../LifeMentalChallenges/Memory';
 import CoachSettings from '../LifeCoaches/CoachSettings';
 import PContCoach from '../LifeCoaches/PContCoach';
 import MContCoach from '../LifeCoaches/MContCoach';
+import CoachPShop from '../LifeCoaches/CoachPShop';
+import CoachQuest from '../LifeCoaches/CoachQuest';
 import { AuthProvider } from './AuthContext';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
@@ -64,8 +66,6 @@ function LifeRoutes({ children }) {
         <Route path="/forgot-password" element={<Forgot/>}/>
         <Route path="/index/change-pass" element={<Change/>}/>
         <Route path="/coach-index/settings" element={<CoachSettings/>}/>
-        <Route path="/coach/physical" element={<PContCoach/>}/>
-        <Route path="/coach/mental" element={<MContCoach/>}/>
       </Routes>
     </BrowserRouter>
     </AuthProvider>
