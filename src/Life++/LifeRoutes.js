@@ -24,6 +24,7 @@ import Concentration from '../LifeMentalChallenges/Concentration';
 import Breathing from '../LifeMentalChallenges/Breathing';
 import Math from '../LifeMentalChallenges/Math';
 import Memory from '../LifeMentalChallenges/Memory';
+import CoachSettings from '../LifeCoaches/CoachSettings';
 import { AuthProvider } from './AuthContext';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
@@ -60,6 +61,7 @@ function LifeRoutes({ children }) {
         <Route path="/index/challenges/memory" element={<Memory/>}/>
         <Route path="/forgot-password" element={<Forgot/>}/>
         <Route path="/index/change-pass" element={<Change/>}/>
+        <Route path="/coach-index/settings" element={<CoachSettings/>}/>
       </Routes>
     </BrowserRouter>
     </AuthProvider>

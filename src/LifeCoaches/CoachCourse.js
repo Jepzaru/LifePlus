@@ -12,6 +12,14 @@ function CoachCourses() {
   const [loading, setLoading] = useState(false);
   const [showCreateCourseBox, setShowCreateCourseBox] = useState(false);
 
+  const savedDarkMode = localStorage.getItem('darkMode') === 'true';
+
+  const [darkMode] = useState(savedDarkMode);
+
+  useEffect(() => {
+    localStorage.setItem('darkMode', darkMode);
+  }, [darkMode]);
+
   useEffect(() => {
     setLoading(true);
     setTimeout(() => {
@@ -28,7 +36,7 @@ function CoachCourses() {
   };
 
   return (
-    <div className="appind">
+    <div className={`appind ${darkMode ? 'dark-mode' : ''}`}>
       {loading ? (
         <div className="hash">
           <HashLoader size={100} color={'#FF64B4'} loading={loading} />
@@ -40,7 +48,7 @@ function CoachCourses() {
           <div className={`cou ${showCreateCourseBox ? 'dimmed' : ''}`}>
             <h1><RiGraduationCapFill style={{ marginRight: '15px', marginBottom: '-5px', color: '#FF64B4' }} />Courses</h1>
           </div>
-          <div className={`cour ${showCreateCourseBox ? 'dimmed' : ''}`}>
+          <div className={`cour ${showCreateCourseBox ? 'dimmed' : ''} ${darkMode ? 'dark-mode-title' : ''}`}>
             <h1><RiGraduationCapFill style={{ marginRight: '15px', marginBottom: '-5px', color: '#FF64B4' }} />Courses</h1>
             <div className='createcoursediv'>
               <button className='create-course' onClick={handleCreateCourseClick}>
