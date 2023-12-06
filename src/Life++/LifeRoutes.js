@@ -66,6 +66,10 @@ function LifeRoutes({ children }) {
         <Route path="/forgot-password" element={<Forgot/>}/>
         <Route path="/index/change-pass" element={<Change/>}/>
         <Route path="/coach-index/settings" element={<CoachSettings/>}/>
+        <Route path="/coach-index/physical" element={<PContCoach/>}/>
+        <Route path="/coach-index/mental" element={<MContCoach/>}/>
+        <Route path="/coach-index/pointsshop" element={<CoachPShop/>}/>
+        <Route path="/coach-index/quest" element={<CoachQuest/>}/>
       </Routes>
     </BrowserRouter>
     </AuthProvider>

@@ -158,11 +158,11 @@ function CoachDash() {
           <div className={`choose ${darkMode ? 'dark-mode-title' : ''}`}>
             <h1>Choose Content</h1>
           </div>
-          <Link to="/coach/physical"
+          <Link to="/coach-index/physical"
            className='phy-con'>
             <div className='phy'> <p>Physical Content</p></div>
           </Link>
-          <Link to="/coach/mental"
+          <Link to="/coach-index/mental"
            className='ment-con'>
             <div className='men'><p>Mental Content</p></div>
             </Link>
