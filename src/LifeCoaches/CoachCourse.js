@@ -36,7 +36,7 @@ function CoachCourses() {
   };
 
   return (
-    <div className={`appind ${darkMode ? 'dark-mode' : ''}`}>
+    <div className={`appindcourse ${darkMode ? 'dark-mode' : ''}`}>
       {loading ? (
         <div className="hash">
           <HashLoader size={100} color={'#FF64B4'} loading={loading} />

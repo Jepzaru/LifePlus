@@ -69,7 +69,7 @@ function LifeRoutes({ children }) {
         <Route path="/coach-index/physical" element={<PContCoach/>}/>
         <Route path="/coach-index/mental" element={<MContCoach/>}/>
         <Route path="/coach-index/pointsshop" element={<CoachPShop/>}/>
-        <Route path="/coach-index/quest" element={<CoachQuest/>}/>
+        <Route path="/coach-index/quests" element={<CoachQuest/>}/>
       </Routes>
     </BrowserRouter>
     </AuthProvider>

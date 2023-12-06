@@ -1,8 +1,7 @@
 import React from 'react';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import SchoolIcon from '@mui/icons-material/School';
-import ExtensionIcon from '@mui/icons-material/Extension';
-import LocalOfferIcon from '@mui/icons-material/LocalOffer';
+import StoreIcon from '@mui/icons-material/Store';
 import SportsIcon from '@mui/icons-material/Sports';
 import SettingsIcon from '@mui/icons-material/Settings';
 
@@ -20,7 +19,7 @@ export const CoachSidebarData = [
     },
     {
         title: "Points Shop",
-        icon: <LocalOfferIcon />,
+        icon: <StoreIcon />,
         link: "/coach-index/pointsshop",
     },
     {

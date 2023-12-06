@@ -20,13 +20,13 @@ const CreateCourseBox = ({ onClose }) => {
     const fetchCoachData = async () => {
       try {
         const response = await axios.get('http://localhost:8080/coach/get');
-        const coaches = response.data; 
+        const coaches = response.data;
 
-        const foundCoach = coaches.find(coach => coach.username === user.username);
+        const foundCoach = coaches.find((coach) => coach.username === user.username);
 
         if (foundCoach) {
-          setCourseData(prevData => ({ ...prevData, coach: foundCoach }));
-          console.log('Found Coach:', foundCoach); 
+          setCourseData((prevData) => ({ ...prevData, coach: foundCoach }));
+          console.log('Found Coach:', foundCoach);
         } else {
           console.log('Coach not found for the user');
         }
@@ -50,6 +50,11 @@ const CreateCourseBox = ({ onClose }) => {
 
   const handleSubmit = async () => {
     try {
+      if (!courseData.description) {
+        console.error('Description cannot be empty');
+        return;
+      }
+
       const newCourse = {
         description: courseData.description,
         max: parseInt(courseData.max, 10),
@@ -90,13 +95,15 @@ const CreateCourseBox = ({ onClose }) => {
   return (
     <div id="create-course-box" className={`create-course-box ${isOutro ? 'outro' : ''}`}>
       <h1>Create New Course</h1>
-      <div className='closecourse'>
-        <button className='create-course-close' onClick={handleOutro}>Cancel</button>
+      <div className="closecourse">
+        <button className="create-course-close" onClick={handleOutro}>
+          Cancel
+        </button>
       </div>
-      <div className='create-course-con'>
-        <div className='image-selector'>
+      <div className="create-course-con">
+        <div className="image-selector">
           <h3>Select Course Image</h3>
-          <div className='image-options'>
+          <div className="image-options">
             <img
               src={image1}
               alt="1"
@@ -112,7 +119,7 @@ const CreateCourseBox = ({ onClose }) => {
           </div>
           {selectedImage && <img src={selectedImage} alt="Selected Course Image" />}
         </div>
-        <div className='course-name-tit'>
+        <div className="course-name-tit">
           <h3>Course Title</h3>
           <input
             type="text"
@@ -121,18 +128,19 @@ const CreateCourseBox = ({ onClose }) => {
             name="name"
           />
         </div>
-        <div className='course-des'>
+        <div className="course-des">
           <h3>Course Description</h3>
           <textarea
+            type="text"
             value={courseData.description}
             onChange={(e) => handleInputChange(e)}
             name="description"
           ></textarea>
         </div>
-        <div className='course-capa-max'>
+        <div className="course-capa-max">
           <h3>Course Maximum Capacity</h3>
           <input
-            className='max-capa'
+            className="max-capa"
             type="text"
             value={courseData.max}
             onChange={(e) => handleInputChange(e)}
@@ -140,8 +148,8 @@ const CreateCourseBox = ({ onClose }) => {
           />
         </div>
 
-        <div className='create-course-save'>
-          <button className='create-save' onClick={handleSubmit}>
+        <div className="create-course-save">
+          <button className="create-save" onClick={handleSubmit}>
             Create Course
           </button>
         </div>
