@@ -27,18 +27,42 @@ function UserProfileSettings() {
           </h1>
         </div>
         <div className="user-pro">
+          <div className='usadjust'>
           {user && (
             <>
             <div className ="usnam">
-             <p>Username: {user.username}</p> 
+             <p >
+              <span style={{ fontWeight: 'bold', color: '#FF64B4' }}>Username: </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{user.username}
+              </p> 
              </div>
-              <p>First Name: {user.fname}</p>
-              <p>Last Name: {user.lname}</p>
-              <p>Gender: {user.gender}</p>
-              <p>Birth Date: {user.birthdate}</p>
-              <p>Email: {user.email}</p>
+             <div className ="usnam">
+              <p>
+              <span style={{ fontWeight: 'bold', color: '#FF64B4' }}>First Name: </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {user.fname}
+                </p>
+              </div>
+              <div className ="usnam">
+              <p>
+              <span style={{ fontWeight: 'bold', color: '#FF64B4' }}>Last Name: </span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{user.lname}
+                </p>
+              </div>
+              <div className ="usnam">
+              <p>
+              <span style={{ fontWeight: 'bold', color: '#FF64B4' }}>Gender: </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{user.gender}
+                </p>
+              </div>
+              <div className ="usnam">
+              <p>
+              <span style={{ fontWeight: 'bold', color: '#FF64B4' }}>Birth Date: </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {new Date(user.birthdate).toLocaleDateString()}
+                </p>
+              </div>
+              <div className ="usnam">
+              <p>
+              <span style={{ fontWeight: 'bold', color: '#FF64B4' }}>Email: </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {user.email}
+                </p>
+              </div>
             </>
           )}
+          </div>
           </div>
           </div>
         </div>

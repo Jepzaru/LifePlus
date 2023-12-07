@@ -1,23 +1,25 @@
 .appinduserprof{
     height: 110vh;
     width: 100vw;
-    display: flex;
 }
 .user-pro{
-    flex: 1;
     height: 600px;
     width: 1290px;
     background-color: #e3e1e1;
     border-radius: 20px;
-    margin-top: 20px;
+    margin-top: -40px;
   }
   .usnam{
     margin-left: 600px;
     background-color: white;
     border-radius: 10px;
     padding: 10px 30px;
+    width: 50%;
+    margin-top: 20px;
 
   }
-  .user-ponyeta{
-    margin-top: 50px;
+  .usadjust{
+    margin: 50px;
+    padding: 20px;
   }
+  
