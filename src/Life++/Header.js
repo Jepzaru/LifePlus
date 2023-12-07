@@ -4,6 +4,9 @@ import { FaSearch, FaCrown } from 'react-icons/fa';
 import { useAuth } from './AuthContext';
 import defaultProfileMale from '../LifeImages/defaultprofile.png';
 import defaultProfileFemale from '../LifeImages/defaultprofile1.png';
+import Achievement from '../LifeImages/achivement.png';
+import Quests from '../LifeImages/quest.png'; 
+import Shop from '../LifeImages/pshop.png'; 
 import '../LifeCss/header.css';
 
 const Header = () => {
@@ -17,7 +20,70 @@ const Header = () => {
       <div className="logo"></div>
       <div className='headlife'>
         <h1>LIFE ++</h1>
+        {storedUser && (
+          <div style={{ marginLeft: '200px', marginTop: '-24px' }}>
+          <Link to="/your-link" title="Achievements">
+            <img
+              src={Achievement}
+              alt="Life Plus Logo"
+              style={{
+                width: '80px', 
+                height: '50px', 
+                marginTop: '-50px',
+                marginBottom: '-10px',
+                marginLeft: '10px',
+                borderRadius: '50%',
+                transition: 'transform 0.2s',
+              }}
+              className="life-plus-logo"
+            />
+          </Link>
+          </div>
+        )}
+        {storedUser && (
+          <div style={{ marginLeft: '280px', marginTop: '-24px' }}>
+          <Link to="/your-link" title="Quests">
+            <img
+              src={Quests}
+              alt="Life Plus Logo"
+              style={{
+                width: '80px', 
+                height: '50px', 
+                marginTop: '-50px',
+                marginBottom: '-10px',
+                marginLeft: '10px',
+                borderRadius: '50%',
+                transition: 'transform 0.2s',
+              }}
+              className="life-plus-logo"
+            />
+          </Link>
+          </div>
+        )}
+        {storedUser && (
+          <div style={{ marginLeft: '370px', marginTop: '-24px' }}>
+          <Link to="/your-link" title="Points Shop">
+            <img
+              src={Shop}
+              alt="Life Plus Logo"
+              style={{
+                width: '80px', 
+                height: '50px', 
+                marginTop: '-50px',
+                marginBottom: '-10px',
+                marginLeft: '10px',
+                borderRadius: '50%',
+                transition: 'transform 0.2s',
+              }}
+              className="life-plus-logo"
+            />
+          </Link>
+          </div>
+        )}
+      
       </div>
+      
+      
       <div className="search">
         <input type="text" placeholder="&nbsp;&nbsp;&nbsp;Search..." />
         <FaSearch style={{ fontSize: '30px', marginLeft: '10px', marginBottom: '-10px' }} />
@@ -28,7 +94,7 @@ const Header = () => {
           Premium
         </Link>
         {storedUser && (
-          <div style={{  marginLeft: '1370px'}}>
+          <div style={{ marginLeft: '1370px' }}>
             <img
               src={defaultProfileImage}
               alt="User Profile"
@@ -37,8 +103,8 @@ const Header = () => {
                 height: '60px',
                 borderRadius: '50%',
                 marginRight: '10px',
-                marginTop:'-90px',
-                marginBottom:'5px'
+                marginTop: '-90px',
+                marginBottom: '5px',
               }}
             />
             <div className='usernem'>

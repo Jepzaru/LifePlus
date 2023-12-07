@@ -9,10 +9,10 @@ import { RiGraduationCapFill } from "react-icons/ri";
 import { IoCreateSharp } from "react-icons/io5";
 import { FaCheckCircle } from "react-icons/fa";
 import CreateCourseBox from './CreateCourseBox';
-import { useAuth } from '../Life++/AuthContext'; // Import useAuth
+import { useAuth } from '../Life++/AuthContext'; 
 
 function CoachCourses() {
-  const { login } = useAuth(); // Get login function from useAuth
+  const { login } = useAuth(); 
 
   const [loading, setLoading] = useState(false);
   const [showCreateCourseBox, setShowCreateCourseBox] = useState(false);

@@ -27,17 +27,22 @@ function UserProfileSettings() {
           </h1>
         </div>
         <div className="user-pro">
-          {/* Display user information here */}
           {user && (
             <>
-              <p>Name: {user.name}</p>
+            <div className ="usnam">
+             <p>Username: {user.username}</p> 
+             </div>
+              <p>First Name: {user.fname}</p>
+              <p>Last Name: {user.lname}</p>
+              <p>Gender: {user.gender}</p>
+              <p>Birth Date: {user.birthdate}</p>
               <p>Email: {user.email}</p>
-              {/* Add more user details as needed */}
             </>
           )}
+          </div>
+          </div>
         </div>
-      </div>
-    </div>
+
   );
 }
 

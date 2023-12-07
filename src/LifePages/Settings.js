@@ -10,10 +10,10 @@ import { FaLink } from 'react-icons/fa6';
 import { FaUnlock } from 'react-icons/fa';
 import HashLoader from 'react-spinners/HashLoader';
 import { PiSignOutBold } from 'react-icons/pi';
-import { useAuth } from '../Life++/AuthContext'; // Import useAuth
+import { useAuth } from '../Life++/AuthContext'; 
 
 function Setting() {
-  const { login, user } = useAuth(); // Get login and user from useAuth
+  const { login, user } = useAuth(); 
   const [loading, setLoading] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();

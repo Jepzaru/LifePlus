@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa';
 import { GiBilledCap } from "react-icons/gi";
 import { useAuth } from './AuthContext';
-import defaultProfileMale from '../LifeImages/defaultprofile.png';
-import defaultProfileFemale from '../LifeImages/defaultprofile1.png';
+import defaultProfileMale from '../LifeImages/coachprofile.png';
+import defaultProfileFemale from '../LifeImages/coachprofile1.png';
 import '../LifeCss/header.css';
 
 const CoachHeader = () => {
