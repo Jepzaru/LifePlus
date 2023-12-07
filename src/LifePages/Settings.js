@@ -1,20 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import '../LifeCss/Settings.css';
-import { Link, useLocation, useNavigate } from 'react-router-dom'; 
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Sidenavbar from '../Life++/sidenavbar';
 import Header from '../Life++/Header';
-import { IoMdSettings } from "react-icons/io";
-import { FaUserEdit } from "react-icons/fa";
-import { MdDarkMode } from "react-icons/md";
-import { FaLink } from "react-icons/fa6";
-import { FaUnlock } from "react-icons/fa";
+import { IoMdSettings } from 'react-icons/io';
+import { FaUserEdit } from 'react-icons/fa';
+import { MdDarkMode } from 'react-icons/md';
+import { FaLink } from 'react-icons/fa6';
+import { FaUnlock } from 'react-icons/fa';
 import HashLoader from 'react-spinners/HashLoader';
-import { PiSignOutBold } from "react-icons/pi";
+import { PiSignOutBold } from 'react-icons/pi';
+import { useAuth } from '../Life++/AuthContext'; // Import useAuth
 
 function Setting() {
+  const { login, user } = useAuth(); // Get login and user from useAuth
   const [loading, setLoading] = useState(false);
   const location = useLocation();
-  const navigate = useNavigate();  
+  const navigate = useNavigate();
 
   const savedDarkMode = localStorage.getItem('darkMode') === 'true';
 
@@ -32,7 +34,8 @@ function Setting() {
     // Use navigate to replace the current entry in the history stack
     navigate('/', { replace: true });
     window.history.replaceState(null, '', '/');
-
+    // Clear user on sign out
+    login(null);
   };
 
   useEffect(() => {
@@ -52,18 +55,35 @@ function Setting() {
         <>
           <Header />
           <Sidenavbar location={location} />
-          <div className='set'>
+          <div className="set">
             <h1>Settings</h1>
             <div className={`setitle ${darkMode ? 'dark-mode-title' : ''}`}>
-              <h1><IoMdSettings style={{ marginRight: '15px', marginBottom: '-5px', color: '#FF64B4' }} />Settings</h1>
+              <h1>
+                <IoMdSettings style={{ marginRight: '15px', marginBottom: '-5px', color: '#FF64B4' }} />
+                Settings
+              </h1>
             </div>
             <div className={`settings-container ${darkMode ? 'dark-mode-container' : ''}`}>
-              <Link to="/index/settings-profile" className="setting-button" ><FaUserEdit style={{ marginRight: '10px', marginBottom: '-2px' }} />Customize Profile</Link>
-              <div className="setting-button" onClick={toggleDarkMode}><MdDarkMode style={{ marginRight: '10px', marginBottom: '-2px' }} />
-                {darkMode ? 'Light Mode' : 'Dark Mode'}</div>
-              <div className="setting-button"><FaLink style={{ marginRight: '10px', marginBottom: '-2px' }} />Link Social Account</div>
-              <Link to="/index/change-pass" className="setting-button" ><FaUnlock style={{ marginRight: '10px', marginBottom: '-2px' }} />Change Password</Link>
-              <div className="setting-button" onClick={handleSignOut}><PiSignOutBold style={{ marginRight: '10px', marginBottom: '-2px' }} />Sign Out</div>
+              <Link to="/index/settings-profile" className="setting-button">
+                <FaUserEdit style={{ marginRight: '10px', marginBottom: '-2px' }} />
+                Customize Profile
+              </Link>
+              <div className="setting-button" onClick={toggleDarkMode}>
+                <MdDarkMode style={{ marginRight: '10px', marginBottom: '-2px' }} />
+                {darkMode ? 'Light Mode' : 'Dark Mode'}
+              </div>
+              <div className="setting-button">
+                <FaLink style={{ marginRight: '10px', marginBottom: '-2px' }} />
+                Link Social Account
+              </div>
+              <Link to="/index/change-pass" className="setting-button">
+                <FaUnlock style={{ marginRight: '10px', marginBottom: '-2px' }} />
+                Change Password
+              </Link>
+              <div className="setting-button" onClick={handleSignOut}>
+                <PiSignOutBold style={{ marginRight: '10px', marginBottom: '-2px' }} />
+                Sign Out
+              </div>
             </div>
           </div>
         </>

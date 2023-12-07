@@ -4,7 +4,7 @@ import '../LifeCss/login.css';
 import HashLoader from 'react-spinners/HashLoader';
 import TextField from '@mui/material/TextField';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios'; 
+import axios from 'axios';
 import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
 import Visibility from '@mui/icons-material/Visibility';
@@ -12,7 +12,6 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import { useAuth } from '../Life++/AuthContext';
-
 
 const LoginPage = () => {
     const [loading, setLoading] = useState(false);
@@ -27,7 +26,7 @@ const LoginPage = () => {
 
     useEffect(() => {
         setLoading(true);
-        axios.get('http://localhost:8080/user/get') 
+        axios.get('http://localhost:8080/user/get')
             .then((response) => {
                 console.log(response.data)
                 setUsers(response.data);
@@ -41,28 +40,29 @@ const LoginPage = () => {
     }, []);
 
     const handleLogin = () => {
-      setLoading(true);
-      const foundUser = users.find(
-        (user) => user.username === username && user.password === password
-      );
-  
-      if (foundUser) {
-        console.log(foundUser);
-        login(foundUser);
-        localStorage.setItem('loggedInUser', JSON.stringify(foundUser));
-        const dashboardPath = foundUser.type === 1 ? '/coach-index/dashboard' : '/index/dashboard';
-        navigate(dashboardPath);
+        setLoading(true);
+        const foundUser = users.find(
+            (user) => user.username === username && user.password === password
+        );
 
-      } else {
-        setError('Invalid username or password');
-        setSnackbarOpen(true);
-        setLoading(false);
-      }
+        if (foundUser) {
+            console.log(foundUser);
+            login(foundUser);
+            localStorage.setItem('loggedInUser', JSON.stringify(foundUser));
+            const dashboardPath = foundUser.type === 1 ? '/coach-index/dashboard' : '/index/dashboard';
+            navigate(dashboardPath);
+
+        } else {
+            setError('Invalid username or password');
+            setSnackbarOpen(true);
+            setLoading(false);
+        }
     };
+
     const handleSnackbarClose = () => {
         setSnackbarOpen(false);
-      };
-  
+    };
+
     return (
         <div className="logimg">
             {loading ? (
@@ -87,17 +87,17 @@ const LoginPage = () => {
                             fullWidth
                             style={{ marginBottom: '1rem', width: '63%', marginLeft: '30px' }}
                             InputProps={{
-                            style: { fontFamily: 'Poppins, sans-serif' },
-                            endAdornment: (
-                                <InputAdornment position="end">
-                                <IconButton
-                                    onClick={() => setShowPassword(!showPassword)}
-                                    edge="end"
-                                >
-                                    {showPassword ? <Visibility /> : <VisibilityOff />}
-                                </IconButton>
-                                </InputAdornment>
-                            ),
+                                style: { fontFamily: 'Poppins, sans-serif' },
+                                endAdornment: (
+                                    <InputAdornment position="end">
+                                        <IconButton
+                                            onClick={() => setShowPassword(!showPassword)}
+                                            edge="end"
+                                        >
+                                            {showPassword ? <Visibility /> : <VisibilityOff />}
+                                        </IconButton>
+                                    </InputAdornment>
+                                ),
                             }}
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
@@ -114,22 +114,21 @@ const LoginPage = () => {
                                 Sign In
                             </button>
                         </div>
-                         <Snackbar
-              open={snackbarOpen}
-              autoHideDuration={6000}
-              onClose={handleSnackbarClose}
-            >
-              <MuiAlert
-                elevation={6}
-                variant="filled"
-                onClose={handleSnackbarClose}
-                severity="error"
-              >
-                Invalid username or password
-              </MuiAlert>
-            </Snackbar>
+                        <Snackbar
+                            open={snackbarOpen}
+                            autoHideDuration={6000}
+                            onClose={handleSnackbarClose}
+                        >
+                            <MuiAlert
+                                elevation={6}
+                                variant="filled"
+                                onClose={handleSnackbarClose}
+                                severity="error"
+                            >
+                                Invalid username or password
+                            </MuiAlert>
+                        </Snackbar>
                         <p>Don't have an account yet?</p>
-                      
                         <Link to='/sign-up' className='create-enter'>
                             Create Account
                         </Link>
@@ -142,3 +141,4 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
+

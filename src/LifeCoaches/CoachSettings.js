@@ -10,8 +10,11 @@ import { FaLink } from "react-icons/fa6";
 import { FaUnlock } from "react-icons/fa";
 import HashLoader from 'react-spinners/HashLoader';
 import { PiSignOutBold } from "react-icons/pi";
+import { useAuth } from '../Life++/AuthContext'; 
 
 function Setting() {
+  const { login } = useAuth(); 
+
   const [loading, setLoading] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();  
@@ -19,6 +22,14 @@ function Setting() {
   const savedDarkMode = localStorage.getItem('darkMode') === 'true';
 
   const [darkMode, setDarkMode] = useState(savedDarkMode);
+
+  useEffect(() => {
+    // Load user from localStorage on component mount
+    const storedUser = JSON.parse(localStorage.getItem('loggedInUser'));
+    if (storedUser) {
+      login(storedUser);
+    }
+  }, [login]);
 
   useEffect(() => {
     localStorage.setItem('darkMode', darkMode);
@@ -32,7 +43,6 @@ function Setting() {
     // Use navigate to replace the current entry in the history stack
     navigate('/', { replace: true });
     window.history.replaceState(null, '', '/');
-
   };
 
   useEffect(() => {

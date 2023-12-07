@@ -14,12 +14,13 @@ import slide3 from '../LifeImages/slide3.png';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
+import { useAuth } from '../Life++/AuthContext';
 
 
 
 
 function Dash() {
-
+  const { login, user } = useAuth();
   const [loading, setLoading] = useState(false);
   const savedDarkMode = localStorage.getItem('darkMode') === 'true';
   const [darkMode] = useState(savedDarkMode);
@@ -112,6 +113,13 @@ function Dash() {
     localStorage.setItem('darkMode', darkMode);
   }, [darkMode]);
 
+  useEffect(() => {
+    // Load user from localStorage on component mount
+    const storedUser = JSON.parse(localStorage.getItem('loggedInUser'));
+    if (storedUser) {
+      login(storedUser);
+    }
+  }, [login]);
 
 
   return (

@@ -16,13 +16,24 @@ import memoryImage from '../LifeImages/memory.png';
 import mathImage from '../LifeImages/math.png';
 import logicImage from '../LifeImages/logic.png';
 import concentrationImage from '../LifeImages/concentration.png';
+import { useAuth } from '../Life++/AuthContext'; // Import useAuth
 
 function Challenges() {
+  const { login } = useAuth(); // Get login function from useAuth
+
   const savedDarkMode = localStorage.getItem('darkMode') === 'true';
   const [darkMode] = useState(savedDarkMode);
   const [loading, setLoading] = useState(false);
   const location = useLocation();
   
+  useEffect(() => {
+    // Load user from localStorage on component mount
+    const storedUser = JSON.parse(localStorage.getItem('loggedInUser'));
+    if (storedUser) {
+      login(storedUser);
+    }
+  }, [login]);
+
   useEffect(() => {
     localStorage.setItem('darkMode', darkMode);
   }, [darkMode]);
@@ -34,6 +45,7 @@ function Challenges() {
     slidesToShow: 1,
     slidesToScroll: 1,
   };
+
   useEffect(() => {
     setLoading(true);
     setTimeout(() => {
@@ -41,27 +53,26 @@ function Challenges() {
     }, 1000);
   }, []);
 
-
   return (
     <div className={`appindcha ${darkMode ? 'dark-mode' : ''}`}>
-       {loading ? (
+      {loading ? (
         <div className="hash">
           <HashLoader size={100} color={'#FF64B4'} loading={loading} />
         </div>
       ) : (
         <>
-      <Header />
-      <Sidenavbar location={location} />
-      <div className='cha'>
-        <h1><IoExtensionPuzzle style={{ marginRight: '15px', marginBottom: '-5px', color: '#FF64B4' }} />Challenges</h1>
-      </div>
-      <div className={`chal ${darkMode ? 'dark-mode-title' : ''}`}>
-        <h1><IoExtensionPuzzle style={{ marginRight: '15px', marginBottom: '-5px', color: '#FF64B4' }} />Challenges</h1>
-      </div>
-      <div className='phy-cha'>
-    <h2>Physical Challenges</h2>
-    <Slider {...sliderSettings}>
-        <div>
+          <Header />
+          <Sidenavbar location={location} />
+          <div className='cha'>
+            <h1><IoExtensionPuzzle style={{ marginRight: '15px', marginBottom: '-5px', color: '#FF64B4' }} />Challenges</h1>
+          </div>
+          <div className={`chal ${darkMode ? 'dark-mode-title' : ''}`}>
+            <h1><IoExtensionPuzzle style={{ marginRight: '15px', marginBottom: '-5px', color: '#FF64B4' }} />Challenges</h1>
+          </div>
+          <div className='phy-cha'>
+            <h2>Physical Challenges</h2>
+            <Slider {...sliderSettings}>
+            <div>
             <div className="card-content">
                 <h3>Arms Challenge</h3>
                 <img src={armsImage} alt="Arms Challenge" />
@@ -97,12 +108,13 @@ function Challenges() {
                 </div>
                 </div>
             </div>
-          </Slider>
-      </div>
-      <div className='ment-cha'>
-        <h2>Mental Challenges</h2>
-        <Slider {...sliderSettings}>
-          <div>
+
+            </Slider>
+          </div>
+          <div className='ment-cha'>
+            <h2>Mental Challenges</h2>
+            <Slider {...sliderSettings}>
+            <div>
             <div className="card-content">
               <h3>Memory Challenge</h3>
               <img src={memoryImage} alt="Memory Challenge" />
@@ -110,8 +122,8 @@ function Challenges() {
                 <Link to = '/index/challenges/memory'className='men-viewcha-button'>View Challenge</Link>
               </div>
             </div>
-          </div>
-          <div>
+            </div>
+            <div>
             <div className="card-content">
               <h3>Math Challenge</h3>
               <img src={mathImage} alt="Math Challenge" />
@@ -119,8 +131,8 @@ function Challenges() {
                 <Link to = '/index/challenges/math' className='men-viewcha-button'>View Challenge</Link>
               </div>
             </div>
-          </div>
-          <div>
+            </div>
+            <div>
             <div className="card-content">
               <h3>Breathing Challenge</h3>
               <img src={logicImage} alt="Breathing Challenge" />
@@ -128,8 +140,8 @@ function Challenges() {
                 <Link to = '/index/challenges/breathing' className='men-viewcha-button'>View Challenge</Link>
               </div>
             </div>
-          </div>
-          <div>
+            </div>
+            <div>
             <div className="card-content">
               <h3>Concentration Challenge</h3>
               <img src={concentrationImage} alt="Concentration Challenge" />
@@ -137,10 +149,10 @@ function Challenges() {
                 <Link to = '/index/challenges/concentration' className='men-viewcha-button'>View Challenge</Link>
               </div>
             </div>
+            </div>
+            </Slider>
           </div>
-        </Slider>
-      </div>
-      </>
+        </>
       )}
     </div>
   );

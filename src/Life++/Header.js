@@ -25,7 +25,7 @@ const Header = () => {
       <div className="prembutton">
         <Link to="/index/pricing" className="prem-but">
           <FaCrown style={{ color: 'yellow', marginRight: '10px', marginLeft: '-10px', marginBottom: '-2px' }} />
-          Premium User
+          Premium
         </Link>
         {storedUser && (
           <div style={{  marginLeft: '1370px'}}>
@@ -42,7 +42,7 @@ const Header = () => {
               }}
             />
             <div className='usernem'>
-              <span>{storedUser.username}</span>
+              <span>Welcome, {storedUser.username}</span>
             </div>
           </div>
         )}

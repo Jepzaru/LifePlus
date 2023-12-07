@@ -9,8 +9,11 @@ import { RiGraduationCapFill } from "react-icons/ri";
 import { IoCreateSharp } from "react-icons/io5";
 import { FaCheckCircle } from "react-icons/fa";
 import CreateCourseBox from './CreateCourseBox';
+import { useAuth } from '../Life++/AuthContext'; // Import useAuth
 
 function CoachCourses() {
+  const { login } = useAuth(); // Get login function from useAuth
+
   const [loading, setLoading] = useState(false);
   const [showCreateCourseBox, setShowCreateCourseBox] = useState(false);
   const [snackbar, setSnackbar] = useState({
@@ -19,11 +22,7 @@ function CoachCourses() {
   });
 
   const savedDarkMode = localStorage.getItem('darkMode') === 'true';
-  const [darkMode, setDarkMode] = useState(savedDarkMode);
-
-  useEffect(() => {
-    localStorage.setItem('darkMode', darkMode);
-  }, [darkMode]);
+  const [darkMode] = useState(savedDarkMode);
 
   useEffect(() => {
     setLoading(true);
@@ -31,6 +30,18 @@ function CoachCourses() {
       setLoading(false);
     }, 1000);
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem('darkMode', darkMode);
+  }, [darkMode]);
+
+  useEffect(() => {
+    // Load user from localStorage on component mount
+    const storedUser = JSON.parse(localStorage.getItem('loggedInUser'));
+    if (storedUser) {
+      login(storedUser);
+    }
+  }, [login]);
 
   const handleCreateCourseClick = () => {
     setShowCreateCourseBox(true);
@@ -98,3 +109,4 @@ function CoachCourses() {
 }
 
 export default CoachCourses;
+

@@ -4,41 +4,52 @@ import Sidenavbar from "../Life++/sidenavbar";
 import Header from "../Life++/Header";
 import HashLoader from 'react-spinners/HashLoader';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
+import { useAuth } from '../Life++/AuthContext'; // Import useAuth
 
-function Price(){
-    const savedDarkMode = localStorage.getItem('darkMode') === 'true';
+function Price() {
+  const { login, user } = useAuth(); // Get login and user from useAuth
+  const savedDarkMode = localStorage.getItem('darkMode') === 'true';
   const [darkMode] = useState(savedDarkMode);
-    const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-    useEffect(() => {
-        setLoading(true);
-        setTimeout(() => {
-          setLoading(false);
-        }, 1000);
-      }, []);
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }, []);
 
-      useEffect(() => {
-        localStorage.setItem('darkMode', darkMode);
-      }, [darkMode]);
-    return(
-        
-        <div className={`appinprice ${darkMode ? 'dark-mode' : ''}`}>
-            {loading ? (
+  useEffect(() => {
+    localStorage.setItem('darkMode', darkMode);
+  }, [darkMode]);
+
+  useEffect(() => {
+    // Load user from localStorage on component mount
+    const storedUser = JSON.parse(localStorage.getItem('loggedInUser'));
+    if (storedUser) {
+      login(storedUser);
+    }
+  }, [login]);
+
+  return (
+    <div className={`appinprice ${darkMode ? 'dark-mode' : ''}`}>
+      {loading ? (
         <div className="hash">
           <HashLoader size={100} color={'#FF64B4'} loading={loading} />
         </div>
       ) : (
         <>
-            <Header />
-            <Sidenavbar />
-            
-        <div className='pri'>
-        <h1><LocalOfferIcon style={{fontSize: '60px', color: '#FF64B4', marginBottom: '-10px', marginRight: '10px'}} />Premium Plans</h1>
-        </div>
-        <div className={`pric ${darkMode ? 'dark-mode-title' : ''}`}>
-        <h1><LocalOfferIcon style={{ fontSize: '60px', color: '#FF64B4', marginBottom: '-10px', marginRight: '10px'}} />Premium Plans</h1>
-        </div> 
-        <div className='free-con'>
+          <Header />
+          <Sidenavbar />
+
+          <div className='pri'>
+            <h1><LocalOfferIcon style={{ fontSize: '60px', color: '#FF64B4', marginBottom: '-10px', marginRight: '10px' }} />Premium Plans</h1>
+          </div>
+          <div className={`pric ${darkMode ? 'dark-mode-title' : ''}`}>
+            <h1><LocalOfferIcon style={{ fontSize: '60px', color: '#FF64B4', marginBottom: '-10px', marginRight: '10px' }} />Premium Plans</h1>
+          </div>
+
+          <div className='free-con'>
            <div className='free-con1'> 
             <div className='plan'>
         <h1>Free</h1>
@@ -107,11 +118,11 @@ function Price(){
                 <button className='button3'>Avail Now!</button>                
             </div>    
         </div>
+
         </>
       )}
-        </div>
-            
-    );
-
+    </div>
+  );
 }
+
 export default Price;
