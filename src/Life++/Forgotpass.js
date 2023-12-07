@@ -22,15 +22,16 @@ const ForgetPasswordPage = () => {
         setLoading(true);
     
         try {
+            const formData = new FormData();
+            formData.append('usernameOrEmail', usernameOrEmail);
+            formData.append('newPassword', password);
+    
             const response = await axios.post(
-                'http://localhost:8080/forgotPassword',
-                {
-                    usernameOrEmail: usernameOrEmail,
-                    newPassword: password,
-                },
+                'http://localhost:8080/user/forgotPassword',
+                formData,
                 {
                     headers: {
-                        'Content-Type': 'application/json',
+                        'Content-Type': 'application/x-www-form-urlencoded',
                     },
                 }
             );
@@ -45,7 +46,7 @@ const ForgetPasswordPage = () => {
             setLoading(false);
         }
     };
-
+    
     const handleBack = () => {
         navigate('/login-page');
     };
