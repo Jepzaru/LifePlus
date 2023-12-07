@@ -12,23 +12,20 @@ import { useNavigate } from 'react-router-dom';
 
 const ForgetPasswordPage = () => {
     const [loading, setLoading] = useState(false);
-    const [username, setUsername] = useState('');
+    const [usernameOrEmail, setUsernameOrEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [snackbarOpen, setSnackbarOpen] = useState(false);
-    const [email, setEmail] = useState('');
     const navigate = useNavigate();
 
     const handleForgetPassword = async () => {
         setLoading(true);
-
+    
         try {
-            const response = await axios.put(
-                'http://localhost:8080/user/update',
+            const response = await axios.post(
+                'http://localhost:8080/forgotPassword',
                 {
-
-                    username: username,
-                    email: email,
+                    usernameOrEmail: usernameOrEmail,
                     newPassword: password,
                 },
                 {
@@ -37,7 +34,7 @@ const ForgetPasswordPage = () => {
                     },
                 }
             );
-
+    
             console.log('Password update successful:', response.data);
             setSnackbarOpen(true);
             navigate('/login-page');
@@ -66,20 +63,12 @@ const ForgetPasswordPage = () => {
                     <p>Forget Password</p>
                     <div className='forgotfields'>
                         <TextField
-                            label='Username'
+                            label='Username or Email'
                             variant='standard'
                             fullWidth
                             style={{ marginBottom: '20px', width: '80%', marginLeft: '50px' }}
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
-                        />
-                        <TextField
-                            label='Email'
-                            variant='standard'
-                            fullWidth
-                            style={{ marginBottom: '20px', width: '80%', marginLeft: '50px' }}
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            value={usernameOrEmail}
+                            onChange={(e) => setUsernameOrEmail(e.target.value)}
                         />
                         <TextField
                             label="New Password"
