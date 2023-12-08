@@ -18,14 +18,14 @@ export const CoachSidebarData = [
         link: "/coach-index/courses",
     },
     {
+        title: "Challenges",
+        icon: <SportsIcon/>,
+        link: "/coach-index/challenges",
+    },
+    {
         title: "Points Shop",
         icon: <StoreIcon />,
         link: "/coach-index/pointsshop",
-    },
-    {
-        title: "Quests",
-        icon: <SportsIcon />,
-        link: "/coach-index/quests",
     },
     {
         title: "Settings",

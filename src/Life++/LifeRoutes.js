@@ -24,14 +24,22 @@ import Concentration from '../LifeMentalChallenges/Concentration';
 import Breathing from '../LifeMentalChallenges/Breathing';
 import Math from '../LifeMentalChallenges/Math';
 import Memory from '../LifeMentalChallenges/Memory';
+import CStrength from '../CoachPhysicalChallenges/Strength';
+import CArms from '../CoachPhysicalChallenges/Arms';
+import CAbs from '../CoachPhysicalChallenges/Abs';
+import CCardio from '../CoachPhysicalChallenges/Cardio';
+import CConcentration from '../CoachMentalChallenges/Concentration';
+import CBreathing from '../CoachMentalChallenges/Breathing';
+import CMath from '../CoachMentalChallenges/Math';
+import CMemory from '../CoachMentalChallenges/Memory';
 import CoachSettings from '../LifeCoaches/CoachSettings';
 import PContCoach from '../LifeCoaches/PContCoach';
 import MContCoach from '../LifeCoaches/MContCoach';
 import CoachPShop from '../LifeCoaches/CoachPShop';
-import CoachQuest from '../LifeCoaches/CoachQuest';
 import { AuthProvider } from './AuthContext';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import CoachChallenges from '../LifeCoaches/CoachChallenges';
 
 
 
@@ -63,13 +71,22 @@ function LifeRoutes({ children }) {
         <Route path="/index/challenges/breathing" element={<Breathing/>}/>
         <Route path="/index/challenges/math" element={<Math/>}/>
         <Route path="/index/challenges/memory" element={<Memory/>}/>
+        <Route path="/coach-index/challenges/strength" element={<CStrength/>}/>
+        <Route path="/coach-index/challenges/arms" element={<CArms/>}/>
+        <Route path="/coach-index/challenges/abs" element={<CAbs/>}/>
+        <Route path="/coach-index/challenges/cardio" element={<CCardio/>}/>
+        <Route path="/coach-index/challenges/concentration" element={<CConcentration/>}/>
+        <Route path="/coach-index/challenges/breathing" element={<CBreathing/>}/>
+        <Route path="/coach-index/challenges/math" element={<CMath/>}/>
+        <Route path="/coach-index/challenges/memory" element={<CMemory/>}/>
         <Route path="/forgot-password" element={<Forgot/>}/>
         <Route path="/index/change-pass" element={<Change/>}/>
         <Route path="/coach-index/settings" element={<CoachSettings/>}/>
         <Route path="/coach-index/physical" element={<PContCoach/>}/>
         <Route path="/coach-index/mental" element={<MContCoach/>}/>
         <Route path="/coach-index/pointsshop" element={<CoachPShop/>}/>
-        <Route path="/coach-index/quests" element={<CoachQuest/>}/>
+        <Route path="/coach-index/challenges" element={<CoachChallenges/>}/>
+        
       </Routes>
     </BrowserRouter>
     </AuthProvider>
