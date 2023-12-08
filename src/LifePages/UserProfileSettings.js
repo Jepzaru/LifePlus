@@ -2,17 +2,38 @@ import React, { useEffect, useState } from 'react';
 import '../LifeCss/UserProfile.css';
 import Sidenavbar from '../Life++/sidenavbar';
 import Header from '../Life++/Header';
+import defaultProfileMale from '../LifeImages/defaultprofile.png';
+import defaultProfileFemale from '../LifeImages/defaultprofile1.png';
 import { IoMdSettings } from 'react-icons/io';
-import { useAuth } from '../Life++/AuthContext'; // Import useAuth
+import { useAuth } from '../Life++/AuthContext';
+import { MdTipsAndUpdates } from 'react-icons/md';
 
 function UserProfileSettings() {
-  const { user } = useAuth(); // Get user from useAuth
+  const { user } = useAuth();
   const savedDarkMode = localStorage.getItem('darkMode') === 'true';
   const [darkMode] = useState(savedDarkMode);
+
+  const [isEditing, setIsEditing] = useState(false);
+  const [buttonLabel, setButtonLabel] = useState('Update User Information');
 
   useEffect(() => {
     localStorage.setItem('darkMode', darkMode);
   }, [darkMode]);
+
+  const defaultProfileImage = user && user.gender === 'M' ? defaultProfileMale : defaultProfileFemale;
+
+  const handleUpdateButtonClick = () => {
+    if (isEditing) {
+      // Save changes logic goes here
+      // You can update the user information in the backend or perform any other necessary actions
+
+      setButtonLabel('Update User Information'); // Reset button label
+    } else {
+      setButtonLabel('Save Changes'); // Change button label to "Save Changes"
+    }
+
+    setIsEditing(!isEditing); // Toggle editing mode
+  };
 
   return (
     <div className={`appinduserprof ${darkMode ? 'dark-mode' : ''}`}>
@@ -26,47 +47,67 @@ function UserProfileSettings() {
             Settings / User Profile
           </h1>
         </div>
+        <div className="updateuserprof">
+          <button className="updateuserprof-btn" onClick={handleUpdateButtonClick}>
+            <MdTipsAndUpdates style={{ marginRight: '10px', marginBottom: '-2px' }} />
+            {buttonLabel}
+          </button>
+        </div>
         <div className="user-pro">
-          <div className='usadjust'>
-          {user && (
-            <>
-            <div className ="usnam">
-             <p >
-              <span style={{ fontWeight: 'bold', color: '#FF64B4' }}>Username: </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{user.username}
-              </p> 
-             </div>
-             <div className ="usnam">
-              <p>
-              <span style={{ fontWeight: 'bold', color: '#FF64B4' }}>First Name: </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {user.fname}
-                </p>
-              </div>
-              <div className ="usnam">
-              <p>
-              <span style={{ fontWeight: 'bold', color: '#FF64B4' }}>Last Name: </span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{user.lname}
-                </p>
-              </div>
-              <div className ="usnam">
-              <p>
-              <span style={{ fontWeight: 'bold', color: '#FF64B4' }}>Gender: </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{user.gender}
-                </p>
-              </div>
-              <div className ="usnam">
-              <p>
-              <span style={{ fontWeight: 'bold', color: '#FF64B4' }}>Birth Date: </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {new Date(user.birthdate).toLocaleDateString()}
-                </p>
-              </div>
-              <div className ="usnam">
-              <p>
-              <span style={{ fontWeight: 'bold', color: '#FF64B4' }}>Email: </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {user.email}
-                </p>
-              </div>
-            </>
-          )}
-          </div>
-          </div>
+          <div className="usadjust">
+            {user && (
+              <>
+                <div className="image-usnam">
+                  <img src={defaultProfileImage} alt="User Avatar" style={{ width: '800px', borderRadius: '50%', height: '500px' }} />
+                </div>
+                <div className="usnam-up">
+                 
+                  {isEditing ? (
+                    <>
+                     
+                      <input type="text" value={user.username} onChange={(e) => console.log(e.target.value)} />
+                      <input type="text" value={user.fname} onChange={(e) => console.log(e.target.value)} />
+                      <input type="text" value={user.lname} onChange={(e) => console.log(e.target.value)} />
+                      <input type="text" value={user.gender} onChange={(e) => console.log(e.target.value)} />
+                      <input type="text" value={new Date(user.birthdate).toLocaleDateString()} onChange={(e) => console.log(e.target.value)} />
+                      <input type="text" value={user.pnum} onChange={(e) => console.log(e.target.value)} />
+                      <input type="text" value={user.email} onChange={(e) => console.log(e.target.value)} />
+                
+                    </>
+                  ) : (
+                    <>
+                      <p style={{marginTop: '10px'}}>
+                        <span style={{ fontWeight: 'bold', color: '#FF64B4', marginRight:'55px' }}>Username: </span>{user.username}
+                      </p>
+                      <br/>
+                      <p style={{marginTop: '10px'}}>
+                        <span style={{ fontWeight: 'bold', color: '#FF64B4', marginRight:'50px' }}>First Name: </span> {user.fname}
+                      </p>
+                      <p style={{marginTop: '10px'}}>
+                        <span style={{ fontWeight: 'bold', color: '#FF64B4', marginRight:'52px' }}>Last Name: </span> {user.lname}
+                      </p>
+                      <p style={{marginTop: '10px'}}>
+                        <span style={{ fontWeight: 'bold', color: '#FF64B4', marginRight:'90px' }}>Gender: </span> {user.gender}
+                      </p>
+                      <p style={{marginTop: '10px'}}>
+                        <span style={{ fontWeight: 'bold', color: '#FF64B4', marginRight:'57px' }}>Birth Date: </span>{new Date(user.birthdate).toLocaleDateString()}
+                      </p>
+                      <p style={{marginTop: '10px'}}>
+                        <span style={{ fontWeight: 'bold', color: '#FF64B4', marginRight:'77px' }}>Contact: </span> {user.pnum}
+                      </p>
+                      <p style={{marginTop: '30px', marginBottom:'10px'}}>
+                        <span style={{ fontWeight: 'bold', color: '#FF64B4', marginRight:'10px' }}>Email: </span>{user.email}
+                      </p>
+                    </>
+                  )}
+                </div>
+                
+              </>
+            )}
           </div>
         </div>
-
+      </div>
+    </div>
   );
 }
 

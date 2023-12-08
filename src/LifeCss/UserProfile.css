@@ -1,5 +1,5 @@
 .appinduserprof{
-    height: 110vh;
+    height: 120vh;
     width: 100vw;
 }
 .user-pro{
@@ -7,7 +7,7 @@
     width: 1290px;
     background-color: #e3e1e1;
     border-radius: 20px;
-    margin-top: -40px;
+    margin-top: -20px;
   }
   .usnam{
     margin-left: 600px;
@@ -18,8 +18,41 @@
     margin-top: 20px;
 
   }
+  .usnam-up{
+    margin-left: 600px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px 30px;
+    width: 50%;
+    margin-top: -470px;
+
+  }
   .usadjust{
     margin: 50px;
     padding: 20px;
+  }
+  .image-usnam{
+    margin-left: -180px;
+    margin-bottom: -50px;
+  }
+  .updateuserprof-btn{
+    margin-left: 850px;
+    border-radius: 50px;
+    border: none;
+    background-color: green;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    padding: 15px 40px;
+    color: white;
+    font-size: 22px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s;
+  }
+  .updateuserprof-btn:hover{
+    background-color: darkgreen;
+  }
+  .updateuserprof{
+    margin-top: -65px;
+    
   }
   
