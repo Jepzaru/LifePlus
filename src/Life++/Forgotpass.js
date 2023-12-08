@@ -23,8 +23,8 @@ const ForgetPasswordPage = () => {
         setLoading(true);
 
         try {
-            const response = await axios.put(
-                'http://localhost:8080/user/update',
+            const response = await axios.post(
+                'http://localhost:8080/user/forgotPassword',
                 {
 
                     username: username,
