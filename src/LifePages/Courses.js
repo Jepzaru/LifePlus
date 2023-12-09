@@ -7,13 +7,13 @@ import { RiGraduationCapFill } from "react-icons/ri";
 import { useAuth } from '../Life++/AuthContext'; // Import useAuth
 
 function Courses() {
-  const { login } = useAuth(); // Get login function from useAuth
+  const { login } = useAuth(); 
   const savedDarkMode = localStorage.getItem('darkMode') === 'true';
   const [darkMode] = useState(savedDarkMode);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    // Load user from localStorage on component mount
+    
     const storedUser = JSON.parse(localStorage.getItem('loggedInUser'));
     if (storedUser) {
       login(storedUser);

@@ -38,7 +38,10 @@ const ForgetPasswordPage = () => {
     
             console.log('Password update successful:', response.data);
             setSnackbarOpen(true);
-            navigate('/login-page');
+            setTimeout(() => {
+                navigate('/login-page');
+            }, 3000);
+
         } catch (error) {
             console.error('Password update failed:', error.response?.data || error.message);
             setSnackbarOpen(true);

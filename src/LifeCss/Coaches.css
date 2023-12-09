@@ -24,6 +24,7 @@ body{
     margin-left: 250px;
     border-radius: 20px;
     margin-top: 30px;
+    overflow-y: scroll;
 }
 .additem-btn{
     margin-left: 1100px;
@@ -42,4 +43,31 @@ body{
 }
 .add-item{
     margin-top: -60px;
+}
+.coach-container{
+    background-color:white;
+    width: 1070px;
+    height: 200px;
+    margin-left: 50px;
+    border-radius: 10px;
+    margin-top: 10px;
+    
+}
+.contain{
+    padding: 10px;
+}
+.name{
+    padding: 5px;
+    margin-left: 500px;
+    font-size: 27px;
+    font-weight: 900;
+    margin-top: 20px;
+
+}
+.cemail{
+    margin-top: 30px;
+    margin-left: 500px;
+}
+.cnum{
+    margin-left: 500px;
 }
