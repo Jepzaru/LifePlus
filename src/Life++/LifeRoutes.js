@@ -40,6 +40,7 @@ import { AuthProvider } from './AuthContext';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import CoachChallenges from '../LifeCoaches/CoachChallenges';
+import CoachProfile from '../LifeCoaches/CoachProfile';
 
 
 
@@ -86,6 +87,7 @@ function LifeRoutes({ children }) {
         <Route path="/coach-index/mental" element={<MContCoach/>}/>
         <Route path="/coach-index/pointsshop" element={<CoachPShop/>}/>
         <Route path="/coach-index/challenges" element={<CoachChallenges/>}/>
+        <Route path="/coach-index/profile" element={<CoachProfile/>}/>
         
       </Routes>
     </BrowserRouter>

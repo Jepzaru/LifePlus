@@ -68,7 +68,7 @@ function Setting() {
               <h1><IoMdSettings style={{ marginRight: '15px', marginBottom: '-5px', color: '#FF64B4' }} />Settings</h1>
             </div>
             <div className={`settings-container ${darkMode ? 'dark-mode-container' : ''}`}>
-              <Link to="/index/settings-profile" className="setting-button" ><FaUserEdit style={{ marginRight: '10px', marginBottom: '-2px' }} />Customize Profile</Link>
+              <Link to="/coach-index/profile" className="setting-button" ><FaUserEdit style={{ marginRight: '10px', marginBottom: '-2px' }} />Customize Profile</Link>
               <div className="setting-button" onClick={toggleDarkMode}><MdDarkMode style={{ marginRight: '10px', marginBottom: '-2px' }} />
                 {darkMode ? 'Light Mode' : 'Dark Mode'}</div>
               <div className="setting-button"><FaLink style={{ marginRight: '10px', marginBottom: '-2px' }} />Link Social Account</div>
