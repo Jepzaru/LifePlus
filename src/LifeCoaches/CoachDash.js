@@ -181,7 +181,7 @@ function CoachDash() {
               </LocalizationProvider>
             </div>
             <div className="rec-com">
-              <div className="recbg">
+              <div className="Crecbg">
                 <p>
                   <FaClipboardCheck
                     style={{ fontSize: '50px', marginLeft: '-30px', marginBottom: '-30px' }}

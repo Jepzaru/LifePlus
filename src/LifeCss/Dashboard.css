@@ -256,3 +256,14 @@ body{
   .armscha:hover{
     background-color: #FF64B4;
   }
+  .Crecbg p{
+    margin-top: -250px;
+    font-weight: bold;
+    background-color: #3FB24F;
+    color: white;
+    padding: 15px 45px;
+    font-size: 18px;
+    text-align: left;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}

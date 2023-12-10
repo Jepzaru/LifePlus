@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import '../LifeCss/Courses.css';
+import image1 from '../LifeImages/1.jpg';
+import image2 from '../LifeImages/men1.jpg';
 import HashLoader from 'react-spinners/HashLoader';
 import CoachSidenavbar from "../Life++/coachsidebar";
 import CoachHeader from "../Life++/CoachHeader";
@@ -9,10 +11,12 @@ import { RiGraduationCapFill } from "react-icons/ri";
 import { IoCreateSharp } from "react-icons/io5";
 import { FaCheckCircle } from "react-icons/fa";
 import CreateCourseBox from './CreateCourseBox';
-import { useAuth } from '../Life++/AuthContext'; 
+import { useAuth } from '../Life++/AuthContext';
+import { IoPersonSharp } from "react-icons/io5";
+import axios from 'axios'; 
 
 function CoachCourses() {
-  const { login } = useAuth(); 
+  const { login } = useAuth();
 
   const [loading, setLoading] = useState(false);
   const [showCreateCourseBox, setShowCreateCourseBox] = useState(false);
@@ -20,23 +24,28 @@ function CoachCourses() {
     open: false,
     message: '',
   });
+  const [courses, setCourses] = useState([]); // State to store courses
 
   const savedDarkMode = localStorage.getItem('darkMode') === 'true';
   const [darkMode] = useState(savedDarkMode);
 
   useEffect(() => {
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
-  }, []);
+
+    axios.get('http://localhost:8080/course/get')
+      .then(response => {
+        setCourses(response.data); 
+      })
+      .catch(error => {
+        console.error('Error fetching courses:', error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []); 
+
 
   useEffect(() => {
-    localStorage.setItem('darkMode', darkMode);
-  }, [darkMode]);
-
-  useEffect(() => {
-    // Load user from localStorage on component mount
     const storedUser = JSON.parse(localStorage.getItem('loggedInUser'));
     if (storedUser) {
       login(storedUser);
@@ -78,7 +87,24 @@ function CoachCourses() {
             </div>
           </div>
           <div className={`cou-con ${showCreateCourseBox ? 'dimmed' : ''}`}>
-          </div>
+                {courses.map((course, index) => (
+                  <div className='contain' key={course.id}>
+                    <div className='course-container'>
+                      <div className='c-img'>
+                      <img src={index % 2 === 0 ? image1 : image2} alt={`Course ${course.name}`} className='course-image' 
+                      style={{height:'300px', width: '300px', marginLeft: '20px', borderRadius: '15px'}}
+                      
+                      />
+                      </div>
+                      <div className='Cname'>{course.name}</div>
+                      <div className='Cdes'>{course.description}</div>
+                      <div className='Ccapacity'><IoPersonSharp /> Capacity <span style={{fontWeight: 'bold'}}>{course.max}</span></div>
+                      <div className='members'><button>View Members</button></div>
+                      <div className='delete-cou'><button>Remove Course</button></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
           <div className={`up-act ${showCreateCourseBox ? 'dimmed' : ''}`}>
             <p>Students List</p>
           </div>
@@ -109,4 +135,3 @@ function CoachCourses() {
 }
 
 export default CoachCourses;
-
