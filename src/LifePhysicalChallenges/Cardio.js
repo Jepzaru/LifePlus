@@ -77,36 +77,56 @@ function Cardio() {
   };
 
   const startChallenge = (exerciseIndex, challengeIndex) => {
-    // Clear any existing intervals
-    clearInterval(challengeIntervals[challengeIndex]);
+    
+    const currentChallenge = challengeIntervals[challengeIndex];
   
-    // Update the text of the specific challenge
-    setChallenge((prevChallenge) => ({ ...prevChallenge, text: 'In Progress' }), challengeIndex);
-  
-    const interval = setInterval(() => {
+    if (currentChallenge) {
+      // If the challenge is currently running, pause it
+      clearInterval(currentChallenge);
       setChallenge(
-        (prevChallenge) => ({
-          ...prevChallenge,
-          progress: prevChallenge.progress + (1 / prevChallenge.duration) * 100,
-        }),
+        (prevChallenge) => ({ ...prevChallenge, text: 'Paused' }),
         challengeIndex
       );
-    }, 1000);
-  
-    // Update challengeIntervals with the new interval ID
-    setChallengeIntervals((prevIntervals) => {
-      const newIntervals = [...prevIntervals];
-      newIntervals[challengeIndex] = interval;
-      return newIntervals;
-    });
-  
-    setTimeout(() => {
-      clearInterval(interval);
+      setChallengeIntervals((prevIntervals) => {
+        const newIntervals = [...prevIntervals];
+        newIntervals[challengeIndex] = null;
+        return newIntervals;
+      });
+    } else {
       setChallenge(
-        (prevChallenge) => ({ ...prevChallenge, text: 'Completed', progress: 0 }),
+        (prevChallenge) => ({ ...prevChallenge, text: 'In Progress' }),
         challengeIndex
       );
-    }, initialChallenges[exerciseIndex].duration * 1000);
+  
+      const interval = setInterval(() => {
+        setChallenge((prevChallenge) => {
+          const newProgress = prevChallenge.progress + (1 / prevChallenge.duration) * 100;
+          return {
+            ...prevChallenge,
+            progress: newProgress > 100 ? 100 : newProgress,
+          };
+        }, challengeIndex);
+      }, 1000);
+  
+      setChallengeIntervals((prevIntervals) => {
+        const newIntervals = [...prevIntervals];
+        newIntervals[challengeIndex] = interval;
+        return newIntervals;
+      });
+  
+      setTimeout(() => {
+        clearInterval(interval);
+        setChallenge(
+          (prevChallenge) => ({ ...prevChallenge, text: 'Completed', progress: 100 }),
+          challengeIndex
+        );
+        setChallengeIntervals((prevIntervals) => {
+          const newIntervals = [...prevIntervals];
+          newIntervals[challengeIndex] = null;
+          return newIntervals;
+        });
+      }, initialChallenges[exerciseIndex].duration * 1000);
+    }
   };
 
   const resetChallenges = () => {
