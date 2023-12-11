@@ -13,6 +13,8 @@ import { FaCheckCircle } from "react-icons/fa";
 import CreateCourseBox from './CreateCourseBox';
 import { useAuth } from '../Life++/AuthContext';
 import { IoPersonSharp } from "react-icons/io5";
+import { PiStudentBold } from "react-icons/pi";
+
 import axios from 'axios'; 
 
 function CoachCourses() {
@@ -106,7 +108,7 @@ function CoachCourses() {
                 ))}
               </div>
           <div className={`up-act ${showCreateCourseBox ? 'dimmed' : ''}`}>
-            <p>Students List</p>
+            <p><PiStudentBold style={{marginRight:'15px', fontSize:'36px', marginBottom:'-5px'}}/>Students List</p>
           </div>
 
           <Snackbar
