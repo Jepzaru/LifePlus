@@ -16,23 +16,49 @@ function UserProfileSettings() {
   const [isEditing, setIsEditing] = useState(false);
   const [buttonLabel, setButtonLabel] = useState('Update User Information');
 
+  // State for edited values
+  const [editedUsername, setEditedUsername] = useState(user?.username || '');
+  const [editedFname, setEditedFname] = useState(user?.fname || '');
+  const [editedLname, setEditedLname] = useState(user?.lname || '');
+  const [editedGender, setEditedGender] = useState(user?.gender || '');
+  const [editedBirthdate, setEditedBirthdate] = useState(
+    user ? new Date(user.birthdate).toLocaleDateString() : ''
+  );
+  const [editedPnum, setEditedPnum] = useState(user?.pnum || '');
+  const [editedEmail, setEditedEmail] = useState(user?.email || '');
+
   useEffect(() => {
     localStorage.setItem('darkMode', darkMode);
   }, [darkMode]);
 
-  const defaultProfileImage = user && user.gender === 'M' ? defaultProfileMale : defaultProfileFemale;
+  const defaultProfileImage =
+    user && user.gender === 'M' ? defaultProfileMale : defaultProfileFemale;
 
-  const handleUpdateButtonClick = () => {
+  const handleUpdateButtonClick = async () => {
     if (isEditing) {
-      // Save changes logic goes here
-      // You can update the user information in the backend or perform any other necessary actions
+      try {
+        // Call your backend API to update user information
+        // Example API call:
+        // await updateUserInformation({
+        //   username: editedUsername,
+        //   fname: editedFname,
+        //   lname: editedLname,
+        //   gender: editedGender,
+        //   birthdate: new Date(editedBirthdate),
+        //   pnum: editedPnum,
+        //   email: editedEmail,
+        // });
 
-      setButtonLabel('Update User Information'); // Reset button label
+        setButtonLabel('Update User Information');
+      } catch (error) {
+        console.error('Error updating user information', error);
+        // Handle error appropriately
+      }
     } else {
-      setButtonLabel('Save Changes'); // Change button label to "Save Changes"
+      setButtonLabel('Save Changes');
     }
 
-    setIsEditing(!isEditing); // Toggle editing mode
+    setIsEditing(!isEditing);
   };
 
   return (
@@ -43,7 +69,9 @@ function UserProfileSettings() {
         <h1>Settings</h1>
         <div className={`setitle ${darkMode ? 'dark-mode-title' : ''}`}>
           <h1>
-            <IoMdSettings style={{ marginRight: '15px', marginBottom: '-5px', color: '#FF64B4' }} />
+            <IoMdSettings
+              style={{ marginRight: '15px', marginBottom: '-5px', color: '#FF64B4' }}
+            />
             Settings / User Profile
           </h1>
         </div>
@@ -58,50 +86,100 @@ function UserProfileSettings() {
             {user && (
               <>
                 <div className="image-usnam">
-                  <img src={defaultProfileImage} alt="User Avatar" style={{ width: '800px', borderRadius: '50%', height: '500px' }} />
+                  <img
+                    src={defaultProfileImage}
+                    alt="User Avatar"
+                    style={{ width: '800px', borderRadius: '50%', height: '500px' }}
+                  />
                 </div>
                 <div className="usnam-up">
-                 
                   {isEditing ? (
                     <>
-                     
-                      <input type="text" value={user.username} onChange={(e) => console.log(e.target.value)} />
-                      <input type="text" value={user.fname} onChange={(e) => console.log(e.target.value)} />
-                      <input type="text" value={user.lname} onChange={(e) => console.log(e.target.value)} />
-                      <input type="text" value={user.gender} onChange={(e) => console.log(e.target.value)} />
-                      <input type="text" value={new Date(user.birthdate).toLocaleDateString()} onChange={(e) => console.log(e.target.value)} />
-                      <input type="text" value={user.pnum} onChange={(e) => console.log(e.target.value)} />
-                      <input type="text" value={user.email} onChange={(e) => console.log(e.target.value)} />
-                
+                      <input
+                        type="text"
+                        value={editedUsername}
+                        onChange={(e) => setEditedUsername(e.target.value)}
+                      />
+                      <input
+                        type="text"
+                        value={editedFname}
+                        onChange={(e) => setEditedFname(e.target.value)}
+                      />
+                      <input
+                        type="text"
+                        value={editedLname}
+                        onChange={(e) => setEditedLname(e.target.value)}
+                      />
+                      <input
+                        type="text"
+                        value={editedGender}
+                        onChange={(e) => setEditedGender(e.target.value)}
+                      />
+                      <input
+                        type="text"
+                        value={editedBirthdate}
+                        onChange={(e) => setEditedBirthdate(e.target.value)}
+                      />
+                      <input
+                        type="text"
+                        value={editedPnum}
+                        onChange={(e) => setEditedPnum(e.target.value)}
+                      />
+                      <input
+                        type="text"
+                        value={editedEmail}
+                        onChange={(e) => setEditedEmail(e.target.value)}
+                      />
                     </>
                   ) : (
                     <>
-                      <p style={{marginTop: '10px'}}>
-                        <span style={{ fontWeight: 'bold', color: 'black', marginRight:'55px' }}>Username: </span>{user.username}
+                      <p style={{ marginTop: '10px' }}>
+                        <span style={{ fontWeight: 'bold', color: 'black', marginRight: '60px' }}>
+                          Username:
+                        </span>
+                        {editedUsername}
                       </p>
-                      <br/>
-                      <p style={{marginTop: '10px'}}>
-                        <span style={{ fontWeight: 'bold', color: 'black', marginRight:'50px' }}>First Name: </span> {user.fname}
+                      <p style={{ marginTop: '10px' }}>
+                        <span style={{ fontWeight: 'bold', color: 'black', marginRight: '55px' }}>
+                          First Name:
+                        </span>
+                        {editedFname}
                       </p>
-                      <p style={{marginTop: '10px'}}>
-                        <span style={{ fontWeight: 'bold', color: 'black', marginRight:'52px' }}>Last Name: </span> {user.lname}
+                      <p style={{ marginTop: '10px' }}>
+                        <span style={{ fontWeight: 'bold', color: 'black', marginRight: '55px' }}>
+                          Last Name:
+                        </span>
+                        {editedLname}
                       </p>
-                      <p style={{marginTop: '10px'}}>
-                        <span style={{ fontWeight: 'bold', color: 'black', marginRight:'90px' }}>Gender: </span> {user.gender}
+                      <p style={{ marginTop: '10px' }}>
+                        <span style={{ fontWeight: 'bold', color: 'black', marginRight: '95px' }}>
+                          Gender:
+                        </span>
+                        {editedGender}
                       </p>
-                      <p style={{marginTop: '10px'}}>
-                        <span style={{ fontWeight: 'bold', color: 'black', marginRight:'57px' }}>Birth Date: </span>{new Date(user.birthdate).toLocaleDateString()}
+                      <p style={{ marginTop: '10px' }}>
+                        <span style={{ fontWeight: 'bold', color: 'black', marginRight: '62px' }}>
+                          Birth Date:
+                        </span>
+                        {editedBirthdate}
                       </p>
-                      <p style={{marginTop: '10px'}}>
-                        <span style={{ fontWeight: 'bold', color: 'black', marginRight:'77px' }}>Contact: </span> {user.pnum}
+                      <p style={{ marginTop: '10px' }}>
+                        <span style={{ fontWeight: 'bold', color: 'black', marginRight: '80px' }}>
+                          Contact:
+                        </span>
+                        {editedPnum}
                       </p>
-                      <p style={{marginTop: '30px', marginBottom:'10px'}}>
-                        <span style={{ fontWeight: 'bold', color: 'black', marginRight:'10px' }}>Email: </span>{user.email}
+                      <p style={{ marginTop: '10px' }}>
+                        <span style={{ fontWeight: 'bold', color: 'black', marginRight: '55px' }}>
+                          Email:
+                        </span>
+                        {editedEmail}
                       </p>
+                      
+                      
                     </>
                   )}
                 </div>
-                
               </>
             )}
           </div>
