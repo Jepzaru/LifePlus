@@ -69,22 +69,17 @@
   }
   
   .cimage {
-    /* Move the image container below the name */
     order:5;
     margin-top: 3%;
-    margin-left: 5%;
+    margin-left: 150px;
   }
   
   .name {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     padding: 5px;
-    margin-left: 50px;
+    margin-left: 30px;
     font-size: 27px;
     font-weight: 900;
     margin-top: 20px;
-    /* Move the name container above the image */
     order: 0;
   }
   
@@ -94,8 +89,8 @@
   .cbirthdate {
     display: flex;
     align-items: center;
-    margin-top: 20px;
-    margin-left: 20px;
+    margin-top: 30px;
+    margin-left: 10px;
   }
  
   
