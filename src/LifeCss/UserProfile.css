@@ -5,7 +5,7 @@
 .user-pro{
     height: 600px;
     width: 1290px;
-    background-color: #e3e1e1;
+    background: linear-gradient(#FF64B4, #705FBE);
     border-radius: 20px;
     margin-top: -20px;
   }

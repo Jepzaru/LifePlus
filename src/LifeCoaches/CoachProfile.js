@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import '../LifeCss/UserProfile.css';
-import Sidenavbar from '../Life++/sidenavbar';
-import Header from '../Life++/Header';
+import CoachSidenavbar from '../Life++/coachsidebar';
+import CoachHeader from '../Life++/CoachHeader';
 import defaultProfileMale from '../LifeImages/defaultprofile.png';
 import defaultProfileFemale from '../LifeImages/defaultprofile1.png';
 import { IoMdSettings } from 'react-icons/io';
 import { useAuth } from '../Life++/AuthContext';
 import { MdTipsAndUpdates } from 'react-icons/md';
 
-function UserProfileSettings() {
+function CoachProfileSettings() {
   const { user } = useAuth();
   const savedDarkMode = localStorage.getItem('darkMode') === 'true';
   const [darkMode] = useState(savedDarkMode);
@@ -37,8 +37,8 @@ function UserProfileSettings() {
 
   return (
     <div className={`appinduserprof ${darkMode ? 'dark-mode' : ''}`}>
-      <Header />
-      <Sidenavbar />
+      <CoachHeader />
+      <CoachSidenavbar />
       <div className="set">
         <h1>Settings</h1>
         <div className={`setitle ${darkMode ? 'dark-mode-title' : ''}`}>
@@ -111,4 +111,4 @@ function UserProfileSettings() {
   );
 }
 
-export default UserProfileSettings;
+export default CoachProfileSettings;

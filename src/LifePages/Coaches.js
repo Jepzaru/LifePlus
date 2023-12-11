@@ -78,12 +78,12 @@ function Coaches(){
                <div key={coach.id} className="coach-container">
                <div className='cimage'>
                     {coach.gender === 'M' ? (
-                      <img src={defaultProfileMale} alt="Default Male Profile" style={{ width: '200px', height: '120px' }}/>
+                      <img src={defaultProfileMale} alt="Default Male Profile" style={{ width: '200px', height: '120px'  }}/>
                     ) : (
                       <img src={defaultProfileFemale} alt="Default Female Profile" style={{ width: '200px', height: '120px' }}/>
                     )}
                   </div>
-               <div className='name'>{coach.fname}&nbsp;{coach.lname}</div>
+               <div className='name'>{coach.fname}&nbsp;{coach.lname}</div> 
                <div className='cemail'><MdEmail /> &nbsp;&nbsp;&nbsp;{coach.email}</div>
                <div className='cnum'><FaPhoneAlt />&nbsp;&nbsp;&nbsp;{coach.pnum}</div>
                <div className='cnum'><MdPerson />&nbsp;&nbsp;&nbsp;{coach.gender}</div>
