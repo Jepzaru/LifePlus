@@ -69,7 +69,7 @@
   }
   
   .cimage {
-    /* Move the image container below the name */
+    display: fixed;
     order:5;
     margin-top: 3%;
     margin-left: 5%;
@@ -84,7 +84,6 @@
     font-size: 27px;
     font-weight: 900;
     margin-top: 20px;
-    /* Move the name container above the image */
     order: 0;
   }
   
