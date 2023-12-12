@@ -18,14 +18,15 @@ function Courses() {
   const [darkMode] = useState(savedDarkMode);
   const [loading, setLoading] = useState(false);
   const [courses, setCourses] = useState([]);
-
+  const [storedUser, setStoredUser] = useState(null);
   useEffect(() => {
-    
-    const storedUser = JSON.parse(localStorage.getItem('loggedInUser'));
-    if (storedUser) {
-      login(storedUser);
+    const userFromStorage = JSON.parse(localStorage.getItem('loggedInUser'));
+    if (userFromStorage && !storedUser) { // Check if storedUser is null before updating
+      login(userFromStorage);
+      setStoredUser(userFromStorage); // Set stored user to the state variable
+      console.log('Stored User:', userFromStorage); // Logging stored user
     }
-  }, [login]);
+  }, [login, storedUser]); // Update storedUser when login or storedUser changes
 
   useEffect(() => {
     setLoading(true);
@@ -42,7 +43,6 @@ function Courses() {
       });
   }, []); 
 
-
   useEffect(() => {
     setLoading(true);
     setTimeout(() => {
@@ -53,6 +53,17 @@ function Courses() {
   useEffect(() => {
     localStorage.setItem('darkMode', darkMode);
   }, [darkMode]);
+  
+  const handleJoinCourse = async (userId, courseId) => {
+    try {
+      const response = await axios.post(`http://localhost:8080/user/join/${userId}/${courseId}`);
+      // Handle successful join course response here if needed
+      console.log('Joined Course:', response.data);
+    } catch (error) {
+      // Handle error if the join course request fails
+      console.error('Error joining course:', error);
+    }
+  };
 
   return (
     <div className={`appindcourse ${darkMode ? 'dark-mode' : ''}`}>
@@ -83,7 +94,7 @@ function Courses() {
                       <div className='Cname'>{course.name}</div>
                       <div className='Cdes'>{course.description}</div>
                       <div className='Ccapacity'><IoPersonSharp /> Capacity <span style={{fontWeight: 'bold'}}>{course.max}</span></div>
-                      <div className='join-c'><button><BsPersonFillAdd style={{marginRight:'10px', marginBottom:'-2px' }} />Join Course</button></div>
+                      <div className='join-c'> <button onClick={() => handleJoinCourse(storedUser.userid, course.courseID)}><BsPersonFillAdd style={{marginRight:'10px', marginBottom:'-2px' }} />Join Course</button></div>
                     </div>
                   </div>
                 ))}

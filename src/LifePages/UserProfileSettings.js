@@ -10,18 +10,25 @@ import { MdTipsAndUpdates } from 'react-icons/md';
 
 function UserProfileSettings() {
   const { user } = useAuth();
+  const { login } = useAuth(); 
+
   const savedDarkMode = localStorage.getItem('darkMode') === 'true';
   const [darkMode] = useState(savedDarkMode);
 
   const [isEditing, setIsEditing] = useState(false);
   const [buttonLabel, setButtonLabel] = useState('Update User Information');
+  
+  const [storedUser, setStoredUser] = useState(null);
 
   useEffect(() => {
-    localStorage.setItem('darkMode', darkMode);
-  }, [darkMode]);
-
+    const userFromStorage = JSON.parse(localStorage.getItem('loggedInUser'));
+    if (userFromStorage && !storedUser) { // Check if storedUser is null before updating
+      login(userFromStorage);
+      setStoredUser(userFromStorage); // Set stored user to the state variable
+    }
+  }, [login, storedUser]); // Update storedUser when login or storedUser changes
   const defaultProfileImage = user && user.gender === 'M' ? defaultProfileMale : defaultProfileFemale;
-
+  console.log('Stored User:', storedUser); // Logging stored user
   const handleUpdateButtonClick = () => {
     if (isEditing) {
       // Save changes logic goes here
@@ -64,7 +71,6 @@ function UserProfileSettings() {
                  
                   {isEditing ? (
                     <>
-                     
                       <input type="text" value={user.username} onChange={(e) => console.log(e.target.value)} />
                       <input type="text" value={user.fname} onChange={(e) => console.log(e.target.value)} />
                       <input type="text" value={user.lname} onChange={(e) => console.log(e.target.value)} />
