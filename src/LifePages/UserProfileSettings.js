@@ -7,6 +7,7 @@ import defaultProfileFemale from '../LifeImages/defaultprofile1.png';
 import { IoMdSettings } from 'react-icons/io';
 import { useAuth } from '../Life++/AuthContext';
 import { MdTipsAndUpdates } from 'react-icons/md';
+import axios from 'axios';
 
 function UserProfileSettings() {
   const { user } = useAuth();
@@ -32,7 +33,6 @@ function UserProfileSettings() {
   const [editedEmail, setEditedEmail] = useState(user?.email || '');
 
   useEffect(() => {
-<<<<<<< HEAD
     const userFromStorage = JSON.parse(localStorage.getItem('loggedInUser'));
     if (userFromStorage && !storedUser) { // Check if storedUser is null before updating
       login(userFromStorage);
@@ -42,41 +42,40 @@ function UserProfileSettings() {
   const defaultProfileImage = user && user.gender === 'M' ? defaultProfileMale : defaultProfileFemale;
   console.log('Stored User:', storedUser); // Logging stored user
   const handleUpdateButtonClick = () => {
-=======
-    localStorage.setItem('darkMode', darkMode);
-  }, [darkMode]);
-
-  const defaultProfileImage =
-    user && user.gender === 'M' ? defaultProfileMale : defaultProfileFemale;
-
-  const handleUpdateButtonClick = async () => {
->>>>>>> be081d1d28ba5e912180ef142dc867a0d231eddf
     if (isEditing) {
-      try {
-        // Call your backend API to update user information
-        // Example API call:
-        // await updateUserInformation({
-        //   username: editedUsername,
-        //   fname: editedFname,
-        //   lname: editedLname,
-        //   gender: editedGender,
-        //   birthdate: new Date(editedBirthdate),
-        //   pnum: editedPnum,
-        //   email: editedEmail,
-        // });
+      const updatedUser = {
+        username: editedUsername,
+        fname: editedFname,
+        lname: editedLname,
+        gender: editedGender,
+        birthdate: editedBirthdate, // Make sure this is in the format your backend expects
+        pnum: editedPnum,
+        email: editedEmail,
+      };
 
-        setButtonLabel('Update User Information');
-      } catch (error) {
-        console.error('Error updating user information', error);
-        // Handle error appropriately
-      }
+      axios
+        .put(`http://localhost:8080/user/update?sid=${storedUser.userid}`, updatedUser)
+        .then((response) => {
+          if (response.status === 200) {
+            // Handle success - Maybe show a success message or update local state
+            console.log('User information updated successfully');
+            setButtonLabel('Update User Information');
+          } else {
+            // Handle error response from API
+            console.error('Failed to update user information');
+          }
+        })
+        .catch((error) => {
+          console.error('Error updating user information', error);
+          // Handle error appropriately
+        });
     } else {
       setButtonLabel('Save Changes');
     }
 
     setIsEditing(!isEditing);
   };
-
+  
   return (
     <div className={`appinduserprof ${darkMode ? 'dark-mode' : ''}`}>
       <Header />
@@ -111,16 +110,6 @@ function UserProfileSettings() {
                 <div className="usnam-up">
                   {isEditing ? (
                     <>
-<<<<<<< HEAD
-                      <input type="text" value={user.username} onChange={(e) => console.log(e.target.value)} />
-                      <input type="text" value={user.fname} onChange={(e) => console.log(e.target.value)} />
-                      <input type="text" value={user.lname} onChange={(e) => console.log(e.target.value)} />
-                      <input type="text" value={user.gender} onChange={(e) => console.log(e.target.value)} />
-                      <input type="text" value={new Date(user.birthdate).toLocaleDateString()} onChange={(e) => console.log(e.target.value)} />
-                      <input type="text" value={user.pnum} onChange={(e) => console.log(e.target.value)} />
-                      <input type="text" value={user.email} onChange={(e) => console.log(e.target.value)} />
-                
-=======
                       <input
                         type="text"
                         value={editedUsername}
@@ -156,7 +145,6 @@ function UserProfileSettings() {
                         value={editedEmail}
                         onChange={(e) => setEditedEmail(e.target.value)}
                       />
->>>>>>> be081d1d28ba5e912180ef142dc867a0d231eddf
                     </>
                   ) : (
                     <>

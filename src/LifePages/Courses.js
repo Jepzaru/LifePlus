@@ -64,6 +64,8 @@ function Courses() {
       console.error('Error joining course:', error);
     }
   };
+  const enrolledCourseIDs = storedUser?.joinedCourses.map(course => course.courseID) || [];
+  const isEnrolled = courseId => enrolledCourseIDs.includes(courseId);
 
   return (
     <div className={`appindcourse ${darkMode ? 'dark-mode' : ''}`}>
@@ -94,7 +96,18 @@ function Courses() {
                       <div className='Cname'>{course.name}</div>
                       <div className='Cdes'>{course.description}</div>
                       <div className='Ccapacity'><IoPersonSharp /> Capacity <span style={{fontWeight: 'bold'}}>{course.max}</span></div>
-                      <div className='join-c'> <button onClick={() => handleJoinCourse(storedUser.userid, course.courseID)}><BsPersonFillAdd style={{marginRight:'10px', marginBottom:'-2px' }} />Join Course</button></div>
+                      <div className='join-c'>
+                    {/* Check if the user is enrolled in the course and render Join/Leave button */}
+                    {isEnrolled(course.courseID) ? (
+                      <button>
+                        Leave Course
+                      </button>
+                    ) : (
+                      <button onClick={() => handleJoinCourse(storedUser.userid, course.courseID)}>
+                        Join Course
+                      </button>
+                    )}
+                  </div>
                     </div>
                   </div>
                 ))}
