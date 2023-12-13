@@ -7,6 +7,7 @@ import defaultProfileFemale from '../LifeImages/defaultprofile1.png';
 import { IoMdSettings } from 'react-icons/io';
 import { useAuth } from '../Life++/AuthContext';
 import { MdTipsAndUpdates } from 'react-icons/md';
+import axios from 'axios';
 
 function UserProfileSettings() {
   const { user } = useAuth();
@@ -32,6 +33,7 @@ function UserProfileSettings() {
   const [editedEmail, setEditedEmail] = useState(user?.email || '');
 
   useEffect(() => {
+<<<<<<< HEAD
     localStorage.setItem('darkMode', darkMode);
   }, [darkMode]);
 
@@ -39,32 +41,51 @@ function UserProfileSettings() {
     user && user.gender === 'M' ? defaultProfileMale : defaultProfileFemale;
 
   const handleUpdateButtonClick = async () => {
+=======
+    const userFromStorage = JSON.parse(localStorage.getItem('loggedInUser'));
+    if (userFromStorage && !storedUser) { // Check if storedUser is null before updating
+      login(userFromStorage);
+      setStoredUser(userFromStorage); // Set stored user to the state variable
+    }
+  }, [login, storedUser]); // Update storedUser when login or storedUser changes
+  const defaultProfileImage = user && user.gender === 'M' ? defaultProfileMale : defaultProfileFemale;
+  console.log('Stored User:', storedUser); // Logging stored user
+  const handleUpdateButtonClick = () => {
+>>>>>>> 53d2831a755c8072940c0c26e68058457dbf7977
     if (isEditing) {
-      try {
-        // Call your backend API to update user information
-        // Example API call:
-        // await updateUserInformation({
-        //   username: editedUsername,
-        //   fname: editedFname,
-        //   lname: editedLname,
-        //   gender: editedGender,
-        //   birthdate: new Date(editedBirthdate),
-        //   pnum: editedPnum,
-        //   email: editedEmail,
-        // });
+      const updatedUser = {
+        username: editedUsername,
+        fname: editedFname,
+        lname: editedLname,
+        gender: editedGender,
+        birthdate: editedBirthdate, // Make sure this is in the format your backend expects
+        pnum: editedPnum,
+        email: editedEmail,
+      };
 
-        setButtonLabel('Update User Information');
-      } catch (error) {
-        console.error('Error updating user information', error);
-        // Handle error appropriately
-      }
+      axios
+        .put(`http://localhost:8080/user/update?sid=${storedUser.userid}`, updatedUser)
+        .then((response) => {
+          if (response.status === 200) {
+            // Handle success - Maybe show a success message or update local state
+            console.log('User information updated successfully');
+            setButtonLabel('Update User Information');
+          } else {
+            // Handle error response from API
+            console.error('Failed to update user information');
+          }
+        })
+        .catch((error) => {
+          console.error('Error updating user information', error);
+          // Handle error appropriately
+        });
     } else {
       setButtonLabel('Save Changes');
     }
 
     setIsEditing(!isEditing);
   };
-
+  
   return (
     <div className={`appinduserprof ${darkMode ? 'dark-mode' : ''}`}>
       <Header />

@@ -69,6 +69,8 @@ function Courses() {
       console.error('Error joining course:', error);
     }
   };
+  const enrolledCourseIDs = storedUser?.joinedCourses.map(course => course.courseID) || [];
+  const isEnrolled = courseId => enrolledCourseIDs.includes(courseId);
 
   const handleSnackbarClose = (event, reason) => {
     if (reason === 'clickaway') {
@@ -94,6 +96,7 @@ function Courses() {
             <h1><RiGraduationCapFill style={{ marginRight: '15px', marginBottom: '-5px', color: '#FF64B4' }} />Courses</h1>
           </div>
           <div className='cou-con'>
+<<<<<<< HEAD
             {courses.map((course, index) => (
               <div className='contain' key={course.id}>
                 <div className='course-container'>
@@ -101,6 +104,33 @@ function Courses() {
                     <img src={index % 2 === 0 ? image1 : image2} alt={`Course ${course.name}`} className='course-image'
                       style={{ height: '300px', width: '300px', marginLeft: '20px', borderRadius: '15px' }}
                     />
+=======
+          {courses.map((course, index) => (
+                  <div className='contain' key={course.id}>
+                    <div className='course-container'>
+                      <div className='c-img'>
+                      <img src={index % 2 === 0 ? image1 : image2} alt={`Course ${course.name}`} className='course-image' 
+                      style={{height:'300px', width: '300px', marginLeft: '20px', borderRadius: '15px'}}
+                      
+                      />
+                      </div>
+                      <div className='Cname'>{course.name}</div>
+                      <div className='Cdes'>{course.description}</div>
+                      <div className='Ccapacity'><IoPersonSharp /> Capacity <span style={{fontWeight: 'bold'}}>{course.max}</span></div>
+                      <div className='join-c'>
+                    {/* Check if the user is enrolled in the course and render Join/Leave button */}
+                    {isEnrolled(course.courseID) ? (
+                      <button>
+                        Leave Course
+                      </button>
+                    ) : (
+                      <button onClick={() => handleJoinCourse(storedUser.userid, course.courseID)}>
+                        Join Course
+                      </button>
+                    )}
+                  </div>
+                    </div>
+>>>>>>> 53d2831a755c8072940c0c26e68058457dbf7977
                   </div>
                   <div className='Cname'>{course.name}</div>
                   <div className='Cdes'>{course.description}</div>

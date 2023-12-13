@@ -209,14 +209,22 @@ export default function SignUpPage() {
                             onChange={handleInputChange}
                             style={{ marginBottom: '20px', width: '45%', marginLeft: '30px' }} InputProps={{ style: { fontFamily: 'Poppins,sans-serif' } }}
                         />
-                        <TextField
-                            label="Gender"
-                            variant="outlined"
-                            fullWidth
-                            name="gender"
-                            onChange={handleInputChange}
-                            style={{ marginBottom: '20px', width: '15%', marginLeft: '30px' }} InputProps={{ style: { fontFamily: 'Poppins,sans-serif' } }}
-                        />
+                        <FormControl style={{ marginBottom: '20px', width: '15%', marginLeft: '30px' }}>
+                            <InputLabel id="gender-label">Gender</InputLabel>
+                                <Select
+                                    labelId="gender-label"
+                                    id="gender"
+                                    value={formData.gender}
+                                    onChange={handleInputChange}
+                                    label="Gender"
+                                    name="gender"
+                                    style={{ width: '100%' }}
+                                    inputProps={{ style: { fontFamily: 'Poppins,sans-serif' } }}
+    >
+                            <MenuItem value="M">Male</MenuItem>
+                            <MenuItem value="F">Female</MenuItem>
+                        </Select>
+                        </FormControl>
                     </div>
                     <TextField
                         label="Username"
