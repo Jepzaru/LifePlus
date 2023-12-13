@@ -131,10 +131,11 @@ function CoachCourses() {
                         <button>View Members</button>
                       </div>
                       <div className='delete-cou'><button onClick={() => handleRemoveCourse(course.courseID)}>Remove Course</button>
+                        </div>
                     </div>
-                  <div className='delete-cou'><button onClick={() => handleRemoveCourse(course.id)}>Remove Course</button></div>
+                 
                 </div>
-              </div>
+             
             ))}
           </div>
           <div className="up-act">
