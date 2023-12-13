@@ -53,7 +53,7 @@ function CoachCourses() {
       // Add other headers if necessary (e.g., authorization token)
     };
   
-    axios.delete(`http://localhost:8080/coach/delete/${courseId}`, { headers })
+    axios.delete(`http://localhost:8080/course/delete/${courseId}`, { headers })
       .then(response => {
         console.log('Course removed successfully:', response.data);
         setSnackbar({
@@ -139,7 +139,7 @@ function CoachCourses() {
                       <div className='members'>
                         <button onClick={() => setShowViewMembersBox(true)}>View Members</button>
                       </div>
-                      <div className='delete-cou'><button onClick={() => handleRemoveCourse(course.id)}>Remove Course</button>
+                      <div className='delete-cou'><button onClick={() => handleRemoveCourse(course.courseID)}>Remove Course</button>
 </div>
                     </div>
                   </div>
