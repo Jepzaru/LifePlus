@@ -51,7 +51,7 @@ function CoachCourses() {
       // Add other headers if necessary (e.g., authorization token)
     };
   
-    axios.delete(`http://localhost:8080/coach/delete/${courseId}`, { headers })
+    axios.delete(`http://localhost:8080/course/delete/${courseId}`, { headers })
       .then(response => {
         console.log('Course removed successfully:', response.data);
         setSnackbar({
@@ -125,7 +125,22 @@ function CoachCourses() {
                   <div className='c-img'>
                     <img src={index % 2 === 0 ? image1 : image2} alt={`Course ${course.name}`} className='course-image' 
                       style={{height:'300px', width: '300px', marginLeft: '20px', borderRadius: '15px'}}
+<<<<<<< HEAD
                     />
+=======
+                      
+                      />
+                      </div>
+                      <div className='Cname'>{course.name}</div>
+                      <div className='Cdes'>{course.description}</div>
+                      <div className='Ccapacity'><IoPersonSharp /> Capacity <span style={{fontWeight: 'bold'}}>{course.max}</span></div>
+                      <div className='members'>
+                        <button onClick={() => setShowViewMembersBox(true)}>View Members</button>
+                      </div>
+                      <div className='delete-cou'><button onClick={() => handleRemoveCourse(course.courseID)}>Remove Course</button>
+</div>
+                    </div>
+>>>>>>> 40fd6f5f8a91661687bc68f1d6648f546ff123fe
                   </div>
                   <div className='Cname'>{course.name}</div>
                   <div className='Cdes'>{course.description}</div>

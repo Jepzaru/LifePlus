@@ -44,7 +44,7 @@ function Setting() {
     const isConfirmed = window.confirm('Are you sure you want to delete your account? This action cannot be undone.');
     if (isConfirmed) {
       const storedUser = JSON.parse(localStorage.getItem('loggedInUser'));
-      const userId = storedUser.userId; // Replace with the actual user identifier
+      const userId = storedUser.userid; // Replace with the actual user identifier
 
       const deleteUrl = `http://localhost:8080/user/delete/${userId}`; // Replace {sid} with the actual identifier
       try {

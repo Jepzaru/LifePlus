@@ -45,7 +45,7 @@ const LoginPage = () => {
 
             const response = await axios.get('http://localhost:8080/user/get');
             const foundUser = response.data.find(
-                (user) => user.username === username && user.password === password
+                (user) => user.username === username && user.password === password && user.deleted === false
             );
 
             if (foundUser) {
