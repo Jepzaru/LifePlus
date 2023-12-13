@@ -32,17 +32,6 @@ function UserProfileSettings() {
   const [editedEmail, setEditedEmail] = useState(user?.email || '');
 
   useEffect(() => {
-<<<<<<< HEAD
-    const userFromStorage = JSON.parse(localStorage.getItem('loggedInUser'));
-    if (userFromStorage && !storedUser) { // Check if storedUser is null before updating
-      login(userFromStorage);
-      setStoredUser(userFromStorage); // Set stored user to the state variable
-    }
-  }, [login, storedUser]); // Update storedUser when login or storedUser changes
-  const defaultProfileImage = user && user.gender === 'M' ? defaultProfileMale : defaultProfileFemale;
-  console.log('Stored User:', storedUser); // Logging stored user
-  const handleUpdateButtonClick = () => {
-=======
     localStorage.setItem('darkMode', darkMode);
   }, [darkMode]);
 
@@ -50,7 +39,6 @@ function UserProfileSettings() {
     user && user.gender === 'M' ? defaultProfileMale : defaultProfileFemale;
 
   const handleUpdateButtonClick = async () => {
->>>>>>> be081d1d28ba5e912180ef142dc867a0d231eddf
     if (isEditing) {
       try {
         // Call your backend API to update user information
@@ -111,16 +99,6 @@ function UserProfileSettings() {
                 <div className="usnam-up">
                   {isEditing ? (
                     <>
-<<<<<<< HEAD
-                      <input type="text" value={user.username} onChange={(e) => console.log(e.target.value)} />
-                      <input type="text" value={user.fname} onChange={(e) => console.log(e.target.value)} />
-                      <input type="text" value={user.lname} onChange={(e) => console.log(e.target.value)} />
-                      <input type="text" value={user.gender} onChange={(e) => console.log(e.target.value)} />
-                      <input type="text" value={new Date(user.birthdate).toLocaleDateString()} onChange={(e) => console.log(e.target.value)} />
-                      <input type="text" value={user.pnum} onChange={(e) => console.log(e.target.value)} />
-                      <input type="text" value={user.email} onChange={(e) => console.log(e.target.value)} />
-                
-=======
                       <input
                         type="text"
                         value={editedUsername}
@@ -156,7 +134,6 @@ function UserProfileSettings() {
                         value={editedEmail}
                         onChange={(e) => setEditedEmail(e.target.value)}
                       />
->>>>>>> be081d1d28ba5e912180ef142dc867a0d231eddf
                     </>
                   ) : (
                     <>

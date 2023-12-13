@@ -14,15 +14,35 @@ const AddItemBox = ({ onClose }) => {
 
   const handleSubmit = async () => {
     try {
-      // Add your logic to handle item creation here
-      
-      // Show a success snackbar
-      onClose({
-        open: true,
-        message: 'Item Successfully Added',
+      // Make a POST request to the API to insert the item into the database
+      const response = await fetch('http://localhost:8080/reward/insert', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          itemName,
+          itemDescription,
+          points,
+        }),
       });
+
+      if (response.ok) {
+        // Show a success snackbar
+        onClose({
+          open: true,
+          message: 'Item Successfully Added',
+        });
+        // Reset the form after successful submission
+        setItemName('');
+        setItemDescription('');
+        setPoints('');
+      } else {
+        // Handle errors if the API request fails
+        console.error('Error adding item:', response.statusText);
+      }
     } catch (error) {
-      // Handle errors if item creation fails
+      // Handle errors if something goes wrong
       console.error('Error adding item:', error);
     }
   };
