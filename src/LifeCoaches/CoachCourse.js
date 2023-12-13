@@ -13,23 +13,21 @@ import { FaCheckCircle } from "react-icons/fa";
 import CreateCourseBox from './CreateCourseBox';
 import { useAuth } from '../Life++/AuthContext';
 import { IoPersonSharp } from "react-icons/io5";
-import { PiStudentBold } from "react-icons/pi";
+import { FaScroll } from "react-icons/fa6";
 import ViewMembersBox from './ViewMembersBox';
-
+import { IoMdAddCircle } from "react-icons/io";
 import axios from 'axios'; 
 
 function CoachCourses() {
   const { login } = useAuth();
 
   const [loading, setLoading] = useState(false);
-  const [showViewMembersBox, setShowViewMembersBox] = useState(false);
-  const [showCreateCourseBox, setShowCreateCourseBox] = useState(false);
   const [snackbar, setSnackbar] = useState({
     open: false,
     message: '',
   });
   const [courses, setCourses] = useState([]); // State to store courses
-
+  const [showCreateCourseBox, setShowCreateCourseBox] = useState(false);
   const savedDarkMode = localStorage.getItem('darkMode') === 'true';
   const [darkMode] = useState(savedDarkMode);
 
@@ -90,16 +88,11 @@ function CoachCourses() {
   }, []);
 
   const handleCreateCourseClick = () => {
-    setShowCreateCourseBox(true);
+    // Handle create course click
   };
 
   const handleCloseCreateCourseBox = () => {
-    setShowCreateCourseBox(false);
-    // Show snackbar with the success message
-    setSnackbar({
-      open: true,
-      message: 'Course Successfully Created',
-    });
+    // Handle close create course box
   };
 
   return (
@@ -112,41 +105,44 @@ function CoachCourses() {
         <>
           <CoachHeader />
           <CoachSidenavbar />
-          <div className={`cou ${showCreateCourseBox ? 'dimmed' : ''}`}>
+          <div className="cou">
             <h1><RiGraduationCapFill style={{ marginRight: '15px', marginBottom: '-5px', color: '#FF64B4' }} />Courses</h1>
           </div>
-          <div className={`cour ${showCreateCourseBox ? 'dimmed' : ''} ${darkMode ? 'dark-mode-title' : ''}`}>
+          <div className={`cour ${darkMode ? 'dark-mode-title' : ''}`}>
             <h1><RiGraduationCapFill style={{ marginRight: '15px', marginBottom: '-5px', color: '#FF64B4' }} />Courses</h1>
             <div className='createcoursediv'>
-              <button className='create-course' onClick={handleCreateCourseClick}>
+              <button className='create-course' onClick={() => {
+                setShowCreateCourseBox(true);
+              }}>
                 <IoCreateSharp style={{ marginRight: '10px', fontSize: '18px' }} />Create New Course
               </button>
             </div>
           </div>
-          <div className={`cou-con ${showCreateCourseBox ? 'dimmed' : ''}`}>
-                {courses.map((course, index) => (
-                  <div className='contain' key={course.id}>
-                    <div className='course-container'>
-                      <div className='c-img'>
-                      <img src={index % 2 === 0 ? image1 : image2} alt={`Course ${course.name}`} className='course-image' 
+          <div className="cou-con">
+            {courses.map((course, index) => (
+              <div className='contain' key={course.id}>
+                <div className='course-container'>
+                  <div className='c-img'>
+                    <img src={index % 2 === 0 ? image1 : image2} alt={`Course ${course.name}`} className='course-image' 
                       style={{height:'300px', width: '300px', marginLeft: '20px', borderRadius: '15px'}}
-                      
-                      />
-                      </div>
-                      <div className='Cname'>{course.name}</div>
-                      <div className='Cdes'>{course.description}</div>
-                      <div className='Ccapacity'><IoPersonSharp /> Capacity <span style={{fontWeight: 'bold'}}>{course.max}</span></div>
-                      <div className='members'>
-                        <button onClick={() => setShowViewMembersBox(true)}>View Members</button>
-                      </div>
-                      <div className='delete-cou'><button onClick={() => handleRemoveCourse(course.id)}>Remove Course</button>
-</div>
-                    </div>
+                    />
                   </div>
-                ))}
+                  <div className='Cname'>{course.name}</div>
+                  <div className='Cdes'>{course.description}</div>
+                  <div className='Ccapacity'><IoPersonSharp /> Capacity <span style={{fontWeight: 'bold'}}>{course.max}</span></div>
+                  <div className='members'>
+                    <button>View Members</button>
+                  </div>
+                  <div className='delete-cou'><button onClick={() => handleRemoveCourse(course.id)}>Remove Course</button></div>
+                </div>
               </div>
-          <div className={`up-act ${showCreateCourseBox ? 'dimmed' : ''}`}>
-            <p><PiStudentBold style={{marginRight:'15px', fontSize:'36px', marginBottom:'-5px'}}/>Students List</p>
+            ))}
+          </div>
+          <div className="up-act">
+            <p><FaScroll style={{marginLeft: '20px', marginRight:'15px', fontSize:'36px', marginBottom:'-5px'}}/>Quests Created <IoMdAddCircle style={{color: 'green', marginLeft: '20px', cursor:'pointer'}}/></p>
+            <div className='created-quest'>
+            
+            </div>
           </div>
 
           <Snackbar
@@ -155,22 +151,19 @@ function CoachCourses() {
             onClose={() => setSnackbar({ open: false, message: '' })}
           >
             <MuiAlert onClose={() => setSnackbar({ open: false, message: '' })} severity="success" 
-            sx={{ 
-              width: '100%',
-              backgroundColor: 'green',
-              color: '#fff'
-          }}
-          icon={<FaCheckCircle style={{ color: '#fff' }} />}
-          >
+              sx={{ 
+                width: '100%',
+                backgroundColor: 'green',
+                color: '#fff'
+              }}
+              icon={<FaCheckCircle style={{ color: '#fff' }} />}
+            >
               {snackbar.message}
             </MuiAlert>
           </Snackbar>
-          {showCreateCourseBox && <CreateCourseBox onClose={handleCloseCreateCourseBox} />}
-          {showCreateCourseBox && <div className="overlay" onClick={handleCloseCreateCourseBox}></div>}
-          {showViewMembersBox && <ViewMembersBox onClose={() => setShowViewMembersBox(false)} />}
-          {showViewMembersBox && <div className="overlay" onClick={() => setShowViewMembersBox(false)}></div>}
         </>
       )}
+      {showCreateCourseBox && <CreateCourseBox onClose={() => setShowCreateCourseBox(false)} />}
     </div>
   );
 }

@@ -93,6 +93,7 @@ const CreateCourseBox = ({ onClose }) => {
   };
 
   return (
+    <div className='create-course-box-overlay'>
     <div id="create-course-box" className={`create-course-box ${isOutro ? 'outro' : ''}`}>
       <h1>Create New Course</h1>
       <div className="closecourse">
@@ -154,6 +155,7 @@ const CreateCourseBox = ({ onClose }) => {
           </button>
         </div>
       </div>
+    </div>
     </div>
   );
 };
