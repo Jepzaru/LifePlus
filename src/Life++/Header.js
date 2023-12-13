@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { FaSearch, FaCrown } from 'react-icons/fa';
 import { useAuth } from './AuthContext';
 import { Link } from 'react-router-dom';
@@ -7,6 +7,9 @@ import defaultProfileFemale from '../LifeImages/defaultprofile1.png';
 import Achievement from '../LifeImages/achivement.png';
 import Quests from '../LifeImages/quest.png';
 import Shop from '../LifeImages/pshop.png';
+import AchievementBox from './AchievementBox';
+import QuestBox from './QuestBox';
+import ItemShopBox from './ItemShopBox';
 import '../LifeCss/header.css';
 
 const Header = () => {
@@ -14,6 +17,11 @@ const Header = () => {
   const storedUser = JSON.parse(localStorage.getItem('loggedInUser'));
 
   const defaultProfileImage = storedUser?.gender === 'M' ? defaultProfileMale : defaultProfileFemale;
+
+  const [showAchievementsBox, setShowAchievementsBox] = useState(false);
+  const [showQuestsBox, setShowQuestsBox] = useState(false);
+  const [showItemShopBox, setShowItemShopBox] = useState(false);
+
 
   return (
     <div className='header'>
@@ -25,7 +33,9 @@ const Header = () => {
             <div
               title="Achievements"
               onClick={() => {
-                // Handle click event for Achievements
+                setShowAchievementsBox(true);
+                setShowQuestsBox(false);
+                setShowItemShopBox(false);
               }}
             >
               <img
@@ -51,7 +61,9 @@ const Header = () => {
             <div
               title="Quests"
               onClick={() => {
-                // Handle click event for Quests
+                setShowAchievementsBox(false);
+              setShowQuestsBox(true);
+              setShowItemShopBox(false);
               }}
             >
               <img
@@ -77,7 +89,9 @@ const Header = () => {
             <div
               title="Points Shop"
               onClick={() => {
-                // Handle click event for Points Shop
+                setShowAchievementsBox(false);
+                setShowQuestsBox(false);
+                setShowItemShopBox(true);
               }}
             >
               <img
@@ -128,6 +142,10 @@ const Header = () => {
             </div>
           </div>
         )}
+      {showAchievementsBox && <AchievementBox onClose={() => setShowAchievementsBox(false)} />}
+      {showQuestsBox && <QuestBox onClose={() => setShowQuestsBox(false)} />}
+      {showItemShopBox && <ItemShopBox onClose={() => setShowItemShopBox(false)} />}
+
       </div>
     </div>
   );

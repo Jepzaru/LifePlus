@@ -63,7 +63,6 @@
     text-decoration: none;
     transition: background-color 0.3s;
     position: relative;
-    z-index: 1;
   }
   .prem-but:hover{
     background-color: #705FBE;

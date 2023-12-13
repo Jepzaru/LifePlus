@@ -1,0 +1,73 @@
+/* boxStyles.css */
+
+/* Styles for the dimming overlay */
+.floating-box-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Styles for the individual boxes */
+  .floating-box {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 800px;
+    height: 600px;
+    z-index: 5000;
+  }
+  
+  .floating-box-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    color:black;
+  }
+  .floating-box-header-quest {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    color:black;
+  }
+  .floating-box-header h2{
+    color: black;
+    margin-left: -180px;
+  }
+  .floating-box-header-quest h2{
+    color: black;
+    margin-left: -270px;
+  }
+  
+  .close-button {
+    cursor: pointer;
+    font-size: 20px;
+  }
+  
+  .floating-box-content {
+    /* Customize the content styling as needed */
+  }
+  
+  /* Additional styles specific to the AchievementBox */
+  .achievement-box-content {
+    /* Customize achievement box content styling */
+  }
+  
+  /* Additional styles specific to the QuestBox */
+  .quest-box-content {
+    /* Customize quest box content styling */
+  }
+  
+  /* Additional styles specific to the ItemShopBox */
+  .item-shop-box-content {
+    /* Customize item shop box content styling */
+  }
+  

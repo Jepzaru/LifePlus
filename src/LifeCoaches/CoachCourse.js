@@ -13,12 +13,16 @@ import { FaCheckCircle } from "react-icons/fa";
 import CreateCourseBox from './CreateCourseBox';
 import { useAuth } from '../Life++/AuthContext';
 import { IoPersonSharp } from "react-icons/io5";
+import { PiStudentBold } from "react-icons/pi";
+import ViewMembersBox from './ViewMembersBox';
+
 import axios from 'axios'; 
 
 function CoachCourses() {
   const { login } = useAuth();
 
   const [loading, setLoading] = useState(false);
+  const [showViewMembersBox, setShowViewMembersBox] = useState(false);
   const [showCreateCourseBox, setShowCreateCourseBox] = useState(false);
   const [snackbar, setSnackbar] = useState({
     open: false,
@@ -99,14 +103,16 @@ function CoachCourses() {
                       <div className='Cname'>{course.name}</div>
                       <div className='Cdes'>{course.description}</div>
                       <div className='Ccapacity'><IoPersonSharp /> Capacity <span style={{fontWeight: 'bold'}}>{course.max}</span></div>
-                      <div className='members'><button>View Members</button></div>
+                      <div className='members'>
+                        <button onClick={() => setShowViewMembersBox(true)}>View Members</button>
+                      </div>
                       <div className='delete-cou'><button>Remove Course</button></div>
                     </div>
                   </div>
                 ))}
               </div>
           <div className={`up-act ${showCreateCourseBox ? 'dimmed' : ''}`}>
-            <p>Students List</p>
+            <p><PiStudentBold style={{marginRight:'15px', fontSize:'36px', marginBottom:'-5px'}}/>Students List</p>
           </div>
 
           <Snackbar
@@ -125,9 +131,10 @@ function CoachCourses() {
               {snackbar.message}
             </MuiAlert>
           </Snackbar>
-
           {showCreateCourseBox && <CreateCourseBox onClose={handleCloseCreateCourseBox} />}
           {showCreateCourseBox && <div className="overlay" onClick={handleCloseCreateCourseBox}></div>}
+          {showViewMembersBox && <ViewMembersBox onClose={() => setShowViewMembersBox(false)} />}
+          {showViewMembersBox && <div className="overlay" onClick={() => setShowViewMembersBox(false)}></div>}
         </>
       )}
     </div>
