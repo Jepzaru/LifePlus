@@ -81,14 +81,14 @@
     background-color: #705FBE; 
   }
 
-.ascf p {
+.ascfp p {
     font-family: 'Poppins', sans-serif;
     font-size: 16px;
     margin-left: 250px;
     margin-top: 20px;
 }
 
-.backcan-link {
+.backcanc-link {
     font-family: 'Poppins', sans-serif;
     font-size: 10px;
     margin-top: 10px;
@@ -97,7 +97,7 @@
     transition: color 0.3s;
 }
 
-.backcan-link:hover {
+.backcanc-link:hover {
     color: #FF64B4;
 }
 .forgotfields{

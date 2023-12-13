@@ -51,7 +51,13 @@ const CreateCourseBox = ({ onClose }) => {
   const handleSubmit = async () => {
     try {
       if (!courseData.description) {
-        console.error('Description cannot be empty');
+        window.alert('Description cannot be empty');
+        return;
+      }
+
+      const confirmation = window.confirm('Are you sure you want to create this course?');
+
+      if (!confirmation) {
         return;
       }
 
@@ -63,8 +69,10 @@ const CreateCourseBox = ({ onClose }) => {
       };
 
       const response = await axios.post('http://localhost:8080/course/insert', newCourse);
+
       // Handle successful response if needed
       console.log('New course created:', response.data);
+
       // Close the create course box or perform other actions
       onClose();
     } catch (error) {
@@ -85,6 +93,7 @@ const CreateCourseBox = ({ onClose }) => {
     setIsOutro(true);
     setTimeout(() => {
       onClose();
+      window.alert('Course creation cancelled.');
     }, 300);
   };
 
@@ -94,68 +103,68 @@ const CreateCourseBox = ({ onClose }) => {
 
   return (
     <div className='create-course-box-overlay'>
-    <div id="create-course-box" className={`create-course-box ${isOutro ? 'outro' : ''}`}>
-      <h1>Create New Course</h1>
-      <div className="closecourse">
-        <button className="create-course-close" onClick={handleOutro}>
-          Cancel
-        </button>
-      </div>
-      <div className="create-course-con">
-        <div className="image-selector">
-          <h3>Select Course Image</h3>
-          <div className="image-options">
-            <img
-              src={image1}
-              alt="1"
-              onClick={() => handleImageClick(image1)}
-              className={selectedImage === image1 ? 'selected' : ''}
-            />
-            <img
-              src={image2}
-              alt="2"
-              onClick={() => handleImageClick(image2)}
-              className={selectedImage === image2 ? 'selected' : ''}
-            />
-          </div>
-          {selectedImage && <img src={selectedImage} alt="Selected Course Image" />}
-        </div>
-        <div className="course-name-tit">
-          <h3>Course Title</h3>
-          <input
-            type="text"
-            value={courseData.name}
-            onChange={(e) => handleInputChange(e)}
-            name="name"
-          />
-        </div>
-        <div className="course-des">
-          <h3>Course Description</h3>
-          <textarea
-            type="text"
-            value={courseData.description}
-            onChange={(e) => handleInputChange(e)}
-            name="description"
-          ></textarea>
-        </div>
-        <div className="course-capa-max">
-          <h3>Course Maximum Capacity</h3>
-          <input
-            className="max-capa"
-            type="text"
-            value={courseData.max}
-            onChange={(e) => handleInputChange(e)}
-            name="max"
-          />
-        </div>
-
-        <div className="create-course-save">
-          <button className="create-save" onClick={handleSubmit}>
-            Create Course
+      <div id="create-course-box" className={`create-course-box ${isOutro ? 'outro' : ''}`}>
+        <h1>Create New Course</h1>
+        <div className="closecourse">
+          <button className="create-course-close" onClick={handleOutro}>
+            Cancel
           </button>
         </div>
+        <div className="create-course-con">
+          <div className="image-selector">
+            <h3>Select Course Image</h3>
+            <div className="image-options">
+              <img
+                src={image1}
+                alt="1"
+                onClick={() => handleImageClick(image1)}
+                className={selectedImage === image1 ? 'selected' : ''}
+              />
+              <img
+                src={image2}
+                alt="2"
+                onClick={() => handleImageClick(image2)}
+                className={selectedImage === image2 ? 'selected' : ''}
+              />
+            </div>
+            {selectedImage && <img src={selectedImage} alt="Selected Course Image" />}
+          </div>
+          <div className="course-name-tit">
+            <h3>Course Title</h3>
+            <input
+              type="text"
+              value={courseData.name}
+              onChange={(e) => handleInputChange(e)}
+              name="name"
+            />
+          </div>
+          <div className="course-des">
+            <h3>Course Description</h3>
+            <textarea
+              type="text"
+              value={courseData.description}
+              onChange={(e) => handleInputChange(e)}
+              name="description"
+            ></textarea>
+          </div>
+          <div className="course-capa-max">
+            <h3>Course Maximum Capacity</h3>
+            <input
+              className="max-capa"
+              type="text"
+              value={courseData.max}
+              onChange={(e) => handleInputChange(e)}
+              name="max"
+            />
+          </div>
+
+          <div className="create-course-save">
+            <button className="create-save" onClick={handleSubmit}>
+              Create Course
+            </button>
+          </div>
+        </div>
       </div>
-    </div>
     </div>
   );
 };

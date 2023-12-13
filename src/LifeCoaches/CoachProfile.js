@@ -88,7 +88,11 @@ function CoachProfileSettings() {
             {user && (
               <>
                 <div className="image-usnam">
-                  <img src={defaultProfileImage} alt="User Avatar" style={{ width: '800px', borderRadius: '50%', height: '500px' }} />
+                  <img
+                    src={defaultProfileImage}
+                    alt="User Avatar"
+                    style={{ width: '800px', borderRadius: '50%', height: '500px' }}
+                  />
                 </div>
                 <div className="usnam-up">
                   {isEditing ? (
@@ -103,27 +107,34 @@ function CoachProfileSettings() {
                     </>
                   ) : (
                     <>
-                      <p style={{marginTop: '10px'}}>
-                        <span style={{ fontWeight: 'bold', color: 'black', marginRight:'55px' }}>Username: </span>{editedUser.username}
+                      <p style={{ marginTop: '10px' }}>
+                        <span style={{ fontWeight: 'bold', color: 'black', marginRight: '55px' }}>Username: </span>
+                        {editedUser.username}
                       </p>
-                      <br/>
-                      <p style={{marginTop: '10px'}}>
-                        <span style={{ fontWeight: 'bold', color: 'black', marginRight:'50px' }}>First Name: </span> {editedUser.fname}
+                      <br />
+                      <p style={{ marginTop: '10px' }}>
+                        <span style={{ fontWeight: 'bold', color: 'black', marginRight: '50px' }}>First Name: </span>{' '}
+                        {editedUser.fname}
                       </p>
-                      <p style={{marginTop: '10px'}}>
-                        <span style={{ fontWeight: 'bold', color: 'black', marginRight:'52px' }}>Last Name: </span> {editedUser.lname}
+                      <p style={{ marginTop: '10px' }}>
+                        <span style={{ fontWeight: 'bold', color: 'black', marginRight: '52px' }}>Last Name: </span>{' '}
+                        {editedUser.lname}
                       </p>
-                      <p style={{marginTop: '10px'}}>
-                        <span style={{ fontWeight: 'bold', color: 'black', marginRight:'90px' }}>Gender: </span> {editedUser.gender}
+                      <p style={{ marginTop: '10px' }}>
+                        <span style={{ fontWeight: 'bold', color: 'black', marginRight: '90px' }}>Gender: </span>{' '}
+                        {editedUser.gender}
                       </p>
-                      <p style={{marginTop: '10px'}}>
-                        <span style={{ fontWeight: 'bold', color: 'black', marginRight:'57px' }}>Birth Date: </span>{editedUser.birthdate}
+                      <p style={{ marginTop: '10px' }}>
+                        <span style={{ fontWeight: 'bold', color: 'black', marginRight: '57px' }}>Birth Date: </span>
+                        {editedUser.birthdate}
                       </p>
-                      <p style={{marginTop: '10px'}}>
-                        <span style={{ fontWeight: 'bold', color: 'black', marginRight:'77px' }}>Contact: </span> {editedUser.pnum}
+                      <p style={{ marginTop: '10px' }}>
+                        <span style={{ fontWeight: 'bold', color: 'black', marginRight: '77px' }}>Contact: </span>{' '}
+                        {editedUser.pnum}
                       </p>
-                      <p style={{marginTop: '30px', marginBottom:'10px'}}>
-                        <span style={{ fontWeight: 'bold', color: 'black', marginRight:'10px' }}>Email: </span>{editedUser.email}
+                      <p style={{ marginTop: '30px', marginBottom: '10px' }}>
+                        <span style={{ fontWeight: 'bold', color: 'black', marginRight: '10px' }}>Email: </span>
+                        {editedUser.email}
                       </p>
                     </>
                   )}

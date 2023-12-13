@@ -10,15 +10,14 @@ import { MdTipsAndUpdates } from 'react-icons/md';
 import axios from 'axios';
 
 function UserProfileSettings() {
-  const { user } = useAuth();
-  const { login } = useAuth(); 
+  const { user, login } = useAuth();
 
   const savedDarkMode = localStorage.getItem('darkMode') === 'true';
   const [darkMode] = useState(savedDarkMode);
 
   const [isEditing, setIsEditing] = useState(false);
   const [buttonLabel, setButtonLabel] = useState('Update User Information');
-  
+
   const [storedUser, setStoredUser] = useState(null);
 
   // State for edited values
@@ -34,13 +33,14 @@ function UserProfileSettings() {
 
   useEffect(() => {
     const userFromStorage = JSON.parse(localStorage.getItem('loggedInUser'));
-    if (userFromStorage && !storedUser) { // Check if storedUser is null before updating
+    if (userFromStorage && !storedUser) {
       login(userFromStorage);
-      setStoredUser(userFromStorage); // Set stored user to the state variable
+      setStoredUser(userFromStorage);
     }
-  }, [login, storedUser]); // Update storedUser when login or storedUser changes
+  }, [login, storedUser]);
+
   const defaultProfileImage = user && user.gender === 'M' ? defaultProfileMale : defaultProfileFemale;
-  console.log('Stored User:', storedUser); // Logging stored user
+
   const handleUpdateButtonClick = () => {
     if (isEditing) {
       const updatedUser = {
@@ -48,34 +48,34 @@ function UserProfileSettings() {
         fname: editedFname,
         lname: editedLname,
         gender: editedGender,
-        birthdate: editedBirthdate, // Make sure this is in the format your backend expects
+        birthdate: editedBirthdate,
         pnum: editedPnum,
         email: editedEmail,
       };
-
+  
       axios
         .put(`http://localhost:8080/user/update?sid=${storedUser.userid}`, updatedUser)
         .then((response) => {
           if (response.status === 200) {
-            // Handle success - Maybe show a success message or update local state
             console.log('User information updated successfully');
-            setButtonLabel('Update User Information');
+            window.alert('User information updated successfully'); // Customized alert message
           } else {
-            // Handle error response from API
             console.error('Failed to update user information');
+            window.alert('Failed to update user information'); // Customized alert message
           }
+          setButtonLabel('Update User Information');
         })
         .catch((error) => {
           console.error('Error updating user information', error);
-          // Handle error appropriately
+          window.alert('Error updating user information'); // Customized alert message
         });
     } else {
       setButtonLabel('Save Changes');
     }
-
+  
     setIsEditing(!isEditing);
   };
-  
+
   return (
     <div className={`appinduserprof ${darkMode ? 'dark-mode' : ''}`}>
       <Header />
@@ -84,9 +84,7 @@ function UserProfileSettings() {
         <h1>Settings</h1>
         <div className={`setitle ${darkMode ? 'dark-mode-title' : ''}`}>
           <h1>
-            <IoMdSettings
-              style={{ marginRight: '15px', marginBottom: '-5px', color: '#FF64B4' }}
-            />
+            <IoMdSettings style={{ marginRight: '15px', marginBottom: '-5px', color: '#FF64B4' }} />
             Settings / User Profile
           </h1>
         </div>
@@ -190,8 +188,6 @@ function UserProfileSettings() {
                         </span>
                         {editedEmail}
                       </p>
-                      
-                      
                     </>
                   )}
                 </div>

@@ -51,31 +51,46 @@ const CreateQuestBox = ({ onClose }) => {
   const handleSubmit = async () => {
     try {
       if (!courseData.description) {
-        console.error('Description cannot be empty');
+        window.alert('Description cannot be empty');
         return;
       }
 
-      const newCourse = {
+      // Ask for confirmation before creating the quest
+      const confirmation = window.confirm('Are you sure you want to create this quest?');
+
+      if (!confirmation) {
+        return;
+      }
+
+      const newQuest = {
         description: courseData.description,
         max: parseInt(courseData.max, 10),
         name: courseData.name,
         coach: courseData.coach,
       };
 
-      const response = await axios.post('http://localhost:8080/course/insert', newCourse);
+      const response = await axios.post('http://localhost:8080/quest/insert', newQuest);
+
       // Handle successful response if needed
-      console.log('New course created:', response.data);
-      // Close the create course box or perform other actions
+      console.log('New quest created:', response.data);
+
+      // Show alert for successful quest creation
+      window.alert('Quest created successfully');
+
+      // Close the create quest box or perform other actions
       onClose();
     } catch (error) {
       // Handle errors if the request fails
-      console.error('Error creating course:', error);
+      console.error('Error creating quest:', error);
+
+      // Show alert for quest creation failure
+      window.alert('Quest creation failed');
     }
   };
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      document.getElementById('create-course-box').classList.add('visible');
+      document.getElementById('create-quest-box').classList.add('visible');
     }, 50);
 
     return () => clearTimeout(timeoutId);
@@ -94,68 +109,68 @@ const CreateQuestBox = ({ onClose }) => {
 
   return (
     <div className='create-course-box-overlay'>
-    <div id="create-course-box" className={`create-course-box ${isOutro ? 'outro' : ''}`}>
-      <h1>Create New Quest</h1>
-      <div className="closecourse">
-        <button className="create-course-close" onClick={handleOutro}>
-          Cancel
-        </button>
-      </div>
-      <div className="create-course-con">
-        <div className="image-selector">
-          <h3>Select Quest Image</h3>
-          <div className="image-options">
-            <img
-              src={image1}
-              alt="1"
-              onClick={() => handleImageClick(image1)}
-              className={selectedImage === image1 ? 'selected' : ''}
-            />
-            <img
-              src={image2}
-              alt="2"
-              onClick={() => handleImageClick(image2)}
-              className={selectedImage === image2 ? 'selected' : ''}
-            />
-          </div>
-          {selectedImage && <img src={selectedImage} alt="Selected Course Image" />}
-        </div>
-        <div className="course-name-tit">
-          <h3>Quest Title</h3>
-          <input
-            type="text"
-            value={courseData.name}
-            onChange={(e) => handleInputChange(e)}
-            name="name"
-          />
-        </div>
-        <div className="course-des">
-          <h3>Quest Description</h3>
-          <textarea
-            type="text"
-            value={courseData.description}
-            onChange={(e) => handleInputChange(e)}
-            name="description"
-          ></textarea>
-        </div>
-        <div className="course-capa-max">
-          <h3>Add Achievement</h3>
-          <input
-            className="max-capa"
-            type="text"
-            value={courseData.max}
-            onChange={(e) => handleInputChange(e)}
-            name="max"
-          />
-        </div>
-
-        <div className="create-course-save">
-          <button className="create-save" onClick={handleSubmit}>
-            Create Quest
+      <div id="create-quest-box" className={`create-course-box ${isOutro ? 'outro' : ''}`}>
+        <h1>Create New Quest</h1>
+        <div className="closecourse">
+          <button className="create-course-close" onClick={handleOutro}>
+            Cancel
           </button>
         </div>
+        <div className="create-course-con">
+          <div className="image-selector">
+            <h3>Select Quest Image</h3>
+            <div className="image-options">
+              <img
+                src={image1}
+                alt="1"
+                onClick={() => handleImageClick(image1)}
+                className={selectedImage === image1 ? 'selected' : ''}
+              />
+              <img
+                src={image2}
+                alt="2"
+                onClick={() => handleImageClick(image2)}
+                className={selectedImage === image2 ? 'selected' : ''}
+              />
+            </div>
+            {selectedImage && <img src={selectedImage} alt="Selected Quest Image" />}
+          </div>
+          <div className="course-name-tit">
+            <h3>Quest Title</h3>
+            <input
+              type="text"
+              value={courseData.name}
+              onChange={(e) => handleInputChange(e)}
+              name="name"
+            />
+          </div>
+          <div className="course-des">
+            <h3>Quest Description</h3>
+            <textarea
+              type="text"
+              value={courseData.description}
+              onChange={(e) => handleInputChange(e)}
+              name="description"
+            ></textarea>
+          </div>
+          <div className="course-capa-max">
+            <h3>Add Achievement</h3>
+            <input
+              className="max-capa"
+              type="text"
+              value={courseData.max}
+              onChange={(e) => handleInputChange(e)}
+              name="max"
+            />
+          </div>
+
+          <div className="create-course-save">
+            <button className="create-save" onClick={handleSubmit}>
+              Create Quest
+            </button>
+          </div>
+        </div>
       </div>
-    </div>
     </div>
   );
 };

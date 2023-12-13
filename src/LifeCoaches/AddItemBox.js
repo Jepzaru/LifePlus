@@ -13,7 +13,12 @@ const AddItemBox = ({ onClose }) => {
 
   const handleSubmit = async () => {
     try {
-      
+      if (name.trim() === '' || points.trim() === '') {
+        // If any of the fields are empty, show an alert and return
+        alert('Please fill in all fields before adding the item.');
+        return;
+      }
+
       const response = await fetch('http://localhost:8080/reward/insert', {
         method: 'POST',
         headers: {
@@ -31,15 +36,13 @@ const AddItemBox = ({ onClose }) => {
           open: true,
           message: 'Item Successfully Added',
         });
-        
+
         setName('');
         setPoints('');
       } else {
-       
         console.error('Error adding item:', response.statusText);
       }
     } catch (error) {
-      
       console.error('Error adding item:', error);
     }
   };
