@@ -14,16 +14,14 @@ import slide3 from '../LifeImages/slide3.png';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
-import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
-import 'react-circular-progressbar/dist/styles.css';
-import { useAuth } from '../Life++/AuthContext'; 
+import { useAuth } from '../Life++/AuthContext';
 
 function CoachDash() {
-  const { user, login } = useAuth(); 
+  const { user, login } = useAuth();
 
   const [loading, setLoading] = useState(false);
   const savedDarkMode = localStorage.getItem('darkMode') === 'true';
-  const [darkMode] = useState(savedDarkMode);
+  const [darkMode, setDarkMode] = useState(savedDarkMode);
 
   const slideImages = [
     { url: slide1 },
@@ -114,12 +112,11 @@ function CoachDash() {
   }, [darkMode]);
 
   useEffect(() => {
-   
     const storedUser = JSON.parse(localStorage.getItem('loggedInUser'));
     if (storedUser) {
       login(storedUser);
     }
-  }, [login]);
+  }, [login]); // Removed the empty dependency array
 
   return (
     <div className={`appindash ${darkMode ? 'dark-mode' : ''}`}>
@@ -138,10 +135,7 @@ function CoachDash() {
           </div>
           <div className="imageslide">
             <div style={containerStyle}>
-              <Slide
-                prevArrow={<CustomPrevArrow />}
-                nextArrow={<CustomNextArrow />}
-              >
+              <Slide prevArrow={<CustomPrevArrow />} nextArrow={<CustomNextArrow />}>
                 {slideImages.map((image, index) => (
                   <div key={index}>
                     <div
@@ -152,7 +146,7 @@ function CoachDash() {
                         alignContent: 'center',
                       }}
                     >
-                       <span style={spanStyle}>{image.caption}</span>
+                      <span style={spanStyle}>{image.caption}</span>
                     </div>
                   </div>
                 ))}
@@ -174,28 +168,27 @@ function CoachDash() {
           </Link>
           <div className={`recen-cha ${darkMode ? 'dark-mode-title' : ''}`}>
             <h1>Recent Courses Created</h1>
-            <div className="recen-con">
-
-            </div>
+            <div className="recen-con"></div>
             <div className="calendar">
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DateCalendar style={{ color: 'white' }} />
               </LocalizationProvider>
             </div>
-            <div className='rec-com'>
-                <div className='recbg'>
-                  <p><FaClipboardCheck style={{ fontSize: '50px', marginLeft: '-30px', marginBottom: '-30px' }} />
-                    &nbsp;&nbsp;Recent &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Challenges</p>
-                </div>
-                
-           
+            <div className="rec-com">
+              <div className="recbg">
+                <p>
+                  <FaClipboardCheck
+                    style={{ fontSize: '50px', marginLeft: '-30px', marginBottom: '-30px' }}
+                  />
+                  &nbsp;&nbsp;Recent &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Challenges
+                </p>
               </div>
             </div>
-          </>
-        )}
-      </div>
-    );
-  }
-            
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
 
 export default CoachDash;

@@ -29,7 +29,7 @@ function Price() {
     if (storedUser) {
       login(storedUser);
     }
-  }, [login]);
+  }, []);
 
   return (
     <div className={`appinprice ${darkMode ? 'dark-mode' : ''}`}>

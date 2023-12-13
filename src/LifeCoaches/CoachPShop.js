@@ -27,7 +27,7 @@ function CoachShop() {
     if (storedUser) {
       login(storedUser);
     }
-  }, [login]);
+  }, []);
 
   useEffect(() => {
     setLoading(true);

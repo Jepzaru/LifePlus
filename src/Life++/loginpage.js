@@ -39,22 +39,30 @@ const LoginPage = () => {
             });
     }, []);
 
-    const handleLogin = () => {
-        setLoading(true);
-        const foundUser = users.find(
-            (user) => user.username === username && user.password === password
-        );
+    const handleLogin = async () => {
+        try {
+            setLoading(true);
 
-        if (foundUser) {
-            console.log(foundUser);
-            login(foundUser);
-            localStorage.setItem('loggedInUser', JSON.stringify(foundUser));
-            const dashboardPath = foundUser.type === 1 ? '/coach-index/dashboard' : '/index/dashboard';
-            navigate(dashboardPath);
+            const response = await axios.get('http://localhost:8080/user/get');
+            const foundUser = response.data.find(
+                (user) => user.username === username && user.password === password
+            );
 
-        } else {
-            setError('Invalid username or password');
+            if (foundUser) {
+                console.log(foundUser);
+                login(foundUser);
+                localStorage.setItem('loggedInUser', JSON.stringify(foundUser));
+                const dashboardPath = foundUser.type === 1 ? '/coach-index/dashboard' : '/index/dashboard';
+                navigate(dashboardPath);
+            } else {
+                setError('Invalid username or password');
+                setSnackbarOpen(true);
+            }
+        } catch (error) {
+            console.error('Error fetching users:', error);
+            setError('Error fetching users');
             setSnackbarOpen(true);
+        } finally {
             setLoading(false);
         }
     };
@@ -125,7 +133,7 @@ const LoginPage = () => {
                                 onClose={handleSnackbarClose}
                                 severity="error"
                             >
-                                Invalid username or password
+                                {error || 'Invalid username or password'}
                             </MuiAlert>
                         </Snackbar>
                         <p>Don't have an account yet?</p>
@@ -141,4 +149,3 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
-

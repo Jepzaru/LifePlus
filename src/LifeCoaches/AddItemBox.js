@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
-import '../LifeCss/AddItemBox.css'; // Add your CSS styling for AddItemBox
+import '../LifeCss/AddItemBox.css'; 
 import { IoClose } from "react-icons/io5";
 
 const AddItemBox = ({ onClose }) => {

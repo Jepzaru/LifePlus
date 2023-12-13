@@ -7,6 +7,7 @@ import defaultProfileFemale from '../LifeImages/defaultprofile1.png';
 import { IoMdSettings } from 'react-icons/io';
 import { useAuth } from '../Life++/AuthContext';
 import { MdTipsAndUpdates } from 'react-icons/md';
+import axios from 'axios';
 
 function CoachProfileSettings() {
   const { user } = useAuth();
@@ -16,6 +17,16 @@ function CoachProfileSettings() {
   const [isEditing, setIsEditing] = useState(false);
   const [buttonLabel, setButtonLabel] = useState('Update User Information');
 
+  const [editedUser, setEditedUser] = useState({
+    username: user?.username || '',
+    fname: user?.fname || '',
+    lname: user?.lname || '',
+    gender: user?.gender || '',
+    birthdate: user ? new Date(user.birthdate).toLocaleDateString() : '',
+    pnum: user?.pnum || '',
+    email: user?.email || '',
+  });
+
   useEffect(() => {
     localStorage.setItem('darkMode', darkMode);
   }, [darkMode]);
@@ -24,15 +35,34 @@ function CoachProfileSettings() {
 
   const handleUpdateButtonClick = () => {
     if (isEditing) {
-      // Save changes logic goes here
-      // You can update the user information in the backend or perform any other necessary actions
-
-      setButtonLabel('Update User Information'); // Reset button label
+      axios
+        .put(`http://localhost:8080/user/update?sid=${user.userid}`, editedUser)
+        .then((response) => {
+          if (response.status === 200) {
+            // Handle success - Maybe show a success message or update local state
+            console.log('User information updated successfully');
+            setButtonLabel('Update User Information');
+          } else {
+            // Handle error response from API
+            console.error('Failed to update user information');
+          }
+        })
+        .catch((error) => {
+          console.error('Error updating user information', error);
+          // Handle error appropriately
+        });
     } else {
-      setButtonLabel('Save Changes'); // Change button label to "Save Changes"
+      setButtonLabel('Save Changes');
     }
 
-    setIsEditing(!isEditing); // Toggle editing mode
+    setIsEditing(!isEditing);
+  };
+
+  const handleInputChange = (e, field) => {
+    setEditedUser({
+      ...editedUser,
+      [field]: e.target.value,
+    });
   };
 
   return (
@@ -61,47 +91,43 @@ function CoachProfileSettings() {
                   <img src={defaultProfileImage} alt="User Avatar" style={{ width: '800px', borderRadius: '50%', height: '500px' }} />
                 </div>
                 <div className="usnam-up">
-                 
                   {isEditing ? (
                     <>
-                     
-                      <input type="text" value={user.username} onChange={(e) => console.log(e.target.value)} />
-                      <input type="text" value={user.fname} onChange={(e) => console.log(e.target.value)} />
-                      <input type="text" value={user.lname} onChange={(e) => console.log(e.target.value)} />
-                      <input type="text" value={user.gender} onChange={(e) => console.log(e.target.value)} />
-                      <input type="text" value={new Date(user.birthdate).toLocaleDateString()} onChange={(e) => console.log(e.target.value)} />
-                      <input type="text" value={user.pnum} onChange={(e) => console.log(e.target.value)} />
-                      <input type="text" value={user.email} onChange={(e) => console.log(e.target.value)} />
-                
+                      <input type="text" value={editedUser.username} onChange={(e) => handleInputChange(e, 'username')} />
+                      <input type="text" value={editedUser.fname} onChange={(e) => handleInputChange(e, 'fname')} />
+                      <input type="text" value={editedUser.lname} onChange={(e) => handleInputChange(e, 'lname')} />
+                      <input type="text" value={editedUser.gender} onChange={(e) => handleInputChange(e, 'gender')} />
+                      <input type="text" value={editedUser.birthdate} onChange={(e) => handleInputChange(e, 'birthdate')} />
+                      <input type="text" value={editedUser.pnum} onChange={(e) => handleInputChange(e, 'pnum')} />
+                      <input type="text" value={editedUser.email} onChange={(e) => handleInputChange(e, 'email')} />
                     </>
                   ) : (
                     <>
                       <p style={{marginTop: '10px'}}>
-                        <span style={{ fontWeight: 'bold', color: 'black', marginRight:'55px' }}>Username: </span>{user.username}
+                        <span style={{ fontWeight: 'bold', color: 'black', marginRight:'55px' }}>Username: </span>{editedUser.username}
                       </p>
                       <br/>
                       <p style={{marginTop: '10px'}}>
-                        <span style={{ fontWeight: 'bold', color: 'black', marginRight:'50px' }}>First Name: </span> {user.fname}
+                        <span style={{ fontWeight: 'bold', color: 'black', marginRight:'50px' }}>First Name: </span> {editedUser.fname}
                       </p>
                       <p style={{marginTop: '10px'}}>
-                        <span style={{ fontWeight: 'bold', color: 'black', marginRight:'52px' }}>Last Name: </span> {user.lname}
+                        <span style={{ fontWeight: 'bold', color: 'black', marginRight:'52px' }}>Last Name: </span> {editedUser.lname}
                       </p>
                       <p style={{marginTop: '10px'}}>
-                        <span style={{ fontWeight: 'bold', color: 'black', marginRight:'90px' }}>Gender: </span> {user.gender}
+                        <span style={{ fontWeight: 'bold', color: 'black', marginRight:'90px' }}>Gender: </span> {editedUser.gender}
                       </p>
                       <p style={{marginTop: '10px'}}>
-                        <span style={{ fontWeight: 'bold', color: 'black', marginRight:'57px' }}>Birth Date: </span>{new Date(user.birthdate).toLocaleDateString()}
+                        <span style={{ fontWeight: 'bold', color: 'black', marginRight:'57px' }}>Birth Date: </span>{editedUser.birthdate}
                       </p>
                       <p style={{marginTop: '10px'}}>
-                        <span style={{ fontWeight: 'bold', color: 'black', marginRight:'77px' }}>Contact: </span> {user.pnum}
+                        <span style={{ fontWeight: 'bold', color: 'black', marginRight:'77px' }}>Contact: </span> {editedUser.pnum}
                       </p>
                       <p style={{marginTop: '30px', marginBottom:'10px'}}>
-                        <span style={{ fontWeight: 'bold', color: 'black', marginRight:'10px' }}>Email: </span>{user.email}
+                        <span style={{ fontWeight: 'bold', color: 'black', marginRight:'10px' }}>Email: </span>{editedUser.email}
                       </p>
                     </>
                   )}
                 </div>
-                
               </>
             )}
           </div>

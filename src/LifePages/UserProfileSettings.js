@@ -33,15 +33,6 @@ function UserProfileSettings() {
   const [editedEmail, setEditedEmail] = useState(user?.email || '');
 
   useEffect(() => {
-<<<<<<< HEAD
-    localStorage.setItem('darkMode', darkMode);
-  }, [darkMode]);
-
-  const defaultProfileImage =
-    user && user.gender === 'M' ? defaultProfileMale : defaultProfileFemale;
-
-  const handleUpdateButtonClick = async () => {
-=======
     const userFromStorage = JSON.parse(localStorage.getItem('loggedInUser'));
     if (userFromStorage && !storedUser) { // Check if storedUser is null before updating
       login(userFromStorage);
@@ -51,7 +42,6 @@ function UserProfileSettings() {
   const defaultProfileImage = user && user.gender === 'M' ? defaultProfileMale : defaultProfileFemale;
   console.log('Stored User:', storedUser); // Logging stored user
   const handleUpdateButtonClick = () => {
->>>>>>> 53d2831a755c8072940c0c26e68058457dbf7977
     if (isEditing) {
       const updatedUser = {
         username: editedUsername,

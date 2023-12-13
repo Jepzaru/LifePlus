@@ -48,13 +48,46 @@ function CoachCourses() {
       });
   }, []); 
 
+  const handleRemoveCourse = (courseId) => {
+    const headers = {
+      // Add other headers if necessary (e.g., authorization token)
+    };
+  
+    axios.delete(`http://localhost:8080/coach/delete/${courseId}`, { headers })
+      .then(response => {
+        console.log('Course removed successfully:', response.data);
+        setSnackbar({
+          open: true,
+          message: 'Course Successfully Removed',
+        });
+        setCourses(prevCourses => prevCourses.filter(course => course.id !== courseId));
+      })
+      .catch(error => {
+        console.error('Error removing course:', error);
+  
+        // Log more details about the error
+        if (error.response) {
+          console.error('Server responded with status:', error.response.status);
+          console.error('Server response data:', error.response.data);
+        } else if (error.request) {
+          console.error('No response received from the server');
+        } else {
+          console.error('Error setting up the request:', error.message);
+        }
+  
+        setSnackbar({
+          open: true,
+          message: 'Error removing course',
+        });
+      });
+  };
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem('loggedInUser'));
     if (storedUser) {
       login(storedUser);
     }
-  }, [login]);
+  }, []);
 
   const handleCreateCourseClick = () => {
     setShowCreateCourseBox(true);
@@ -106,7 +139,8 @@ function CoachCourses() {
                       <div className='members'>
                         <button onClick={() => setShowViewMembersBox(true)}>View Members</button>
                       </div>
-                      <div className='delete-cou'><button>Remove Course</button></div>
+                      <div className='delete-cou'><button onClick={() => handleRemoveCourse(course.id)}>Remove Course</button>
+</div>
                     </div>
                   </div>
                 ))}

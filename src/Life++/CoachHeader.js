@@ -10,13 +10,12 @@ import '../LifeCss/header.css';
 const CoachHeader = () => {
     const { user, login } = useAuth();
 
-    // Load user from localStorage on component mount
     useEffect(() => {
         const storedUser = JSON.parse(localStorage.getItem('loggedInUser'));
         if (storedUser) {
             login(storedUser);
         }
-    }, [login]);
+    }, []);
 
     const defaultProfileImage = user?.gender === 'M' ? defaultProfileMale : defaultProfileFemale;
 

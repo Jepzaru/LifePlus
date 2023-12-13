@@ -11,8 +11,9 @@ import { RiGraduationCapFill } from "react-icons/ri";
 import axios from 'axios';
 import { IoPersonSharp } from "react-icons/io5";
 import { BsPersonFillAdd } from "react-icons/bs";
+import { FiLogOut } from "react-icons/fi";
 
-import { useAuth } from '../Life++/AuthContext'; // Import useAuth
+import { useAuth } from '../Life++/AuthContext';
 
 function Courses() {
   const { login } = useAuth();
@@ -24,30 +25,16 @@ function Courses() {
   const [snackbarMessage, setSnackbarMessage] = useState('');
 
   useEffect(() => {
+    // Fetch user from local storage and log in
     const userFromStorage = JSON.parse(localStorage.getItem('loggedInUser'));
     if (userFromStorage && !storedUser) {
       login(userFromStorage);
       setStoredUser(userFromStorage);
-      console.log('Stored User:', userFromStorage);
     }
   }, [login, storedUser]);
 
   useEffect(() => {
-    setLoading(true);
-
-    axios.get('http://localhost:8080/course/get')
-      .then(response => {
-        setCourses(response.data);
-      })
-      .catch(error => {
-        console.error('Error fetching courses:', error);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, []);
-
-  useEffect(() => {
+    // Simulate loading with a timeout
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
@@ -55,24 +42,70 @@ function Courses() {
   }, []);
 
   useEffect(() => {
+    // Fetch courses and update state
+    const enrolledCourseIDs = storedUser?.joinedCourses.map(course => course.courseID) || [];
+    const isEnrolled = courseId => enrolledCourseIDs.includes(courseId);
+
+    setLoading(true);
+
+    const fetchCourses = async () => {
+      try {
+        setLoading(true);
+  
+        const response = await axios.get('http://localhost:8080/course/get');
+        
+        // Update courses and mark them as enrolled based on local storage
+        const updatedCourses = response.data.map(course => ({
+          ...course,
+          isEnrolled: isEnrolled(course.courseID),
+        }));
+  
+        setCourses(updatedCourses);
+      } catch (error) {
+        console.error('Error fetching courses:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+  
+    if (storedUser) {
+      fetchCourses();
+    }
+  }, [storedUser]);
+
+  useEffect(() => {
+    // Save enrolled course IDs to local storage
+    const enrolledCourseIDs = courses.filter(course => course.isEnrolled).map(course => course.courseID);
+    localStorage.setItem('enrolledCourseIDs', JSON.stringify(enrolledCourseIDs));
+  }, [courses]);
+
+  useEffect(() => {
+    // Save dark mode preference to local storage
     localStorage.setItem('darkMode', darkMode);
   }, [darkMode]);
 
   const handleJoinCourse = async (userId, courseId) => {
+    // Handle joining a course
     try {
       const response = await axios.post(`http://localhost:8080/user/join/${userId}/${courseId}`);
       console.log('Joined Course:', response.data);
       setSnackbarMessage('Course successfully joined');
-      setSnackbarOpen(true);
-      // Add logic to switch buttons to 'View Course' and 'Leave Course'
+
+      // Update the course to indicate it's enrolled
+      setCourses(prevCourses =>
+        prevCourses.map(course =>
+          course.courseID === courseId
+            ? { ...course, isEnrolled: true }
+            : course
+        )
+      );
     } catch (error) {
       console.error('Error joining course:', error);
     }
   };
-  const enrolledCourseIDs = storedUser?.joinedCourses.map(course => course.courseID) || [];
-  const isEnrolled = courseId => enrolledCourseIDs.includes(courseId);
 
   const handleSnackbarClose = (event, reason) => {
+    // Handle Snackbar close
     if (reason === 'clickaway') {
       return;
     }
@@ -82,10 +115,12 @@ function Courses() {
   return (
     <div className={`appindcourse ${darkMode ? 'dark-mode' : ''}`}>
       {loading ? (
+        // Loading spinner
         <div className="hash">
           <HashLoader size={100} color={'#FF64B4'} loading={loading} />
         </div>
       ) : (
+        // Main content
         <>
           <Header />
           <Sidenavbar />
@@ -96,7 +131,7 @@ function Courses() {
             <h1><RiGraduationCapFill style={{ marginRight: '15px', marginBottom: '-5px', color: '#FF64B4' }} />Courses</h1>
           </div>
           <div className='cou-con'>
-<<<<<<< HEAD
+            {/* Courses list */}
             {courses.map((course, index) => (
               <div className='contain' key={course.id}>
                 <div className='course-container'>
@@ -104,38 +139,29 @@ function Courses() {
                     <img src={index % 2 === 0 ? image1 : image2} alt={`Course ${course.name}`} className='course-image'
                       style={{ height: '300px', width: '300px', marginLeft: '20px', borderRadius: '15px' }}
                     />
-=======
-          {courses.map((course, index) => (
-                  <div className='contain' key={course.id}>
-                    <div className='course-container'>
-                      <div className='c-img'>
-                      <img src={index % 2 === 0 ? image1 : image2} alt={`Course ${course.name}`} className='course-image' 
-                      style={{height:'300px', width: '300px', marginLeft: '20px', borderRadius: '15px'}}
-                      
-                      />
-                      </div>
-                      <div className='Cname'>{course.name}</div>
-                      <div className='Cdes'>{course.description}</div>
-                      <div className='Ccapacity'><IoPersonSharp /> Capacity <span style={{fontWeight: 'bold'}}>{course.max}</span></div>
-                      <div className='join-c'>
-                    {/* Check if the user is enrolled in the course and render Join/Leave button */}
-                    {isEnrolled(course.courseID) ? (
-                      <button>
-                        Leave Course
-                      </button>
-                    ) : (
-                      <button onClick={() => handleJoinCourse(storedUser.userid, course.courseID)}>
-                        Join Course
-                      </button>
-                    )}
-                  </div>
-                    </div>
->>>>>>> 53d2831a755c8072940c0c26e68058457dbf7977
                   </div>
                   <div className='Cname'>{course.name}</div>
                   <div className='Cdes'>{course.description}</div>
                   <div className='Ccapacity'><IoPersonSharp /> Capacity <span style={{ fontWeight: 'bold' }}>{course.max}</span></div>
-                  <div className='join-c'> <button onClick={() => handleJoinCourse(storedUser.userid, course.courseID)}><BsPersonFillAdd style={{ marginRight: '10px', marginBottom: '-2px' }} />Join Course</button></div>
+                  <div className='join-c'>
+                    {/* Join Course button */}
+                    <button
+                      onClick={() => handleJoinCourse(storedUser.userid, course.courseID)}
+                      style={{ border: 'none', borderRadius: '50px', backgroundColor: course.isEnrolled ? 'red' : 'initial' }}
+                    >
+                      {course.isEnrolled ? (
+                        <div className='leave'>
+                          <FiLogOut style={{ marginRight: '10px', marginBottom: '-2px' }} />
+                          Leave Course
+                        </div>
+                      ) : (
+                        <div className='join'>
+                          <BsPersonFillAdd style={{ marginRight: '10px', marginBottom: '-2px' }} />
+                          Join Course
+                        </div>
+                      )}
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}
@@ -145,6 +171,7 @@ function Courses() {
           </div>
         </>
       )}
+      {/* Snackbar for notifications */}
       <Snackbar open={snackbarOpen} autoHideDuration={6000} onClose={handleSnackbarClose}>
         <MuiAlert elevation={6} variant="filled" onClose={handleSnackbarClose} severity="success">
           {snackbarMessage}

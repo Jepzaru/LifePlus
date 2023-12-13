@@ -13,21 +13,19 @@ import { FaPhoneAlt } from "react-icons/fa";
 import { MdPerson } from "react-icons/md";
 import { FaCakeCandles } from "react-icons/fa6";
 
-
 function Coaches(){
   const { login } = useAuth(); 
   const [loading, setLoading] = useState(false);
   const [coaches, setCoaches] = useState([]);
   const savedDarkMode = localStorage.getItem('darkMode') === 'true';
-  const [darkMode] = useState(savedDarkMode);
+  const [darkMode, setDarkMode] = useState(savedDarkMode);
 
   useEffect(() => {
-    
     const storedUser = JSON.parse(localStorage.getItem('loggedInUser'));
     if (storedUser) {
       login(storedUser);
     }
-  }, [login]);
+  }, []);
 
   useEffect(() => {
     setLoading(true);
@@ -37,19 +35,20 @@ function Coaches(){
   }, []);
 
   useEffect(() => {
-    setLoading(true);
-    axios.get('http://localhost:8080/user/get')
-      .then(response => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://localhost:8080/user/get');
         const filteredCoaches = response.data.filter(coach => coach.type === 1);
         setCoaches(filteredCoaches);
-      })
-      .catch(error => {
+      } catch (error) {
         console.error('Error fetching coaches:', error);
-      })
-      .finally(() => {
+      } finally {
         setLoading(false);
-      });
-  }, []);
+      }
+    };
+
+    fetchData();
+  }, [setCoaches, setLoading]);
 
   useEffect(() => {
     localStorage.setItem('darkMode', darkMode);
@@ -72,13 +71,12 @@ function Coaches(){
             <h1><SportsIcon style={{ fontSize: '4rem',marginRight: '15px', marginBottom: '-15px', color: '#FF64B4' }}/>Coaches</h1>
           </div> 
           <div className='coa-container'>
-          {coaches.map(coach => (
-            <div className='contain'>
-        
-               <div key={coach.id} className="coach-container">
-               <div className='cimage'>
+            {coaches.map(coach => (
+              <div className='contain' key={coach.id}>
+                <div className="coach-container">
+                  <div className='cimage'>
                     {coach.gender === 'M' ? (
-                      <img src={defaultProfileMale} alt="Default Male Profile" style={{ width: '220px', height: '140px'  }}/>
+                      <img src={defaultProfileMale} alt="Default Male Profile" style={{ width: '220px', height: '140px' }}/>
                     ) : (
                       <img src={defaultProfileFemale} alt="Default Female Profile" style={{ width: '220px', height: '140px' }}/>
                     )}
@@ -86,12 +84,12 @@ function Coaches(){
                   <div className='name'>
                     <div className='fullname'>{coach.fname} {coach.lname}</div>
                   </div>
-               <div className='cemail'><MdEmail /> &nbsp;&nbsp;&nbsp;{coach.email}</div>
-               <div className='cnum'><FaPhoneAlt />&nbsp;&nbsp;&nbsp;{coach.pnum}</div>
-               <div className='cnum'><MdPerson />&nbsp;&nbsp;&nbsp;{coach.gender}</div>
-               <div className='cnum'><FaCakeCandles />&nbsp;&nbsp;&nbsp;{coach.birthdate ? new Date(coach.birthdate).toLocaleDateString() : ''}</div>
-             </div>
-             </div>
+                  <div className='cemail'><MdEmail /> &nbsp;&nbsp;&nbsp;{coach.email}</div>
+                  <div className='cnum'><FaPhoneAlt />&nbsp;&nbsp;&nbsp;{coach.pnum}</div>
+                  <div className='cnum'><MdPerson />&nbsp;&nbsp;&nbsp;{coach.gender}</div>
+                  <div className='cnum'><FaCakeCandles />&nbsp;&nbsp;&nbsp;{coach.birthdate ? new Date(coach.birthdate).toLocaleDateString() : ''}</div>
+                </div>
+              </div>
             ))}
           </div>
         </>

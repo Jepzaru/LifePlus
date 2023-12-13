@@ -15,8 +15,7 @@
   import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
   import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
   import { useAuth } from '../Life++/AuthContext';
-  import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
-  import 'react-circular-progressbar/dist/styles.css';
+
 
 
 
@@ -121,7 +120,7 @@
       if (storedUser) {
         login(storedUser);
       }
-    }, [login]);
+    }, []);
 
 
     return (
@@ -189,7 +188,7 @@
               <div className='rec-com'>
                 <div className='recbg'>
                   <p><FaClipboardCheck style={{ fontSize: '50px', marginLeft: '-30px', marginBottom: '-30px' }} />
-                    &nbsp;&nbsp;Recent &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Challenges</p>
+                    &nbsp;&nbsp;Recent &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Quests</p>
                 </div>
                 
             

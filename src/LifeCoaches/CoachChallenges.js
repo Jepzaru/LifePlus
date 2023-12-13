@@ -32,7 +32,7 @@ function CoachChallenges() {
     if (storedUser) {
       login(storedUser);
     }
-  }, [login]);
+  }, []);
 
   useEffect(() => {
     localStorage.setItem('darkMode', darkMode);
