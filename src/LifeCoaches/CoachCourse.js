@@ -11,10 +11,10 @@ import { RiGraduationCapFill } from "react-icons/ri";
 import { IoCreateSharp } from "react-icons/io5";
 import { FaCheckCircle } from "react-icons/fa";
 import CreateCourseBox from './CreateCourseBox';
+import CreateQuestBox from './CreateQuestBox';
 import { useAuth } from '../Life++/AuthContext';
 import { IoPersonSharp } from "react-icons/io5";
 import { FaScroll } from "react-icons/fa6";
-import ViewMembersBox from './ViewMembersBox';
 import { IoMdAddCircle } from "react-icons/io";
 import axios from 'axios'; 
 
@@ -28,6 +28,7 @@ function CoachCourses() {
   });
   const [courses, setCourses] = useState([]); // State to store courses
   const [showCreateCourseBox, setShowCreateCourseBox] = useState(false);
+  const [showCreateQuestBox, setShowQuestCourseBox] = useState(false);
   const savedDarkMode = localStorage.getItem('darkMode') === 'true';
   const [darkMode] = useState(savedDarkMode);
 
@@ -87,13 +88,6 @@ function CoachCourses() {
     }
   }, []);
 
-  const handleCreateCourseClick = () => {
-    // Handle create course click
-  };
-
-  const handleCloseCreateCourseBox = () => {
-    // Handle close create course box
-  };
 
   return (
     <div className={`appindcourse ${darkMode ? 'dark-mode' : ''}`}>
@@ -125,36 +119,26 @@ function CoachCourses() {
                   <div className='c-img'>
                     <img src={index % 2 === 0 ? image1 : image2} alt={`Course ${course.name}`} className='course-image' 
                       style={{height:'300px', width: '300px', marginLeft: '20px', borderRadius: '15px'}}
-<<<<<<< HEAD
                     />
-=======
                       
-                      />
                       </div>
-                      <div className='Cname'>{course.name}</div>
+                      <div className='Cname'>{course.name} <IoMdAddCircle style={{color: 'green', marginLeft: '20px', cursor:'pointer'}} onClick={() => {
+    setShowQuestCourseBox(true);
+}}/></div>
                       <div className='Cdes'>{course.description}</div>
                       <div className='Ccapacity'><IoPersonSharp /> Capacity <span style={{fontWeight: 'bold'}}>{course.max}</span></div>
                       <div className='members'>
-                        <button onClick={() => setShowViewMembersBox(true)}>View Members</button>
+                        <button>View Members</button>
                       </div>
                       <div className='delete-cou'><button onClick={() => handleRemoveCourse(course.courseID)}>Remove Course</button>
-</div>
                     </div>
->>>>>>> 40fd6f5f8a91661687bc68f1d6648f546ff123fe
-                  </div>
-                  <div className='Cname'>{course.name}</div>
-                  <div className='Cdes'>{course.description}</div>
-                  <div className='Ccapacity'><IoPersonSharp /> Capacity <span style={{fontWeight: 'bold'}}>{course.max}</span></div>
-                  <div className='members'>
-                    <button>View Members</button>
-                  </div>
                   <div className='delete-cou'><button onClick={() => handleRemoveCourse(course.id)}>Remove Course</button></div>
                 </div>
               </div>
             ))}
           </div>
           <div className="up-act">
-            <p><FaScroll style={{marginLeft: '20px', marginRight:'15px', fontSize:'36px', marginBottom:'-5px'}}/>Quests Created <IoMdAddCircle style={{color: 'green', marginLeft: '20px', cursor:'pointer'}}/></p>
+            <p><FaScroll style={{marginLeft: '20px', marginRight:'15px', fontSize:'36px', marginBottom:'-5px'}}/>Quests Created</p>
             <div className='created-quest'>
             
             </div>
@@ -179,6 +163,7 @@ function CoachCourses() {
         </>
       )}
       {showCreateCourseBox && <CreateCourseBox onClose={() => setShowCreateCourseBox(false)} />}
+      {showCreateQuestBox && <CreateQuestBox onClose={() => setShowQuestCourseBox(false)} />}
     </div>
   );
 }
