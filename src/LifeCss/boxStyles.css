@@ -22,7 +22,6 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     width: 800px;
     height: 600px;
-    z-index: 5000;
   }
   
   .floating-box-header {
@@ -80,4 +79,28 @@
   .item-shop-box-content {
     /* Customize item shop box content styling */
   }
-  
+  .certificate{
+    background-color: #efefef;
+    padding: 30px;
+    color: black;
+    border-radius: 10px;
+
+  }
+  .claim-cert{
+    margin-left: 550px;
+    padding: 15px;
+    font-family: 'Poppins', sans-serif;
+    background-color: green;
+    border-radius: 50px;
+    border: none;
+    color: white;
+    cursor: pointer; 
+    transition: background-color 0.3s;
+   
+  }
+  .claim-cert:hover{
+    background-color: darkgreen;
+  }
+  .certi{
+    margin-top: -35px;
+  }

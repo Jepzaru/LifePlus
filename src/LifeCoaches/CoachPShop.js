@@ -91,7 +91,12 @@ function CoachShop() {
           <div className='coa-container'>
             {reward.map(reward => (
               <div className='shoppe' key={reward.id}>
-                <div className='shp-name'><h2>{reward.name}</h2> <p>{reward.points}</p></div>
+                <div className='shp-name'>
+                  <h2>{reward.name}</h2> <p>{reward.points}</p>
+                  <div className='shp-action-btn'>
+                    
+                  </div>
+                  </div>
               </div>
             ))}
           </div>
