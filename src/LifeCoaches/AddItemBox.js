@@ -8,21 +8,19 @@ import { IoClose } from "react-icons/io5";
 
 const AddItemBox = ({ onClose }) => {
   // State variables for the component
-  const [itemName, setItemName] = useState('');
-  const [itemDescription, setItemDescription] = useState('');
+  const [name, setName] = useState('');
   const [points, setPoints] = useState('');
 
   const handleSubmit = async () => {
     try {
-      // Make a POST request to the API to insert the item into the database
+      
       const response = await fetch('http://localhost:8080/reward/insert', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          itemName,
-          itemDescription,
+          name,
           points,
         }),
       });
@@ -33,16 +31,15 @@ const AddItemBox = ({ onClose }) => {
           open: true,
           message: 'Item Successfully Added',
         });
-        // Reset the form after successful submission
-        setItemName('');
-        setItemDescription('');
+        
+        setName('');
         setPoints('');
       } else {
-        // Handle errors if the API request fails
+       
         console.error('Error adding item:', response.statusText);
       }
     } catch (error) {
-      // Handle errors if something goes wrong
+      
       console.error('Error adding item:', error);
     }
   };
@@ -60,17 +57,9 @@ const AddItemBox = ({ onClose }) => {
           <h3>Item Name</h3>
           <input
             type="text"
-            value={itemName}
-            onChange={(e) => setItemName(e.target.value)}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
           />
-        </div>
-        <div className="item-des">
-          <h3>Item Description</h3>
-          <textarea
-            type="text"
-            value={itemDescription}
-            onChange={(e) => setItemDescription(e.target.value)}
-          ></textarea>
         </div>
         <div className="item-points"> 
           <h3>Points</h3>

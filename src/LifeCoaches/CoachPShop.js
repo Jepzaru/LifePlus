@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import HashLoader from 'react-spinners/HashLoader';
 import StoreIcon from '@mui/icons-material/Store';
@@ -6,9 +5,10 @@ import CoachSidenavbar from '../Life++/coachsidebar';
 import CoachHeader from '../Life++/CoachHeader';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
-import { MdAddBusiness } from "react-icons/md";
+import { MdAddBusiness } from 'react-icons/md';
 import { useAuth } from '../Life++/AuthContext';
 import AddItemBox from './AddItemBox';
+import axios from 'axios';
 
 function CoachShop() {
   const { login } = useAuth();
@@ -20,6 +20,7 @@ function CoachShop() {
     open: false,
     message: '',
   });
+  const [reward, setItems] = useState([]);
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem('loggedInUser'));
@@ -30,10 +31,22 @@ function CoachShop() {
 
   useEffect(() => {
     setLoading(true);
+    // Simulating loading, replace this with your actual loading logic
     setTimeout(() => {
       setLoading(false);
     }, 1000);
   }, []);
+
+  useEffect(() => {
+    // Fetch items from the database using Axios
+    axios.get('http://localhost:8080/reward/get')
+      .then(response => {
+        setItems(response.data); // Assuming your API returns an array of items
+      })
+      .catch(error => {
+        console.error('Error fetching items:', error.message);
+      });
+  }, []); // Empty dependency array ensures the effect runs only once on component mount
 
   useEffect(() => {
     localStorage.setItem('darkMode', darkMode);
@@ -62,15 +75,25 @@ function CoachShop() {
             <h1>Point Shop</h1>
           </div>
           <div className={`coa-title${darkMode ? ' dark-mode-title' : ''}`}>
-            <h1><StoreIcon style={{ fontSize: '4rem',marginRight: '15px', marginBottom: '-15px', color: '#FF64B4' }}/>Point Shop</h1>
+            <h1>
+              <StoreIcon
+                style={{ fontSize: '4rem', marginRight: '15px', marginBottom: '-15px', color: '#FF64B4' }}
+              />
+              Point Shop
+            </h1>
           </div>
           <div className='add-item'>
             <button className='additem-btn' onClick={handleAddItemClick}>
-              <MdAddBusiness style={{ marginRight: '10px', fontSize: '25px', marginBottom: '-5px' }} />Add Item
+              <MdAddBusiness style={{ marginRight: '10px', fontSize: '25px', marginBottom: '-5px' }} />
+              Add Item
             </button>
           </div>
           <div className='coa-container'>
-            {/* ... rest of the code ... */}
+            {reward.map(reward => (
+              <div className='shoppe' key={reward.id}>
+                <div className='shp-name'><h2>{reward.name}</h2> <p>{reward.points}</p></div>
+              </div>
+            ))}
           </div>
           {showAddItemBox && (
             <>
@@ -90,8 +113,8 @@ function CoachShop() {
                   severity="success"
                   sx={{
                     width: '100%',
-                    backgroundColor: 'green',
-                    color: '#fff'
+                    backgroundColor: 'white',
+                    color: 'green'
                   }}
                 >
                   {snackbar.message}
