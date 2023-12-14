@@ -5,19 +5,18 @@ import image2 from '../LifeImages/men1.jpg';
 import { useAuth } from '../Life++/AuthContext';
 import axios from 'axios';
 
-const CreateQuestBox = ({ onClose }) => {
+const CreateQuestBox = ({ onClose, courseId }) => {
   const { user } = useAuth();
   const [isOutro, setIsOutro] = useState(false);
   const [selectedImage, setSelectedImage] = useState(image1);
   const [courseData, setCourseData] = useState({
     description: '',
-    max: '',
     name: '',
-    coach: null,
   });
 
   useEffect(() => {
     const fetchCoachData = async () => {
+      console.log(courseId)
       try {
         const response = await axios.get('http://localhost:8080/coach/get');
         const coaches = response.data;
@@ -64,12 +63,10 @@ const CreateQuestBox = ({ onClose }) => {
 
       const newQuest = {
         description: courseData.description,
-        max: parseInt(courseData.max, 10),
         name: courseData.name,
-        coach: courseData.coach,
       };
 
-      const response = await axios.post('http://localhost:8080/quest/insert', newQuest);
+      const response = await axios.post(`http://localhost:8080/course/${courseId}/addquest`, newQuest);
 
       // Handle successful response if needed
       console.log('New quest created:', response.data);
@@ -153,6 +150,7 @@ const CreateQuestBox = ({ onClose }) => {
               name="description"
             ></textarea>
           </div>
+
           <div className="create-course-save">
             <button className="create-save" onClick={handleSubmit}>
               Create Quest
