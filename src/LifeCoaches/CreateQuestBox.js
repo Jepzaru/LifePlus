@@ -153,17 +153,6 @@ const CreateQuestBox = ({ onClose }) => {
               name="description"
             ></textarea>
           </div>
-          <div className="course-capa-max">
-            <h3>Add Achievement</h3>
-            <input
-              className="max-capa"
-              type="text"
-              value={courseData.max}
-              onChange={(e) => handleInputChange(e)}
-              name="max"
-            />
-          </div>
-
           <div className="create-course-save">
             <button className="create-save" onClick={handleSubmit}>
               Create Quest
