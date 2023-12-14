@@ -12,6 +12,7 @@ import { IoCreateSharp } from "react-icons/io5";
 import { FaCheckCircle } from "react-icons/fa";
 import CreateCourseBox from './CreateCourseBox';
 import CreateQuestBox from './CreateQuestBox';
+import ViewMembersBox from './ViewMembersBox';
 import { useAuth } from '../Life++/AuthContext';
 import { IoPersonSharp } from "react-icons/io5";
 import { FaScroll } from "react-icons/fa6";
@@ -29,6 +30,7 @@ function CoachCourses() {
   const [courses, setCourses] = useState([]); // State to store courses
   const [showCreateCourseBox, setShowCreateCourseBox] = useState(false);
   const [showCreateQuestBox, setShowQuestCourseBox] = useState(false);
+  const [showViewMembersBox, setShowViewMembersBox] = useState(false);
   const savedDarkMode = localStorage.getItem('darkMode') === 'true';
   const [darkMode] = useState(savedDarkMode);
 
@@ -123,12 +125,14 @@ function CoachCourses() {
                       
                       </div>
                       <div className='Cname'>{course.name} <IoMdAddCircle style={{color: 'green', marginLeft: '20px', cursor:'pointer'}} onClick={() => {
-    setShowQuestCourseBox(true);
-}}/></div>
+                            setShowQuestCourseBox(true);
+                        }}/></div>
                       <div className='Cdes'>{course.description}</div>
                       <div className='Ccapacity'><IoPersonSharp /> Capacity <span style={{fontWeight: 'bold'}}>{course.max}</span></div>
                       <div className='members'>
-                        <button>View Members</button>
+                        <button onClick={() => {
+                        setShowViewMembersBox(true);
+                    }}>View Members</button>
                       </div>
                       <div className='delete-cou'><button onClick={() => handleRemoveCourse(course.courseID)}>Remove Course</button>
                         </div>
@@ -165,6 +169,7 @@ function CoachCourses() {
       )}
       {showCreateCourseBox && <CreateCourseBox onClose={() => setShowCreateCourseBox(false)} />}
       {showCreateQuestBox && <CreateQuestBox onClose={() => setShowQuestCourseBox(false)} />}
+      {showViewMembersBox && <ViewMembersBox onClose={() => setShowViewMembersBox(false)} />}
     </div>
   );
 }
