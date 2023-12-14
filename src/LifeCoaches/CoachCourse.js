@@ -17,7 +17,7 @@ import { useAuth } from '../Life++/AuthContext';
 import { IoPersonSharp } from "react-icons/io5";
 import { FaScroll } from "react-icons/fa6";
 import { IoMdAddCircle } from "react-icons/io";
-import axios from 'axios'; 
+import axios from 'axios';
 
 function CoachCourses() {
   const { login } = useAuth();
@@ -39,7 +39,7 @@ function CoachCourses() {
 
     axios.get('http://localhost:8080/course/get')
       .then(response => {
-        setCourses(response.data); 
+        setCourses(response.data);
       })
       .catch(error => {
         console.error('Error fetching courses:', error);
@@ -47,13 +47,13 @@ function CoachCourses() {
       .finally(() => {
         setLoading(false);
       });
-  }, []); 
+  }, []);
 
   const handleRemoveCourse = (courseId) => {
     const headers = {
       // Add other headers if necessary (e.g., authorization token)
     };
-  
+
     axios.delete(`http://localhost:8080/course/delete/${courseId}`, { headers })
       .then(response => {
         console.log('Course removed successfully:', response.data);
@@ -65,7 +65,7 @@ function CoachCourses() {
       })
       .catch(error => {
         console.error('Error removing course:', error);
-  
+
         // Log more details about the error
         if (error.response) {
           console.error('Server responded with status:', error.response.status);
@@ -75,7 +75,7 @@ function CoachCourses() {
         } else {
           console.error('Error setting up the request:', error.message);
         }
-  
+
         setSnackbar({
           open: true,
           message: 'Error removing course',
@@ -119,33 +119,32 @@ function CoachCourses() {
               <div className='contain' key={course.id}>
                 <div className='course-container'>
                   <div className='c-img'>
-                    <img src={index % 2 === 0 ? image1 : image2} alt={`Course ${course.name}`} className='course-image' 
-                      style={{height:'300px', width: '300px', marginLeft: '20px', borderRadius: '15px'}}
+                    <img src={index % 2 === 0 ? image1 : image2} alt={`Course ${course.name}`} className='course-image'
+                      style={{ height: '300px', width: '300px', marginLeft: '20px', borderRadius: '15px' }}
                     />
-                      
-                      </div>
-                      <div className='Cname'>{course.name} <IoMdAddCircle style={{color: 'green', marginLeft: '20px', cursor:'pointer'}} onClick={() => {
-                            setShowQuestCourseBox(true);
-                        }}/></div>
-                      <div className='Cdes'>{course.description}</div>
-                      <div className='Ccapacity'><IoPersonSharp /> Capacity <span style={{fontWeight: 'bold'}}>{course.max}</span></div>
-                      <div className='members'>
-                        <button onClick={() => {
-                        setShowViewMembersBox(true);
-                    }}>View Members</button>
-                      </div>
-                      <div className='delete-cou'><button onClick={() => handleRemoveCourse(course.courseID)}>Remove Course</button>
-                        </div>
-                    </div>
-                 
+
+                  </div>
+                  <div className='Cname'>{course.name}  <IoMdAddCircle
+                    style={{ color: 'green', marginLeft: '20px', cursor: 'pointer' }}
+                    onClick={() => setShowQuestCourseBox(course.courseID)}
+                  /></div>
+                  <div className='Cdes'>{course.description}</div>
+                  <div className='Ccapacity'><IoPersonSharp /> Capacity <span style={{ fontWeight: 'bold' }}>{course.max}</span></div>
+                  <div className='members'>
+                    <button>View Members</button>
+                  </div>
+                  <div className='delete-cou'><button onClick={() => handleRemoveCourse(course.courseID)}>Remove Course</button>
+                  </div>
                 </div>
-             
+
+              </div>
+
             ))}
           </div>
           <div className="up-act">
-            <p><FaScroll style={{marginLeft: '20px', marginRight:'15px', fontSize:'36px', marginBottom:'-5px'}}/>Quests Created</p>
+            <p><FaScroll style={{ marginLeft: '20px', marginRight: '15px', fontSize: '36px', marginBottom: '-5px' }} />Quests Created</p>
             <div className='created-quest'>
-            
+
             </div>
           </div>
 
@@ -154,8 +153,8 @@ function CoachCourses() {
             autoHideDuration={6000}
             onClose={() => setSnackbar({ open: false, message: '' })}
           >
-            <MuiAlert onClose={() => setSnackbar({ open: false, message: '' })} severity="success" 
-              sx={{ 
+            <MuiAlert onClose={() => setSnackbar({ open: false, message: '' })} severity="success"
+              sx={{
                 width: '100%',
                 backgroundColor: 'green',
                 color: '#fff'
@@ -168,8 +167,12 @@ function CoachCourses() {
         </>
       )}
       {showCreateCourseBox && <CreateCourseBox onClose={() => setShowCreateCourseBox(false)} />}
-      {showCreateQuestBox && <CreateQuestBox onClose={() => setShowQuestCourseBox(false)} />}
-      {showViewMembersBox && <ViewMembersBox onClose={() => setShowViewMembersBox(false)} />}
+      {showCreateQuestBox && (
+        <CreateQuestBox
+          onClose={() => setShowQuestCourseBox(false)}
+          courseId={showCreateQuestBox} // Pass courseId here
+        />
+      )}
     </div>
   );
 }

@@ -3,6 +3,7 @@ import axios from 'axios';
 import Shop from '../LifeImages/pshop.png';
 import '../LifeCss/boxStyles.css';
 import { FaCartPlus } from "react-icons/fa";
+import { CgShoppingBag } from "react-icons/cg";
 
 
 const ItemShopBox = ({ onClose }) => {
@@ -35,7 +36,7 @@ const ItemShopBox = ({ onClose }) => {
             <div className='user-shop' key={item.id}>
             
             <div className='shop-name'>
-                  <h2>{item.name}</h2> <p>Points: 🪙{item.points}</p>
+                  <h2><CgShoppingBag /> {item.name}</h2> <p>Points: 🪙{item.points}</p>
                   <div className='shop-action-btn'>
                     <button className='buy-itm-btn'><FaCartPlus style={{marginRight: '10px'}}/>Purchase Item</button>
                     </div>
