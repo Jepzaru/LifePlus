@@ -9,6 +9,7 @@ import { IoClose } from "react-icons/io5";
 const CreateAchievementBox = ({ onClose }) => {
   // State variables for the component
   const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
   const [points, setPoints] = useState('');
 
   const handleSubmit = async () => {
@@ -26,6 +27,7 @@ const CreateAchievementBox = ({ onClose }) => {
         },
         body: JSON.stringify({
           name,
+          description,
           points,
         }),
       });
@@ -68,8 +70,8 @@ const CreateAchievementBox = ({ onClose }) => {
           <h3>Description</h3>
           <input
             type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
           />
         </div>
         <div className="item-points"> 
