@@ -19,7 +19,7 @@ const CreateQuestBox = ({ onClose, courseId }) => {
     description: '',
     name: '',
   });
-
+  const [selectedAchievement, setSelectedAchievement] = useState(null);
   useEffect(() => {
     const fetchCoachData = async () => {
       console.log(courseId)
@@ -43,6 +43,11 @@ const CreateQuestBox = ({ onClose, courseId }) => {
     fetchCoachData();
   }, [user.username]);
 
+  const handleAchievementSelect = (achievement) => {
+    setSelectedAchievement(achievement);
+    console.log('Selected Achievement:', achievement); // Log selected achievement
+  };
+  
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     const parsedValue = name === 'max' ? parseInt(value, 10) : value;
@@ -51,6 +56,10 @@ const CreateQuestBox = ({ onClose, courseId }) => {
       ...prevData,
       [name]: parsedValue,
     }));
+  };
+  const handleCancelAchievement = () => {
+    setSelectedAchievement(null);
+    console.log('Cancelled Achievement Selection'); // Log cancelled selection
   };
 
   const handleSubmit = async () => {
@@ -70,6 +79,7 @@ const CreateQuestBox = ({ onClose, courseId }) => {
       const newQuest = {
         description: courseData.description,
         title: courseData.name,
+        achievement: selectedAchievement,
       };
 
       const response = await axios.post(`http://localhost:8080/course/${courseId}/addquest`, newQuest);
@@ -157,12 +167,24 @@ const CreateQuestBox = ({ onClose, courseId }) => {
             ></textarea>
           </div>
           <div className='add-achieve'>
-            <h3>Select Achievements</h3>
-            <button className='achive-btn' onClick={() => {
-                setShowAchievementsBox(true);
-              }}><MdStars style={{marginRight: '10px', marginBottom: '-2px', color: 'yellow'}}/>
-              Add Achievement</button>
-          </div>
+          <h3>Select Achievements</h3>
+          <button
+            className='achive-btn'
+            onClick={() => {
+              setShowAchievementsBox(true);
+            }}
+          >
+            <MdStars style={{ marginRight: '10px', marginBottom: '-2px', color: 'yellow' }} />
+            Add Achievement
+          </button>
+          {selectedAchievement && (
+            <div>
+              {/* Display the selected achievement */}
+              Selected Achievement: {selectedAchievement.name}
+              <button onClick={handleCancelAchievement}>Cancel</button>
+            </div>
+          )}
+        </div>
 
           <div className="create-course-save">
             <button className="create-save" onClick={handleSubmit}>
@@ -171,7 +193,12 @@ const CreateQuestBox = ({ onClose, courseId }) => {
           </div>
         </div>
       </div>
-      {showAchievementsBox && <ViewAchievementsBox onClose={() => setShowAchievementsBox(false)} />}
+      {showAchievementsBox && (
+          <ViewAchievementsBox
+            onClose={() => setShowAchievementsBox(false)}
+            onAchievementSelect={handleAchievementSelect} // Pass the handler to receive the selected achievement
+          />
+        )}
     </div>
   );
 };

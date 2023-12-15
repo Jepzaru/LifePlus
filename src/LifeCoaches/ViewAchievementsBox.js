@@ -4,7 +4,7 @@ import { useAuth } from '../Life++/AuthContext';
 import CreateAchievementBox from './CreateAchievementBox';
 import axios from 'axios';
 
-const ViewAchievementsBox = ({ onClose }) => {
+const ViewAchievementsBox = ({ onClose, onAchievementSelect }) => {
   const { user } = useAuth();
   const [showCreateAchievementBox, setShowCreateAchievementBox] = useState(false);
   const [isOutro, setIsOutro] = useState(false);
@@ -14,7 +14,10 @@ const ViewAchievementsBox = ({ onClose }) => {
     name: '',
     coach: null,
   });
-
+  const handleAchievementSelect = (selectedAchievement) => {
+    onAchievementSelect(selectedAchievement); // Sending selected achievement back to the parent component
+    onClose(); // Close the achievements box after selection
+  };
   useEffect(() => {
     const fetchCoachData = async () => {
       try {
@@ -96,26 +99,53 @@ const ViewAchievementsBox = ({ onClose }) => {
     }, 300);
   };
 
+  const [achievements, setAchievements] = useState([]);
+
+  useEffect(() => {
+    const fetchAchievements = async () => {
+      try {
+        const response = await axios.get('http://localhost:8080/achievement/get');
+        setAchievements(response.data);
+        console.log('Fetched Achievements:', response.data);
+      } catch (error) {
+        console.error('Error fetching achievements:', error);
+      }
+    };
+
+    fetchAchievements();
+  }, []);
 
   return (
     <div className='create-course-box-overlay'>
       <div id="create-course-box" className={`create-course-box ${isOutro ? 'outro' : ''}`}>
         <h1>Choose Achievements</h1>
-        
+
         <div className="closecourse">
           <div className='add-ach'>
-        <button className="add-ach-btn"  onClick={() => {
-                setShowCreateAchievementBox(true);
-              }}>
-            Add Achievements
-          </button>
+            <div className="achievements-course-con">
+              {/* Display fetched achievements */}
+              {achievements.map((achievement) => (
+                <div
+                  key={achievement.achievementID}
+                  onClick={() => handleAchievementSelect(achievement)} // Call this function on achievement click
+                  className="clickable-achievement" // Add a CSS class to style it as clickable (optional)
+                >
+                  {achievement.name} {/* Display achievement name */}
+                </div>
+              ))}
+            </div>
+            <button className="add-ach-btn" onClick={() => {
+              setShowCreateAchievementBox(true);
+            }}>
+              Add Achievements
+            </button>
           </div>
           <button className="create-course-close" onClick={handleOutro}>
             Cancel
           </button>
         </div>
         <div className="achievements-course-con">
-         
+
         </div>
       </div>
       {showCreateAchievementBox && <CreateAchievementBox onClose={() => setShowCreateAchievementBox(false)} />}
