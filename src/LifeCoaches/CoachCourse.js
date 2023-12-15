@@ -33,17 +33,17 @@ function CoachCourses() {
   const [showViewMembersBox, setShowViewMembersBox] = useState(false);
   const savedDarkMode = localStorage.getItem('darkMode') === 'true';
   const [darkMode] = useState(savedDarkMode);
-  const [coachData, setCoachData] = useState(null); 
+  const [coachData, setCoachData] = useState(null);
 
-useEffect(() => {
+  useEffect(() => {
     if (storedUser && storedUser.username) {
       const fetchCoachData = async () => {
         try {
           const response = await axios.get('http://localhost:8080/coach/get');
           const coaches = response.data;
-  
+
           const foundCoach = coaches.find((coach) => coach.username === storedUser.username);
-  
+
           if (foundCoach) {
             console.log('Found Coach:', foundCoach);
             setCoachData(foundCoach); // Set the coach data to state
@@ -54,7 +54,7 @@ useEffect(() => {
           console.error('Error fetching coach data:', error);
         }
       };
-  
+
       fetchCoachData();
     }
   }, [storedUser]);
@@ -67,27 +67,43 @@ useEffect(() => {
     }
   }, [login, storedUser]);
 
-  
 
-useEffect(() => {
-  setLoading(true);
-  if (coachData && coachData.coachid) { // Check if coachData and coachid exist
-    axios.get(`http://localhost:8080/coach/getcourses/${coachData.coachid}`)
-      .then(response => {
-        setCourses(response.data);
-        console.log("Courses data: ", response.data);
-      })
-      .catch(error => {
-        console.error('Error fetching courses:', error);
-        // Handle errors as needed
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  } else {
-    setLoading(false); // If coachData or coachid is not available, stop loading
-  }
-}, [coachData]);
+
+  useEffect(() => {
+    setLoading(true);
+    if (coachData && coachData.coachid) {
+      axios.get(`http://localhost:8080/coach/getcourses/${coachData.coachid}`)
+        .then(async response => {
+          const fetchedCourses = response.data.filter(course => !course.deleted); // Filtering courses where deleted is false
+          const coursesWithQuests = await Promise.all(fetchedCourses.map(async course => {
+            const quests = await fetchQuestsForCourse(course.courseID);
+            return { ...course, quests };
+          }));
+          setCourses(coursesWithQuests);
+        })
+        .catch(error => {
+          console.error('Error fetching courses:', error);
+          // Handle errors as needed
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    } else {
+      setLoading(false);
+    }
+  }, [coachData]);
+
+
+  const fetchQuestsForCourse = async (courseId) => {
+    try {
+      const response = await axios.get(`http://localhost:8080/course/${courseId}/getquests`);
+      console.log(response.data.filter(quest => !quest.deleted));
+      return response.data.filter(quest => !quest.deleted);
+    } catch (error) {
+      console.error(`Error fetching quests for course ${courseId}:`, error);
+      return [];
+    }
+  };
 
   const handleRemoveCourse = (courseId) => {
     const headers = {
@@ -158,35 +174,52 @@ useEffect(() => {
             {courses
               .filter(course => !course.deleted) // Filter out courses where isdeleted is false
               .map((course, index) => (
-              <div className='contain' key={course.id}>
-                <div className='course-container'>
-                  <div className='c-img'>
-                    <img src={index % 2 === 0 ? image1 : image2} alt={`Course ${course.name}`} className='course-image'
-                      style={{ height: '300px', width: '300px', marginLeft: '20px', borderRadius: '15px' }}
-                    />
+                <div className='contain' key={course.id}>
+                  <div className='course-container'>
+                    <div className='c-img'>
+                      <img src={index % 2 === 0 ? image1 : image2} alt={`Course ${course.name}`} className='course-image'
+                        style={{ height: '300px', width: '300px', marginLeft: '20px', borderRadius: '15px' }}
+                      />
 
+                    </div>
+                    <div className='Cname'>{course.name}  <IoMdAddCircle
+                      style={{ color: 'green', marginLeft: '20px', cursor: 'pointer' }}
+                      onClick={() => setShowQuestCourseBox(course.courseID)}
+                    /></div>
+                    <div className='Cdes'>{course.description}</div>
+                    <div className='Ccapacity'><IoPersonSharp /> Capacity <span style={{ fontWeight: 'bold' }}>{course.max}</span></div>
+                    <div className='members'>
+                      <button>View Members</button>
+                    </div>
+                    <div className='delete-cou'><button onClick={() => handleRemoveCourse(course.courseID)}>Remove Course</button>
+                    </div>
                   </div>
-                  <div className='Cname'>{course.name}  <IoMdAddCircle
-                    style={{ color: 'green', marginLeft: '20px', cursor: 'pointer' }}
-                    onClick={() => setShowQuestCourseBox(course.courseID)}
-                  /></div>
-                  <div className='Cdes'>{course.description}</div>
-                  <div className='Ccapacity'><IoPersonSharp /> Capacity <span style={{ fontWeight: 'bold' }}>{course.max}</span></div>
-                  <div className='members'>
-                    <button>View Members</button>
-                  </div>
-                  <div className='delete-cou'><button onClick={() => handleRemoveCourse(course.courseID)}>Remove Course</button>
-                  </div>
+
                 </div>
 
-              </div>
-
-            ))}
+              ))}
           </div>
           <div className="up-act">
             <p><FaScroll style={{ marginLeft: '20px', marginRight: '15px', fontSize: '36px', marginBottom: '-5px' }} />Quests Created</p>
             <div className='created-quest'>
-
+              {courses.map(course => (
+                <div key={course.id}>
+                  {course.quests && course.quests.length == 0 ? (
+                    console.log("None")
+                  ):(
+                  <h3>{course.name}</h3>
+                  )}
+                  {course.quests && course.quests.length > 0 ? (
+                    <ul>
+                      {course.quests.map(quest => (
+                        <li key={quest.id}>{quest.name}</li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p>No quests available for this course</p>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
 

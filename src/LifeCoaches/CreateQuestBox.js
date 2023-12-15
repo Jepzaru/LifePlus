@@ -63,7 +63,7 @@ const CreateQuestBox = ({ onClose, courseId }) => {
 
       const newQuest = {
         description: courseData.description,
-        name: courseData.name,
+        title: courseData.name,
       };
 
       const response = await axios.post(`http://localhost:8080/course/${courseId}/addquest`, newQuest);
