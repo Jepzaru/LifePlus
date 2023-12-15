@@ -15,9 +15,34 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import { useAuth } from '../Life++/AuthContext';
+import axios from 'axios';
 
 function CoachDash() {
   const { user, login } = useAuth();
+  const [foundCoach, setFoundCoach] = useState(null);
+
+  useEffect(() => {
+    const fetchCoachData = async () => {
+      try {
+        const response = await axios.get('http://localhost:8080/coach/get');
+        const coaches = response.data;
+
+        const coach = coaches.find((coach) => coach.username === user.username);
+
+        if (coach) {
+          console.log('Found Coach:', coach);
+          console.log('Courses by Coach:', coach.courses);
+          setFoundCoach(coach); // Storing coach in state
+        } else {
+          console.log('Coach not found for the user');
+        }
+      } catch (error) {
+        console.error('Error fetching coach data:', error);
+      }
+    };
+
+    fetchCoachData();
+  }, [user.username]);
 
   const [loading, setLoading] = useState(false);
   const savedDarkMode = localStorage.getItem('darkMode') === 'true';
@@ -168,7 +193,25 @@ function CoachDash() {
           </Link>
           <div className={`recen-cha ${darkMode ? 'dark-mode-title' : ''}`}>
             <h1>Recent Courses Created</h1>
-            <div className="recen-con"></div>
+            
+            <div className="recen-con">             
+            {foundCoach ? (
+              foundCoach.courses
+                .slice(0, 3) // Get the latest 3 courses
+                .reverse() // Reverse to get the latest at the top
+                .map((course, index) => (
+                  <div key={index} className="course-item">
+                    {/* Render course details */}
+                    <h3>{course.name}</h3>
+                    <br />
+                    {/* ... (other details) */}
+                  </div>
+                ))
+            ) : (
+              <p>No courses found</p>
+            )}
+            </div>
+            
             <div className="calendar">
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DateCalendar style={{ color: 'white' }} />
