@@ -203,21 +203,25 @@ function CoachCourses() {
               ))}
           </div>
           <div className="up-act">
-            <p><FaScroll style={{ marginLeft: '20px', marginRight: '15px', fontSize: '36px', marginBottom: '-5px' }} />Quests Created</p>
+            <p className='hquest'><FaScroll style={{ marginLeft: '20px', marginRight: '15px', fontSize: '36px', marginBottom: '-5px' }} />
+            <div className='hquest1'>
+            <h3>Quests</h3>
+            </div>
+            </p>
             <div className='created-quest'>
               {courses.map(course => (
-                <div key={course.id}>
+                <div key={course.id} className='quest-list'>
                   {course.quests && course.quests.length == 0 ? (
                     console.log("None")
                   ) : (
                     <h3>{course.name}</h3>
                   )}
                   {course.quests && course.quests.length > 0 ? (
-                    <ul>
+                    <div className='quest-des'>
                       {course.quests.map(quest => (
-                        <li key={quest.qid}>{quest.title}</li>
+                        <p key={quest.qid}>{quest.title}</p>
                       ))}
-                    </ul>
+                    </div>
                   ) : (
                     <p>No quests available for this course</p>
                   )}

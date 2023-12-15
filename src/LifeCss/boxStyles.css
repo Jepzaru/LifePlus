@@ -151,7 +151,28 @@
 }
 
 .add-ach{
-  margin-left: 550px;
   margin-bottom: -30px;
 
+}
+.clickable-achievement{
+  background-color: white;
+  margin-top: 20px;
+  padding: 10px;
+  width: 900px;
+  border-radius: 15px;
+  cursor: pointer;
+  margin-left: 20px;
+  transition: background-color 0.3s;
+}
+.clickable-achievement:hover{
+  background-color: #FF64B4;
+  color: black;
+}
+.view-floating-box-content li{
+  margin-top: 20px;
+  background-color: white;
+  margin-left: 30px;
+  padding: 10px;
+  border-radius: 15px;
+  width: 95%;
 }

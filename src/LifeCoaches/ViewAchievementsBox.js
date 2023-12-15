@@ -119,34 +119,33 @@ const ViewAchievementsBox = ({ onClose, onAchievementSelect }) => {
     <div className='create-course-box-overlay'>
       <div id="create-course-box" className={`create-course-box ${isOutro ? 'outro' : ''}`}>
         <h1>Choose Achievements</h1>
-
-        <div className="closecourse">
+        <div className="closecourse1">
+          <div className='addjust-ach'>
+        <button className="add-ach-btn" onClick={() => {
+              setShowCreateAchievementBox(true);
+            }}>
+              Add Achievements
+            </button>
+            </div>
+          </div>
+          <button className="create-course-close" onClick={handleOutro}>
+            Cancel
+          </button>
           <div className='add-ach'>
             <div className="achievements-course-con">
               {/* Display fetched achievements */}
               {achievements.map((achievement) => (
                 <div
                   key={achievement.achievementID}
-                  onClick={() => handleAchievementSelect(achievement)} // Call this function on achievement click
-                  className="clickable-achievement" // Add a CSS class to style it as clickable (optional)
+                  onClick={() => handleAchievementSelect(achievement)} 
+                  className="clickable-achievement" 
                 >
-                  {achievement.name} {/* Display achievement name */}
+                  {achievement.name} 
                 </div>
               ))}
             </div>
-            <button className="add-ach-btn" onClick={() => {
-              setShowCreateAchievementBox(true);
-            }}>
-              Add Achievements
-            </button>
-          </div>
-          <button className="create-course-close" onClick={handleOutro}>
-            Cancel
-          </button>
         </div>
-        <div className="achievements-course-con">
-
-        </div>
+        
       </div>
       {showCreateAchievementBox && <CreateAchievementBox onClose={() => setShowCreateAchievementBox(false)} />}
     </div>
