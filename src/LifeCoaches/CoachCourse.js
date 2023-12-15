@@ -13,13 +13,12 @@ import { FaCheckCircle } from "react-icons/fa";
 import CreateCourseBox from './CreateCourseBox';
 import CreateQuestBox from './CreateQuestBox';
 import ViewMembersBox from './ViewMembersBox';
-import ViewAchievementsBox from './ViewAchievementsBox';
 import { useAuth } from '../Life++/AuthContext';
 import { IoPersonSharp } from "react-icons/io5";
 import { FaScroll } from "react-icons/fa6";
 import { IoMdAddCircle } from "react-icons/io";
 import axios from 'axios';
-import { MdStars } from "react-icons/md";
+
 
 
 
@@ -36,7 +35,6 @@ function CoachCourses() {
   const [showCreateCourseBox, setShowCreateCourseBox] = useState(false);
   const [showCreateQuestBox, setShowQuestCourseBox] = useState(false);
   const [showViewMembersBox, setShowViewMembersBox] = useState(false);
-  const [showAchievementsBox, setShowAchievementsBox] = useState(false);
   const savedDarkMode = localStorage.getItem('darkMode') === 'true';
   const [darkMode] = useState(savedDarkMode);
   const [coachData, setCoachData] = useState(null);
@@ -177,7 +175,7 @@ function CoachCourses() {
           </div>
           <div className="cou-con">
             {courses
-              .filter(course => !course.deleted) // Filter out courses where isdeleted is false
+              .filter(course => !course.deleted) 
               .map((course, index) => (
                 <div className='contain' key={course.id}>
                   <div className='course-container'>
@@ -194,7 +192,7 @@ function CoachCourses() {
                   <div className='Cdes'>{course.description}</div>
                   <div className='Ccapacity'><IoPersonSharp /> Capacity <span style={{ fontWeight: 'bold' }}>{course.max}</span></div>
                   <div className='members'>
-                    <button>View Members</button>
+                    <button  onClick={() => setShowViewMembersBox(course.courseID)}>View Members</button>
                   </div>
                   <div className='delete-cou'><button onClick={() => handleRemoveCourse(course.courseID)}>Remove Course</button>
                   </div>
@@ -246,7 +244,6 @@ function CoachCourses() {
           </Snackbar>
         </>
       )}
-      {showAchievementsBox && <ViewAchievementsBox onClose={() => setShowAchievementsBox(false)} />}
       {showCreateCourseBox && <CreateCourseBox onClose={() => setShowCreateCourseBox(false)} />}
       {showCreateQuestBox && (
         <CreateQuestBox

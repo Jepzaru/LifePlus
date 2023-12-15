@@ -3,12 +3,18 @@ import '../LifeCss/Courses.css';
 import image1 from '../LifeImages/1.jpg';
 import image2 from '../LifeImages/men1.jpg';
 import { useAuth } from '../Life++/AuthContext';
+import ViewAchievementsBox from './ViewAchievementsBox';
+import { GrAchievement } from "react-icons/gr";
+import { MdStars } from "react-icons/md";
+
+
 import axios from 'axios';
 
 const CreateQuestBox = ({ onClose, courseId }) => {
   const { user } = useAuth();
   const [isOutro, setIsOutro] = useState(false);
   const [selectedImage, setSelectedImage] = useState(image1);
+  const [showAchievementsBox, setShowAchievementsBox] = useState(false);
   const [courseData, setCourseData] = useState({
     description: '',
     name: '',
@@ -150,6 +156,13 @@ const CreateQuestBox = ({ onClose, courseId }) => {
               name="description"
             ></textarea>
           </div>
+          <div className='add-achieve'>
+            <h3>Select Achievements</h3>
+            <button className='achive-btn' onClick={() => {
+                setShowAchievementsBox(true);
+              }}><MdStars style={{marginRight: '10px', marginBottom: '-2px', color: 'yellow'}}/>
+              Add Achievement</button>
+          </div>
 
           <div className="create-course-save">
             <button className="create-save" onClick={handleSubmit}>
@@ -158,6 +171,7 @@ const CreateQuestBox = ({ onClose, courseId }) => {
           </div>
         </div>
       </div>
+      {showAchievementsBox && <ViewAchievementsBox onClose={() => setShowAchievementsBox(false)} />}
     </div>
   );
 };

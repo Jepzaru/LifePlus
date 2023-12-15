@@ -115,7 +115,7 @@ const ViewAchievementsBox = ({ onClose }) => {
           </button>
         </div>
         <div className="achievements-course-con">
-          {/* Your content goes here */}
+         
         </div>
       </div>
       {showCreateAchievementBox && <CreateAchievementBox onClose={() => setShowCreateAchievementBox(false)} />}

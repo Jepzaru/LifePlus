@@ -124,14 +124,14 @@ body{
     cursor: pointer;
     border: none;
     color: white;
-    margin-top: -100px;
+   
     
   }
   .create-course-close:hover {
     background-color: darkred;
 }
   .closecourse{
-    margin-top: -70px;
+    margin-top: -50px;
   }
   .create-course-con {
     display: flex;
@@ -358,4 +358,28 @@ body{
 }
 .add-ach-btn:hover{
   background-color: darkgreen;
+}
+.add-achieve{
+  margin-left: 405px;
+  margin-top: -50px;
+}
+.add-achieve h3{
+ margin-left: -5px;
+ 
+}
+.achive-btn{
+  margin-top: 15px;
+  padding: 15px 175px;
+  background-color:#FF64B4;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 900;
+  border: none;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.achive-btn:hover{
+  background-color: #705FBE;
 }
