@@ -218,7 +218,7 @@ function CoachCourses() {
                   {course.quests && course.quests.length > 0 ? (
                     <ul>
                       {course.quests.map(quest => (
-                        <li key={quest.id}>{quest.name}</li>
+                        <li key={quest.qid}>{quest.title}</li>
                       ))}
                     </ul>
                   ) : (
