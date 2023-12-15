@@ -20,7 +20,7 @@ import axios from 'axios';
 
 function CoachCourses() {
   const { login } = useAuth();
-
+  const [storedUser, setStoredUser] = useState(null);
   const [loading, setLoading] = useState(false);
   const [snackbar, setSnackbar] = useState({
     open: false,
@@ -31,21 +31,61 @@ function CoachCourses() {
   const [showCreateQuestBox, setShowQuestCourseBox] = useState(false);
   const savedDarkMode = localStorage.getItem('darkMode') === 'true';
   const [darkMode] = useState(savedDarkMode);
+  const [coachData, setCoachData] = useState(null); 
+
+useEffect(() => {
+    if (storedUser && storedUser.username) {
+      const fetchCoachData = async () => {
+        try {
+          const response = await axios.get('http://localhost:8080/coach/get');
+          const coaches = response.data;
+  
+          const foundCoach = coaches.find((coach) => coach.username === storedUser.username);
+  
+          if (foundCoach) {
+            console.log('Found Coach:', foundCoach);
+            setCoachData(foundCoach); // Set the coach data to state
+          } else {
+            console.log('Coach not found for the user');
+          }
+        } catch (error) {
+          console.error('Error fetching coach data:', error);
+        }
+      };
+  
+      fetchCoachData();
+    }
+  }, [storedUser]);
 
   useEffect(() => {
-    setLoading(true);
+    const userFromStorage = JSON.parse(localStorage.getItem('loggedInUser'));
+    if (userFromStorage && !storedUser) {
+      login(userFromStorage);
+      setStoredUser(userFromStorage);
+    }
+  }, [login, storedUser]);
 
-    axios.get('http://localhost:8080/course/get')
+  
+
+useEffect(() => {
+  setLoading(true);
+  if (coachData && coachData.coachid) { // Check if coachData and coachid exist
+    axios.get(`http://localhost:8080/coach/getcourses/${coachData.coachid}`)
       .then(response => {
         setCourses(response.data);
+        console.log("Courses data: ", response.data);
       })
       .catch(error => {
         console.error('Error fetching courses:', error);
+        // Handle errors as needed
       })
       .finally(() => {
         setLoading(false);
       });
-  }, []);
+  } else {
+    setLoading(false); // If coachData or coachid is not available, stop loading
+  }
+}, [coachData]);
 
   const handleRemoveCourse = (courseId) => {
     const headers = {
@@ -113,7 +153,9 @@ function CoachCourses() {
             </div>
           </div>
           <div className="cou-con">
-            {courses.map((course, index) => (
+            {courses
+              .filter(course => !course.deleted) // Filter out courses where isdeleted is false
+              .map((course, index) => (
               <div className='contain' key={course.id}>
                 <div className='course-container'>
                   <div className='c-img'>

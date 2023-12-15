@@ -83,24 +83,43 @@ function Courses() {
     // Save dark mode preference to local storage
     localStorage.setItem('darkMode', darkMode);
   }, [darkMode]);
-
-  const handleJoinCourse = async (userId, courseId) => {
-    // Handle joining a course
+  const handleLeaveCourse = async (userId, courseId) => {
     try {
-      const response = await axios.post(`http://localhost:8080/user/join/${userId}/${courseId}`);
-      console.log('Joined Course:', response.data);
-      setSnackbarMessage('Course successfully joined');
-
-      // Update the course to indicate it's enrolled
+      const response = await axios.delete(`http://localhost:8080/user/leave/${userId}/${courseId}`);
+      console.log('Left Course:', response.data);
+      setSnackbarMessage('Course successfully left');
+  
+      // Update the course to indicate it's not enrolled
       setCourses(prevCourses =>
         prevCourses.map(course =>
-          course.courseID === courseId
-            ? { ...course, isEnrolled: true }
-            : course
+          course.courseID === courseId ? { ...course, isEnrolled: false } : course
         )
       );
     } catch (error) {
-      console.error('Error joining course:', error);
+      console.error('Error leaving course:', error);
+    }
+  };
+  const handleJoinCourse = async (userId, courseId) => {
+    // Check if the course is enrolled, then either join or leave
+    const isEnrolled = courses.find(course => course.courseID === courseId)?.isEnrolled || false;
+  
+    if (isEnrolled) {
+      handleLeaveCourse(userId, courseId);
+    } else {
+      try {
+        const response = await axios.post(`http://localhost:8080/user/join/${userId}/${courseId}`);
+        console.log('Joined Course:', response.data);
+        setSnackbarMessage('Course successfully joined');
+  
+        // Update the course to indicate it's enrolled
+        setCourses(prevCourses =>
+          prevCourses.map(course =>
+            course.courseID === courseId ? { ...course, isEnrolled: true } : course
+          )
+        );
+      } catch (error) {
+        console.error('Error joining course:', error);
+      }
     }
   };
 
@@ -111,6 +130,54 @@ function Courses() {
     }
     setSnackbarOpen(false);
   };
+  useEffect(() => {
+    setLoading(true);
+  
+    const fetchEnrollmentStatus = async (userId, courseId, index) => {
+      try {
+        const response = await axios.get(`http://localhost:8080/user/isenrolled/${userId}/${courseId}`);
+        const isEnrolled = response.data; // Assuming the response is a boolean indicating enrollment status
+  
+        setCourses(prevCourses =>
+          prevCourses.map((course, idx) =>
+            idx === index ? { ...course, isEnrolled: isEnrolled } : course
+          )
+        );
+      } catch (error) {
+        console.error(`Error fetching enrollment status for course ID ${courseId}:`, error);
+      }
+    };
+  
+    const fetchCourses = async () => {
+      try {
+        const response = await axios.get('http://localhost:8080/course/get');
+        const fetchedCourses = response.data;
+  
+        const enrolledCourseIDs = storedUser?.joinedCourses.map(course => course.courseID) || [];
+        const updatedCourses = fetchedCourses.map((course, index) => ({
+          ...course,
+          isEnrolled: enrolledCourseIDs.includes(course.courseID),
+        }));
+  
+        setCourses(updatedCourses);
+  
+        // Fetch enrollment status for each course
+        if (storedUser) {
+          updatedCourses.forEach((course, index) => {
+            fetchEnrollmentStatus(storedUser.userid, course.courseID, index);
+          });
+        }
+      } catch (error) {
+        console.error('Error fetching courses:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+  
+    if (storedUser) {
+      fetchCourses();
+    }
+  }, [storedUser]);
 
   return (
     <div className={`appindcourse ${darkMode ? 'dark-mode' : ''}`}>
@@ -132,7 +199,9 @@ function Courses() {
           </div>
           <div className='cou-con'>
             {/* Courses list */}
-            {courses.map((course, index) => (
+            {courses
+              .filter(course => !course.deleted) // Filter out courses where isdeleted is false
+              .map((course, index) => (
               <div className='contain' key={course.id}>
                 <div className='course-container'>
                   <div className='c-img'>
