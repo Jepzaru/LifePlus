@@ -175,7 +175,7 @@ function CoachCourses() {
           </div>
           <div className="cou-con">
             {courses
-              .filter(course => !course.deleted) 
+              .filter(course => !course.deleted)
               .map((course, index) => (
                 <div className='contain' key={course.id}>
                   <div className='course-container'>
@@ -184,19 +184,19 @@ function CoachCourses() {
                         style={{ height: '300px', width: '300px', marginLeft: '20px', borderRadius: '15px' }}
                       />
 
+                    </div>
+                    <div className='Cname'>{course.name}  <IoMdAddCircle
+                      style={{ color: 'green', marginLeft: '20px', cursor: 'pointer' }}
+                      onClick={() => setShowQuestCourseBox(course.courseID)}
+                    /></div>
+                    <div className='Cdes'>{course.description}</div>
+                    <div className='Ccapacity'><IoPersonSharp /> Capacity <span style={{ fontWeight: 'bold' }}>{course.max}</span></div>
+                    <div className='members'>
+                      <button onClick={() => setShowViewMembersBox(course)}>View Members</button>
+                    </div>
+                    <div className='delete-cou'><button onClick={() => handleRemoveCourse(course.courseID)}>Remove Course</button>
+                    </div>
                   </div>
-                  <div className='Cname'>{course.name}  <IoMdAddCircle
-                    style={{ color: 'green', marginLeft: '20px', cursor: 'pointer' }}
-                    onClick={() => setShowQuestCourseBox(course.courseID)}
-                  /></div>
-                  <div className='Cdes'>{course.description}</div>
-                  <div className='Ccapacity'><IoPersonSharp /> Capacity <span style={{ fontWeight: 'bold' }}>{course.max}</span></div>
-                  <div className='members'>
-                    <button  onClick={() => setShowViewMembersBox(course.courseID)}>View Members</button>
-                  </div>
-                  <div className='delete-cou'><button onClick={() => handleRemoveCourse(course.courseID)}>Remove Course</button>
-                  </div>
-                </div>
 
                 </div>
 
@@ -213,8 +213,8 @@ function CoachCourses() {
                 <div key={course.id} className='quest-list'>
                   {course.quests && course.quests.length == 0 ? (
                     console.log("None")
-                  ):(
-                  <h3>{course.name}</h3>
+                  ) : (
+                    <h3>{course.name}</h3>
                   )}
                   {course.quests && course.quests.length > 0 ? (
                     <div className='quest-des'>
@@ -258,7 +258,7 @@ function CoachCourses() {
       {showViewMembersBox && (
         <ViewMembersBox
           onClose={() => setShowViewMembersBox(false)}
-          courseId={showViewMembersBox} // Pass courseId here
+          course={showViewMembersBox} // Pass course object here
         />
       )}
 

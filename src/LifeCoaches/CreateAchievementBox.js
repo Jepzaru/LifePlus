@@ -20,7 +20,7 @@ const CreateAchievementBox = ({ onClose }) => {
         return;
       }
 
-      const response = await fetch('http://localhost:8080/reward/insert', {
+      const response = await fetch('http://localhost:8080/achievement/insert', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
