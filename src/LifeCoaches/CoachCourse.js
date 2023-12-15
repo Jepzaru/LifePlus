@@ -97,7 +97,6 @@ useEffect(() => {
 
   const handleRemoveCourse = (courseId) => {
     const headers = {
-      // Add other headers if necessary (e.g., authorization token)
     };
 
     axios.delete(`http://localhost:8080/course/delete/${courseId}`, { headers })
