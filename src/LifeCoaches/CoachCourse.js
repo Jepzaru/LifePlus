@@ -13,11 +13,16 @@ import { FaCheckCircle } from "react-icons/fa";
 import CreateCourseBox from './CreateCourseBox';
 import CreateQuestBox from './CreateQuestBox';
 import ViewMembersBox from './ViewMembersBox';
+import ViewAchievementsBox from './ViewAchievementsBox';
 import { useAuth } from '../Life++/AuthContext';
 import { IoPersonSharp } from "react-icons/io5";
 import { FaScroll } from "react-icons/fa6";
 import { IoMdAddCircle } from "react-icons/io";
 import axios from 'axios';
+import { MdStars } from "react-icons/md";
+
+
+
 
 function CoachCourses() {
   const { login } = useAuth();
@@ -31,6 +36,7 @@ function CoachCourses() {
   const [showCreateCourseBox, setShowCreateCourseBox] = useState(false);
   const [showCreateQuestBox, setShowQuestCourseBox] = useState(false);
   const [showViewMembersBox, setShowViewMembersBox] = useState(false);
+  const [showAchievementsBox, setShowAchievementsBox] = useState(false);
   const savedDarkMode = localStorage.getItem('darkMode') === 'true';
   const [darkMode] = useState(savedDarkMode);
   const [coachData, setCoachData] = useState(null); 
@@ -169,11 +175,15 @@ useEffect(() => {
                   <div className='Cname'>{course.name}  <IoMdAddCircle
                     style={{ color: 'green', marginLeft: '20px', cursor: 'pointer' }}
                     onClick={() => setShowQuestCourseBox(course.courseID)}
-                  /></div>
+                  />
+                  <MdStars
+                    style={{ color: '#FF64B4', marginLeft: '10px', cursor: 'pointer' }}
+                    onClick={() => setShowAchievementsBox(course.courseID)} />
+                  </div>
                   <div className='Cdes'>{course.description}</div>
                   <div className='Ccapacity'><IoPersonSharp /> Capacity <span style={{ fontWeight: 'bold' }}>{course.max}</span></div>
                   <div className='members'>
-                    <button>View Members</button>
+                    <button onClick={() => setShowViewMembersBox(course.courseID)}>View Members</button>
                   </div>
                   <div className='delete-cou'><button onClick={() => handleRemoveCourse(course.courseID)}>Remove Course</button>
                   </div>
@@ -208,6 +218,7 @@ useEffect(() => {
           </Snackbar>
         </>
       )}
+      {showAchievementsBox && <ViewAchievementsBox onClose={() => setShowAchievementsBox(false)} />}
       {showCreateCourseBox && <CreateCourseBox onClose={() => setShowCreateCourseBox(false)} />}
       {showCreateQuestBox && (
         <CreateQuestBox
@@ -215,6 +226,13 @@ useEffect(() => {
           courseId={showCreateQuestBox} // Pass courseId here
         />
       )}
+      {showViewMembersBox && (
+        <ViewMembersBox
+          onClose={() => setShowViewMembersBox(false)}
+          courseId={showViewMembersBox} // Pass courseId here
+        />
+      )}
+
     </div>
   );
 }
