@@ -24,8 +24,6 @@ body{
 }
 .up-act{
     display: flex;
-    justify-content: center;
-    align-items: center;
     height: 500px;
     width: 340px;
     border-radius: 20px;
@@ -34,13 +32,7 @@ body{
     background-color: #E7E7E7;
     
 }
-.up-act p{
-    font-family: 'Poppins', sans-serif;
-    margin-left: -20px;
-    margin-top: -390px;
-    font-size: 24px;
-    font-weight: bold;
-}
+
 .create-course{
     margin-left: 630px;
     padding: 15px 30px;
@@ -382,4 +374,23 @@ body{
 }
 .achive-btn:hover{
   background-color: #705FBE;
+}
+.quest-list{
+  width: 300px;
+  height: 400px;
+  margin-top: 80px;
+  margin-right: 50px;
+  background-color: white;
+  border-radius: 15px;
+  margin-left: -115px;
+  overflow-y: scroll;
+}
+.hquest{
+  margin-top: 20px;
+  font-family: 'Poppins', sans-serif;
+}
+.hquest1{
+  margin-left: 70px;
+  margin-top: -30px;
+  font-family: 'Poppins', sans-serif;
 }
