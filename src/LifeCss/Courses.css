@@ -335,7 +335,7 @@ body{
   overflow-y: scroll;
 }
 .add-ach-btn{
-  margin-right: 700px;
+  margin-left: 600px;
   width: 200px;
   height: 50px;
   background-color: green;
@@ -345,7 +345,7 @@ body{
   color: white;
   cursor: pointer;
   transition: background-color 0.3s;
-  margin-top: 20px;
+  margin-top: 70px;
   
 }
 .add-ach-btn:hover{
@@ -393,4 +393,11 @@ body{
   margin-left: 70px;
   margin-top: -30px;
   font-family: 'Poppins', sans-serif;
+}
+.closecourse1{
+  margin-top: -120px;
+}
+.addjust-ach{
+
+margin-bottom: -30px;
 }
