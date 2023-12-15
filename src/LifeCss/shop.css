@@ -1,0 +1,46 @@
+.shp-action-btn{
+    margin-left: 700px;
+    margin-top: -50px;
+    margin-bottom: 20px;
+}
+.shp-action-btn2{
+    margin-left: 870px;
+    margin-top: -70px;
+    margin-bottom: 20px;
+}
+.update-itm-btn{
+    padding: 15px;
+    width: 150px;
+    background-color: green;
+    border: none;
+    border-radius: 50px;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+}
+.update-itm-btn:hover{
+    background-color: darkgreen;
+}
+.dlt-itm-btn{
+    padding: 15px;
+    width: 150px;
+    background-color: red;
+    border: none;
+    border-radius: 50px;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+}
+.dlt-itm-btn:hover{
+    background-color: darkred;
+}
+.view-floating-box-content {
+    background-color:  #efefef;
+    height: 510px;
+    border-radius: 10px;
+    overflow-y: scroll;  
+  }

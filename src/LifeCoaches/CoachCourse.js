@@ -12,6 +12,7 @@ import { IoCreateSharp } from "react-icons/io5";
 import { FaCheckCircle } from "react-icons/fa";
 import CreateCourseBox from './CreateCourseBox';
 import CreateQuestBox from './CreateQuestBox';
+import ViewMembersBox from './ViewMembersBox';
 import { useAuth } from '../Life++/AuthContext';
 import { IoPersonSharp } from "react-icons/io5";
 import { FaScroll } from "react-icons/fa6";
@@ -29,6 +30,7 @@ function CoachCourses() {
   const [courses, setCourses] = useState([]); // State to store courses
   const [showCreateCourseBox, setShowCreateCourseBox] = useState(false);
   const [showCreateQuestBox, setShowQuestCourseBox] = useState(false);
+  const [showViewMembersBox, setShowViewMembersBox] = useState(false);
   const savedDarkMode = localStorage.getItem('darkMode') === 'true';
   const [darkMode] = useState(savedDarkMode);
   const [coachData, setCoachData] = useState(null); 

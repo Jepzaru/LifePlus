@@ -62,7 +62,7 @@
   }
   
   .floating-box-content {
-    /* Customize the content styling as needed */
+    
   }
   
   /* Additional styles specific to the AchievementBox */
@@ -77,7 +77,10 @@
   
   /* Additional styles specific to the ItemShopBox */
   .item-shop-box-content {
-    /* Customize item shop box content styling */
+    background-color:  #efefef;
+    height: 500px;
+    border-radius: 10px;
+    overflow-y: scroll;
   }
   .certificate{
     background-color: #efefef;
@@ -104,3 +107,45 @@
   .certi{
     margin-top: -35px;
   }
+  .user-shop{
+  background-color: white;
+  padding: 20px;
+  margin-top: 30px;
+  border-radius: 15px;
+  width: 715px;
+  margin-left: 20px;
+  }
+  .shop-name{
+    color: black;
+  }
+  .shop-action-btn{
+    margin-left: 450px;
+    margin-top: -50px;
+    margin-bottom: 20px;
+  }
+  .buy-itm-btn{
+    padding: 15px;
+    width: 200px;
+    background-color: green;
+    border: none;
+    border-radius: 50px;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+}
+.buy-itm-btn:hover{
+    background-color: darkgreen;
+}
+.item-floating-box-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  color:black;
+}
+.item-floating-box-header h2{
+  color: black;
+  margin-right: -80px;
+}
