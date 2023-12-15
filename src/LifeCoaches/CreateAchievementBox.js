@@ -6,7 +6,7 @@ import MuiAlert from '@mui/material/Alert';
 import '../LifeCss/AddItemBox.css'; 
 import { IoClose } from "react-icons/io5";
 
-const AddItemBox = ({ onClose }) => {
+const CreateAchievementBox = ({ onClose }) => {
   // State variables for the component
   const [name, setName] = useState('');
   const [points, setPoints] = useState('');
@@ -49,7 +49,7 @@ const AddItemBox = ({ onClose }) => {
 
   return (
     <div id="add-item-box" className="add-item-box">
-      <h1>Add New Item</h1>
+      <h1>Add Achievements</h1>
       <div className="closeitem">
         <button className="add-item-close" onClick={() => onClose({ open: false, message: '' })}>
           <IoClose />
@@ -57,7 +57,15 @@ const AddItemBox = ({ onClose }) => {
       </div>
       <div className="add-item-con">
         <div className="item-name-tit">
-          <h3>Item Name</h3>
+          <h3>Achievements Title</h3>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </div>
+        <div className="item-name-des">
+          <h3>Description</h3>
           <input
             type="text"
             value={name}
@@ -75,7 +83,7 @@ const AddItemBox = ({ onClose }) => {
 
         <div className="add-item-save">
           <button className="add-save" onClick={handleSubmit}>
-            Add Item
+            Add achievement
           </button>
         </div>
       </div>
@@ -83,4 +91,4 @@ const AddItemBox = ({ onClose }) => {
   );
 };
 
-export default AddItemBox;
+export default CreateAchievementBox;

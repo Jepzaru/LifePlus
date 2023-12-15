@@ -124,13 +124,14 @@ body{
     cursor: pointer;
     border: none;
     color: white;
+    margin-top: -100px;
     
   }
   .create-course-close:hover {
     background-color: darkred;
 }
   .closecourse{
-    margin-top: -40px;
+    margin-top: -70px;
   }
   .create-course-con {
     display: flex;
@@ -330,4 +331,31 @@ body{
 }
 .leave:hover{
   background-color: darkred;
+}
+.achievements-course-con{
+  display: flex;
+  flex-direction: column;
+  background-color: #E7E7E7;
+  margin-top: 20px;
+  border-radius: 20px;
+  height: 490px;
+  width: 960px;
+  overflow-y: scroll;
+}
+.add-ach-btn{
+  margin-right: 700px;
+  width: 200px;
+  height: 50px;
+  background-color: green;
+  border-radius: 50px;
+  border: none;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 20px;
+  
+}
+.add-ach-btn:hover{
+  background-color: darkgreen;
 }

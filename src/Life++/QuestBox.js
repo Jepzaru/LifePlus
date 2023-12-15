@@ -1,4 +1,4 @@
-// QuestBox.js
+
 
 import React from 'react';
 import Quests from '../LifeImages/quest.png';
