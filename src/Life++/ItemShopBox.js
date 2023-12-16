@@ -54,7 +54,7 @@ const ItemShopBox = ({ onClose }) => {
         <div className="item-floating-box-header">
           <img src={Shop} alt="Item Shop" style={{ width: '80px', height: '50px' }} />
           <h2>Item Shop</h2>
-          <h2 style={{ marginLeft: '300px' }}>Points: </h2>
+          <h2 style={{ marginLeft: '200px' }}>Points: {storedUser.achievementPoint}🪙 </h2>
           <span className="close-button" onClick={onClose}>
             &times;
           </span>

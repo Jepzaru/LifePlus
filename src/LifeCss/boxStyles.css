@@ -223,6 +223,19 @@
   border-radius: 15px;
   transition: background-color 0.3s;
 }
+.cmplt{
+  background-color: green;
+  color: black;
+  padding: 10px;
+  font-family: 'Poppins', sans-serif;
+  margin-left: 500px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  transition: background-color 0.3s;
+}
 .attempt:hover{
   background-color: gray;
   color: white;
