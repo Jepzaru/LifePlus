@@ -203,12 +203,12 @@ function CoachCourses() {
                   {course.quests && course.quests.length === 0 ? (
                     <p>None</p>
                   ) : (
-                    <h3>{course.name}</h3>
+                    <h3>🎓 {course.name}</h3>
                   )}
                   {course.quests && course.quests.length > 0 ? (
                     <div className='quest-des'>
                       {course.quests.map(quest => (
-                        <p key={quest.qid}>{quest.title}</p>
+                        <p key={quest.qid}>📜 {quest.title}</p>
                       ))}
                     </div>
                   ) : (

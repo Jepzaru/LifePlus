@@ -409,4 +409,5 @@ margin-bottom: -30px;
   border-radius: 15px;
   margin-top: 80px;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
