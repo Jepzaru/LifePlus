@@ -1,8 +1,6 @@
 // AddItemBox.js
 
 import React, { useState } from 'react';
-import Snackbar from '@mui/material/Snackbar';
-import MuiAlert from '@mui/material/Alert';
 import '../LifeCss/AddItemBox.css'; 
 import { IoClose } from "react-icons/io5";
 
@@ -10,11 +8,11 @@ const CreateAchievementBox = ({ onClose }) => {
   // State variables for the component
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
-  const [points, setPoints] = useState('');
+  const [point, setPoint] = useState('');
 
   const handleSubmit = async () => {
     try {
-      if (name.trim() === '' || points.trim() === '') {
+      if (name.trim() === '' || point.trim() === '') {
         // If any of the fields are empty, show an alert and return
         alert('Please fill in all fields before adding the item.');
         return;
@@ -28,7 +26,7 @@ const CreateAchievementBox = ({ onClose }) => {
         body: JSON.stringify({
           name,
           description,
-          points,
+          point,
         }),
       });
 
@@ -40,7 +38,7 @@ const CreateAchievementBox = ({ onClose }) => {
         });
 
         setName('');
-        setPoints('');
+        setPoint('');
       } else {
         console.error('Error adding item:', response.statusText);
       }
@@ -78,8 +76,8 @@ const CreateAchievementBox = ({ onClose }) => {
           <h3>Points</h3>
           <input
             type="text"
-            value={points}
-            onChange={(e) => setPoints(e.target.value)}
+            value={point}
+            onChange={(e) => setPoint(e.target.value)}
           />
         </div>
 

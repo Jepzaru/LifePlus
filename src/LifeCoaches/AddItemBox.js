@@ -57,7 +57,7 @@ const AddItemBox = ({ onClose }) => {
       </div>
       <div className="add-item-con">
         <div className="item-name-tit">
-          <h3>Item Name</h3>
+          <h3>🛍️ Item Name</h3>
           <input
             type="text"
             value={name}
@@ -65,7 +65,7 @@ const AddItemBox = ({ onClose }) => {
           />
         </div>
         <div className="item-points"> 
-          <h3>Points</h3>
+          <h3>🪙 Points</h3>
           <input
             type="text"
             value={points}

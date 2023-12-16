@@ -141,7 +141,7 @@ function CoachDash() {
     if (storedUser) {
       login(storedUser);
     }
-  }, [login]); // Removed the empty dependency array
+  }, [login]); 
 
   return (
     <div className={`appindash ${darkMode ? 'dark-mode' : ''}`}>
@@ -197,14 +197,15 @@ function CoachDash() {
             <div className="recen-con">             
             {foundCoach ? (
               foundCoach.courses
-                .slice(0, 3) // Get the latest 3 courses
-                .reverse() // Reverse to get the latest at the top
+                .slice(0, 3) 
+                .reverse() 
                 .map((course, index) => (
                   <div key={index} className="course-item">
-                    {/* Render course details */}
-                    <h3>{course.name}</h3>
-                    <br />
-                    {/* ... (other details) */}
+                    
+                    <h3>🎓 {course.name}</h3>
+                    <div className='route-cou'>
+                      <button className='route-cou-btn'>View Course</button>
+                      </div>
                   </div>
                 ))
             ) : (

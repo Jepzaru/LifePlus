@@ -109,6 +109,9 @@ const AchievementBox = ({ onClose }) => {
               </div>
             )}
           </div>
+          <div className='achievers'>
+              
+              </div>
         </div>
       </div>
     </div>

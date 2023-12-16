@@ -192,7 +192,7 @@ function CoachCourses() {
                     <div className='Cdes'>{course.description}</div>
                     <div className='Ccapacity'><IoPersonSharp /> Capacity <span style={{ fontWeight: 'bold' }}>{course.max}</span></div>
                     <div className='members'>
-                      <button onClick={() => setShowViewMembersBox(course)}>View Members</button>
+                      <button onClick={() => setShowViewMembersBox(course)}>🔍 View Members</button>
                     </div>
                     <div className='delete-cou'><button onClick={() => handleRemoveCourse(course.courseID)}>Remove Course</button>
                     </div>
@@ -210,25 +210,28 @@ function CoachCourses() {
             </p>
             <div className='created-quest'>
               {courses.map(course => (
+                <div className='quest-wrap'>
                 <div key={course.id} className='quest-list'>
                   {course.quests && course.quests.length == 0 ? (
                     console.log("None")
                   ) : (
-                    <h3>{course.name}</h3>
+                    <h3>🎓 {course.name}</h3>
                   )}
                   {course.quests && course.quests.length > 0 ? (
                     <div className='quest-des'>
                       {course.quests.map(quest => (
-                        <p key={quest.qid}>{quest.title}</p>
+                        <p key={quest.qid}>📜 {quest.title}</p>
                       ))}
                     </div>
                   ) : (
                     <p>No quests available for this course</p>
                   )}
                 </div>
+                </div>
               ))}
             </div>
           </div>
+         
 
           <Snackbar
             open={snackbar.open}

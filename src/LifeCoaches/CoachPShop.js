@@ -96,7 +96,7 @@ function CoachShop() {
             {reward.map(reward => (
               <div className='shoppe' key={reward.id}>
                 <div className='shp-name'>
-                  <h2><CgShoppingBag /> {reward.name}</h2> <p>Points: 🪙{reward.points}</p>
+                  <h2>🛍️ {reward.name}</h2> <p>Points: 🪙{reward.points}</p>
                   <div className='shp-action-btn'>
                     <button className='update-itm-btn' onClick={() => {
                 setShowUpdateItemBox(true);
