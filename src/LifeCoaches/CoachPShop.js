@@ -11,7 +11,6 @@ import AddItemBox from './AddItemBox';
 import UpdateItemBox from './UpdateItemBox';
 import axios from 'axios';
 import '../LifeCss/shop.css';
-import { CgShoppingBag } from "react-icons/cg";
 
 function CoachShop() {
   const { login } = useAuth();
@@ -65,6 +64,29 @@ function CoachShop() {
     setSnackbar(snackbarConfig);
   };
 
+  const handleDeleteItemClick = async (rid) => {
+    try {
+      // Send a DELETE request to the server
+      await axios.delete(`http://localhost:8080/reward/delete/${rid}`);
+      
+      // Update the state to remove the deleted item
+      setItems((prevItems) => prevItems.filter(item => item.rid !== rid));
+      
+      // Show success message in snackbar
+      setSnackbar({
+        open: true,
+        message: 'Item deleted successfully!',
+      });
+    } catch (error) {
+      console.error('Error deleting item:', error.message);
+      // Show error message in snackbar
+      setSnackbar({
+        open: true,
+        message: 'Error deleting item. Please try again later.',
+      });
+    }
+  };
+
   return (
     <div className={`appincoach ${darkMode ? 'dark-mode' : ''}`}>
       {loading ? (
@@ -93,21 +115,25 @@ function CoachShop() {
             </button>
           </div>
           <div className='coa-container'>
-            {reward.map(reward => (
-              <div className='shoppe' key={reward.id}>
-                <div className='shp-name'>
-                  <h2>🛍️ {reward.name}</h2> <p>Points: 🪙{reward.points}</p>
-                  <div className='shp-action-btn'>
-                    <button className='update-itm-btn' onClick={() => {
-                setShowUpdateItemBox(true);
-              }}>Update Item</button>
-                    </div>
-                    <div className='shp-action-btn2'>
-                    <button className='dlt-itm-btn'>Delete Item</button>
-                  </div>
-                  </div>
-              </div>
-            ))}
+          {reward
+          .filter(item => !item.deleted)
+          .map(item => (
+          <div className='shoppe' key={item.rid}>
+        <div className='shp-name'>
+          <h2>🛍️ {item.name}</h2> <p>Points: 🪙{item.points}</p>
+          <div className='shp-action-btn'>
+            <button className='update-itm-btn' onClick={() => setShowUpdateItemBox(true)}>
+              Update Item
+            </button>
+          </div>
+          <div className='shp-action-btn2'>
+            <button className='dlt-itm-btn' onClick={() => handleDeleteItemClick(item.rid)}>
+              Delete Item
+            </button>
+          </div>
+        </div>
+      </div>
+    ))}
           </div>
           {showAddItemBox && (
             <>
