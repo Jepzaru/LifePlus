@@ -19,10 +19,6 @@ import { FaScroll } from "react-icons/fa6";
 import { IoMdAddCircle } from "react-icons/io";
 import axios from 'axios';
 
-
-
-
-
 function CoachCourses() {
   const { login } = useAuth();
   const [storedUser, setStoredUser] = useState(null);
@@ -71,8 +67,6 @@ function CoachCourses() {
     }
   }, [login, storedUser]);
 
-
-
   useEffect(() => {
     setLoading(true);
     if (coachData && coachData.coachid) {
@@ -97,7 +91,6 @@ function CoachCourses() {
     }
   }, [coachData]);
 
-
   const fetchQuestsForCourse = async (courseId) => {
     try {
       const response = await axios.get(`http://localhost:8080/course/${courseId}/getquests`);
@@ -110,8 +103,7 @@ function CoachCourses() {
   };
 
   const handleRemoveCourse = (courseId) => {
-    const headers = {
-    };
+    const headers = {};
 
     axios.delete(`http://localhost:8080/course/delete/${courseId}`, { headers })
       .then(response => {
@@ -149,7 +141,6 @@ function CoachCourses() {
     }
   }, []);
 
-
   return (
     <div className={`appindcourse ${darkMode ? 'dark-mode' : ''}`}>
       {loading ? (
@@ -183,7 +174,6 @@ function CoachCourses() {
                       <img src={index % 2 === 0 ? image1 : image2} alt={`Course ${course.name}`} className='course-image'
                         style={{ height: '300px', width: '300px', marginLeft: '20px', borderRadius: '15px' }}
                       />
-
                     </div>
                     <div className='Cname'>{course.name}  <IoMdAddCircle
                       style={{ color: 'green', marginLeft: '20px', cursor: 'pointer' }}
@@ -197,9 +187,7 @@ function CoachCourses() {
                     <div className='delete-cou'><button onClick={() => handleRemoveCourse(course.courseID)}>Remove Course</button>
                     </div>
                   </div>
-
                 </div>
-
               ))}
           </div>
           <div className="up-act">
@@ -210,32 +198,27 @@ function CoachCourses() {
               </div>
             </p>
             <div className='created-quest'>
-              <div className='quest-wrap'>
-                <div className='quest-list'>
-                  <div className='quest-des'>
-                    {courses.map(course => (
-                      <React.Fragment key={course.id}>
-                        {course.quests && course.quests.length > 0 ? (
-                          <React.Fragment>
-                            <h3>🎓 {course.name}</h3>
-                            {course.quests.map(quest => (
-                              <p key={quest.qid}>📜 {quest.title}</p>
-                            ))}
-                          </React.Fragment>
-                        ) : (
-                          console.log("None") // Displaying "None" in case there are no quests
-                        )}
-                      </React.Fragment>
-                    ))}
-                    {courses.every(course => (!course.quests || course.quests.length === 0)) && (
-                      <p>No quests available for any course</p>
-                    )}
-                  </div>
+              {courses.map(course => (
+                <div key={course.id} className='quest-list'>
+                  {course.quests && course.quests.length == 0 ? (
+                    console.log("None")
+                  ) : (
+                    <h3>{course.name}</h3>
+                  )}
+                  {course.quests && course.quests.length > 0 ? (
+                    <div className='quest-des'>
+                      {course.quests.map(quest => (
+                        <p key={quest.qid}>{quest.title}</p>
+                      ))}
+                    </div>
+                  ) : (
+                    <p>No quests available for this course</p>
+                  )}
                 </div>
               </div>
             </div>
           </div>
-
+         
 
           <Snackbar
             open={snackbar.open}
@@ -268,7 +251,6 @@ function CoachCourses() {
           course={showViewMembersBox} // Pass course object here
         />
       )}
-
     </div>
   );
 }
