@@ -15,6 +15,7 @@ const QuestBox = ({ onClose }) => {
           </span>
         </div>
         <div className="floating-box-content quest-box-content">
+          
         </div>
       </div>
     </div>

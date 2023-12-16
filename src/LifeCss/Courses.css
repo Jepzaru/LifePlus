@@ -262,8 +262,8 @@ body{
   background-color: #FF64B4;
 }
 .delete-cou{
-  margin-left: 570px;
-  margin-top: -55px;
+  margin-left: 590px;
+  margin-top: -56px;
 }
 .delete-cou button{
   padding: 15px 20px;
@@ -376,14 +376,14 @@ body{
   background-color: #705FBE;
 }
 .quest-list{
-  width: 300px;
-  height: 400px;
-  margin-top: 80px;
+  width: 220px;
+  height: auto;
+  margin-top: 20px;
   margin-right: 50px;
   background-color: white;
   border-radius: 15px;
-  margin-left: -115px;
-  overflow-y: scroll;
+  margin-left: 30px;
+  padding: 10px;
 }
 .hquest{
   margin-top: 20px;
@@ -400,4 +400,14 @@ body{
 .addjust-ach{
 
 margin-bottom: -30px;
+}
+.quest-wrap{
+  width: 300px;
+  height: 390px;
+  background-color: #705FBE;
+  margin-left: -120px;
+  border-radius: 15px;
+  margin-top: 80px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }

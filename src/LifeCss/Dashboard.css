@@ -131,8 +131,6 @@ body{
 }
 .recen-con{
     display: flex;
-    justify-content: center;
-    align-items: center;
     height: 300px;
     width: 850px;
     border-radius: 20px;
@@ -207,3 +205,30 @@ body{
   .dark-mode-title {
     color: white;
   }
+.course-item{
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    margin-left: 20px;
+    height: 80px;
+    margin-top: 20px;
+}
+.route-cou{
+    margin-left: 500px;
+    margin-top: -50px;
+}
+.route-cou-btn{
+    padding: 15px 50px;
+    background-color: #121212;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    font-weight: 900;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+.route-cou-btn:hover{
+    background-color:#FF64B4;
+}

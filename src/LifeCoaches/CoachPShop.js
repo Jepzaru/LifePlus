@@ -8,6 +8,7 @@ import MuiAlert from '@mui/material/Alert';
 import { MdAddBusiness } from 'react-icons/md';
 import { useAuth } from '../Life++/AuthContext';
 import AddItemBox from './AddItemBox';
+import UpdateItemBox from './UpdateItemBox';
 import axios from 'axios';
 import '../LifeCss/shop.css';
 import { CgShoppingBag } from "react-icons/cg";
@@ -18,6 +19,7 @@ function CoachShop() {
   const savedDarkMode = localStorage.getItem('darkMode') === 'true';
   const [darkMode] = useState(savedDarkMode);
   const [showAddItemBox, setShowAddItemBox] = useState(false);
+  const [showUpdateItemBox, setShowUpdateItemBox] = useState(false);
   const [snackbar, setSnackbar] = useState({
     open: false,
     message: '',
@@ -94,9 +96,11 @@ function CoachShop() {
             {reward.map(reward => (
               <div className='shoppe' key={reward.id}>
                 <div className='shp-name'>
-                  <h2><CgShoppingBag /> {reward.name}</h2> <p>Points: 🪙{reward.points}</p>
+                  <h2>🛍️ {reward.name}</h2> <p>Points: 🪙{reward.points}</p>
                   <div className='shp-action-btn'>
-                    <button className='update-itm-btn'>Update Item</button>
+                    <button className='update-itm-btn' onClick={() => {
+                setShowUpdateItemBox(true);
+              }}>Update Item</button>
                     </div>
                     <div className='shp-action-btn2'>
                     <button className='dlt-itm-btn'>Delete Item</button>
@@ -134,6 +138,7 @@ function CoachShop() {
           )}
         </>
       )}
+      {showUpdateItemBox && <UpdateItemBox onClose={() => setShowUpdateItemBox(false)} />}
     </div>
   );
 }

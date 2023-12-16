@@ -1,32 +1,32 @@
-// AddItemBox.js
+
 
 import React, { useState } from 'react';
-import '../LifeCss/AddItemBox.css'; 
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
+import '../LifeCss/UpdateItemBox.css'; 
 import { IoClose } from "react-icons/io5";
 
-const CreateAchievementBox = ({ onClose }) => {
-  // State variables for the component
+const UpdateItemBox = ({ onClose }) => {
+
   const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
-  const [point, setPoint] = useState('');
+  const [points, setPoints] = useState('');
 
   const handleSubmit = async () => {
     try {
-      if (name.trim() === '' || point.trim() === '') {
-        // If any of the fields are empty, show an alert and return
+      if (name.trim() === '' || points.trim() === '') {
+       
         alert('Please fill in all fields before adding the item.');
         return;
       }
 
-      const response = await fetch('http://localhost:8080/achievement/insert', {
+      const response = await fetch('http://localhost:8080/reward/insert', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           name,
-          description,
-          point,
+          points,
         }),
       });
 
@@ -38,7 +38,7 @@ const CreateAchievementBox = ({ onClose }) => {
         });
 
         setName('');
-        setPoint('');
+        setPoints('');
       } else {
         console.error('Error adding item:', response.statusText);
       }
@@ -48,8 +48,9 @@ const CreateAchievementBox = ({ onClose }) => {
   };
 
   return (
+    <div className='overlay'>
     <div id="add-item-box" className="add-item-box">
-      <h1>Add Achievements</h1>
+      <h1>Add New Item</h1>
       <div className="closeitem">
         <button className="add-item-close" onClick={() => onClose({ open: false, message: '' })}>
           <IoClose />
@@ -57,38 +58,31 @@ const CreateAchievementBox = ({ onClose }) => {
       </div>
       <div className="add-item-con">
         <div className="item-name-tit">
-          <h3>Achievements Title</h3>
+          <h3>Item Name</h3>
           <input
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
         </div>
-        <div className="item-name-des">
-          <h3>Description</h3>
-          <input
-            type="text"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-        </div>
         <div className="item-points"> 
           <h3>Points</h3>
           <input
             type="text"
-            value={point}
-            onChange={(e) => setPoint(e.target.value)}
+            value={points}
+            onChange={(e) => setPoints(e.target.value)}
           />
         </div>
 
         <div className="add-item-save">
           <button className="add-save" onClick={handleSubmit}>
-            Add achievement
+            Update Item
           </button>
         </div>
       </div>
     </div>
+    </div>
   );
 };
 
-export default CreateAchievementBox;
+export default UpdateItemBox;
