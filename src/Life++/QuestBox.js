@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 
 import Quests from '../LifeImages/quest.png';
@@ -9,7 +8,8 @@ import axios from 'axios';
 const QuestBox = ({ onClose }) => {
   const { login } = useAuth();
   const [storedUser, setStoredUser] = useState(null);
-  const [userJoinedCourses, setUserJoinedCourses] = useState([]); // Added state for joined courses
+  const [userJoinedCourses, setUserJoinedCourses] = useState([]);
+  const [questStatus, setQuestStatus] = useState({});
 
   useEffect(() => {
     const userFromStorage = JSON.parse(localStorage.getItem('loggedInUser'));
@@ -17,11 +17,11 @@ const QuestBox = ({ onClose }) => {
       login(userFromStorage);
       setStoredUser(userFromStorage);
 
-      // Fetch enrolled courses for the logged-in user
-      axios.get(`http://localhost:8080/user/enrolledcourses/${userFromStorage.userid}`)
+      axios
+        .get(`http://localhost:8080/user/enrolledcourses/${userFromStorage.userid}`)
         .then(response => {
           console.log(response.data);
-          setUserJoinedCourses(response.data); // Store enrolled courses in state
+          setUserJoinedCourses(response.data);
         })
         .catch(error => {
           console.error('Error fetching enrolled courses:', error);
@@ -29,6 +29,14 @@ const QuestBox = ({ onClose }) => {
     }
   }, [login, storedUser]);
 
+  const handleAttemptQuest = (courseId, questId) => {
+    // Implement your quest attempt logic here
+    // For simplicity, I'll just set the quest status to 'Ongoing'
+    setQuestStatus(prevStatus => ({
+      ...prevStatus,
+      [`${courseId}_${questId}`]: 'Ongoing',
+    }));
+  };
 
   return (
     <div className="floating-box-overlay">
@@ -40,14 +48,27 @@ const QuestBox = ({ onClose }) => {
           </span>
         </div>
         <div className="floating-box-content quest-box-content">
-          {/* Access userJoinedCourses state to display the joined courses */}
           {userJoinedCourses.map(course => (
-            <div key={course.courseid}>
-              <h3>🎓 {course.name}</h3>
+            <div className="qst-con" key={course.courseid}>
+              <h2>🎓 {course.name}</h2>
               {course.quests && course.quests.length > 0 ? (
                 <div className='quest-des'>
                   {course.quests.map(quest => (
-                    <p key={quest.qid}>📜 {quest.title}</p>
+                    <div className='que-title' key={quest.qid}>
+                      <h3>📜 {quest.title}</h3>
+                      <div className='descrip'>
+                        <p>Description:</p>
+                        <p style={{ marginLeft: '50px' }}>{quest.description}</p>
+                      </div>
+                      <button
+                        className='attempt'
+                        onClick={() => handleAttemptQuest(course.courseid, quest.qid)}
+                      >
+                        {questStatus[`${course.courseid}_${quest.qid}`] === 'Ongoing'
+                          ? '⌛ Ongoing...'
+                          : '🏹 Attempt Quest'}
+                      </button>
+                    </div>
                   ))}
                 </div>
               ) : (
@@ -55,13 +76,11 @@ const QuestBox = ({ onClose }) => {
               )}
             </div>
           ))}
-          {/* If no courses are joined, display a message */}
           {userJoinedCourses.length === 0 && <p>No courses joined</p>}
         </div>
       </div>
     </div>
   );
 };
-
 
 export default QuestBox;
