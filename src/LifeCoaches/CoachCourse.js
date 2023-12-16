@@ -210,27 +210,32 @@ function CoachCourses() {
               </div>
             </p>
             <div className='created-quest'>
-              {courses.map(course => (
-                <div key={course.id} className='quest-list'>
-                  {course.quests && course.quests.length == 0 ? (
-                    console.log("None")
-                  ) : (
-                    <h3>{course.name}</h3>
-                  )}
-                  {course.quests && course.quests.length > 0 ? (
-                    <div className='quest-des'>
-                      {course.quests.map(quest => (
-                        <p key={quest.qid}>{quest.title}</p>
-                      ))}
-                    </div>
-                  ) : (
-                    <p>No quests available for this course</p>
-                  )}
+              <div className='quest-wrap'>
+                <div className='quest-list'>
+                  <div className='quest-des'>
+                    {courses.map(course => (
+                      <React.Fragment key={course.id}>
+                        {course.quests && course.quests.length > 0 ? (
+                          <React.Fragment>
+                            <h3>🎓 {course.name}</h3>
+                            {course.quests.map(quest => (
+                              <p key={quest.qid}>📜 {quest.title}</p>
+                            ))}
+                          </React.Fragment>
+                        ) : (
+                          console.log("None") // Displaying "None" in case there are no quests
+                        )}
+                      </React.Fragment>
+                    ))}
+                    {courses.every(course => (!course.quests || course.quests.length === 0)) && (
+                      <p>No quests available for any course</p>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-         
+
 
           <Snackbar
             open={snackbar.open}
