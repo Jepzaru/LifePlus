@@ -6,6 +6,7 @@ import { useLocation } from 'react-router-dom';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { IoExtensionPuzzle } from 'react-icons/io5';
+import Snowfall from 'react-snowfall';
 
 
 function Abs() {
@@ -77,38 +78,58 @@ function Abs() {
   };
 
   const startChallenge = (exerciseIndex, challengeIndex) => {
-    // Clear any existing intervals
-    clearInterval(challengeIntervals[challengeIndex]);
-  
-    // Update the text of the specific challenge
-    setChallenge((prevChallenge) => ({ ...prevChallenge, text: 'In Progress' }), challengeIndex);
-  
-    const interval = setInterval(() => {
-      setChallenge(
-        (prevChallenge) => ({
-          ...prevChallenge,
-          progress: prevChallenge.progress + (1 / prevChallenge.duration) * 100,
-        }),
-        challengeIndex
-      );
-    }, 1000);
-  
-    // Update challengeIntervals with the new interval ID
-    setChallengeIntervals((prevIntervals) => {
-      const newIntervals = [...prevIntervals];
-      newIntervals[challengeIndex] = interval;
-      return newIntervals;
-    });
-  
-    setTimeout(() => {
-      clearInterval(interval);
-      setChallenge(
-        (prevChallenge) => ({ ...prevChallenge, text: 'Completed', progress: 0 }),
-        challengeIndex
-      );
-    }, initialChallenges[exerciseIndex].duration * 1000);
-  };
 
+    const currentChallenge = challengeIntervals[challengeIndex];
+  
+    if (currentChallenge) {
+      // If the challenge is currently running, pause it
+      clearInterval(currentChallenge);
+      setChallenge(
+        (prevChallenge) => ({ ...prevChallenge, text: 'Paused' }),
+        challengeIndex
+      );
+      setChallengeIntervals((prevIntervals) => {
+        const newIntervals = [...prevIntervals];
+        newIntervals[challengeIndex] = null;
+        return newIntervals;
+      });
+    } else {
+      setChallenge(
+        (prevChallenge) => ({ ...prevChallenge, text: 'In Progress' }),
+        challengeIndex
+      );
+  
+      const interval = setInterval(() => {
+        setChallenge((prevChallenge) => {
+          const newProgress = prevChallenge.progress + (1 / prevChallenge.duration) * 100;
+          return {
+            ...prevChallenge,
+            progress: newProgress > 100 ? 100 : newProgress,
+          };
+        }, challengeIndex);
+      }, 1000);
+  
+      setChallengeIntervals((prevIntervals) => {
+        const newIntervals = [...prevIntervals];
+        newIntervals[challengeIndex] = interval;
+        return newIntervals;
+      });
+  
+      setTimeout(() => {
+        clearInterval(interval);
+        setChallenge(
+          (prevChallenge) => ({ ...prevChallenge, text: 'Completed', progress: 100 }),
+          challengeIndex
+        );
+        setChallengeIntervals((prevIntervals) => {
+          const newIntervals = [...prevIntervals];
+          newIntervals[challengeIndex] = null;
+          return newIntervals;
+        });
+      }, initialChallenges[exerciseIndex].duration * 1000);
+    }
+  };
+  
   const resetChallenges = () => {
     // Clear all existing intervals
     challengeIntervals.forEach((interval) => clearInterval(interval));
@@ -130,8 +151,9 @@ function Abs() {
  
   return (
     <div className={`appindcha ${darkMode ? 'dark-mode' : ''}`}>
-     <CoachHeader />
+       <CoachHeader />
           <CoachSidenavbar location={location} />
+      <Snowfall snowflakeCount={100} />
       <div className='cha'>
         <h1><IoExtensionPuzzle style={{ marginRight: '15px', marginBottom: '-5px', color: '#FF64B4' }} />Challenges</h1>
       </div>
