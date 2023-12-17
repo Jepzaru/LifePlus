@@ -5,7 +5,6 @@ import HashLoader from 'react-spinners/HashLoader';
 import CoachHeader from '../Life++/CoachHeader';
 import { MdDashboard } from 'react-icons/md';
 import { Link } from 'react-router-dom';
-import { FaClipboardCheck } from 'react-icons/fa';
 import 'react-slideshow-image/dist/styles.css';
 import { Slide } from 'react-slideshow-image';
 import slide1 from '../LifeImages/slide4.png';

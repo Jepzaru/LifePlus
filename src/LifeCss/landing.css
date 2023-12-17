@@ -1,12 +1,21 @@
-.main{
+.main {
   justify-content: center;
   display: flex;
-  margin-top: 300px
+  height: 100vh; /* Set height to cover the entire viewport */
+  margin-top: 300; /* Remove the margin-top */
 }
 .landing {
   opacity: 0;
   animation: fadeIn 1s forwards;
 }
+
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
 
 @keyframes fadeIn {
   from {
@@ -27,6 +36,7 @@
   z-index: 1;
   margin-top: -180px;
   }
+
   
   .lifelogo{
     background-image: url('../LifeImages/lifelogo.png'); 
