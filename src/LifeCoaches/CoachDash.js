@@ -201,7 +201,6 @@ function CoachDash() {
                 .reverse() 
                 .map((course, index) => (
                   <div key={index} className="course-item">
-                    
                     <h3>🎓 {course.name}</h3>
                     <div className='route-cou'>
                       <button className='route-cou-btn'>View Course</button>
