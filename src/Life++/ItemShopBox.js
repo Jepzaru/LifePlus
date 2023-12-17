@@ -11,12 +11,14 @@ const ItemShopBox = ({ onClose }) => {
   const [items, setItems] = useState([]);
   const { login } = useAuth();
   const [storedUser, setStoredUser] = useState(null);
+  const [points, setPoints] = useState(null); 
   useEffect(() => {
     // Fetch user from local storage and log in
     const userFromStorage = JSON.parse(localStorage.getItem('loggedInUser'));
     if (userFromStorage && !storedUser) {
       login(userFromStorage);
       setStoredUser(userFromStorage);
+      setPoints(userFromStorage.achievementPoint);
     }
     console.log("User", storedUser);
   }, [login, storedUser]);
@@ -54,7 +56,7 @@ const ItemShopBox = ({ onClose }) => {
         <div className="item-floating-box-header">
           <img src={Shop} alt="Item Shop" style={{ width: '80px', height: '50px' }} />
           <h2>Item Shop</h2>
-          <h2 style={{ marginLeft: '200px' }}>Points: {storedUser.achievementPoint}🪙 </h2>
+          <h2 style={{ marginLeft: '200px' }}>Points: 🪙 {points}</h2>
           <span className="close-button" onClick={onClose}>
             &times;
           </span>
