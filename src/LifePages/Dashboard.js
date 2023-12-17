@@ -194,7 +194,7 @@ function Dash() {
                     <div key={index} className="course-item">
                       <h3>🎓 {joinedCourses.name}</h3>
                       <div className='route-cou'>
-                      <Link to={`/index/courses`}>
+                      <Link to={`/index/courses `}>
                       <button className='route-cou-btn'>View Course</button>
                       </Link>
                       </div>
