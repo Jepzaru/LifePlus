@@ -421,3 +421,17 @@ margin-bottom: -30px;
   margin-left: 30px;
   padding: 10px;
 }
+.see-achievement-item {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  color: black;
+}
+.see-point{
+  margin-left: 550px;
+  font-weight: 700;
+  margin-top: -30px;
+}
+.see-point p{
+  color: green;
+}

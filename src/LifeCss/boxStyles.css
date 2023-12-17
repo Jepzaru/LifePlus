@@ -95,8 +95,8 @@
 
   }
   .claim-cert{
-    margin-left: 550px;
-    padding: 15px;
+    margin-left: 450px;
+    padding: 15px 50px;
     font-family: 'Poppins', sans-serif;
     background-color: green;
     border-radius: 50px;
@@ -110,7 +110,7 @@
     background-color: darkgreen;
   }
   .certi{
-    margin-top: -35px;
+    margin-top: -40px;
   }
   .user-shop{
   background-color: white;
@@ -228,7 +228,7 @@
   color: black;
   padding: 10px;
   font-family: 'Poppins', sans-serif;
-  margin-left: 500px;
+  margin-left: 420px;
   border: none;
   cursor: pointer;
   font-weight: 700;

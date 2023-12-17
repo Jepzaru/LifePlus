@@ -140,7 +140,7 @@ const ViewAchievementsBox = ({ onClose, onAchievementSelect }) => {
                   onClick={() => handleAchievementSelect(achievement)} 
                   className="clickable-achievement" 
                 >
-                  {achievement.name} 
+                  {achievement.name}
                 </div>
               ))}
             </div>

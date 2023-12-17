@@ -17,9 +17,6 @@ import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import { useAuth } from '../Life++/AuthContext';
 
 
-
-
-
 function Dash() {
   const { login, user } = useAuth();
   const [loading, setLoading] = useState(false);
@@ -195,9 +192,12 @@ function Dash() {
                   .reverse() // Reverse to get the latest at the top
                   .map((joinedCourses, index) => (
                     <div key={index} className="course-item">
-                      <h3>{joinedCourses.name}</h3>
-                      <br /> {/* Add a break after each course name */}
-                      {/* ... (other details) */}
+                      <h3>🎓 {joinedCourses.name}</h3>
+                      <div className='route-cou'>
+                      <Link to={`/index/courses`}>
+                      <button className='route-cou-btn'>View Course</button>
+                      </Link>
+                      </div>
                     </div>
                   ))
               ) : (

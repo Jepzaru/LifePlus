@@ -133,18 +133,19 @@ const AchievementBox = ({ onClose }) => {
             ) : (
               <div className="certi">
                 <button className="claim-cert" onClick={handleClaimCertificate}>
-                  Claim Certificate
+                📄 Claim Certificate
                 </button>
               </div>
             )}
           </div>
           <div className='achievers'>
-            {/* Map through achievements and display */}
+           
             {achievements.map((achievement, index) => (
-              <div key={index} className="achievement-item">
-                <h3>{achievement.title}</h3>
-                <p>{achievement.description}</p>
-                {/* Render other details of the achievement */}
+              <div key={index} className="see-achievement-item">
+                <h2>🏆{achievement.name}</h2>
+                <div className='see-point'>
+                <p>🪙 +{achievement.point}</p>
+                </div>
               </div>
             ))}
           </div>

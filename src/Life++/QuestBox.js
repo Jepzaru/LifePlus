@@ -37,20 +37,20 @@ const QuestBox = ({ onClose }) => {
   const handleButton = (courseId, quest) => {
     if (isQuestCompleted(quest)) {
       return (
-        <button className='cmplt' disabled>
-          Quest Completed
+        <button style={{color: 'white', width: '200px'}} className='cmplt' disabled>
+          ✅ Quest Completed
         </button>
       );
     } else if (isQuestOngoing(quest)) {
       return (
         <button className='attempt' onClick={() => handleCompleteQuest(courseId, quest.qid)}>
-          Complete Quest
+          🚩 Complete Quest
         </button>
       );
     } else {
       return (
         <button className='attempt' onClick={() => handleAttemptQuest(courseId, quest.qid)}>
-          Attempt Quest
+          🎯 Attempt Quest
         </button>
       );
     }
