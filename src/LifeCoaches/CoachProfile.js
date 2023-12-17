@@ -7,6 +7,7 @@ import defaultProfileFemale from '../LifeImages/defaultprofile1.png';
 import { IoMdSettings } from 'react-icons/io';
 import { useAuth } from '../Life++/AuthContext';
 import { MdTipsAndUpdates } from 'react-icons/md';
+import Snowfall from 'react-snowfall';
 import axios from 'axios';
 
 function CoachProfileSettings() {
@@ -69,6 +70,7 @@ function CoachProfileSettings() {
     <div className={`appinduserprof ${darkMode ? 'dark-mode' : ''}`}>
       <CoachHeader />
       <CoachSidenavbar />
+      <Snowfall snowflakeCount={100} />
       <div className="set">
         <h1>Settings</h1>
         <div className={`setitle ${darkMode ? 'dark-mode-title' : ''}`}>

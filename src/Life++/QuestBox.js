@@ -43,13 +43,13 @@ const QuestBox = ({ onClose }) => {
       );
     } else if (isQuestOngoing(quest)) {
       return (
-        <button className='attempt' onClick={() => handleCompleteQuest(courseId, quest.qid)}>
+        <button style={{width: '200px'}} className='attempt' onClick={() => handleCompleteQuest(courseId, quest.qid)}>
           🚩 Complete Quest
         </button>
       );
     } else {
       return (
-        <button className='attempt' onClick={() => handleAttemptQuest(courseId, quest.qid)}>
+        <button style={{width: '200px'}} className='attempt' onClick={() => handleAttemptQuest(courseId, quest.qid)}>
           🎯 Attempt Quest
         </button>
       );

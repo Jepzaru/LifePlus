@@ -5,7 +5,6 @@ import HashLoader from 'react-spinners/HashLoader';
 import Header from '../Life++/Header';
 import { MdDashboard } from 'react-icons/md';
 import { Link } from 'react-router-dom';
-import { FaClipboardCheck } from 'react-icons/fa';
 import 'react-slideshow-image/dist/styles.css';
 import { Slide } from 'react-slideshow-image';
 import slide1 from '../LifeImages/slide1.png';
@@ -15,6 +14,8 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import { useAuth } from '../Life++/AuthContext';
+import Snowfall from 'react-snowfall';
+import pengu from '../LifeImages/pengwe.png';
 
 
 function Dash() {
@@ -141,6 +142,7 @@ function Dash() {
         <>
           <Header />
           <Sidenavbar />
+          <Snowfall snowflakeCount={200} />
           <div className="dash">
             <h1>
               <MdDashboard style={{ marginBottom: '-8px', color: '#FF64B4' }} /> Dashboard
@@ -174,6 +176,7 @@ function Dash() {
           </div>
           <div className={`choose ${darkMode ? 'dark-mode-title' : ''}`}>
             <h1>Choose Content</h1>
+            
           </div>
           <Link to="/index/physical"
             className='phy-con'>
@@ -192,7 +195,7 @@ function Dash() {
                   .reverse() // Reverse to get the latest at the top
                   .map((joinedCourses, index) => (
                     <div key={index} className="course-item">
-                      <h3>🎓 {joinedCourses.name}</h3>
+                      <h3 style={{color: 'black'}}>🎓 {joinedCourses.name}</h3>
                       <div className='route-cou'>
                       <Link to={`/index/courses `}>
                       <button className='route-cou-btn'>View Course</button>
@@ -210,9 +213,6 @@ function Dash() {
               </LocalizationProvider>
             </div>
             <div className='rec-com'>
-              <div className='recbg'>
-                <p><FaClipboardCheck style={{ fontSize: '50px', marginLeft: '-30px', marginBottom: '-30px' }} />
-                  &nbsp;&nbsp;Recent &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Quests</p>
                 <div className="recen-quest">
                   {storedUser ? (
                     storedUser.ongoingQuests
@@ -221,7 +221,6 @@ function Dash() {
                       .map((ongoingQuest, index) => (
                         <div key={index} className="quest-item">
                           <h3>{ongoingQuest.name}</h3>
-                          {/* Add other details related to quests */}
                         </div>
                       ))
                   ) : (
@@ -229,12 +228,20 @@ function Dash() {
                   )}
                 </div>
               </div>
-
+                  
 
             </div>
-          </div>
+            <div className='pengwe'>
+           
+          <img
+            src={pengu}
+            alt="Pengu Image"
+            style={{ width: '150%', height: '150%', borderRadius: '15px' }}
+          />
+      </div>
         </>
       )}
+      
     </div>
   );
 }

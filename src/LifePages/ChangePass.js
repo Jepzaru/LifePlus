@@ -3,6 +3,7 @@ import '../LifeCss/ChangePass.css';
 import Sidenavbar from '../Life++/sidenavbar';
 import Header from '../Life++/Header';
 import { IoMdSettings } from "react-icons/io";
+import Snowfall from 'react-snowfall';
 
 function ChangePass() {
   const savedDarkMode = localStorage.getItem('darkMode') === 'true';
@@ -20,6 +21,7 @@ function ChangePass() {
     <div className={`appind ${darkMode ? 'dark-mode' : ''}`}>
       <Header />
       <Sidenavbar />
+      <Snowfall snowflakeCount={100} />
       <div className='set'>
         <h1>Settings</h1>
         <div className={`setitle ${darkMode ? 'dark-mode-title' : ''}`}>

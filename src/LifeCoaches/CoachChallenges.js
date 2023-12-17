@@ -17,6 +17,8 @@ import mathImage from '../LifeImages/math.png';
 import logicImage from '../LifeImages/logic.png';
 import concentrationImage from '../LifeImages/concentration.png';
 import { useAuth } from '../Life++/AuthContext';
+import Snowfall from 'react-snowfall';
+
 
 function CoachChallenges() {
   const { login } = useAuth(); 
@@ -63,6 +65,7 @@ function CoachChallenges() {
         <>
           <CoachHeader />
           <CoachSidenavbar location={location} />
+          <Snowfall snowflakeCount={100} />
           <div className='cha'>
             <h1><IoExtensionPuzzle style={{ marginRight: '15px', marginBottom: '-5px', color: '#FF64B4' }} />Challenges</h1>
           </div>

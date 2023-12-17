@@ -1,14 +1,27 @@
-.appindash{
-    width: 100vw;
-    height: 210vh;
-    
-}
-body{
+body, html {
+    height: 100%;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+  }
+  
+  .appindash {
+    width: 100vw;
+    height: 210vh;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .snowfall-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Ensure the snowfall is behind other content */
+  }
     
-}
+
 .dash{
     margin-left: 220px;
     
@@ -233,4 +246,18 @@ body{
 }
 .route-cou-btn:hover{
     background-color:#FF64B4;
+}
+.quest-item{
+    background-color: red;
+    margin-top: 150px;
+}
+.pengwe{
+    margin-left: 1000px;
+    margin-top: -20px;
+    margin-right: 100px;
+}
+.pengwe1{
+   
+    margin-top: 1000px;
+    margin-right: 100px;
 }

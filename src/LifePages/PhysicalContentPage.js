@@ -16,6 +16,7 @@ import tabataImage from '../LifeImages/tabata.jpg';
 import { IoArrowBackCircleSharp } from "react-icons/io5";
 import { CgGym } from "react-icons/cg";
 import danceCardioImage from '../LifeImages/dance_cardio.jpg';
+import Snowfall from 'react-snowfall';
 
 
 const PhysicalContentPage = () => {
@@ -129,6 +130,7 @@ const PhysicalContentPage = () => {
         </div>
       ) : (
         <>
+        <Snowfall snowflakeCount={100} />
       <header className="page-header">
         <button className="phyback" onClick={onBackButtonClick}>
         <IoArrowBackCircleSharp style={{fontSize: '3rem'}} />

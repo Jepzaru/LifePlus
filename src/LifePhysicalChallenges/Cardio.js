@@ -6,6 +6,7 @@ import { useLocation } from 'react-router-dom';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { IoExtensionPuzzle } from 'react-icons/io5';
+import Snowfall from 'react-snowfall';
 
 
 function Cardio() {
@@ -151,6 +152,7 @@ function Cardio() {
     <div className={`appindcha ${darkMode ? 'dark-mode' : ''}`}>
       <Header />
       <Sidenavbar location={location} />
+      <Snowfall snowflakeCount={100} />
       <div className='cha'>
         <h1><IoExtensionPuzzle style={{ marginRight: '15px', marginBottom: '-5px', color: '#FF64B4' }} />Challenges</h1>
       </div>

@@ -10,6 +10,7 @@ import { useAuth } from '../Life++/AuthContext';
 import AddItemBox from './AddItemBox';
 import UpdateItemBox from './UpdateItemBox';
 import axios from 'axios';
+import Snowfall from 'react-snowfall';
 import '../LifeCss/shop.css';
 
 function CoachShop() {
@@ -97,6 +98,7 @@ function CoachShop() {
         <>
           <CoachHeader />
           <CoachSidenavbar />
+          <Snowfall snowflakeCount={100} />
           <div className='coa'>
             <h1>Point Shop</h1>
           </div>

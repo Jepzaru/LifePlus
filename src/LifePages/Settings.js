@@ -11,6 +11,7 @@ import { FaUnlock } from 'react-icons/fa';
 import HashLoader from 'react-spinners/HashLoader';
 import { PiSignOutBold } from 'react-icons/pi';
 import { useAuth } from '../Life++/AuthContext';
+import Snowfall from 'react-snowfall';
 import axios from 'axios'; // Import Axios library
 
 function Setting() {
@@ -84,6 +85,7 @@ function Setting() {
         <>
           <Header />
           <Sidenavbar location={location} />
+          <Snowfall snowflakeCount={100} />
           <div className="set">
             <h1>Settings</h1>
             <div className={`setitle ${darkMode ? 'dark-mode-title' : ''}`}>

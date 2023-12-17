@@ -8,6 +8,7 @@ import { IoMdSettings } from 'react-icons/io';
 import { useAuth } from '../Life++/AuthContext';
 import { MdTipsAndUpdates } from 'react-icons/md';
 import axios from 'axios';
+import Snowfall from 'react-snowfall';
 
 function UserProfileSettings() {
   const { user, login } = useAuth();
@@ -80,6 +81,7 @@ function UserProfileSettings() {
     <div className={`appinduserprof ${darkMode ? 'dark-mode' : ''}`}>
       <Header />
       <Sidenavbar />
+      <Snowfall snowflakeCount={100} />
       <div className="set">
         <h1>Settings</h1>
         <div className={`setitle ${darkMode ? 'dark-mode-title' : ''}`}>

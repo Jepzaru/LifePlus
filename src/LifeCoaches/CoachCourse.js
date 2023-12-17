@@ -19,6 +19,7 @@ import { FaScroll } from "react-icons/fa6";
 import { IoMdAddCircle } from "react-icons/io";
 import { FaArrowCircleDown } from "react-icons/fa";
 import { TbTrashXFilled } from "react-icons/tb";
+import Snowfall from 'react-snowfall';
 
 
 import axios from 'axios';
@@ -155,6 +156,7 @@ function CoachCourses() {
         <>
           <CoachHeader />
           <CoachSidenavbar />
+          <Snowfall snowflakeCount={100} />
           <div className="cou">
             <h1><RiGraduationCapFill style={{ marginRight: '15px', marginBottom: '-5px', color: '#FF64B4' }} />Courses</h1>
           </div>

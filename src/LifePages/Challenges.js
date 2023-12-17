@@ -17,7 +17,7 @@ import mathImage from '../LifeImages/math.png';
 import logicImage from '../LifeImages/logic.png';
 import concentrationImage from '../LifeImages/concentration.png';
 import { useAuth } from '../Life++/AuthContext'; // Import useAuth
-
+import Snowfall from 'react-snowfall';
 function Challenges() {
   const { login } = useAuth(); // Get login function from useAuth
 
@@ -63,6 +63,7 @@ function Challenges() {
         <>
           <Header />
           <Sidenavbar location={location} />
+          <Snowfall snowflakeCount={100} />
           <div className='cha'>
             <h1><IoExtensionPuzzle style={{ marginRight: '15px', marginBottom: '-5px', color: '#FF64B4' }} />Challenges</h1>
           </div>

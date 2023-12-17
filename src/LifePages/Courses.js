@@ -12,7 +12,7 @@ import axios from 'axios';
 import { IoPersonSharp } from "react-icons/io5";
 import { BsPersonFillAdd } from "react-icons/bs";
 import { FiLogOut } from "react-icons/fi";
-
+import Snowfall from 'react-snowfall';
 import { useAuth } from '../Life++/AuthContext';
 
 function Courses() {
@@ -191,6 +191,7 @@ function Courses() {
         <>
           <Header />
           <Sidenavbar />
+          <Snowfall snowflakeCount={100} />
           <div className='cou'>
             <h1><RiGraduationCapFill style={{ marginRight: '15px', marginBottom: '-5px', color: '#FF64B4' }} />Courses</h1>
           </div>

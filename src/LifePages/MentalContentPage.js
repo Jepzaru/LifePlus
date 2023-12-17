@@ -16,6 +16,7 @@ import deepBreathingImage from '../LifeImages/deep_breathing.jpg';
 import natureSoundMeditationImage from '../LifeImages/nature_sound_meditation.jpg';
 import { IoArrowBackCircleSharp } from "react-icons/io5";
 import { GiBrain } from "react-icons/gi";
+import Snowfall from 'react-snowfall';
 
 
 const MentalContentPage = () => {
@@ -131,6 +132,7 @@ useEffect(() => {
         </div>
       ) : (
         <>
+        <Snowfall snowflakeCount={100} />
       <header className="header-men">
         <button className="menback-button" onClick={onBackButtonClick}>
         <IoArrowBackCircleSharp style={{fontSize: '3rem'}} />

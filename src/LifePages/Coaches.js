@@ -12,6 +12,7 @@ import { MdEmail } from "react-icons/md";
 import { FaPhoneAlt } from "react-icons/fa";
 import { MdPerson } from "react-icons/md";
 import { FaCakeCandles } from "react-icons/fa6";
+import Snowfall from 'react-snowfall';
 
 function Coaches(){
   const { login } = useAuth(); 
@@ -64,6 +65,7 @@ function Coaches(){
         <>
           <Header />
           <Sidenavbar />
+          <Snowfall snowflakeCount={100} />
           <div className='coa'>
             <h1>Coaches</h1>
           </div>

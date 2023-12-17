@@ -15,6 +15,8 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import { useAuth } from '../Life++/AuthContext';
+import Snowfall from 'react-snowfall';
+import pengu1 from '../LifeImages/pengwe.png';
 import axios from 'axios';
 
 function CoachDash() {
@@ -153,6 +155,7 @@ function CoachDash() {
         <>
           <CoachHeader />
           <CoachSidenavbar />
+          <Snowfall snowflakeCount={100} />
           <div className="dash">
             <h1>
               <MdDashboard style={{ marginBottom: '-8px', color: '#FF64B4' }} /> Dashboard
@@ -201,7 +204,7 @@ function CoachDash() {
                 .reverse() 
                 .map((course, index) => (
                   <div key={index} className="course-item">
-                    <h3>🎓 {course.name}</h3>
+                    <h3 style={{color: 'black'}}>🎓 {course.name}</h3>
                     <div className='route-cou'>
                       <button className='route-cou-btn'>View Course</button>
                       </div>
@@ -218,14 +221,12 @@ function CoachDash() {
               </LocalizationProvider>
             </div>
             <div className="rec-com">
-              <div className="recbg">
-                <p>
-                  <FaClipboardCheck
-                    style={{ fontSize: '50px', marginLeft: '-30px', marginBottom: '-30px' }}
-                  />
-                  &nbsp;&nbsp;Recent &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Challenges
-                </p>
-              </div>
+          <div className='pengwe1'>
+          <img
+            src={pengu1}
+            style={{ width: '540px', height: '400px', borderRadius: '15px' }}
+          />
+      </div>
             </div>
           </div>
         </>

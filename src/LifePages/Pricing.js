@@ -4,6 +4,7 @@ import Sidenavbar from "../Life++/sidenavbar";
 import Header from "../Life++/Header";
 import HashLoader from 'react-spinners/HashLoader';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
+import Snowfall from 'react-snowfall';
 import { useAuth } from '../Life++/AuthContext'; // Import useAuth
 
 function Price() {
@@ -41,6 +42,7 @@ function Price() {
         <>
           <Header />
           <Sidenavbar />
+          <Snowfall snowflakeCount={100} />
 
           <div className='pri'>
             <h1><LocalOfferIcon style={{ fontSize: '60px', color: '#FF64B4', marginBottom: '-10px', marginRight: '10px' }} />Premium Plans</h1>
