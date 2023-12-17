@@ -145,6 +145,7 @@ const CreateCourseBox = ({ onClose }) => {
               value={courseData.description}
               onChange={(e) => handleInputChange(e)}
               name="description"
+              maxlength="40"
             ></textarea>
           </div>
           <div className="course-capa-max">
