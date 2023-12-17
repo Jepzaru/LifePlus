@@ -131,6 +131,7 @@ body{
 }
 .recen-con{
     display: flex;
+    flex-direction: column;
     height: 300px;
     width: 850px;
     border-radius: 20px;
@@ -209,8 +210,9 @@ body{
     background-color: white;
     padding: 20px;
     border-radius: 15px;
-    margin-left: 20px;
+    margin-left: 45px;
     height: 80px;
+    width: 90%;
     margin-top: 20px;
 }
 .route-cou{

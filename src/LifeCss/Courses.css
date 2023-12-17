@@ -435,3 +435,17 @@ margin-bottom: -30px;
 .see-point p{
   color: green;
 }
+.action-que{
+  background-color: #cccccc;
+  border-radius: 10px;
+  padding: 5px;
+  margin-top: 10px;
+}
+.action-que p{
+  color: black;
+  font-size: 14px;
+}
+.que-icn{
+  margin-left: 120px;
+  margin-top: -20px;
+}

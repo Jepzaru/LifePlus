@@ -17,6 +17,10 @@ import { useAuth } from '../Life++/AuthContext';
 import { IoPersonSharp } from "react-icons/io5";
 import { FaScroll } from "react-icons/fa6";
 import { IoMdAddCircle } from "react-icons/io";
+import { FaArrowCircleDown } from "react-icons/fa";
+import { TbTrashXFilled } from "react-icons/tb";
+
+
 import axios from 'axios';
 
 function CoachCourses() {
@@ -205,7 +209,14 @@ function CoachCourses() {
                           <div className='quest-cont'>
                             <h3>🎓 {course.name}</h3>
                             {course.quests.map(quest => (
-                              <p key={quest.qid}>📜 {quest.title}</p>
+                              <div className='action-que'>
+                              <p key={quest.qid}>📜 {quest.title.length > 10 ? quest.title.slice(0, 10) + '...' : quest.title}
+                              <div className='que-icn'>
+                              <FaArrowCircleDown style={{color: 'green', marginBottom: '-2px', marginLeft:'30px', cursor:'pointer'}}/>
+                              <TbTrashXFilled style={{color: 'red', marginBottom: '-2px', cursor:'pointer', marginLeft:'5px'}}/>
+                              </div>
+                              </p>
+                              </div>
                             ))}
                           </div>
                         ) : (
