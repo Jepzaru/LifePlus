@@ -146,7 +146,17 @@ function CoachCourses() {
       login(storedUser);
     }
   }, []);
-
+  const handleDeleteQuest = (questId) => {
+    axios.delete(`http://localhost:8080/quest/delete/${questId}`)
+      .then(response => {
+        console.log('Quest removed successfully:', response.data);
+        // Handle the removal from the UI if needed
+      })
+      .catch(error => {
+        console.error('Error removing quest:', error);
+        // Handle errors if the deletion fails
+      });
+  };
   return (
     <div className={`appindcourse ${darkMode ? 'dark-mode' : ''}`}>
       {loading ? (
@@ -205,46 +215,49 @@ function CoachCourses() {
               </div>
             </p>
             <div className='created-quest'>
-               
-                    {courses.map(course => (
-                      <React.Fragment key={course.id}>
-                        {course.quests && course.quests.length > 0 ? (
-                          <div className='quest-cont'>
-                            <h3>🎓 {course.name}</h3>
-                            {course.quests.map(quest => (
-                              <div className='action-que'>
-                              <p key={quest.qid}>📜 {quest.title.length > 10 ? quest.title.slice(0, 10) + '...' : quest.title}
+
+              {courses.map(course => (
+                <React.Fragment key={course.id}>
+                  {course.quests && course.quests.length > 0 ? (
+                    <div className='quest-cont'>
+                      <h3>🎓 {course.name}</h3>
+                      {course.quests
+                        .filter(quest => !quest.deleted) // Filter out deleted quests
+                        .map(quest => (
+                          <div className='action-que' key={quest.qid}>
+                            <p>📜 {quest.title ? (quest.title.length > 10 ? quest.title.slice(0, 10) + '...' : quest.title) : 'null'}
                               <div className='que-icn'>
-                              <FaArrowCircleDown 
-                              style={{color: 'green', marginBottom: '-2px', marginLeft:'30px', cursor:'pointer'}}
-                              onClick={() => setShowUpdateQuestBox(course.courseID)}
-                              />
-                              <TbTrashXFilled 
-                              style={{color: 'red', marginBottom: '-2px', cursor:'pointer', marginLeft:'5px'}}
-                              />
+                                <FaArrowCircleDown
+                                  style={{ color: 'green', marginBottom: '-2px', marginLeft: '30px', cursor: 'pointer' }}
+                                  onClick={() => setShowUpdateQuestBox(quest)}
+                                />
+                                <TbTrashXFilled
+                                  style={{ color: 'red', marginBottom: '-2px', cursor: 'pointer', marginLeft: '5px' }}
+                                  onClick={() => handleDeleteQuest(quest.qid)} // Assuming quest.qid is the ID of the quest
+                                />
                               </div>
-                              </p>
-                              </div>
-                            ))}
+                            </p>
                           </div>
-                        ) : (
-                          console.log("None") 
-                        )}
-                      </React.Fragment>
-                    ))}
-                    {courses.every(course => (!course.quests || course.quests.length === 0)) && (
-                      <p>No quests available for any course</p>
-                    )}
+                        ))}
+                    </div>
+                  ) : (
+                    console.log("None")
+                  )}
+                </React.Fragment>
+              ))}
+              {courses.every(course => (!course.quests || course.quests.length === 0)) && (
+                <p>No quests available for any course</p>
+              )}
             </div>
           </div>
           <div className='pengwe'>
-           
-          <img
-            src={pengu}
-            alt="Pengu Image"
-            style={{ width: '130%', height: '130%', borderRadius: '15px' }}
-          />
-      </div>
+
+            <img
+              src={pengu}
+              alt="Pengu Image"
+              style={{ width: '130%', height: '130%', borderRadius: '15px' }}
+            />
+          </div>
           <Snackbar
             open={snackbar.open}
             autoHideDuration={6000}
@@ -273,13 +286,13 @@ function CoachCourses() {
       {showViewMembersBox && (
         <ViewMembersBox
           onClose={() => setShowViewMembersBox(false)}
-          course={showViewMembersBox} 
+          course={showViewMembersBox}
         />
       )}
       {showUpdateQuestBox && (
         <UpdateQuestBox
           onClose={() => setShowUpdateQuestBox(false)}
-          course={showUpdateQuestBox} 
+          quest={showUpdateQuestBox}
         />
       )}
     </div>

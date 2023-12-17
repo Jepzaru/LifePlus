@@ -37,8 +37,6 @@ function CoachDash() {
         const coach = coaches.find((coach) => coach.username === user.username);
 
         if (coach) {
-          console.log('Found Coach:', coach);
-          console.log('Courses by Coach:', coach.courses);
           setFoundCoach(coach); // Storing coach in state
         } else {
           console.log('Coach not found for the user');

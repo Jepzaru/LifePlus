@@ -10,53 +10,34 @@ import { MdStars } from "react-icons/md";
 
 import axios from 'axios';
 
-const UpdateQuestBox = ({ onClose, courseId }) => {
+const UpdateQuestBox = ({ onClose, quest }) => {
   const { user } = useAuth();
   const [isOutro, setIsOutro] = useState(false);
   const [selectedImage, setSelectedImage] = useState(image1);
   const [showAchievementsBox, setShowAchievementsBox] = useState(false);
-  const [courseData, setCourseData] = useState({
-    description: '',
-    name: '',
+  const [questData, setQuestData] = useState({
+    title: quest.title || '', // Assuming 'name' is a property in the quest object
+    description: quest.description || '', // Assuming 'description' is a property in the quest object
+    achievement: quest.achievement || null, // Assuming 'achievement' is a property in the quest object
   });
+
   const [selectedAchievement, setSelectedAchievement] = useState(null);
-  useEffect(() => {
-    const fetchCoachData = async () => {
-      console.log(courseId)
-      try {
-        const response = await axios.get('http://localhost:8080/coach/get');
-        const coaches = response.data;
-
-        const foundCoach = coaches.find((coach) => coach.username === user.username);
-
-        if (foundCoach) {
-          setCourseData((prevData) => ({ ...prevData, coach: foundCoach }));
-          console.log('Found Coach:', foundCoach);
-        } else {
-          console.log('Coach not found for the user');
-        }
-      } catch (error) {
-        console.error('Error fetching coach data:', error);
-      }
-    };
-
-    fetchCoachData();
-  }, [user.username]);
 
   const handleAchievementSelect = (achievement) => {
     setSelectedAchievement(achievement);
     console.log('Selected Achievement:', achievement); // Log selected achievement
   };
-  
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    const parsedValue = name === 'max' ? parseInt(value, 10) : value;
+    const parsedValue = name === 'title' ? value : name === 'max' ? parseInt(value, 10) : value;
 
-    setCourseData((prevData) => ({
+    setQuestData((prevData) => ({
       ...prevData,
       [name]: parsedValue,
     }));
   };
+
   const handleCancelAchievement = () => {
     setSelectedAchievement(null);
     console.log('Cancelled Achievement Selection'); // Log cancelled selection
@@ -64,7 +45,7 @@ const UpdateQuestBox = ({ onClose, courseId }) => {
 
   const handleSubmit = async () => {
     try {
-      if (!courseData.description) {
+      if (!questData.description) {
         window.alert('Description cannot be empty');
         return;
       }
@@ -77,29 +58,38 @@ const UpdateQuestBox = ({ onClose, courseId }) => {
       }
 
       const newQuest = {
-        description: courseData.description,
-        title: courseData.name,
+        description: questData.description,
+        title: questData.title,
         achievement: selectedAchievement,
       };
 
-      const response = await axios.post(`http://localhost:8080/course/${courseId}/addquest`, newQuest);
+      const response = await axios.put(`http://localhost:8080/quest/update?sid=${quest.qid}`, newQuest);
 
       // Handle successful response if needed
-      console.log('New quest created:', response.data);
+      console.log('Quest Updated:', response.data);
 
       // Show alert for successful quest creation
-      window.alert('Quest created successfully');
+      window.alert('Quest Updated successfully');
 
       // Close the create quest box or perform other actions
       onClose();
     } catch (error) {
       // Handle errors if the request fails
-      console.error('Error creating quest:', error);
+      console.error('Error Updating quest:', error);
 
       // Show alert for quest creation failure
-      window.alert('Quest creation failed');
+      window.alert('Quest Update failed');
     }
   };
+
+  useEffect(() => {
+    setQuestData({
+      name: quest.title || '', // Assuming 'name' is a property in the quest object
+      description: quest.description || '', // Assuming 'description' is a property in the quest object
+      achievement: quest.achievement || null, // Assuming 'achievement' is a property in the quest object
+    });
+    setSelectedAchievement(quest.achievement || null); // Set existing achievement
+  }, [quest]);
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -152,28 +142,53 @@ const UpdateQuestBox = ({ onClose, courseId }) => {
             <h3>Quest Title</h3>
             <input
               type="text"
-              value={courseData.name}
+              value={questData.title} /* Use questData.title */
               onChange={(e) => handleInputChange(e)}
-              name="name"
+              name="title" // Use 'title' as the name attribute
             />
           </div>
           <div className="course-des">
             <h3>Quest Description</h3>
             <textarea
               type="text"
-              value={courseData.description}
+              value={questData.description}
               onChange={(e) => handleInputChange(e)}
               name="description"
             ></textarea>
           </div>
-
+          <div className='add-achieve'>
+            <h3>Select Achievements</h3>
+            <button
+              className='achive-btn'
+              onClick={() => {
+                setShowAchievementsBox(true);
+              }}
+            >
+              <MdStars style={{ marginRight: '10px', marginBottom: '-2px', color: 'yellow' }} />
+              Add Achievement
+            </button>
+            {selectedAchievement && (
+              <div>
+                {/* Display the selected achievement */}
+                Selected Achievement: {selectedAchievement.name}
+                <button onClick={handleCancelAchievement}>Cancel</button>
+              </div>
+            )}
+          </div>
           <div className="create-course-save">
             <button className="create-save" onClick={handleSubmit}>
               Update Quest
             </button>
           </div>
+
         </div>
       </div>
+      {showAchievementsBox && (
+        <ViewAchievementsBox
+          onClose={() => setShowAchievementsBox(false)}
+          onAchievementSelect={handleAchievementSelect} // Pass the handler to receive the selected achievement
+        />
+      )}
     </div>
   );
 };
