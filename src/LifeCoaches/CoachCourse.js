@@ -13,15 +13,15 @@ import { FaCheckCircle } from "react-icons/fa";
 import CreateCourseBox from './CreateCourseBox';
 import CreateQuestBox from './CreateQuestBox';
 import ViewMembersBox from './ViewMembersBox';
-import { useAuth } from '../Life++/AuthContext';
+import UpdateQuestBox from './UpdateQuestBox';
 import { IoPersonSharp } from "react-icons/io5";
 import { FaScroll } from "react-icons/fa6";
 import { IoMdAddCircle } from "react-icons/io";
 import { FaArrowCircleDown } from "react-icons/fa";
 import { TbTrashXFilled } from "react-icons/tb";
 import Snowfall from 'react-snowfall';
-
-
+import { useAuth } from '../Life++/AuthContext';
+import pengu from '../LifeImages/pengwe.png';
 import axios from 'axios';
 
 function CoachCourses() {
@@ -35,6 +35,7 @@ function CoachCourses() {
   const [courses, setCourses] = useState([]); // State to store courses
   const [showCreateCourseBox, setShowCreateCourseBox] = useState(false);
   const [showCreateQuestBox, setShowQuestCourseBox] = useState(false);
+  const [showUpdateQuestBox, setShowUpdateQuestBox] = useState(false);
   const [showViewMembersBox, setShowViewMembersBox] = useState(false);
   const savedDarkMode = localStorage.getItem('darkMode') === 'true';
   const [darkMode] = useState(savedDarkMode);
@@ -214,8 +215,13 @@ function CoachCourses() {
                               <div className='action-que'>
                               <p key={quest.qid}>📜 {quest.title.length > 10 ? quest.title.slice(0, 10) + '...' : quest.title}
                               <div className='que-icn'>
-                              <FaArrowCircleDown style={{color: 'green', marginBottom: '-2px', marginLeft:'30px', cursor:'pointer'}}/>
-                              <TbTrashXFilled style={{color: 'red', marginBottom: '-2px', cursor:'pointer', marginLeft:'5px'}}/>
+                              <FaArrowCircleDown 
+                              style={{color: 'green', marginBottom: '-2px', marginLeft:'30px', cursor:'pointer'}}
+                              onClick={() => setShowUpdateQuestBox(course.courseID)}
+                              />
+                              <TbTrashXFilled 
+                              style={{color: 'red', marginBottom: '-2px', cursor:'pointer', marginLeft:'5px'}}
+                              />
                               </div>
                               </p>
                               </div>
@@ -231,6 +237,14 @@ function CoachCourses() {
                     )}
             </div>
           </div>
+          <div className='pengwe'>
+           
+          <img
+            src={pengu}
+            alt="Pengu Image"
+            style={{ width: '130%', height: '130%', borderRadius: '15px' }}
+          />
+      </div>
           <Snackbar
             open={snackbar.open}
             autoHideDuration={6000}
@@ -259,7 +273,13 @@ function CoachCourses() {
       {showViewMembersBox && (
         <ViewMembersBox
           onClose={() => setShowViewMembersBox(false)}
-          course={showViewMembersBox} // Pass course object here
+          course={showViewMembersBox} 
+        />
+      )}
+      {showUpdateQuestBox && (
+        <UpdateQuestBox
+          onClose={() => setShowUpdateQuestBox(false)}
+          course={showUpdateQuestBox} 
         />
       )}
     </div>

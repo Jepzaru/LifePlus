@@ -26,6 +26,11 @@ function CoachDash() {
   useEffect(() => {
     const fetchCoachData = async () => {
       try {
+        if (!user) {
+          console.error('User not available');
+          return;
+        }
+
         const response = await axios.get('http://localhost:8080/coach/get');
         const coaches = response.data;
 
@@ -44,7 +49,7 @@ function CoachDash() {
     };
 
     fetchCoachData();
-  }, [user.username]);
+  }, [user]);
 
   const [loading, setLoading] = useState(false);
   const savedDarkMode = localStorage.getItem('darkMode') === 'true';
@@ -143,7 +148,7 @@ function CoachDash() {
     if (storedUser) {
       login(storedUser);
     }
-  }, [login]); 
+  }, [login]);
 
   return (
     <div className={`appindash ${darkMode ? 'dark-mode' : ''}`}>
@@ -196,37 +201,37 @@ function CoachDash() {
           </Link>
           <div className={`recen-cha ${darkMode ? 'dark-mode-title' : ''}`}>
             <h1>Recent Courses Created</h1>
-            
-            <div className="recen-con">             
-            {foundCoach ? (
-              foundCoach.courses
-                .slice(0, 3) 
-                .reverse() 
-                .map((course, index) => (
-                  <div key={index} className="course-item">
-                    <h3 style={{color: 'black'}}>🎓 {course.name}</h3>
-                    <div className='route-cou'>
-                      <button className='route-cou-btn'>View Course</button>
+
+            <div className="recen-con">
+              {foundCoach ? (
+                foundCoach.courses
+                  .slice(0, 3)
+                  .reverse()
+                  .map((course, index) => (
+                    <div key={index} className="course-item">
+                      <h3 style={{ color: 'black' }}>🎓 {course.name}</h3>
+                      <div className='route-cou'>
+                        <button className='route-cou-btn'>View Course</button>
                       </div>
-                  </div>
-                ))
-            ) : (
-              <p>No courses found</p>
-            )}
+                    </div>
+                  ))
+              ) : (
+                <p>No courses found</p>
+              )}
             </div>
-            
+
             <div className="calendar">
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DateCalendar style={{ color: 'white' }} />
               </LocalizationProvider>
             </div>
             <div className="rec-com">
-          <div className='pengwe1'>
-          <img
-            src={pengu1}
-            style={{ width: '540px', height: '400px', borderRadius: '15px' }}
-          />
-      </div>
+              <div className='pengwe1'>
+                <img
+                  src={pengu1}
+                  style={{ width: '540px', height: '400px', borderRadius: '15px' }}
+                />
+              </div>
             </div>
           </div>
         </>
